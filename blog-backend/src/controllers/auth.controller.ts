@@ -1,37 +1,30 @@
-import { FastifyRequest, FastifyReply } from 'fastify'
-import { z } from 'zod'
-import { prisma } from '../lib/prisma'
-import bcrypt from 'bcryptjs'
-import { signToken } from '../utils/jwt'
+import { FastifyReply, FastifyRequest } from 'fastify';
+import { createUser, authenticateUser } from '../services/auth.service';
+import { z } from 'zod';
 
-const registerSchema = z.object({
-  name: z.string(),
-  email: z.string().email(),
-  password: z.string().min(6),
-})
+export async function register(request: FastifyRequest, reply: FastifyReply) {
+  const bodySchema = z.object({
+    name: z.string(),
+    email: z.string().email(),
+    password: z.string().min(6),
+  });
 
-export async function register(req: FastifyRequest, reply: FastifyReply) {
-  const data = registerSchema.parse(req.body)
+  const { name, email, password } = bodySchema.parse(request.body);
 
-  const hashedPassword = await bcrypt.hash(data.password, 10)
+  const user = await createUser({ name, email, password });
 
-  const user = await prisma.user.create({
-    data: { ...data, password: hashedPassword },
-  })
-
-  return reply.send({ id: user.id, email: user.email })
+  return reply.status(201).send(user);
 }
 
-export async function login(req: FastifyRequest, reply: FastifyReply) {
-  const { email, password } = z
-    .object({ email: z.string().email(), password: z.string() })
-    .parse(req.body)
+export async function login(request: FastifyRequest, reply: FastifyReply) {
+  const bodySchema = z.object({
+    email: z.string().email(),
+    password: z.string(),
+  });
 
-  const user = await prisma.user.findUnique({ where: { email } })
-  if (!user || !(await bcrypt.compare(password, user.password))) {
-    return reply.status(401).send({ error: 'Invalid credentials' })
-  }
+  const { email, password } = bodySchema.parse(request.body);
 
-  const token = signToken(user.id)
-  return reply.send({ token })
+  const token = await authenticateUser({ email, password });
+
+  return reply.send({ token });
 }
