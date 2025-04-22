@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { getUserProfile, updateUserProfile } from '../services/user.service';
+import { getUserProfile, updateUserProfile } from '../services/perfil.service';
 import { z } from 'zod';
 
 export async function getProfile(request: FastifyRequest, reply: FastifyReply) {

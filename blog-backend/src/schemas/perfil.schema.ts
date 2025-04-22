@@ -3,7 +3,7 @@ import { optional } from "zod";
 export const createPerfilSchema = {
   body: {
     type: 'object',
-    required: ['nome_Perfil', 'email_Perfil', 'matricula_Perfil', 'foto_Perfil', 'descricao_Perfil', 'matriculaAccount_Perfil'],
+    required: ['nome_Perfil', 'email_Perfil', 'matricula_Perfil'],
     properties: {
       nome_Perfil: { type: 'string', maxLength: 100 },
       matricula_Perfil: { type: 'string', maxLength: 20 },

@@ -1,5 +1,5 @@
 import { hash, compare } from 'bcryptjs';
-import { db } from '../prisma/client'; 
+import { PrismaClient } from '@prisma/client'; 
 import { app } from '../app';
 
 interface CreateUserData {
@@ -7,6 +7,8 @@ interface CreateUserData {
   email: string;
   password: string;
 }
+
+const db = new PrismaClient();
 
 export async function createUser({ name, email, password }: CreateUserData) {
   const hashedPassword = await hash(password, 8);

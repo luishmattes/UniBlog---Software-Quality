@@ -1,5 +1,5 @@
-import { db } from '../prisma/client'; 
-
+import { PrismaClient } from '@prisma/client'; 
+const db = new PrismaClient()
 
 export async function createNewPost(userId: string, content: string) {
   const post = await db.post.create({

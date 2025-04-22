@@ -2,7 +2,7 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import jwt from '@fastify/jwt';
 import { authRoutes } from '../src/routes/auth.routes';
-import { userRoutes } from '../src/routes/user.routes';
+import { userRoutes } from './routes/perfil.routes';
 import { postRoutes } from '../src/routes/post.routes';
 
 export const app = Fastify();
@@ -17,5 +17,5 @@ app.register(jwt, {
 
 // Rotas
 app.register(authRoutes, { prefix: '/auth' });
-app.register(userRoutes, { prefix: '/users' });
+app.register(userRoutes, { prefix: '/perfil' });
 app.register(postRoutes, { prefix: '/posts' });

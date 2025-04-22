@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify';
-import { getProfile, updateProfile } from '../controllers/user.controller';
+import { getProfile, updateProfile } from '../controllers/perfil.controller';
 import { verifyJWT } from '../middlewares/auth.middleware';
 
 export async function userRoutes(app: FastifyInstance) {

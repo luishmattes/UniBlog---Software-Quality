@@ -1,7 +1,7 @@
 export const createPostSchema = {
   body: {
     type: 'object',
-    required: [' title_Post, content_Post, image_Post'],
+    required: [' content_Post'],
     properties: {
       title_Post: { type: 'string', maxLength: 100 },
       content: { type: 'string', minLength: 1, maxlength: 1000 },
