@@ -43,7 +43,7 @@ model T_Perfil {
 model T_Post {
   id_Post        String   @id @default(cuid())
   title_Post     String?
-  content_Post   String
+  content_Post   String?
   image_Post     String?
   createdAt_Post DateTime @default(now())
   updatedAt_Post DateTime @updatedAt

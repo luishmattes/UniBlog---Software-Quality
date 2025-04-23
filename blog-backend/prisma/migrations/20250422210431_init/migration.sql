@@ -30,7 +30,7 @@ CREATE TABLE "T_Perfil" (
 CREATE TABLE "T_Post" (
     "id_Post" TEXT NOT NULL,
     "title_Post" TEXT,
-    "content_Post" TEXT NOT NULL,
+    "content_Post" TEXT,
     "image_Post" TEXT,
     "createdAt_Post" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt_Post" TIMESTAMP(3) NOT NULL,
