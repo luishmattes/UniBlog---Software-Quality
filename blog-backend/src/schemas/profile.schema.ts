@@ -1,6 +1,6 @@
 import { optional } from "zod";
 
-export const createPerfilSchema = {
+export const createProfileSchema = {
   body: {
     type: 'object',
     required: ['nome_Perfil', 'email_Perfil', 'matricula_Perfil'],
@@ -15,7 +15,7 @@ export const createPerfilSchema = {
   },
 };
 
-export const updatePerfilSchema = {
+export const updateProfileSchema = {
   body: {
     type: 'object',
     required: ['nome_Perfil, email_Perfil, matricula_Perfil, foto_Perfil, descricao_Perfil, matriculaAccount_Perfil'],
@@ -30,7 +30,7 @@ export const updatePerfilSchema = {
   },
 };
 
-export const readPerfilSchema ={
+export const readProfileSchema ={
   body: {
     type: 'object',
     required: ['nome_Perfil', 'email_Perfil', 'matricula_Perfil', 'foto_Perfil', 'descricao_Perfil', 'matriculaAccount_Perfil'],
@@ -45,7 +45,7 @@ export const readPerfilSchema ={
   },
 };
 
-export const deletePerfilSchema = {
+export const deleteProfileSchema = {
   body: {
     type: 'object',
     required: ['matricula_Perfil, email_Perfil'],

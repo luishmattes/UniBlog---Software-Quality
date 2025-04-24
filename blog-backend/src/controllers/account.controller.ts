@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { createUser, authenticateUser } from '../services/auth.service';
+import { createUser, authenticateUser } from '../services/account.service';
 import { z } from 'zod';
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
