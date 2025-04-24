@@ -26,6 +26,7 @@ export async function createAccount({ name, email, password, matricula }: Accoun
 
   return { id: Account.id_Account, name: Account.nome_Account, email: Account.email_Account };
 }
+
 export async function updateAccount({id, name, email, password }: AccountDataInterface) {
   const hashedPassword = await hash(password, 8);
 

@@ -30,7 +30,6 @@ export const updateAccountSchema = {
     properties: {
       nome_Account: { type: 'string', maxlength: 100 },
       email_Account: { type: 'string', format: 'email', maxlength: 100 },
-      matricula_Account: { type: 'string', maxlenght: 20 },
       password_Account: { type: 'string', minLength: 6, maxlength: 50 },
     },
     additionalProperties: false, 
