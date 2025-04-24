@@ -1,46 +1,63 @@
 import { hash, compare } from 'bcryptjs';
-import { PrismaClient } from '@prisma/client'; 
+import { PrismaClient } from '@/generated/prisma'; 
 import { app } from '../app';
 
-interface CreateUserData {
+const db = new PrismaClient();
+interface AccountDataInterface {
+  id: number;
   name: string;
   email: string;
   password: string;
+  matricula: string;
 }
 
-const db = new PrismaClient();
 
-export async function createUser({ name, email, password }: CreateUserData) {
+export async function createAccount({ name, email, password, matricula }: AccountDataInterface) {
   const hashedPassword = await hash(password, 8);
 
-  const user = await db.user.create({
+  const Account = await db.t_Account.create({
     data: {
-      name,
-      email,
-      password: hashedPassword,
+      nome_Account: name,
+      email_Account: email,
+      password_Account: hashedPassword,
+      matricula_Account: matricula
     },
   });
 
-  return { id: user.id, name: user.name, email: user.email };
+  return { id: Account.id_Account, name: Account.nome_Account, email: Account.email_Account };
+}
+export async function updateAccount({id, name, email, password }: AccountDataInterface) {
+  const hashedPassword = await hash(password, 8);
+
+  const Account = await db.t_Account.update({
+    where: { id_Account: id },
+    data: {
+      nome_Account: name,
+      email_Account: email,
+      password_Account: hashedPassword,
+    },
+  });
+
+  return { id: Account.id_Account, name: Account.nome_Account, email: Account.email_Account };
 }
 
-export async function authenticateUser({
-  email,
-  password,
-}: {
+
+
+
+export async function authenticateAccount({ email, password,}: {
   email: string;
   password: string;
 }) {
-  const user = await db.user.findUnique({
-    where: { email },
+  const Account = await db.t_Account.findUnique({
+    where: { email_Account: email },
   });
 
-  if (!user || !(await compare(password, user.password))) {
+  if (!Account || !(await compare(password, Account.password_Account))) {
     throw new Error('Credenciais inválidas');
   }
 
   const token = app.jwt.sign(
-    { id: user.id, name: user.name },
+    { id: Account.id_Account, name: Account.nome_Account },
     { expiresIn: '7d' }
   );
 
