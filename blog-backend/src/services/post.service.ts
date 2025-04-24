@@ -6,6 +6,7 @@ interface PostDataInterface {
   content: string;
   image?: string;
   createdAt?: Date;
+  id_Post: number;
 }
 
 export async function createPostService({ title, image, content }: PostDataInterface) {
@@ -21,16 +22,26 @@ export async function createPostService({ title, image, content }: PostDataInter
   return Post;
 }
 
-export async function updatePostService({ ProfileId, title, image, content }: PostDataInterface) {
+export async function updatePostService({ title, image, content, id_Post }: PostDataInterface) {
   const Post = await db.t_Post.update({
-    where: { ProfileId: ProfileId },
+    where: { id_Post: id_Post },
     data: {
-      content,
-      title: title || '',
+      content_Post: content || '',
+      title_Post: title || '',
       image_Post: image || '',
+      updatedAt_Post: new Date(),
     },
   });
 
   return Post;
 }
+
+export async function deletePostService({ id_Post }: PostDataInterface) {
+  const Post = await db.t_Post.delete({
+    where: { id_Post: id_Post },
+  });
+
+  return Post;
+}
+
 
