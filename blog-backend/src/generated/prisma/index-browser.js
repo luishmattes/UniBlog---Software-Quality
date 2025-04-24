@@ -145,8 +145,7 @@ exports.Prisma.T_PostScalarFieldEnum = {
   content_Post: 'content_Post',
   image_Post: 'image_Post',
   createdAt_Post: 'createdAt_Post',
-  updatedAt_Post: 'updatedAt_Post',
-  id_Perfil_Post: 'id_Perfil_Post'
+  updatedAt_Post: 'updatedAt_Post'
 };
 
 exports.Prisma.SortOrder = {

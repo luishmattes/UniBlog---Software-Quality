@@ -41,13 +41,12 @@ model T_Perfil {
 }
 
 model T_Post {
-  id_Post        String   @id @default(cuid())
+  id_Post        Int      @id @default(autoincrement())
   title_Post     String?
   content_Post   String?
   image_Post     String?
   createdAt_Post DateTime @default(now())
   updatedAt_Post DateTime @updatedAt
 
-  idPerfil_Post  T_Perfil @relation(fields: [id_Perfil_Post], references: [id_Perfil])
-  id_Perfil_Post Int
+  id_Perfil_Post T_Perfil @relation(fields: [id_Post], references: [id_Perfil])
 }
