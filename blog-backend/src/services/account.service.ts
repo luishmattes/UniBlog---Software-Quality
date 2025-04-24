@@ -24,7 +24,7 @@ export async function createAccountService({ name, email, password, matricula }:
     },
   });
 
-  return { id: Account.id_Account, name: Account.nome_Account, email: Account.email_Account };
+  return Account;
 }
 
 export async function updateAccountService({id, name, email, password }: AccountDataInterface) {

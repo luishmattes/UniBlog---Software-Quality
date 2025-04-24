@@ -4,8 +4,9 @@ export const createPostSchema = {
     required: [' content_Post'],
     properties: {
       title_Post: { type: 'string', maxLength: 100 },
-      content: { type: 'string', minLength: 1, maxlength: 1000 },
-      image_Post: { type: 'string', maxLength: 255 },
+      content_Post: { type: 'string', minLength: 1, maxLength: 1000 },
+      image_Post: { type: 'string' },
+      id_Perfil_Post: { type: 'string' },
     },
   },
 };
@@ -16,8 +17,8 @@ export const updatePostSchema = {
     properties: {
       id_Post: { type: 'string', format: 'uuid' },
       title_Post: { type: 'string', maxLength: 100, optional: true },
-      content_Post: { type: 'string', minLength: 1, maxlenght: 1000, optional: true },
-      image_Post: { type: 'string', maxLength: 255, optional: true },
+      content_Post: { type: 'string', minLength: 1, maxLength: 1000, optional: true },
+      image_Post: { type: 'string', optional: true },
     },
     additionalProperties: false,
   },
