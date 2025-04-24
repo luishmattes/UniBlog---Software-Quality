@@ -1,30 +1,37 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { createUser, authenticateUser } from '../services/account.service';
-import { z } from 'zod';
+import { createAccountService, authenticateAccountService } from '../services/account.service';
+import { number, z } from 'zod';
 
-export async function register(request: FastifyRequest, reply: FastifyReply) {
+export async function createAccountController(request: FastifyRequest, reply: FastifyReply) {
   const bodySchema = z.object({
-    name: z.string(),
+    id: z.number().int().positive(),
+    name: z.string().max(100),
+    email: z.string().email().regex(/^[a-zA-Z0-9._%+-]+@unochapeco\.com$/),
+    matricula: z.string().max(20),
+    password: z.string().min(6),
+    confirmPassword: z.string().min(6),
+  });
+
+  const { name, email, password, confirmPassword, matricula } = bodySchema.parse(request.body);
+
+  if (password !== confirmPassword) {
+    return reply.status(400).send({ error: "Passwords nao coincidem" });
+  }
+
+  const newAccount = await createAccountService({ name, email, password, matricula });
+
+  return reply.status(201).send(newAccount);
+}
+
+export async function loginAccountController(request: FastifyRequest, reply: FastifyReply) {
+  const bodySchema = z.object({
     email: z.string().email(),
     password: z.string().min(6),
   });
 
-  const { name, email, password } = bodySchema.parse(request.body);
-
-  const user = await createUser({ name, email, password });
-
-  return reply.status(201).send(user);
-}
-
-export async function login(request: FastifyRequest, reply: FastifyReply) {
-  const bodySchema = z.object({
-    email: z.string().email(),
-    password: z.string(),
-  });
-
   const { email, password } = bodySchema.parse(request.body);
 
-  const token = await authenticateUser({ email, password });
+  const token = await authenticateAccountService({ email, password });
 
-  return reply.send({ token });
+  return reply.status(200).send({ token });
 }

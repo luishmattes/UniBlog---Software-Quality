@@ -4,7 +4,7 @@ import { app } from '../app';
 
 const db = new PrismaClient();
 interface AccountDataInterface {
-  id: number;
+  id?: number;
   name: string;
   email: string;
   password: string;
@@ -12,7 +12,7 @@ interface AccountDataInterface {
 }
 
 
-export async function createAccount({ name, email, password, matricula }: AccountDataInterface) {
+export async function createAccountService({ name, email, password, matricula }: AccountDataInterface) {
   const hashedPassword = await hash(password, 8);
 
   const Account = await db.t_Account.create({
@@ -27,7 +27,7 @@ export async function createAccount({ name, email, password, matricula }: Accoun
   return { id: Account.id_Account, name: Account.nome_Account, email: Account.email_Account };
 }
 
-export async function updateAccount({id, name, email, password }: AccountDataInterface) {
+export async function updateAccountService({id, name, email, password }: AccountDataInterface) {
   const hashedPassword = await hash(password, 8);
 
   const Account = await db.t_Account.update({
@@ -45,7 +45,7 @@ export async function updateAccount({id, name, email, password }: AccountDataInt
 
 
 
-export async function authenticateAccount({ email, password,}: {
+export async function authenticateAccountService({ email, password,}: {
   email: string;
   password: string;
 }) {
