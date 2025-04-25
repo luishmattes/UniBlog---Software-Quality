@@ -16,6 +16,11 @@ export interface UpdateAccountData {
   email_Account?: string;
   password_Account?: string;
 }
+export interface AuthAccountData {
+  email_Account: string;
+  password_Account: string;
+}
+
 
 export async function createAccountService({ nome_Account, email_Account, password_Account, confirmPassword_Account, matricula_Account }: CreateAccountData) {
   if (password_Account !== confirmPassword_Account) {
@@ -60,20 +65,17 @@ export async function updateAccountService({ id_Account, nome_Account, email_Acc
 
 
 
-export async function authenticateAccountService({ email_Account, password_Account, }: {
-  email_Account: string;
-  password_Account: string;
-}) {
-  const Account = await db.t_Account.findUnique({
-    where: { email_Account: email_Account },
+export async function authenticateAccountService({ email_Account, password_Account, }: AuthAccountData) {
+  const account = await db.t_Account.findUnique({
+    where: { email_Account },
   });
 
-  if (!Account || !(await compare(password_Account, Account.password_Account))) {
+  if (!account || !(await compare(password_Account, account.password_Account))) {
     throw new Error('Credenciais inválidas');
   }
 
   const token = app.jwt.sign(
-    { id: Account.id_Account, name: Account.nome_Account },
+    { id: account.id_Account, name: account.nome_Account },
     { expiresIn: '7d' }
   );
 
