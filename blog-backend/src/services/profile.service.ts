@@ -1,39 +1,58 @@
-import { PrismaClient } from '@prisma/client'; 
-const db = new PrismaClient(); 
+import { PrismaClient } from '@/generated/prisma';
 
-import { createProfileSchema } from '../schemas/profile.schema';
+const db = new PrismaClient();
 
-export async function createProfileService(data: { name: string; email: string; bio?: string }) {
-  const { name, email, bio } = data;
-  const profile = await db.user.create({
-    data: {
-      name,
-      email,
-      bio,
-    },
-    select: { id: true, name: true, email: true, bio: true },
-  });
-  return profile; 
-} 
-
-  
-  
-  
-export async function getUserProfile(userId: string) {
-  const user = await db.user.findUnique({
-    where: { id: userId },
-    select: { id: true, name: true, email: true, bio: true },
-  });
-
-  return user;
+interface ProfileDataInterface {
+  id: number;
+  name: string;
+  email: string;
+  bio?: string;
+  createdAt?: Date;
+  foto?: string;
+  matricula: string;
 }
 
-export async function updateUserProfile(userId: string, data: { name?: string; bio?: string }) {
-  const updated = await db.user.update({
-    where: { id: userId },
-    data,
-    select: { id: true, name: true, bio: true },
+
+export async function createProfileService({ id, name, email, bio, foto, matricula, }: ProfileDataInterface) {
+  const createdProfile = await db.t_Perfil.create({
+    data: {
+      id_Account_Perfil: id,
+      foto_Perfil: foto,
+      matricula_Perfil: matricula,
+      nome_Perfil: name,
+      email_Perfil: email,
+      descricao_Perfil: bio || null,
+      createdAt_Perfil: new Date(),
+      updatedAt_Perfil: new Date(),
+    },
+  });
+  return createdProfile;
+}
+
+
+
+
+export async function getUserProfile(userId: number) {
+  const getProfile = await db.t_Perfil.findUnique({
+    where: { id_Perfil: userId },
+    select: { id_Perfil: true, nome_Perfil: true, email_Perfil: true, descricao_Perfil: true, foto_Perfil: true, matricula_Perfil: true },
   });
 
-  return updated;
+  return getProfile;
+}
+
+export async function updateUserProfile({ id, name, email, bio, foto, matricula }: ProfileDataInterface) {
+  const updatedProfile = await db.t_Perfil.update({
+    where: { id_Perfil: id },
+    data: {
+      nome_Perfil: name,
+      email_Perfil: email,
+      descricao_Perfil: bio || null,
+      foto_Perfil: foto,
+      matricula_Perfil: matricula,
+      updatedAt_Perfil: new Date(),
+    },
+  });
+
+  return updatedProfile;
 }

@@ -2,19 +2,18 @@ import { PrismaClient } from '@/generated/prisma';
 const db = new PrismaClient()
 
 interface PostDataInterface {
+  id_Post: number;
   title?: string;
   content: string;
   image?: string;
-  createdAt?: Date;
-  id_Post: number;
 }
 
 export async function createPostService({ title, image, content }: PostDataInterface) {
   const Post = await db.t_Post.create({
     data: {
-      title_Post: title || '',
+      title_Post: title,
       content_Post: content,
-      image_Post: image || '',
+      image_Post: image,
       createdAt_Post: new Date(),
     },
   });

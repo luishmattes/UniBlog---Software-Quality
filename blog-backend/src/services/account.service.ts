@@ -1,5 +1,5 @@
 import { hash, compare } from 'bcryptjs';
-import { PrismaClient } from '@/generated/prisma'; 
+import { PrismaClient } from '@/generated/prisma';
 import { app } from '../app';
 
 const db = new PrismaClient();
@@ -27,7 +27,7 @@ export async function createAccountService({ name, email, password, matricula }:
   return Account;
 }
 
-export async function updateAccountService({id, name, email, password }: AccountDataInterface) {
+export async function updateAccountService({ id, name, email, password }: AccountDataInterface) {
   const hashedPassword = await hash(password, 8);
 
   const Account = await db.t_Account.update({
@@ -45,7 +45,7 @@ export async function updateAccountService({id, name, email, password }: Account
 
 
 
-export async function authenticateAccountService({ email, password,}: {
+export async function authenticateAccountService({ email, password, }: {
   email: string;
   password: string;
 }) {
