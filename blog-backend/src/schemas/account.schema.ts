@@ -1,11 +1,11 @@
-export const registerAccountSchema = {
+export const createAccountSchema = {
   body: {
     type: 'object',
     required: ['nome_Account', 'email_Account', 'matricula_Account', 'password_Account'],
     properties: {
       nome_Account: { type: 'string', maxlength: 100 },
       email_Account: { type: 'string', format: 'email', maxlength: 200 },
-      matricula_Account: { type: 'string', maxlenght: 20 }, 
+      matricula_Account: { type: 'string', maxlength: 20 }, 
       password_Account: { type: 'string', minLength: 6, maxlength: 20 },
     },
     additionalProperties: false, 
