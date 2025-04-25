@@ -1,45 +1,27 @@
-import { optional } from "zod";
+import { z } from "zod";
 
-export const createProfileSchema = {
-  body: {
-    type: 'object',
-    required: ['nome_Perfil', 'email_Perfil', 'matricula_Perfil'],
-    properties: {
-      nome_Perfil: { type: 'string', maxLength: 100 },
-      matricula_Perfil: { type: 'string', maxLength: 20 },
-      email_Perfil: { type: 'string', format: 'email', maxLength: 100 },
-      foto_Perfil: { type: 'string', optional: true },
-      descricao_Perfil: { type: 'string', maxLength: 255, optional: true },
-    },
-    additionalProperties: false,
-  },
-};
+export const createProfileSchema = z.object({
+  nome_Perfil: z.string().max(100, 'O nome pode ter no máximo 100 caracteres'),
+  email_Perfil: z.string().email('Email inválido').max(100, 'O email pode ter no máximo 100 caracteres'),
+  matricula_Perfil: z.string().max(20, 'A matrícula pode ter no máximo 20 caracteres'),
+  foto_Perfil: z.string().optional(),
+  descricao_Perfil: z.string().max(255, 'A descrição pode ter no máximo 255 caracteres').optional(),
+});
 
-export const updateProfileSchema = {
-  body: {
-    type: 'object',
-    required: ['nome_Perfil, email_Perfil, , foto_Perfil, descricao_Perfil'],
-    properties: {
-      nome_Perfil: { type: 'string', maxlenght: 100, optional: true }, 
-      email_Perfil: { type: 'string', format: 'email', maxLength: 100, optional: true },
-      foto_Perfil: { type:'string', optional: true },
-      descricao_Perfil: { type: 'string', maxlength: 255, optional: true },
-    },
-    additionalProperties: false,
-  },
-};
+export const updateProfileSchema = z.object({
+  nome_Perfil: z.string().max(100, 'O nome pode ter no máximo 100 caracteres').optional(),
+  email_Perfil: z.string().email('Email inválido').max(100, 'O email pode ter no máximo 100 caracteres').optional(),
+  foto_Perfil: z.string().optional(),
+  descricao_Perfil: z.string().max(255, 'A descrição pode ter no máximo 255 caracteres').optional(),
+  matricula_Perfil: z.string().max(20, 'A matrícula pode ter no máximo 20 caracteres').optional(),
+  matriculaAccount_Perfil: z.string().optional(),
+});
 
-export const readProfileSchema ={
-  body: {
-    type: 'object',
-    required: ['nome_Perfil', 'email_Perfil', 'matricula_Perfil', 'foto_Perfil', 'descricao_Perfil', 'matriculaAccount_Perfil'],
-    properties: {
-      nome_Perfil: { type: 'string', maxLength: 100 },
-      matricula_Perfil: { type: 'string', maxLength: 20 },
-      email_Perfil: { type: 'string', format: 'email', maxLength: 100 },
-      foto_Perfil: { type: 'string' },
-      descricao_Perfil: { type: 'string', maxLength: 255 },
-    },
-    additionalProperties: false,
-  },
-};
+export const readProfileSchema = z.object({
+  nome_Perfil: z.string().max(100, 'O nome pode ter no máximo 100 caracteres').optional(),
+  email_Perfil: z.string().email('Email inválido').max(100, 'O email pode ter no máximo 100 caracteres').optional(),
+  matricula_Perfil: z.string().max(20, 'A matrícula pode ter no máximo 20 caracteres').optional(),
+  foto_Perfil: z.string().optional(),
+  descricao_Perfil: z.string().max(255, 'A descrição pode ter no máximo 255 caracteres').optional(),
+  matriculaAccount_Perfil: z.string().optional(),
+});
