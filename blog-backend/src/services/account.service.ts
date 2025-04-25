@@ -3,26 +3,26 @@ import { PrismaClient } from '@/generated/prisma';
 import { app } from '../app';
 
 const db = new PrismaClient();
-export interface CreateAccountData {
+export interface CreateAccountDataInterface {
   nome_Account: string;
   email_Account: string;
   matricula_Account: string;
   password_Account: string;
   confirmPassword_Account: string;
 }
-export interface UpdateAccountData {
+export interface UpdateAccountDataInterface {
   id_Account: number;
   nome_Account?: string;
   email_Account?: string;
   password_Account?: string;
 }
-export interface AuthAccountData {
+export interface AuthAccountDataInterface {
   email_Account: string;
   password_Account: string;
 }
 
 
-export async function createAccountService({ nome_Account, email_Account, password_Account, confirmPassword_Account, matricula_Account }: CreateAccountData) {
+export async function createAccountService({ nome_Account, email_Account, password_Account, confirmPassword_Account, matricula_Account }: CreateAccountDataInterface) {
   if (password_Account !== confirmPassword_Account) {
     throw new Error('As senhas não coincidem.');
   }
@@ -40,7 +40,7 @@ export async function createAccountService({ nome_Account, email_Account, passwo
   return Account;
 }
 
-export async function updateAccountService({ id_Account, nome_Account, email_Account, password_Account }: UpdateAccountData) {
+export async function updateAccountService({ id_Account, nome_Account, email_Account, password_Account }: UpdateAccountDataInterface) {
 
   const dataToUpdate: any = {};
 
@@ -65,7 +65,7 @@ export async function updateAccountService({ id_Account, nome_Account, email_Acc
 
 
 
-export async function authenticateAccountService({ email_Account, password_Account, }: AuthAccountData) {
+export async function authenticateAccountService({ email_Account, password_Account, }: AuthAccountDataInterface) {
   const account = await db.t_Account.findUnique({
     where: { email_Account },
   });
