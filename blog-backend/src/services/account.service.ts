@@ -3,17 +3,21 @@ import { PrismaClient } from '@/generated/prisma';
 import { app } from '../app';
 
 const db = new PrismaClient();
-interface AccountDataInterface {
-  id?: number;
+export interface CreateAccountData {
   nome_Account: string;
   email_Account: string;
   matricula_Account: string;
   password_Account: string;
   confirmPassword_Account: string;
 }
+export interface UpdateAccountData {
+  id_Account: number;
+  nome_Account?: string;
+  email_Account?: string;
+  password_Account?: string;
+}
 
-
-export async function createAccountService({ nome_Account, email_Account, password_Account, confirmPassword_Account, matricula_Account }: AccountDataInterface) {
+export async function createAccountService({ nome_Account, email_Account, password_Account, confirmPassword_Account, matricula_Account }: CreateAccountData) {
   if (password_Account !== confirmPassword_Account) {
     throw new Error('As senhas não coincidem.');
   }
@@ -31,19 +35,26 @@ export async function createAccountService({ nome_Account, email_Account, passwo
   return Account;
 }
 
-export async function updateAccountService({ id, nome_Account, email_Account, password_Account }: AccountDataInterface) {
-  const hashedPassword = await hash(password_Account, 8);
+export async function updateAccountService({ id_Account, nome_Account, email_Account, password_Account }: UpdateAccountData) {
 
-  const Account = await db.t_Account.update({
-    where: { id_Account: id },
-    data: {
-      nome_Account: nome_Account,
-      email_Account: email_Account,
-      password_Account: hashedPassword,
-    },
+  const dataToUpdate: any = {};
+
+  if (nome_Account) dataToUpdate.nome_Account = nome_Account;
+  if (email_Account) dataToUpdate.email_Account = email_Account;
+  if (password_Account) {
+    dataToUpdate.password_Account = await hash(password_Account, 8);
+  }
+
+  const account = await db.t_Account.update({
+    where: { id_Account },
+    data: dataToUpdate,
   });
 
-  return { id: Account.id_Account, name: Account.nome_Account, email: Account.email_Account };
+  return {
+    id: account.id_Account,
+    name: account.nome_Account,
+    email: account.email_Account,
+  };
 }
 
 
