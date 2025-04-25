@@ -5,36 +5,40 @@ import { app } from '../app';
 const db = new PrismaClient();
 interface AccountDataInterface {
   id?: number;
-  name: string;
-  email: string;
-  password: string;
-  matricula: string;
+  nome_Account: string;
+  email_Account: string;
+  matricula_Account: string;
+  password_Account: string;
+  confirmPassword_Account: string;
 }
 
 
-export async function createAccountService({ name, email, password, matricula }: AccountDataInterface) {
-  const hashedPassword = await hash(password, 8);
+export async function createAccountService({ nome_Account, email_Account, password_Account, confirmPassword_Account, matricula_Account }: AccountDataInterface) {
+  if (password_Account !== confirmPassword_Account) {
+    throw new Error('As senhas não coincidem.');
+  }
+  const hashedPassword = await hash(password_Account, 8);
 
   const Account = await db.t_Account.create({
     data: {
-      nome_Account: name,
-      email_Account: email,
+      nome_Account: nome_Account,
+      email_Account: email_Account,
       password_Account: hashedPassword,
-      matricula_Account: matricula
+      matricula_Account: matricula_Account
     },
   });
 
   return Account;
 }
 
-export async function updateAccountService({ id, name, email, password }: AccountDataInterface) {
-  const hashedPassword = await hash(password, 8);
+export async function updateAccountService({ id, nome_Account, email_Account, password_Account }: AccountDataInterface) {
+  const hashedPassword = await hash(password_Account, 8);
 
   const Account = await db.t_Account.update({
     where: { id_Account: id },
     data: {
-      nome_Account: name,
-      email_Account: email,
+      nome_Account: nome_Account,
+      email_Account: email_Account,
       password_Account: hashedPassword,
     },
   });
@@ -45,15 +49,15 @@ export async function updateAccountService({ id, name, email, password }: Accoun
 
 
 
-export async function authenticateAccountService({ email, password, }: {
-  email: string;
-  password: string;
+export async function authenticateAccountService({ email_Account, password_Account, }: {
+  email_Account: string;
+  password_Account: string;
 }) {
   const Account = await db.t_Account.findUnique({
-    where: { email_Account: email },
+    where: { email_Account: email_Account },
   });
 
-  if (!Account || !(await compare(password, Account.password_Account))) {
+  if (!Account || !(await compare(password_Account, Account.password_Account))) {
     throw new Error('Credenciais inválidas');
   }
 
