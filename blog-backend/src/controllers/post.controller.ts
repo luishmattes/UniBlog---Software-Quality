@@ -26,5 +26,11 @@ export async function updatePostController(request: FastifyRequest, reply: Fasti
     }
 }
 export async function deletePostController(request: FastifyRequest, reply: FastifyReply) {
-
+    try {
+        const data = deletePostSchema.parse(request.body);
+        const post = await deletePostService(data);
+        return reply.status(200).send(post);
+    } catch (error) {
+        return reply.status(400).send({ error: 'Erro de validação', details: error });
+    }
 }
