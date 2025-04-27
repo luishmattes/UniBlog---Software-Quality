@@ -1,11 +1,14 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { createPostService, updatePostService, deletePostService } from '../services/post.service';
 import { createPostSchema, updatePostSchema, deletePostSchema } from '../schemas/post.schema'
-import { z } from 'zod';
 
 
 export async function createPostController(request: FastifyRequest, reply: FastifyReply) {
     try {
+        const tokenAuth = request.headers['authorization'];
+        if (!tokenAuth) {
+            return reply.status(401).send({ error: 'Token de autenticação não fornecido' });
+        }
         const data = createPostSchema.parse(request.body);
         const post = await createPostService(data);
         return reply.status(201).send(post);
