@@ -28,7 +28,7 @@ export async function createAccountService({ nome_Account, email_Account, passwo
   }
   const hashedPassword = await hash(password_Account, 8);
 
-  const Account = await db.t_Account.create({
+  const createdAccount = await db.t_Account.create({
     data: {
       nome_Account: nome_Account,
       email_Account: email_Account,
@@ -37,7 +37,7 @@ export async function createAccountService({ nome_Account, email_Account, passwo
     },
   });
 
-  return Account;
+  return createdAccount;
 }
 
 export async function updateAccountService({ id_Account, nome_Account, email_Account, password_Account }: UpdateAccountDataInterface) {

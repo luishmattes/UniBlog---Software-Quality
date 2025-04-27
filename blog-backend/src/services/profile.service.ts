@@ -1,7 +1,6 @@
 import { PrismaClient } from '../generated/prisma';
 
 const db = new PrismaClient();
-
 interface CreateProfileDataInterface {
   name: string;
   email: string;
@@ -18,6 +17,10 @@ interface UpdateProfileDataInterface {
   matricula?: string;
 }
 
+interface DeleteProfileDataInterface {
+  id: number;
+}
+
 interface GetProfileDataInterface {
   id: number;
 }
@@ -30,13 +33,13 @@ export async function createProfileService({ name, email, bio, foto, matricula, 
       matricula_Perfil: matricula,
       nome_Perfil: name,
       email_Perfil: email,
-      descricao_Perfil: bio || null,
+      descricao_Perfil: bio,
     },
   });
   return createdProfile;
 }
 
-export async function updateUserProfile({ id, name, email, bio, foto, matricula }: UpdateProfileDataInterface) {
+export async function updateProfileService({ id, name, email, bio, foto, matricula }: UpdateProfileDataInterface) {
   const updatedProfile = await db.t_Perfil.update({
     where: { id_Perfil: id },
     data: {
@@ -53,7 +56,7 @@ export async function updateUserProfile({ id, name, email, bio, foto, matricula 
 }
 
 
-export async function getUserProfile({ id }: GetProfileDataInterface) {
+export async function getProfileService({ id }: GetProfileDataInterface) {
   const userId = Number(id);
   const getProfile = await db.t_Perfil.findUnique({
     where: { id_Perfil: userId },
