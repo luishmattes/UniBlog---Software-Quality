@@ -2,42 +2,41 @@ import { PrismaClient } from '../generated/prisma';
 const db = new PrismaClient()
 
 export interface CreatePostDataInterface {
-  title?: string;
-  content: string;
-  image?: string;
+  title_Post?: string;
+  content_Post?: string;
+  image_Post?: string;
 }
 
 export interface UpdatePostDataInterface {
   id_Post: number;
-  title?: string;
-  content?: string;
-  image?: string;
+  title_Post?: string;
+  content_Post?: string;
+  image_Post?: string;
 }
 
 export interface DeletePostDataInterface {
   id_Post: number;
 }
 
-export async function createPostService({ title, image, content }: CreatePostDataInterface) {
+export async function createPostService({ title_Post, image_Post, content_Post }: CreatePostDataInterface) {
   const createdPost = await db.t_Post.create({
     data: {
-      title_Post: title,
-      content_Post: content,
-      image_Post: image,
-      createdAt_Post: new Date(),
+      title_Post: title_Post,
+      content_Post: content_Post,
+      image_Post: image_Post,
     },
   });
 
   return createdPost;
 }
 
-export async function updatePostService({ title, image, content, id_Post }: UpdatePostDataInterface) {
+export async function updatePostService({ title_Post, image_Post, content_Post, id_Post }: UpdatePostDataInterface) {
   const updatedPost = await db.t_Post.update({
     where: { id_Post: id_Post },
     data: {
-      content_Post: content,
-      title_Post: title,
-      image_Post: image,
+      content_Post: content_Post,
+      title_Post: title_Post,
+      image_Post: image_Post,
       updatedAt_Post: new Date(),
     },
   });
