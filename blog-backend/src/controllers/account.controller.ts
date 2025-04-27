@@ -1,9 +1,8 @@
 import Fastify, { FastifyReply, FastifyRequest } from 'fastify';
 
 const fastify = Fastify();
-import { createAccountService, authenticateAccountService, updateAccountService } from '@/services/account.service';
-import { createAccountSchema, authenticateAccountSchema, updateAccountSchema } from '@/schemas/account.schema';
-import { z } from 'zod';
+import { createAccountService, authenticateAccountService, updateAccountService } from '../services/account.service';
+import { createAccountSchema, authenticateAccountSchema, updateAccountSchema } from '../schemas/account.schema';
 
 
 export async function registerAccountController(request: FastifyRequest, reply: FastifyReply) {
