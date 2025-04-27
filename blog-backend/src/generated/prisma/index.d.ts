@@ -2256,12 +2256,10 @@ export namespace Prisma {
 
   export type T_PerfilAvgAggregateOutputType = {
     id_Perfil: number | null
-    id_Account_Perfil: number | null
   }
 
   export type T_PerfilSumAggregateOutputType = {
     id_Perfil: number | null
-    id_Account_Perfil: number | null
   }
 
   export type T_PerfilMinAggregateOutputType = {
@@ -2273,7 +2271,6 @@ export namespace Prisma {
     descricao_Perfil: string | null
     createdAt_Perfil: Date | null
     updatedAt_Perfil: Date | null
-    id_Account_Perfil: number | null
   }
 
   export type T_PerfilMaxAggregateOutputType = {
@@ -2285,7 +2282,6 @@ export namespace Prisma {
     descricao_Perfil: string | null
     createdAt_Perfil: Date | null
     updatedAt_Perfil: Date | null
-    id_Account_Perfil: number | null
   }
 
   export type T_PerfilCountAggregateOutputType = {
@@ -2297,19 +2293,16 @@ export namespace Prisma {
     descricao_Perfil: number
     createdAt_Perfil: number
     updatedAt_Perfil: number
-    id_Account_Perfil: number
     _all: number
   }
 
 
   export type T_PerfilAvgAggregateInputType = {
     id_Perfil?: true
-    id_Account_Perfil?: true
   }
 
   export type T_PerfilSumAggregateInputType = {
     id_Perfil?: true
-    id_Account_Perfil?: true
   }
 
   export type T_PerfilMinAggregateInputType = {
@@ -2321,7 +2314,6 @@ export namespace Prisma {
     descricao_Perfil?: true
     createdAt_Perfil?: true
     updatedAt_Perfil?: true
-    id_Account_Perfil?: true
   }
 
   export type T_PerfilMaxAggregateInputType = {
@@ -2333,7 +2325,6 @@ export namespace Prisma {
     descricao_Perfil?: true
     createdAt_Perfil?: true
     updatedAt_Perfil?: true
-    id_Account_Perfil?: true
   }
 
   export type T_PerfilCountAggregateInputType = {
@@ -2345,7 +2336,6 @@ export namespace Prisma {
     descricao_Perfil?: true
     createdAt_Perfil?: true
     updatedAt_Perfil?: true
-    id_Account_Perfil?: true
     _all?: true
   }
 
@@ -2444,7 +2434,6 @@ export namespace Prisma {
     descricao_Perfil: string | null
     createdAt_Perfil: Date
     updatedAt_Perfil: Date
-    id_Account_Perfil: number
     _count: T_PerfilCountAggregateOutputType | null
     _avg: T_PerfilAvgAggregateOutputType | null
     _sum: T_PerfilSumAggregateOutputType | null
@@ -2475,8 +2464,7 @@ export namespace Prisma {
     descricao_Perfil?: boolean
     createdAt_Perfil?: boolean
     updatedAt_Perfil?: boolean
-    id_Account_Perfil?: boolean
-    idAccont_Perfil?: boolean | T_AccountDefaultArgs<ExtArgs>
+    id_Accont_Perfil?: boolean | T_AccountDefaultArgs<ExtArgs>
     id_Post_Perfil?: boolean | T_Perfil$id_Post_PerfilArgs<ExtArgs>
     _count?: boolean | T_PerfilCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["t_Perfil"]>
@@ -2490,8 +2478,7 @@ export namespace Prisma {
     descricao_Perfil?: boolean
     createdAt_Perfil?: boolean
     updatedAt_Perfil?: boolean
-    id_Account_Perfil?: boolean
-    idAccont_Perfil?: boolean | T_AccountDefaultArgs<ExtArgs>
+    id_Accont_Perfil?: boolean | T_AccountDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["t_Perfil"]>
 
   export type T_PerfilSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2503,8 +2490,7 @@ export namespace Prisma {
     descricao_Perfil?: boolean
     createdAt_Perfil?: boolean
     updatedAt_Perfil?: boolean
-    id_Account_Perfil?: boolean
-    idAccont_Perfil?: boolean | T_AccountDefaultArgs<ExtArgs>
+    id_Accont_Perfil?: boolean | T_AccountDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["t_Perfil"]>
 
   export type T_PerfilSelectScalar = {
@@ -2516,26 +2502,25 @@ export namespace Prisma {
     descricao_Perfil?: boolean
     createdAt_Perfil?: boolean
     updatedAt_Perfil?: boolean
-    id_Account_Perfil?: boolean
   }
 
-  export type T_PerfilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Perfil" | "nome_Perfil" | "email_Perfil" | "matricula_Perfil" | "foto_Perfil" | "descricao_Perfil" | "createdAt_Perfil" | "updatedAt_Perfil" | "id_Account_Perfil", ExtArgs["result"]["t_Perfil"]>
+  export type T_PerfilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Perfil" | "nome_Perfil" | "email_Perfil" | "matricula_Perfil" | "foto_Perfil" | "descricao_Perfil" | "createdAt_Perfil" | "updatedAt_Perfil", ExtArgs["result"]["t_Perfil"]>
   export type T_PerfilInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    idAccont_Perfil?: boolean | T_AccountDefaultArgs<ExtArgs>
+    id_Accont_Perfil?: boolean | T_AccountDefaultArgs<ExtArgs>
     id_Post_Perfil?: boolean | T_Perfil$id_Post_PerfilArgs<ExtArgs>
     _count?: boolean | T_PerfilCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type T_PerfilIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    idAccont_Perfil?: boolean | T_AccountDefaultArgs<ExtArgs>
+    id_Accont_Perfil?: boolean | T_AccountDefaultArgs<ExtArgs>
   }
   export type T_PerfilIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    idAccont_Perfil?: boolean | T_AccountDefaultArgs<ExtArgs>
+    id_Accont_Perfil?: boolean | T_AccountDefaultArgs<ExtArgs>
   }
 
   export type $T_PerfilPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "T_Perfil"
     objects: {
-      idAccont_Perfil: Prisma.$T_AccountPayload<ExtArgs>
+      id_Accont_Perfil: Prisma.$T_AccountPayload<ExtArgs>
       id_Post_Perfil: Prisma.$T_PostPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -2547,7 +2532,6 @@ export namespace Prisma {
       descricao_Perfil: string | null
       createdAt_Perfil: Date
       updatedAt_Perfil: Date
-      id_Account_Perfil: number
     }, ExtArgs["result"]["t_Perfil"]>
     composites: {}
   }
@@ -2942,7 +2926,7 @@ export namespace Prisma {
    */
   export interface Prisma__T_PerfilClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    idAccont_Perfil<T extends T_AccountDefaultArgs<ExtArgs> = {}>(args?: Subset<T, T_AccountDefaultArgs<ExtArgs>>): Prisma__T_AccountClient<$Result.GetResult<Prisma.$T_AccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    id_Accont_Perfil<T extends T_AccountDefaultArgs<ExtArgs> = {}>(args?: Subset<T, T_AccountDefaultArgs<ExtArgs>>): Prisma__T_AccountClient<$Result.GetResult<Prisma.$T_AccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     id_Post_Perfil<T extends T_Perfil$id_Post_PerfilArgs<ExtArgs> = {}>(args?: Subset<T, T_Perfil$id_Post_PerfilArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2981,7 +2965,6 @@ export namespace Prisma {
     readonly descricao_Perfil: FieldRef<"T_Perfil", 'String'>
     readonly createdAt_Perfil: FieldRef<"T_Perfil", 'DateTime'>
     readonly updatedAt_Perfil: FieldRef<"T_Perfil", 'DateTime'>
-    readonly id_Account_Perfil: FieldRef<"T_Perfil", 'Int'>
   }
     
 
@@ -4560,8 +4543,7 @@ export namespace Prisma {
     foto_Perfil: 'foto_Perfil',
     descricao_Perfil: 'descricao_Perfil',
     createdAt_Perfil: 'createdAt_Perfil',
-    updatedAt_Perfil: 'updatedAt_Perfil',
-    id_Account_Perfil: 'id_Account_Perfil'
+    updatedAt_Perfil: 'updatedAt_Perfil'
   };
 
   export type T_PerfilScalarFieldEnum = (typeof T_PerfilScalarFieldEnum)[keyof typeof T_PerfilScalarFieldEnum]
@@ -4746,8 +4728,7 @@ export namespace Prisma {
     descricao_Perfil?: StringNullableFilter<"T_Perfil"> | string | null
     createdAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
     updatedAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
-    id_Account_Perfil?: IntFilter<"T_Perfil"> | number
-    idAccont_Perfil?: XOR<T_AccountScalarRelationFilter, T_AccountWhereInput>
+    id_Accont_Perfil?: XOR<T_AccountScalarRelationFilter, T_AccountWhereInput>
     id_Post_Perfil?: T_PostListRelationFilter
   }
 
@@ -4760,8 +4741,7 @@ export namespace Prisma {
     descricao_Perfil?: SortOrderInput | SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
-    id_Account_Perfil?: SortOrder
-    idAccont_Perfil?: T_AccountOrderByWithRelationInput
+    id_Accont_Perfil?: T_AccountOrderByWithRelationInput
     id_Post_Perfil?: T_PostOrderByRelationAggregateInput
   }
 
@@ -4777,8 +4757,7 @@ export namespace Prisma {
     descricao_Perfil?: StringNullableFilter<"T_Perfil"> | string | null
     createdAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
     updatedAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
-    id_Account_Perfil?: IntFilter<"T_Perfil"> | number
-    idAccont_Perfil?: XOR<T_AccountScalarRelationFilter, T_AccountWhereInput>
+    id_Accont_Perfil?: XOR<T_AccountScalarRelationFilter, T_AccountWhereInput>
     id_Post_Perfil?: T_PostListRelationFilter
   }, "id_Perfil" | "email_Perfil" | "matricula_Perfil">
 
@@ -4791,7 +4770,6 @@ export namespace Prisma {
     descricao_Perfil?: SortOrderInput | SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
-    id_Account_Perfil?: SortOrder
     _count?: T_PerfilCountOrderByAggregateInput
     _avg?: T_PerfilAvgOrderByAggregateInput
     _max?: T_PerfilMaxOrderByAggregateInput
@@ -4811,7 +4789,6 @@ export namespace Prisma {
     descricao_Perfil?: StringNullableWithAggregatesFilter<"T_Perfil"> | string | null
     createdAt_Perfil?: DateTimeWithAggregatesFilter<"T_Perfil"> | Date | string
     updatedAt_Perfil?: DateTimeWithAggregatesFilter<"T_Perfil"> | Date | string
-    id_Account_Perfil?: IntWithAggregatesFilter<"T_Perfil"> | number
   }
 
   export type T_PostWhereInput = {
@@ -4883,7 +4860,7 @@ export namespace Prisma {
     password_Account: string
     createdAt_Account?: Date | string
     updatedAt_Account?: Date | string
-    id_Perfil_Account?: T_PerfilCreateNestedManyWithoutIdAccont_PerfilInput
+    id_Perfil_Account?: T_PerfilCreateNestedManyWithoutId_Accont_PerfilInput
   }
 
   export type T_AccountUncheckedCreateInput = {
@@ -4894,7 +4871,7 @@ export namespace Prisma {
     password_Account: string
     createdAt_Account?: Date | string
     updatedAt_Account?: Date | string
-    id_Perfil_Account?: T_PerfilUncheckedCreateNestedManyWithoutIdAccont_PerfilInput
+    id_Perfil_Account?: T_PerfilUncheckedCreateNestedManyWithoutId_Accont_PerfilInput
   }
 
   export type T_AccountUpdateInput = {
@@ -4904,7 +4881,7 @@ export namespace Prisma {
     password_Account?: StringFieldUpdateOperationsInput | string
     createdAt_Account?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Account?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_Perfil_Account?: T_PerfilUpdateManyWithoutIdAccont_PerfilNestedInput
+    id_Perfil_Account?: T_PerfilUpdateManyWithoutId_Accont_PerfilNestedInput
   }
 
   export type T_AccountUncheckedUpdateInput = {
@@ -4915,7 +4892,7 @@ export namespace Prisma {
     password_Account?: StringFieldUpdateOperationsInput | string
     createdAt_Account?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Account?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_Perfil_Account?: T_PerfilUncheckedUpdateManyWithoutIdAccont_PerfilNestedInput
+    id_Perfil_Account?: T_PerfilUncheckedUpdateManyWithoutId_Accont_PerfilNestedInput
   }
 
   export type T_AccountCreateManyInput = {
@@ -4955,7 +4932,7 @@ export namespace Prisma {
     descricao_Perfil?: string | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
-    idAccont_Perfil: T_AccountCreateNestedOneWithoutId_Perfil_AccountInput
+    id_Accont_Perfil?: T_AccountCreateNestedOneWithoutId_Perfil_AccountInput
     id_Post_Perfil?: T_PostCreateNestedManyWithoutId_Perfil_PostInput
   }
 
@@ -4968,7 +4945,6 @@ export namespace Prisma {
     descricao_Perfil?: string | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
-    id_Account_Perfil: number
     id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutId_Perfil_PostInput
   }
 
@@ -4980,7 +4956,7 @@ export namespace Prisma {
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    idAccont_Perfil?: T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput
+    id_Accont_Perfil?: T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput
     id_Post_Perfil?: T_PostUpdateManyWithoutId_Perfil_PostNestedInput
   }
 
@@ -4993,7 +4969,6 @@ export namespace Prisma {
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_Account_Perfil?: IntFieldUpdateOperationsInput | number
     id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutId_Perfil_PostNestedInput
   }
 
@@ -5006,7 +4981,6 @@ export namespace Prisma {
     descricao_Perfil?: string | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
-    id_Account_Perfil: number
   }
 
   export type T_PerfilUpdateManyMutationInput = {
@@ -5028,7 +5002,6 @@ export namespace Prisma {
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_Account_Perfil?: IntFieldUpdateOperationsInput | number
   }
 
   export type T_PostCreateInput = {
@@ -5270,12 +5243,10 @@ export namespace Prisma {
     descricao_Perfil?: SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
-    id_Account_Perfil?: SortOrder
   }
 
   export type T_PerfilAvgOrderByAggregateInput = {
     id_Perfil?: SortOrder
-    id_Account_Perfil?: SortOrder
   }
 
   export type T_PerfilMaxOrderByAggregateInput = {
@@ -5287,7 +5258,6 @@ export namespace Prisma {
     descricao_Perfil?: SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
-    id_Account_Perfil?: SortOrder
   }
 
   export type T_PerfilMinOrderByAggregateInput = {
@@ -5299,12 +5269,10 @@ export namespace Prisma {
     descricao_Perfil?: SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
-    id_Account_Perfil?: SortOrder
   }
 
   export type T_PerfilSumOrderByAggregateInput = {
     id_Perfil?: SortOrder
-    id_Account_Perfil?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5365,17 +5333,17 @@ export namespace Prisma {
     id_Post?: SortOrder
   }
 
-  export type T_PerfilCreateNestedManyWithoutIdAccont_PerfilInput = {
-    create?: XOR<T_PerfilCreateWithoutIdAccont_PerfilInput, T_PerfilUncheckedCreateWithoutIdAccont_PerfilInput> | T_PerfilCreateWithoutIdAccont_PerfilInput[] | T_PerfilUncheckedCreateWithoutIdAccont_PerfilInput[]
-    connectOrCreate?: T_PerfilCreateOrConnectWithoutIdAccont_PerfilInput | T_PerfilCreateOrConnectWithoutIdAccont_PerfilInput[]
-    createMany?: T_PerfilCreateManyIdAccont_PerfilInputEnvelope
+  export type T_PerfilCreateNestedManyWithoutId_Accont_PerfilInput = {
+    create?: XOR<T_PerfilCreateWithoutId_Accont_PerfilInput, T_PerfilUncheckedCreateWithoutId_Accont_PerfilInput> | T_PerfilCreateWithoutId_Accont_PerfilInput[] | T_PerfilUncheckedCreateWithoutId_Accont_PerfilInput[]
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutId_Accont_PerfilInput | T_PerfilCreateOrConnectWithoutId_Accont_PerfilInput[]
+    createMany?: T_PerfilCreateManyId_Accont_PerfilInputEnvelope
     connect?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
   }
 
-  export type T_PerfilUncheckedCreateNestedManyWithoutIdAccont_PerfilInput = {
-    create?: XOR<T_PerfilCreateWithoutIdAccont_PerfilInput, T_PerfilUncheckedCreateWithoutIdAccont_PerfilInput> | T_PerfilCreateWithoutIdAccont_PerfilInput[] | T_PerfilUncheckedCreateWithoutIdAccont_PerfilInput[]
-    connectOrCreate?: T_PerfilCreateOrConnectWithoutIdAccont_PerfilInput | T_PerfilCreateOrConnectWithoutIdAccont_PerfilInput[]
-    createMany?: T_PerfilCreateManyIdAccont_PerfilInputEnvelope
+  export type T_PerfilUncheckedCreateNestedManyWithoutId_Accont_PerfilInput = {
+    create?: XOR<T_PerfilCreateWithoutId_Accont_PerfilInput, T_PerfilUncheckedCreateWithoutId_Accont_PerfilInput> | T_PerfilCreateWithoutId_Accont_PerfilInput[] | T_PerfilUncheckedCreateWithoutId_Accont_PerfilInput[]
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutId_Accont_PerfilInput | T_PerfilCreateOrConnectWithoutId_Accont_PerfilInput[]
+    createMany?: T_PerfilCreateManyId_Accont_PerfilInputEnvelope
     connect?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
   }
 
@@ -5387,17 +5355,17 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type T_PerfilUpdateManyWithoutIdAccont_PerfilNestedInput = {
-    create?: XOR<T_PerfilCreateWithoutIdAccont_PerfilInput, T_PerfilUncheckedCreateWithoutIdAccont_PerfilInput> | T_PerfilCreateWithoutIdAccont_PerfilInput[] | T_PerfilUncheckedCreateWithoutIdAccont_PerfilInput[]
-    connectOrCreate?: T_PerfilCreateOrConnectWithoutIdAccont_PerfilInput | T_PerfilCreateOrConnectWithoutIdAccont_PerfilInput[]
-    upsert?: T_PerfilUpsertWithWhereUniqueWithoutIdAccont_PerfilInput | T_PerfilUpsertWithWhereUniqueWithoutIdAccont_PerfilInput[]
-    createMany?: T_PerfilCreateManyIdAccont_PerfilInputEnvelope
+  export type T_PerfilUpdateManyWithoutId_Accont_PerfilNestedInput = {
+    create?: XOR<T_PerfilCreateWithoutId_Accont_PerfilInput, T_PerfilUncheckedCreateWithoutId_Accont_PerfilInput> | T_PerfilCreateWithoutId_Accont_PerfilInput[] | T_PerfilUncheckedCreateWithoutId_Accont_PerfilInput[]
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutId_Accont_PerfilInput | T_PerfilCreateOrConnectWithoutId_Accont_PerfilInput[]
+    upsert?: T_PerfilUpsertWithWhereUniqueWithoutId_Accont_PerfilInput | T_PerfilUpsertWithWhereUniqueWithoutId_Accont_PerfilInput[]
+    createMany?: T_PerfilCreateManyId_Accont_PerfilInputEnvelope
     set?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
     disconnect?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
     delete?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
     connect?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
-    update?: T_PerfilUpdateWithWhereUniqueWithoutIdAccont_PerfilInput | T_PerfilUpdateWithWhereUniqueWithoutIdAccont_PerfilInput[]
-    updateMany?: T_PerfilUpdateManyWithWhereWithoutIdAccont_PerfilInput | T_PerfilUpdateManyWithWhereWithoutIdAccont_PerfilInput[]
+    update?: T_PerfilUpdateWithWhereUniqueWithoutId_Accont_PerfilInput | T_PerfilUpdateWithWhereUniqueWithoutId_Accont_PerfilInput[]
+    updateMany?: T_PerfilUpdateManyWithWhereWithoutId_Accont_PerfilInput | T_PerfilUpdateManyWithWhereWithoutId_Accont_PerfilInput[]
     deleteMany?: T_PerfilScalarWhereInput | T_PerfilScalarWhereInput[]
   }
 
@@ -5409,17 +5377,17 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type T_PerfilUncheckedUpdateManyWithoutIdAccont_PerfilNestedInput = {
-    create?: XOR<T_PerfilCreateWithoutIdAccont_PerfilInput, T_PerfilUncheckedCreateWithoutIdAccont_PerfilInput> | T_PerfilCreateWithoutIdAccont_PerfilInput[] | T_PerfilUncheckedCreateWithoutIdAccont_PerfilInput[]
-    connectOrCreate?: T_PerfilCreateOrConnectWithoutIdAccont_PerfilInput | T_PerfilCreateOrConnectWithoutIdAccont_PerfilInput[]
-    upsert?: T_PerfilUpsertWithWhereUniqueWithoutIdAccont_PerfilInput | T_PerfilUpsertWithWhereUniqueWithoutIdAccont_PerfilInput[]
-    createMany?: T_PerfilCreateManyIdAccont_PerfilInputEnvelope
+  export type T_PerfilUncheckedUpdateManyWithoutId_Accont_PerfilNestedInput = {
+    create?: XOR<T_PerfilCreateWithoutId_Accont_PerfilInput, T_PerfilUncheckedCreateWithoutId_Accont_PerfilInput> | T_PerfilCreateWithoutId_Accont_PerfilInput[] | T_PerfilUncheckedCreateWithoutId_Accont_PerfilInput[]
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutId_Accont_PerfilInput | T_PerfilCreateOrConnectWithoutId_Accont_PerfilInput[]
+    upsert?: T_PerfilUpsertWithWhereUniqueWithoutId_Accont_PerfilInput | T_PerfilUpsertWithWhereUniqueWithoutId_Accont_PerfilInput[]
+    createMany?: T_PerfilCreateManyId_Accont_PerfilInputEnvelope
     set?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
     disconnect?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
     delete?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
     connect?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
-    update?: T_PerfilUpdateWithWhereUniqueWithoutIdAccont_PerfilInput | T_PerfilUpdateWithWhereUniqueWithoutIdAccont_PerfilInput[]
-    updateMany?: T_PerfilUpdateManyWithWhereWithoutIdAccont_PerfilInput | T_PerfilUpdateManyWithWhereWithoutIdAccont_PerfilInput[]
+    update?: T_PerfilUpdateWithWhereUniqueWithoutId_Accont_PerfilInput | T_PerfilUpdateWithWhereUniqueWithoutId_Accont_PerfilInput[]
+    updateMany?: T_PerfilUpdateManyWithWhereWithoutId_Accont_PerfilInput | T_PerfilUpdateManyWithWhereWithoutId_Accont_PerfilInput[]
     deleteMany?: T_PerfilScalarWhereInput | T_PerfilScalarWhereInput[]
   }
 
@@ -5633,7 +5601,7 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type T_PerfilCreateWithoutIdAccont_PerfilInput = {
+  export type T_PerfilCreateWithoutId_Accont_PerfilInput = {
     nome_Perfil: string
     email_Perfil: string
     matricula_Perfil: string
@@ -5644,8 +5612,7 @@ export namespace Prisma {
     id_Post_Perfil?: T_PostCreateNestedManyWithoutId_Perfil_PostInput
   }
 
-  export type T_PerfilUncheckedCreateWithoutIdAccont_PerfilInput = {
-    id_Perfil?: number
+  export type T_PerfilUncheckedCreateWithoutId_Accont_PerfilInput = {
     nome_Perfil: string
     email_Perfil: string
     matricula_Perfil: string
@@ -5656,30 +5623,30 @@ export namespace Prisma {
     id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutId_Perfil_PostInput
   }
 
-  export type T_PerfilCreateOrConnectWithoutIdAccont_PerfilInput = {
+  export type T_PerfilCreateOrConnectWithoutId_Accont_PerfilInput = {
     where: T_PerfilWhereUniqueInput
-    create: XOR<T_PerfilCreateWithoutIdAccont_PerfilInput, T_PerfilUncheckedCreateWithoutIdAccont_PerfilInput>
+    create: XOR<T_PerfilCreateWithoutId_Accont_PerfilInput, T_PerfilUncheckedCreateWithoutId_Accont_PerfilInput>
   }
 
-  export type T_PerfilCreateManyIdAccont_PerfilInputEnvelope = {
-    data: T_PerfilCreateManyIdAccont_PerfilInput | T_PerfilCreateManyIdAccont_PerfilInput[]
+  export type T_PerfilCreateManyId_Accont_PerfilInputEnvelope = {
+    data: T_PerfilCreateManyId_Accont_PerfilInput | T_PerfilCreateManyId_Accont_PerfilInput[]
     skipDuplicates?: boolean
   }
 
-  export type T_PerfilUpsertWithWhereUniqueWithoutIdAccont_PerfilInput = {
+  export type T_PerfilUpsertWithWhereUniqueWithoutId_Accont_PerfilInput = {
     where: T_PerfilWhereUniqueInput
-    update: XOR<T_PerfilUpdateWithoutIdAccont_PerfilInput, T_PerfilUncheckedUpdateWithoutIdAccont_PerfilInput>
-    create: XOR<T_PerfilCreateWithoutIdAccont_PerfilInput, T_PerfilUncheckedCreateWithoutIdAccont_PerfilInput>
+    update: XOR<T_PerfilUpdateWithoutId_Accont_PerfilInput, T_PerfilUncheckedUpdateWithoutId_Accont_PerfilInput>
+    create: XOR<T_PerfilCreateWithoutId_Accont_PerfilInput, T_PerfilUncheckedCreateWithoutId_Accont_PerfilInput>
   }
 
-  export type T_PerfilUpdateWithWhereUniqueWithoutIdAccont_PerfilInput = {
+  export type T_PerfilUpdateWithWhereUniqueWithoutId_Accont_PerfilInput = {
     where: T_PerfilWhereUniqueInput
-    data: XOR<T_PerfilUpdateWithoutIdAccont_PerfilInput, T_PerfilUncheckedUpdateWithoutIdAccont_PerfilInput>
+    data: XOR<T_PerfilUpdateWithoutId_Accont_PerfilInput, T_PerfilUncheckedUpdateWithoutId_Accont_PerfilInput>
   }
 
-  export type T_PerfilUpdateManyWithWhereWithoutIdAccont_PerfilInput = {
+  export type T_PerfilUpdateManyWithWhereWithoutId_Accont_PerfilInput = {
     where: T_PerfilScalarWhereInput
-    data: XOR<T_PerfilUpdateManyMutationInput, T_PerfilUncheckedUpdateManyWithoutIdAccont_PerfilInput>
+    data: XOR<T_PerfilUpdateManyMutationInput, T_PerfilUncheckedUpdateManyWithoutId_Accont_PerfilInput>
   }
 
   export type T_PerfilScalarWhereInput = {
@@ -5694,7 +5661,6 @@ export namespace Prisma {
     descricao_Perfil?: StringNullableFilter<"T_Perfil"> | string | null
     createdAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
     updatedAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
-    id_Account_Perfil?: IntFilter<"T_Perfil"> | number
   }
 
   export type T_AccountCreateWithoutId_Perfil_AccountInput = {
@@ -5813,7 +5779,7 @@ export namespace Prisma {
     descricao_Perfil?: string | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
-    idAccont_Perfil: T_AccountCreateNestedOneWithoutId_Perfil_AccountInput
+    id_Accont_Perfil?: T_AccountCreateNestedOneWithoutId_Perfil_AccountInput
   }
 
   export type T_PerfilUncheckedCreateWithoutId_Post_PerfilInput = {
@@ -5825,7 +5791,6 @@ export namespace Prisma {
     descricao_Perfil?: string | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
-    id_Account_Perfil: number
   }
 
   export type T_PerfilCreateOrConnectWithoutId_Post_PerfilInput = {
@@ -5852,7 +5817,7 @@ export namespace Prisma {
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    idAccont_Perfil?: T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput
+    id_Accont_Perfil?: T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput
   }
 
   export type T_PerfilUncheckedUpdateWithoutId_Post_PerfilInput = {
@@ -5864,11 +5829,9 @@ export namespace Prisma {
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_Account_Perfil?: IntFieldUpdateOperationsInput | number
   }
 
-  export type T_PerfilCreateManyIdAccont_PerfilInput = {
-    id_Perfil?: number
+  export type T_PerfilCreateManyId_Accont_PerfilInput = {
     nome_Perfil: string
     email_Perfil: string
     matricula_Perfil: string
@@ -5878,7 +5841,7 @@ export namespace Prisma {
     updatedAt_Perfil?: Date | string
   }
 
-  export type T_PerfilUpdateWithoutIdAccont_PerfilInput = {
+  export type T_PerfilUpdateWithoutId_Accont_PerfilInput = {
     nome_Perfil?: StringFieldUpdateOperationsInput | string
     email_Perfil?: StringFieldUpdateOperationsInput | string
     matricula_Perfil?: StringFieldUpdateOperationsInput | string
@@ -5889,8 +5852,7 @@ export namespace Prisma {
     id_Post_Perfil?: T_PostUpdateManyWithoutId_Perfil_PostNestedInput
   }
 
-  export type T_PerfilUncheckedUpdateWithoutIdAccont_PerfilInput = {
-    id_Perfil?: IntFieldUpdateOperationsInput | number
+  export type T_PerfilUncheckedUpdateWithoutId_Accont_PerfilInput = {
     nome_Perfil?: StringFieldUpdateOperationsInput | string
     email_Perfil?: StringFieldUpdateOperationsInput | string
     matricula_Perfil?: StringFieldUpdateOperationsInput | string
@@ -5901,8 +5863,7 @@ export namespace Prisma {
     id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutId_Perfil_PostNestedInput
   }
 
-  export type T_PerfilUncheckedUpdateManyWithoutIdAccont_PerfilInput = {
-    id_Perfil?: IntFieldUpdateOperationsInput | number
+  export type T_PerfilUncheckedUpdateManyWithoutId_Accont_PerfilInput = {
     nome_Perfil?: StringFieldUpdateOperationsInput | string
     email_Perfil?: StringFieldUpdateOperationsInput | string
     matricula_Perfil?: StringFieldUpdateOperationsInput | string
