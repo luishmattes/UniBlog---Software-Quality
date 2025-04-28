@@ -5,6 +5,7 @@ export interface CreatePostDataInterface {
   title_Post?: string;
   content_Post?: string;
   image_Post?: string;
+  id_Perfil_Post: number;
 }
 
 export interface UpdatePostDataInterface {
@@ -18,12 +19,13 @@ export interface DeletePostDataInterface {
   id_Post: number;
 }
 
-export async function createPostService({ title_Post, image_Post, content_Post }: CreatePostDataInterface) {
+export async function createPostService({ title_Post, image_Post, content_Post, id_Perfil_Post }: CreatePostDataInterface) {
   const createdPost = await db.t_Post.create({
     data: {
       title_Post: title_Post,
       content_Post: content_Post,
       image_Post: image_Post,
+      id_Perfil_Post: id_Perfil_Post
     },
   });
 

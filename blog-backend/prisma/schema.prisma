@@ -9,13 +9,14 @@ datasource db {
 }
 
 model T_Account {
-  id_Account        Int        @id @default(autoincrement())
+  id_Account        Int      @id @default(autoincrement())
   nome_Account      String
-  email_Account     String     @unique
-  matricula_Account String     @unique
+  email_Account     String   @unique
+  matricula_Account String   @unique
   password_Account  String
-  createdAt_Account DateTime   @default(now())
-  updatedAt_Account DateTime   @updatedAt
+  createdAt_Account DateTime @default(now())
+  updatedAt_Account DateTime @updatedAt
+
   id_Perfil_Account T_Perfil[]
 }
 
@@ -29,8 +30,10 @@ model T_Perfil {
   createdAt_Perfil DateTime @default(now())
   updatedAt_Perfil DateTime @updatedAt
 
-  id_Accont_Perfil T_Account @relation(fields: [id_Perfil], references: [id_Account])
-  id_Post_Perfil   T_Post[]
+  idAccont_Perfil   T_Account @relation(fields: [id_Account_Perfil], references: [id_Account])
+  id_Account_Perfil Int
+
+  id_Post_Perfil T_Post[]
 }
 
 model T_Post {
@@ -41,5 +44,6 @@ model T_Post {
   createdAt_Post DateTime @default(now())
   updatedAt_Post DateTime @updatedAt
 
-  id_Perfil_Post T_Perfil @relation(fields: [id_Post], references: [id_Perfil])
+  idPerfil_Post  T_Perfil @relation(fields: [id_Perfil_Post], references: [id_Perfil])
+  id_Perfil_Post Int
 }

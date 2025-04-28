@@ -7,6 +7,7 @@ interface CreateProfileDataInterface {
   email_Perfil: string;
   descricao_Perfil?: string;
   foto_Perfil?: string;
+  id_Account_Perfil: number;
 }
 interface UpdateProfileDataInterface {
   id_Perfil: number;
@@ -25,7 +26,7 @@ interface GetProfileDataInterface {
 }
 
 
-export async function createProfileService({ nome_Perfil, email_Perfil, descricao_Perfil, foto_Perfil, matricula_Perfil, }: CreateProfileDataInterface) {
+export async function createProfileService({ nome_Perfil, email_Perfil, descricao_Perfil, foto_Perfil, matricula_Perfil, id_Account_Perfil }: CreateProfileDataInterface) {
   const createdProfile = await db.t_Perfil.create({
     data: {
       foto_Perfil: foto_Perfil,
@@ -33,6 +34,7 @@ export async function createProfileService({ nome_Perfil, email_Perfil, descrica
       nome_Perfil: nome_Perfil,
       email_Perfil: email_Perfil,
       descricao_Perfil: descricao_Perfil,
+      id_Account_Perfil: id_Account_Perfil,
     },
   });
   return createdProfile;

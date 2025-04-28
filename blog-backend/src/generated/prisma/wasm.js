@@ -135,7 +135,8 @@ exports.Prisma.T_PerfilScalarFieldEnum = {
   foto_Perfil: 'foto_Perfil',
   descricao_Perfil: 'descricao_Perfil',
   createdAt_Perfil: 'createdAt_Perfil',
-  updatedAt_Perfil: 'updatedAt_Perfil'
+  updatedAt_Perfil: 'updatedAt_Perfil',
+  id_Account_Perfil: 'id_Account_Perfil'
 };
 
 exports.Prisma.T_PostScalarFieldEnum = {
@@ -144,7 +145,8 @@ exports.Prisma.T_PostScalarFieldEnum = {
   content_Post: 'content_Post',
   image_Post: 'image_Post',
   createdAt_Post: 'createdAt_Post',
-  updatedAt_Post: 'updatedAt_Post'
+  updatedAt_Post: 'updatedAt_Post',
+  id_Perfil_Post: 'id_Perfil_Post'
 };
 
 exports.Prisma.SortOrder = {

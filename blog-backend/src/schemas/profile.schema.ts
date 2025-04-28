@@ -6,6 +6,7 @@ export const createProfileSchema = z.object({
   matricula_Perfil: z.string().max(20, 'A matrícula pode ter no máximo 20 caracteres'),
   foto_Perfil: z.string().optional(),
   descricao_Perfil: z.string().max(255, 'A descrição pode ter no máximo 255 caracteres').optional(),
+  id_Account_Perfil: z.number().int()
 });
 
 export const updateProfileSchema = z.object({
