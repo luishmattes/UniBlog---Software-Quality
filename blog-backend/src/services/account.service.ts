@@ -62,6 +62,13 @@ export async function updateAccountService({ id_Account, nome_Account, email_Acc
   };
 }
 
+export async function deleteAccountService({ id_Account }: { id_Account: number }) {
+  const deletedAccount = await db.t_Account.delete({
+    where: { id_Account },
+  });
+
+  return deletedAccount;
+}
 
 
 
@@ -75,7 +82,7 @@ export async function authenticateAccountService({ email_Account, password_Accou
   }
 
   const token = app.jwt.sign(
-    { id: account.id_Account, name: account.nome_Account },
+    { id: account.id_Account },
     { expiresIn: '7d' }
   );
 

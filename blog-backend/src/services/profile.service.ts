@@ -27,14 +27,33 @@ interface GetProfileDataInterface {
 
 
 export async function createProfileService({ nome_Perfil, email_Perfil, descricao_Perfil, foto_Perfil, matricula_Perfil, id_Account_Perfil }: CreateProfileDataInterface) {
+  const existingProfile = await db.t_Perfil.findUnique({
+    where: { email_Perfil: email_Perfil },
+  });
+
+  if (existingProfile) {
+    throw new Error('Profile with this email already exists');
+  }
+
+  const existingAccount = await db.t_Account.findUnique({
+    where: { id_Account: id_Account_Perfil },
+  });
+
+  if (!existingAccount) {
+    throw new Error('Account not found');
+  }
+
+  const accountId = existingAccount.id_Account;
+  const accountMatricula = existingAccount.matricula_Account;
+
   const createdProfile = await db.t_Perfil.create({
     data: {
       foto_Perfil: foto_Perfil,
-      matricula_Perfil: matricula_Perfil,
+      matricula_Perfil: accountMatricula,
       nome_Perfil: nome_Perfil,
       email_Perfil: email_Perfil,
       descricao_Perfil: descricao_Perfil,
-      id_Account_Perfil: id_Account_Perfil,
+      id_Account_Perfil: accountId,
     },
   });
   return createdProfile;
