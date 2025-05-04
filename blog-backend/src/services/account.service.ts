@@ -22,36 +22,36 @@ export interface AuthAccountDataInterface {
 }
 
 
-export async function createAccountService({ nome_Account, email_Account, password_Account, confirmPassword_Account, matricula_Account }: CreateAccountDataInterface) {
-  if (password_Account !== confirmPassword_Account) {
+export async function createAccountService(data: CreateAccountDataInterface) {
+  if (data.password_Account !== data.confirmPassword_Account) {
     throw new Error('As senhas não coincidem.');
   }
-  const hashedPassword = await hash(password_Account, 8);
+  const hashedPassword = await hash(data.password_Account, 8);
 
   const createdAccount = await db.t_Account.create({
     data: {
-      nome_Account: nome_Account,
-      email_Account: email_Account,
+      nome_Account: data.nome_Account,
+      email_Account: data.email_Account,
       password_Account: hashedPassword,
-      matricula_Account: matricula_Account
+      matricula_Account: data.matricula_Account
     },
   });
 
   return createdAccount;
 }
 
-export async function updateAccountService({ id_Account, nome_Account, email_Account, password_Account }: UpdateAccountDataInterface) {
+export async function updateAccountService(data: UpdateAccountDataInterface) {
 
   const dataToUpdate: any = {};
 
-  if (nome_Account) dataToUpdate.nome_Account = nome_Account;
-  if (email_Account) dataToUpdate.email_Account = email_Account;
-  if (password_Account) {
-    dataToUpdate.password_Account = await hash(password_Account, 8);
+  if (data.nome_Account) dataToUpdate.nome_Account = data.nome_Account;
+  if (data.email_Account) dataToUpdate.email_Account = data.email_Account;
+  if (data.password_Account) {
+    dataToUpdate.password_Account = await hash(data.password_Account, 8);
   }
 
   const account = await db.t_Account.update({
-    where: { id_Account },
+    where: { id_Account: data.id_Account },
     data: dataToUpdate,
   });
 
