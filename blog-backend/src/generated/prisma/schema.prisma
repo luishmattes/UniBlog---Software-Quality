@@ -43,6 +43,6 @@ model T_Post {
   createdAt_Post DateTime @default(now())
   updatedAt_Post DateTime @updatedAt
 
-  idPerfil_Post  T_Perfil @relation(fields: [id_Perfil_Post], references: [id_Perfil])
+  perfil         T_Perfil @relation(fields: [id_Perfil_Post], references: [id_Perfil])
   id_Perfil_Post Int
 }
