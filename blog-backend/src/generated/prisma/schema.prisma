@@ -24,13 +24,12 @@ model T_Perfil {
   id_Perfil        Int      @id @default(autoincrement())
   nome_Perfil      String
   email_Perfil     String   @unique
-  matricula_Perfil String   @unique
   foto_Perfil      String?
   descricao_Perfil String?
   createdAt_Perfil DateTime @default(now())
   updatedAt_Perfil DateTime @updatedAt
 
-  idAccount_Perfil  T_Account @relation(fields: [id_Account_Perfil], references: [id_Account])
+  account           T_Account @relation(fields: [id_Account_Perfil], references: [id_Account])
   id_Account_Perfil Int
 
   id_Post_Perfil T_Post[]
