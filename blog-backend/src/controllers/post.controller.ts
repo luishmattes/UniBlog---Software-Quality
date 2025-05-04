@@ -5,15 +5,21 @@ import { createPostSchema, updatePostSchema, deletePostSchema } from '../schemas
 
 export async function createPostController(request: FastifyRequest, reply: FastifyReply) {
     try {
-        const tokenAuth = request.headers['authorization'];
-        if (!tokenAuth) {
-            return reply.status(401).send({ error: 'Token de autenticação não fornecido' });
-        }
         const data = createPostSchema.parse(request.body);
-        const post = await createPostService(data);
+
+        const perfilId = Number(request.headers['perfil-id']);
+        if (!perfilId) {
+            return reply.status(400).send({ error: 'ID do perfil não fornecido no header' });
+        }
+
+        const post = await createPostService(data, perfilId);
         return reply.status(201).send(post);
     } catch (error) {
-        return reply.status(400).send({ error: 'Erro de validação', details: error });
+        return reply.status(400).send({
+            error: 'Erro de validação',
+            message: error instanceof Error ? error.message : 'Erro desconhecido',
+            stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined,
+        });
     }
 
 }
