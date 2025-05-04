@@ -3,11 +3,9 @@ import { PrismaClient } from '../generated/prisma';
 const db = new PrismaClient();
 interface CreateProfileDataInterface {
   nome_Perfil: string;
-  matricula_Perfil: string;
   email_Perfil: string;
   descricao_Perfil?: string;
   foto_Perfil?: string;
-  id_Account_Perfil: number;
 }
 interface UpdateProfileDataInterface {
   id_Perfil: number;
@@ -26,48 +24,29 @@ interface GetProfileDataInterface {
 }
 
 
-export async function createProfileService({ nome_Perfil, email_Perfil, descricao_Perfil, foto_Perfil, matricula_Perfil, id_Account_Perfil }: CreateProfileDataInterface) {
-  const existingProfile = await db.t_Perfil.findUnique({
-    where: { email_Perfil: email_Perfil },
-  });
-
-  if (existingProfile) {
-    throw new Error('Profile with this email already exists');
-  }
-
-  const existingAccount = await db.t_Account.findUnique({
-    where: { id_Account: id_Account_Perfil },
-  });
-
-  if (!existingAccount) {
-    throw new Error('Account not found');
-  }
-
-  const accountId = existingAccount.id_Account;
-  const accountMatricula = existingAccount.matricula_Account;
-
+export async function createProfileService(data: CreateProfileDataInterface, accountId: number) {
   const createdProfile = await db.t_Perfil.create({
     data: {
-      foto_Perfil: foto_Perfil,
-      matricula_Perfil: accountMatricula,
-      nome_Perfil: nome_Perfil,
-      email_Perfil: email_Perfil,
-      descricao_Perfil: descricao_Perfil,
+      nome_Perfil: data.nome_Perfil,
+      email_Perfil: data.email_Perfil,
+      descricao_Perfil: data.descricao_Perfil,
+      foto_Perfil: data.foto_Perfil,
       id_Account_Perfil: accountId,
     },
   });
   return createdProfile;
 }
 
-export async function updateProfileService({ id_Perfil, descricao_Perfil, email_Perfil, foto_Perfil, nome_Perfil }: UpdateProfileDataInterface) {
+export async function updateProfileService(data: UpdateProfileDataInterface) {
   const updatedProfile = await db.t_Perfil.update({
-    where: { id_Perfil: id_Perfil },
+    where: { id_Perfil: data.id_Perfil },
     data: {
-      nome_Perfil: nome_Perfil,
-      email_Perfil: email_Perfil,
-      descricao_Perfil: descricao_Perfil || null,
-      foto_Perfil: foto_Perfil,
+      nome_Perfil: data.nome_Perfil,
+      email_Perfil: data.email_Perfil,
+      descricao_Perfil: data.descricao_Perfil || null,
+      foto_Perfil: data.foto_Perfil,
       updatedAt_Perfil: new Date(),
+
     },
   });
 
@@ -86,7 +65,7 @@ export async function getProfileService({ id_Perfil }: GetProfileDataInterface) 
   const userId = Number(id_Perfil);
   const getProfile = await db.t_Perfil.findUnique({
     where: { id_Perfil: userId },
-    select: { id_Perfil: true, nome_Perfil: true, email_Perfil: true, descricao_Perfil: true, foto_Perfil: true, matricula_Perfil: true },
+    select: { id_Perfil: true, nome_Perfil: true, email_Perfil: true, descricao_Perfil: true, foto_Perfil: true },
   });
 
   if (!getProfile) {

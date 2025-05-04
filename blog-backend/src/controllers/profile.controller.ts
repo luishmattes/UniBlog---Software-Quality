@@ -1,16 +1,28 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { createProfileService, updateProfileService, deleteProfileService, getProfileService } from '../services/profile.service';
 import { createProfileSchema, deleteProfileSchema, getProfileSchema, updateProfileSchema } from '../schemas/profile.schema';
-
-export async function createProfileController(request: FastifyRequest, reply: FastifyReply) {
+interface AuthenticatedRequest extends FastifyRequest {
+  user: {
+    id_Account: number;
+  };
+}
+export async function createProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
-    const data = createProfileSchema.parse(request.body);
 
-    const profile = await createProfileService(data);
+
+
+    const data = createProfileSchema.parse(request.body);
+    const id_Account_Perfil = request.user.id_Account;
+
+    const profile = await createProfileService(data, id_Account_Perfil);
 
     return reply.status(201).send(profile);
   } catch (error) {
-    return reply.status(400).send({ error: 'Erro de validação', details: error });
+    return reply.status(400).send({
+      error: 'Erro de validação',
+      message: error instanceof Error ? error.message : 'Erro desconhecido',
+      stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined,
+    });
   }
 };
 

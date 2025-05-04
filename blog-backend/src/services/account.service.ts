@@ -82,7 +82,7 @@ export async function authenticateAccountService({ email_Account, password_Accou
   }
 
   const token = app.jwt.sign(
-    { id: account.id_Account },
+    { id_Account: account.id_Account },
     { expiresIn: '7d' }
   );
 
