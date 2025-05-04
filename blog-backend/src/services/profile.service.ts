@@ -43,7 +43,7 @@ export async function updateProfileService(data: UpdateProfileDataInterface) {
     data: {
       nome_Perfil: data.nome_Perfil,
       email_Perfil: data.email_Perfil,
-      descricao_Perfil: data.descricao_Perfil || null,
+      descricao_Perfil: data.descricao_Perfil,
       foto_Perfil: data.foto_Perfil,
       updatedAt_Perfil: new Date(),
 
