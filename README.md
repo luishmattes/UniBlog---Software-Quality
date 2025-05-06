@@ -42,29 +42,35 @@ This project is a university-focused blog API built with Node.js, Fastify, Prism
 3. Set up the environment variables:
    - Copy `.env.example` to `.env` and fill in the required values.
 
-4. Run database migrations:
+4. Start DB with docker:
+   ```
+   docker compose up --build
+   ```
+
+5. Run database migrations:
    ```
    npx prisma migrate dev
    ```
 
-5. Start the server:
+6. Start the server:
    ```
    npm run start
    ```
 
+
 ### API Endpoints
 
 - **Authentication**
-  - `POST /auth/register`: Register a new user
-  - `POST /auth/login`: Log in an existing user
+  - `POST /account/register`: Register a new user
+  - `POST /account/login`: Log in an existing user
 
 - **Profile Management**
-  - `GET /profile`: Get user profile information
-  - `PUT /profile`: Update user profile information
+  - `GET /....`: Get user profile information
+  - `PUT /...`: Update user profile information
 
 - **Posts**
-  - `POST /posts`: Create a new post
-  - `GET /posts`: Retrieve all posts
+  - `POST /...`: Create a new post
+  - `GET /...`: Retrieve all posts
 
 ## Running Tests
 
