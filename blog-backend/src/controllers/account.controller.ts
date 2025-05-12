@@ -13,7 +13,11 @@ export async function registerAccountController(request: FastifyRequest, reply: 
 
     return reply.status(201).send(account);
   } catch (error) {
-    return reply.status(400).send({ error: 'Erro de validação', details: error });
+    return reply.status(400).send({
+      error: 'Erro de validação',
+      message: error instanceof Error ? error.message : 'Erro desconhecido',
+      details: error,
+    });
   }
 };
 
