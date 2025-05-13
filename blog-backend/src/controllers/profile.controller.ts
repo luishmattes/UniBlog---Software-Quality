@@ -43,7 +43,6 @@ export async function updateProfileController(request: AuthenticatedRequest, rep
 export async function getProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
     const id_Account_Perfil = request.user.id_Account;
-    const data = getProfileSchema.parse(request.body);
 
     const profile = await getProfileService(id_Account_Perfil);
 

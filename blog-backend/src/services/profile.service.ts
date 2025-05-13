@@ -68,6 +68,13 @@ export async function deleteProfileService({ id_Perfil }: DeleteProfileDataInter
 export async function getProfileService(id_Account_Perfil: number) {
   const getProfile = await db.t_Perfil.findFirst({
     where: { id_Account_Perfil },
+    select: {
+      id_Perfil: true,
+      nome_Perfil: true,
+      email_Perfil: true,
+      descricao_Perfil: true,
+      foto_Perfil: true
+    },
   });
 
   if (!getProfile) {
