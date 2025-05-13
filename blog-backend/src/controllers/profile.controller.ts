@@ -32,9 +32,12 @@ export async function updateProfileController(request: AuthenticatedRequest, rep
 
     return reply.status(200).send(profile);
   } catch (error) {
-    return reply.status(400).send({ error: 'Erro de validação', details: error });
+    return reply.status(400).send({
+      error: 'Erro ao buscar perfil',
+      message: error instanceof Error ? error.message : 'Erro desconhecido',
+      stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined,
+    });
   }
-
 }
 
 export async function getProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
