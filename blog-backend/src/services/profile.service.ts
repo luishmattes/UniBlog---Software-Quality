@@ -19,9 +19,6 @@ interface DeleteProfileDataInterface {
   id_Perfil: number;
 }
 
-interface GetProfileDataInterface {
-  id_Perfil: number;
-}
 
 
 export async function createProfileService(data: CreateProfileDataInterface, accountId: number) {
@@ -38,6 +35,12 @@ export async function createProfileService(data: CreateProfileDataInterface, acc
 }
 
 export async function updateProfileService(data: UpdateProfileDataInterface) {
+  const getProfile = await db.t_Perfil.findFirst({
+    where: { id_Perfil: data.id_Perfil },
+  });
+  if (!getProfile) {
+    throw new Error('Perfil não encontrado.');
+  }
   const updatedProfile = await db.t_Perfil.update({
     where: { id_Perfil: data.id_Perfil },
     data: {
@@ -46,10 +49,11 @@ export async function updateProfileService(data: UpdateProfileDataInterface) {
       descricao_Perfil: data.descricao_Perfil,
       foto_Perfil: data.foto_Perfil,
       updatedAt_Perfil: new Date(),
-
     },
   });
-
+  if (!updatedProfile) {
+    throw new Error('Erro ao atualizar o perfil.');
+  }
   return updatedProfile;
 }
 
@@ -61,15 +65,20 @@ export async function deleteProfileService({ id_Perfil }: DeleteProfileDataInter
   return deletedProfile;
 }
 
-export async function getProfileService({ id_Perfil }: GetProfileDataInterface) {
-  const userId = Number(id_Perfil);
-  const getProfile = await db.t_Perfil.findUnique({
-    where: { id_Perfil: userId },
-    select: { id_Perfil: true, nome_Perfil: true, email_Perfil: true, descricao_Perfil: true, foto_Perfil: true },
+export async function getProfileService(id_Account_Perfil: number) {
+  const getProfile = await db.t_Perfil.findFirst({
+    where: { id_Account_Perfil },
+    select: {
+      id_Perfil: true,
+      nome_Perfil: true,
+      email_Perfil: true,
+      descricao_Perfil: true,
+      foto_Perfil: true
+    },
   });
 
   if (!getProfile) {
-    throw new Error('Profile not found');
+    throw new Error('Perfil não encontrado.');
   }
 
   return getProfile;

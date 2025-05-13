@@ -8,9 +8,6 @@ interface AuthenticatedRequest extends FastifyRequest {
 }
 export async function createProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
-
-
-
     const data = createProfileSchema.parse(request.body);
     const id_Account_Perfil = request.user.id_Account;
 
@@ -26,30 +23,36 @@ export async function createProfileController(request: AuthenticatedRequest, rep
   }
 };
 
-export async function updateProfile(request: FastifyRequest, reply: FastifyReply) {
+export async function updateProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
-    const { id_Perfil } = request.params as { id_Perfil: number };
-    const data = updateProfileSchema.parse(request.body);
+    const id_Perfil = request.user.id_Account;
 
+    const data = updateProfileSchema.parse(request.body);
     const profile = await updateProfileService({ id_Perfil, ...data });
 
     return reply.status(200).send(profile);
   } catch (error) {
-    return reply.status(400).send({ error: 'Erro de validação', details: error });
+    return reply.status(400).send({
+      error: 'Erro ao buscar perfil',
+      message: error instanceof Error ? error.message : 'Erro desconhecido',
+      stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined,
+    });
   }
-
 }
 
-export async function getProfile(request: FastifyRequest, reply: FastifyReply) {
+export async function getProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
-    const { id_Perfil } = request.params as { id_Perfil: number };
-    const data = getProfileSchema.parse(request.body);
+    const id_Account_Perfil = request.user.id_Account;
 
-    const profile = await getProfileService({ id_Perfil, ...data });
+    const profile = await getProfileService(id_Account_Perfil);
 
     return reply.status(200).send(profile);
   } catch (error) {
-    return reply.status(400).send({ error: 'Erro de validação', details: error });
+    return reply.status(400).send({
+      error: 'Erro ao buscar perfil',
+      message: error instanceof Error ? error.message : 'Erro desconhecido',
+      stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined,
+    });
   }
 }
 
