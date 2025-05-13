@@ -35,6 +35,12 @@ export async function createProfileService(data: CreateProfileDataInterface, acc
 }
 
 export async function updateProfileService(data: UpdateProfileDataInterface) {
+  const getProfile = await db.t_Perfil.findFirst({
+    where: { id_Perfil: data.id_Perfil },
+  });
+  if (!getProfile) {
+    throw new Error('Perfil não encontrado.');
+  }
   const updatedProfile = await db.t_Perfil.update({
     where: { id_Perfil: data.id_Perfil },
     data: {
@@ -43,10 +49,11 @@ export async function updateProfileService(data: UpdateProfileDataInterface) {
       descricao_Perfil: data.descricao_Perfil,
       foto_Perfil: data.foto_Perfil,
       updatedAt_Perfil: new Date(),
-
     },
   });
-
+  if (!updatedProfile) {
+    throw new Error('Erro ao atualizar o perfil.');
+  }
   return updatedProfile;
 }
 

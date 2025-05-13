@@ -23,11 +23,11 @@ export async function createProfileController(request: AuthenticatedRequest, rep
   }
 };
 
-export async function updateProfile(request: FastifyRequest, reply: FastifyReply) {
+export async function updateProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
-    const { id_Perfil } = request.params as { id_Perfil: number };
-    const data = updateProfileSchema.parse(request.body);
+    const id_Perfil = request.user.id_Account;
 
+    const data = updateProfileSchema.parse(request.body);
     const profile = await updateProfileService({ id_Perfil, ...data });
 
     return reply.status(200).send(profile);
@@ -40,6 +40,7 @@ export async function updateProfile(request: FastifyRequest, reply: FastifyReply
 export async function getProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
     const id_Account_Perfil = request.user.id_Account;
+    const data = getProfileSchema.parse(request.body);
 
     const profile = await getProfileService(id_Account_Perfil);
 
