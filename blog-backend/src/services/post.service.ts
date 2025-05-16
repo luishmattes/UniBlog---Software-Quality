@@ -7,13 +7,6 @@ export interface CreatePostDataInterface {
   content_Post?: string;
   image_Post?: string;
 }
-
-export interface UpdatePostDataInterface {
-  id_Post: number;
-  title_Post?: string;
-  content_Post?: string;
-  image_Post?: string;
-}
 export interface ParamsPostDataInterface {
   id_Post: number;
 }
@@ -38,7 +31,14 @@ export async function createPostService(data: CreatePostDataInterface, id_Perfil
 }
 
 
-export async function deletePostService({ id_Post }: ParamsPostDataInterface) {
+export async function deletePostService({ id_Post }: ParamsPostDataInterface, id_Perfil_Post: PerfilHeaderDataInterface['perfil-id']) {
+  const post = await db.t_Post.findFirst({
+    where: { id_Post: id_Post, perfil: { id_Perfil: id_Perfil_Post } },
+  });
+  if (!post) {
+    throw new Error('Post não encontrado.');
+  }
+
   const deletedPost = await db.t_Post.delete({
     where: { id_Post: id_Post },
   });
@@ -47,9 +47,10 @@ export async function deletePostService({ id_Post }: ParamsPostDataInterface) {
 }
 
 
-export async function getPostService({ id_Post }: ParamsPostDataInterface, id_Perfil_Post: number) {
-  const post = await db.t_Post.findFirst({
-    where: { id_Post: id_Post, perfil: { id_Perfil: id_Perfil_Post } },
+export async function getPostService({ id_Post }: ParamsPostDataInterface, perfilId: PerfilHeaderDataInterface['perfil-id']) {
+
+  const getPost = await db.t_Post.findFirst({
+    where: { id_Post, perfil: { id_Perfil: perfilId } },
     select: {
       id_Post: true,
       title_Post: true,
@@ -58,9 +59,9 @@ export async function getPostService({ id_Post }: ParamsPostDataInterface, id_Pe
     },
   });
 
-  if (!post) {
+  if (!getPost) {
     throw new Error('Post não encontrado.');
   }
 
-  return post;
+  return getPost;
 }
