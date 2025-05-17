@@ -6,6 +6,9 @@ interface CreateProfileDataInterface {
   email_Perfil: string;
   descricao_Perfil?: string;
   foto_Perfil?: string;
+  tipo_Perfil: 'PESSOAL' | 'COMUNIDADE';
+  cursoId?: number;
+  semestre?: number;
 }
 interface UpdateProfileDataInterface {
   id_Perfil: number;
@@ -13,6 +16,9 @@ interface UpdateProfileDataInterface {
   email_Perfil?: string;
   descricao_Perfil?: string;
   foto_Perfil?: string;
+  tipo_Perfil?: 'PESSOAL' | 'COMUNIDADE';
+  cursoId?: number;
+  semestre?: number;
 }
 
 interface DeleteProfileDataInterface {
@@ -29,6 +35,9 @@ export async function createProfileService(data: CreateProfileDataInterface, acc
       descricao_Perfil: data.descricao_Perfil,
       foto_Perfil: data.foto_Perfil,
       id_Account_Perfil: accountId,
+      tipo_Perfil: data.tipo_Perfil,
+      cursoId: data.tipo_Perfil === 'PESSOAL' ? data.cursoId : undefined,
+      semestre: data.tipo_Perfil === 'PESSOAL' ? data.semestre : undefined,
     },
   });
   return createdProfile;
@@ -48,6 +57,9 @@ export async function updateProfileService(data: UpdateProfileDataInterface) {
       email_Perfil: data.email_Perfil,
       descricao_Perfil: data.descricao_Perfil,
       foto_Perfil: data.foto_Perfil,
+      tipo_Perfil: data.tipo_Perfil,
+      cursoId: data.tipo_Perfil === 'PESSOAL' ? data.cursoId : undefined,
+      semestre: data.tipo_Perfil === 'PESSOAL' ? data.semestre : undefined,
       updatedAt_Perfil: new Date(),
     },
   });
@@ -73,7 +85,15 @@ export async function getProfileService(id_Account_Perfil: number) {
       nome_Perfil: true,
       email_Perfil: true,
       descricao_Perfil: true,
-      foto_Perfil: true
+      foto_Perfil: true,
+      tipo_Perfil: true,
+      cursoId: true,
+      semestre: true,
+      curso: {
+        select: {
+          nome_Curso: true,
+        },
+      },
     },
   });
 

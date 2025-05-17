@@ -26,13 +26,24 @@ model T_Perfil {
   email_Perfil     String   @unique
   foto_Perfil      String?
   descricao_Perfil String?
+  tipo_Perfil      PerfilTipo @default(PESSOAL)
+  semestre_Perfil  String?
+  curso_Perfil     String?
   createdAt_Perfil DateTime @default(now())
   updatedAt_Perfil DateTime @updatedAt
+  curso            T_Curso? @relation(fields: [cursoId], references: [id_Curso])
+  cursoId          Int?
+  semestre         Int?
 
   account           T_Account @relation(fields: [id_Account_Perfil], references: [id_Account])
   id_Account_Perfil Int
 
   id_Post_Perfil T_Post[]
+}
+
+enum PerfilTipo {
+  PESSOAL
+  COMUNIDADE
 }
 
 model T_Post {
@@ -45,4 +56,12 @@ model T_Post {
 
   perfil         T_Perfil @relation(fields: [id_Perfil_Post], references: [id_Perfil])
   id_Perfil_Post Int
+}
+
+model T_Curso {
+id_Curso Int @id @default(autoincrement())
+nome_Curso String @unique
+maxSemestres Int
+
+perfis T_Perfil[]
 }
