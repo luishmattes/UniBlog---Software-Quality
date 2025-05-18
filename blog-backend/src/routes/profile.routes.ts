@@ -1,12 +1,13 @@
 import { FastifyInstance } from 'fastify';
-import { createProfileController, deleteProfile, getProfileController, updateProfileController } from '../controllers/profile.controller';
+import { createProfileController, deleteProfileController, getAllProfilesController, getProfileController, updateProfileController } from '../controllers/profile.controller';
 import { verifyJWT } from '../middlewares/auth.middleware';
 
 export async function userRoutes(app: FastifyInstance) {
   app.addHook('onRequest', verifyJWT);
 
-  app.post('/me', createProfileController);
-  app.get('/me', getProfileController);
-  app.put('/me', updateProfileController);
-  app.delete('/me/:id', deleteProfile);
+  app.post('/new', createProfileController);
+  app.get('/get', getProfileController);
+  app.put('/update', updateProfileController);
+  app.delete('/delete/:id', deleteProfileController);
+  app.get('/', getAllProfilesController);
 }

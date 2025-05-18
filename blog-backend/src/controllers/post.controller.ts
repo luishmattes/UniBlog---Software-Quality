@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { createPostService, deletePostService, getPostService } from '../services/post.service';
+import { createPostService, deletePostService, getPostService, getAllPostsService } from '../services/post.service';
 import { createPostSchema, deletePostSchema, getPostSchema } from '../schemas/post.schema'
 
 export async function createPostController(request: FastifyRequest, reply: FastifyReply) {
@@ -50,6 +50,18 @@ export async function getPostController(request: FastifyRequest, reply: FastifyR
 
 
         return reply.status(200).send(post);
+    } catch (error) {
+        return reply.status(400).send({
+            error: 'Erro de validação',
+            message: error instanceof Error ? error.message : 'Erro desconhecido',
+            stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined,
+        });
+    }
+}
+export async function getAllPostsController(request: FastifyRequest, reply: FastifyReply) {
+    try {
+        const posts = await getAllPostsService();
+        return reply.status(200).send(posts);
     } catch (error) {
         return reply.status(400).send({
             error: 'Erro de validação',
