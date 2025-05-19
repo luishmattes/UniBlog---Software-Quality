@@ -30,25 +30,29 @@ export const Feed: React.FC = () => {
     }, []);
 
     return (
-        <div className="max-w-2xl mx-auto px-4 py-6">
-            <h1 className="text-2xl font-bold mb-6">Feed</h1>
-            {posts.length > 0 ? (
-                posts.map(post => (
-                    <Post
-                        key={post.id_Post}
-                        title_Post={post.title_Post}
-                        content_Post={post.content_Post}
-                        image_Post={post.image_Post}
-                        createdAt_Post={(post.createdAt_Post)}
-                        perfil={{
-                            nome_Perfil: post.perfil.nome_Perfil,
-                            foto_Perfil: post.perfil.foto_Perfil
-                        }}
-                    />
-                ))
-            ) : (
-                <p className="text-center text-gray-500">Nenhuma publicação ainda.</p>
-            )}
+        <div className="bg-gray-800 min-h-screen w-[40rem] flex flex-col items-center justify-center">
+
+            <div className="max-w-2xl mx-auto px-4 py-6">
+                <h1 className="text-2xl font-bold mb-6">Feed</h1>
+                {posts.length > 0 ? (
+                    posts.map(post => (
+                        <Post
+                            key={post.id_Post}
+                            title_Post={post.title_Post}
+                            content_Post={post.content_Post}
+                            image_Post={post.image_Post}
+                            createdAt_Post={(post.createdAt_Post)}
+                            perfil={{
+                                nome_Perfil: post.perfil.nome_Perfil,
+                                foto_Perfil: post.perfil.foto_Perfil
+                            }}
+                        />
+                    ))
+                ) : (
+                    <p className="text-center text-gray-500">Nenhuma publicação ainda.</p>
+                )}
+            </div>
         </div>
+
     );
 };
