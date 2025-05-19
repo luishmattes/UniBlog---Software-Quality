@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { createProfileService, updateProfileService, deleteProfileService, getProfileService } from '../services/profile.service';
-import { createProfileSchema, deleteProfileSchema, getProfileSchema, updateProfileSchema } from '../schemas/profile.schema';
+import { createProfileService, updateProfileService, deleteProfileService, getProfileService, getAllProfilesService } from '../services/profile.service';
+import { createProfileSchema, deleteProfileSchema, updateProfileSchema } from '../schemas/profile.schema';
 interface AuthenticatedRequest extends FastifyRequest {
   user: {
     id_Account: number;
@@ -56,7 +56,7 @@ export async function getProfileController(request: AuthenticatedRequest, reply:
   }
 }
 
-export async function deleteProfile(request: FastifyRequest, reply: FastifyReply) {
+export async function deleteProfileController(request: FastifyRequest, reply: FastifyReply) {
   try {
     const data = deleteProfileSchema.parse(request.body);
 
@@ -65,5 +65,18 @@ export async function deleteProfile(request: FastifyRequest, reply: FastifyReply
     return reply.status(200).send(profile);
   } catch (error) {
     return reply.status(400).send({ error: 'Erro de validação', details: error });
+  }
+}
+export async function getAllProfilesController(request: FastifyRequest, reply: FastifyReply) {
+  try {
+    const profiles = await getAllProfilesService();
+
+    return reply.status(200).send(profiles);
+  } catch (error) {
+    return reply.status(400).send({
+      error: 'Erro ao buscar perfis',
+      message: error instanceof Error ? error.message : 'Erro desconhecido',
+      stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined,
+    });
   }
 }

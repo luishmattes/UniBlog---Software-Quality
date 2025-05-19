@@ -41,26 +41,30 @@ export async function createAccountService(data: CreateAccountDataInterface) {
 }
 
 export async function updateAccountService(data: UpdateAccountDataInterface) {
-
-  const dataToUpdate: any = {};
-
-  if (data.nome_Account) dataToUpdate.nome_Account = data.nome_Account;
-  if (data.email_Account) dataToUpdate.email_Account = data.email_Account;
-  if (data.password_Account) {
-    dataToUpdate.password_Account = await hash(data.password_Account, 8);
-  }
-
-  const account = await db.t_Account.update({
+  const getAccount = await db.t_Account.findFirst({
     where: { id_Account: data.id_Account },
-    data: dataToUpdate,
   });
 
-  return {
-    id: account.id_Account,
-    name: account.nome_Account,
-    email: account.email_Account,
-  };
+  if (!getAccount) {
+    throw new Error('Conta não encontrada');
+  }
+
+  const updatedAccount = await db.t_Account.update({
+
+    where: { id_Account: data.id_Account },
+    data: {
+      nome_Account: data.nome_Account,
+      email_Account: data.email_Account,
+      password_Account: data.password_Account,
+    },
+  });
+  if (!updatedAccount) {
+    throw new Error('Erro ao atualizar a conta');
+  }
+  return updatedAccount;
+
 }
+
 
 export async function deleteAccountService({ id_Account }: { id_Account: number }) {
   const deletedAccount = await db.t_Account.delete({
