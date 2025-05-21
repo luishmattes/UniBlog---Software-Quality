@@ -27,14 +27,13 @@ model T_Perfil {
   foto_Perfil      String?
   descricao_Perfil String?
   tipo_Perfil      PerfilTipo @default(PESSOAL)
-  semestre_Perfil  String?
-  curso_Perfil     String?
+  semestre_Perfil  Int?
   createdAt_Perfil DateTime @default(now())
   updatedAt_Perfil DateTime @updatedAt
-  curso            T_Curso? @relation(fields: [cursoId], references: [id_Curso])
-  cursoId          Int?
-  semestre         Int?
+  cursoId          Int? 
 
+
+  curso            T_Curso? @relation(fields: [cursoId], references: [id_Curso])
   account           T_Account @relation(fields: [id_Account_Perfil], references: [id_Account])
   id_Account_Perfil Int
 

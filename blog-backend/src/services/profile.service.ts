@@ -8,7 +8,7 @@ interface CreateProfileDataInterface {
   foto_Perfil?: string;
   tipo_Perfil: 'PESSOAL' | 'COMUNIDADE';
   cursoId?: number;
-  semestre?: number;
+  semestre_Perfil?: number;
 }
 interface UpdateProfileDataInterface {
   id_Perfil: number;
@@ -18,7 +18,7 @@ interface UpdateProfileDataInterface {
   foto_Perfil?: string;
   tipo_Perfil?: 'PESSOAL' | 'COMUNIDADE';
   cursoId?: number;
-  semestre?: number;
+  semestre_Perfil?: number;
 }
 
 interface DeleteProfileDataInterface {
@@ -28,6 +28,24 @@ interface DeleteProfileDataInterface {
 
 
 export async function createProfileService(data: CreateProfileDataInterface, accountId: number) {
+  if (data.tipo_Perfil === 'PESSOAL') {
+    if (!data.cursoId) {
+      throw new Error('cursoId é obrigatório para perfil pessoal.');
+    }
+    if (!data.semestre_Perfil) {
+      throw new Error('semestre é obrigatório para perfil pessoal.');
+    }
+      // Busca o curso para validar o semestre
+    const curso = await db.t_Curso.findUnique({
+      where: { id_Curso: data.cursoId }
+    });
+    if (!curso) {
+      throw new Error('Curso não encontrado.');
+    }
+    if (data.semestre_Perfil < 1 || data.semestre_Perfil > curso.maxSemestres) {
+      throw new Error(`O semestre deve ser entre 1 e ${curso.maxSemestres}.`);
+    }
+  }
   const createdProfile = await db.t_Perfil.create({
     data: {
       nome_Perfil: data.nome_Perfil,
@@ -37,7 +55,7 @@ export async function createProfileService(data: CreateProfileDataInterface, acc
       id_Account_Perfil: accountId,
       tipo_Perfil: data.tipo_Perfil,
       cursoId: data.tipo_Perfil === 'PESSOAL' ? data.cursoId : undefined,
-      semestre: data.tipo_Perfil === 'PESSOAL' ? data.semestre : undefined,
+      semestre_Perfil: data.tipo_Perfil === 'PESSOAL' ? data.semestre_Perfil : undefined,
     },
   });
   return createdProfile;
@@ -59,7 +77,7 @@ export async function updateProfileService(data: UpdateProfileDataInterface) {
       foto_Perfil: data.foto_Perfil,
       tipo_Perfil: data.tipo_Perfil,
       cursoId: data.tipo_Perfil === 'PESSOAL' ? data.cursoId : undefined,
-      semestre: data.tipo_Perfil === 'PESSOAL' ? data.semestre : undefined,
+      semestre_Perfil: data.tipo_Perfil === 'PESSOAL' ? data.semestre_Perfil : undefined,
       updatedAt_Perfil: new Date(),
     },
   });
@@ -88,7 +106,7 @@ export async function getProfileService(id_Account_Perfil: number) {
       foto_Perfil: true,
       tipo_Perfil: true,
       cursoId: true,
-      semestre: true,
+      semestre_Perfil: true,
       curso: {
         select: {
           nome_Curso: true,
