@@ -78,3 +78,25 @@ export async function getPostService({ id_Post }: ParamsPostDataInterface, perfi
 
   return getPost;
 }
+
+export async function getAllPostsService() {
+  const posts = await db.t_Post.findMany({
+    orderBy: { createdAt_Post: 'desc' },
+    select: {
+      id_Post: true,
+      title_Post: true,
+      content_Post: true,
+      image_Post: true,
+      createdAt_Post: true,
+      perfil: {
+        select: {
+          id_Perfil: true,
+          nome_Perfil: true,
+          foto_Perfil: true,
+        },
+      },
+    },
+  });
+
+  return posts;
+}

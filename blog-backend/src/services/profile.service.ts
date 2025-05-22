@@ -121,3 +121,19 @@ export async function getProfileService(id_Account_Perfil: number) {
 
   return getProfile;
 }
+export async function getAllProfilesService() {
+  const profiles = await db.t_Perfil.findMany({
+    where: {},
+    select: {
+      id_Perfil: true,
+      nome_Perfil: true,
+      foto_Perfil: true
+    },
+  });
+
+  if (!profiles) {
+    throw new Error('Nenhum perfil encontrado.');
+  }
+
+  return profiles;
+}
