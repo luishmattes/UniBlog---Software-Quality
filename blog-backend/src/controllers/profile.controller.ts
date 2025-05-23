@@ -1,6 +1,8 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { createProfileService, updateProfileService, deleteProfileService, getProfileService, getAllProfilesService } from '../services/profile.service';
 import { createProfileSchema, deleteProfileSchema, updateProfileSchema } from '../schemas/profile.schema';
+import { uploadToMinio } from '.././utils/uploadToMinio';
+
 interface AuthenticatedRequest extends FastifyRequest {
   user: {
     id_Account: number;
@@ -8,7 +10,23 @@ interface AuthenticatedRequest extends FastifyRequest {
 }
 export async function createProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
-    const data = createProfileSchema.parse(request.body);
+    const parts = await request.parts();
+    const fields: any = {};
+    let foto_Perfil = '';
+
+    for await (const part of parts) {
+      if (part.type === 'file') {
+        const buffer = await part.toBuffer();
+        foto_Perfil = await uploadToMinio(buffer, part.filename);
+      } else {
+        fields[part.fieldname] = part.value;
+      }
+    }
+    const data = createProfileSchema.parse({
+      ...fields,
+      foto_Perfil,
+    });
+
     const id_Account_Perfil = request.user.id_Account;
 
     const profile = await createProfileService(data, id_Account_Perfil);
@@ -21,7 +39,7 @@ export async function createProfileController(request: AuthenticatedRequest, rep
       stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined,
     });
   }
-};
+}
 
 export async function updateProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
