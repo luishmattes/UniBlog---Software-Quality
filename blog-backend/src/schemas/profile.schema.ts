@@ -7,11 +7,11 @@ export const createProfileSchema = z.object({
   descricao_Perfil: z.string().max(255, 'A descrição pode ter no máximo 255 caracteres').optional(),
   tipo_Perfil: z.enum(['PESSOAL', 'COMUNIDADE']),
   semestre_Perfil: z.number().int().min(1).max(20).optional(),
-  cursoId: z.number().int().positive().optional(),
+  id_Curso_Perfil: z.number().int().positive().optional(),
 }).refine(
   (data) => {
     if (data.tipo_Perfil === 'PESSOAL') {
-      return data.semestre_Perfil !== undefined && data.cursoId !== undefined;
+      return data.semestre_Perfil !== undefined && data.id_Curso_Perfil !== undefined;
     }
     return true;
   },
@@ -27,7 +27,7 @@ export const updateProfileSchema = z.object({
   foto_Perfil: z.string().optional(),
   descricao_Perfil: z.string().max(255, 'A descrição pode ter no máximo 255 caracteres').optional(),
   semestre_Perfil: z.number().int().min(1).max(20).optional(),
-  cursoId: z.number().int().positive().optional(),
+  id_Curso_Perfil: z.number().int().positive().optional(),
 });
 
 

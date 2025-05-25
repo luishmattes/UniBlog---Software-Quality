@@ -30,9 +30,9 @@ model T_Perfil {
   semestre_Perfil  Int?
   createdAt_Perfil DateTime   @default(now())
   updatedAt_Perfil DateTime   @updatedAt
-  id_Curso_perfil  Int?
+  id_Curso_Perfil  Int?
 
-  curso             T_Curso?  @relation(fields: [id_Curso_perfil], references: [id_Curso])
+  curso             T_Curso?  @relation(fields: [id_Curso_Perfil], references: [id_Curso])
   account           T_Account @relation(fields: [id_Account_Perfil], references: [id_Account])
   id_Account_Perfil Int
 

@@ -137,7 +137,7 @@ exports.Prisma.T_PerfilScalarFieldEnum = {
   semestre_Perfil: 'semestre_Perfil',
   createdAt_Perfil: 'createdAt_Perfil',
   updatedAt_Perfil: 'updatedAt_Perfil',
-  id_Curso_perfil: 'id_Curso_perfil',
+  id_Curso_Perfil: 'id_Curso_Perfil',
   id_Account_Perfil: 'id_Account_Perfil'
 };
 
