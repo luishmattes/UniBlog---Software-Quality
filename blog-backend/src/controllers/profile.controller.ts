@@ -12,13 +12,14 @@ interface AuthenticatedRequest extends FastifyRequest {
 export async function createProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
     const parts = await request.parts();
-    const fields: any = {};
-    let foto_Perfil: string | undefined;
+    const fields: Record<string, any> = {};
+    let fileBuffer: Buffer | null = null;
+    let fileName: string | null = null;
 
     for await (const part of parts) {
       if (part.type === 'file') {
-        const buffer = await part.toBuffer();
-        foto_Perfil = await uploadToMinio(buffer, part.filename);
+        fileBuffer = await part.toBuffer();
+        fileName = part.filename;
       } else {
         fields[part.fieldname] = part.value;
       }
@@ -26,11 +27,16 @@ export async function createProfileController(request: AuthenticatedRequest, rep
 
     const data = createProfileSchema.parse({
       ...fields,
-      foto_Perfil,
     });
+
+    if (fileBuffer && fileName) {
+      const imageUrl = await uploadToMinio(fileBuffer, fileName);
+      data.foto_Perfil = imageUrl;
+    }
 
     const id_Account_Perfil = request.user.id_Account;
     const profile = await createProfileService(data, id_Account_Perfil);
+
 
     return reply.status(201).send(profile);
   } catch (error) {
@@ -45,25 +51,37 @@ export async function createProfileController(request: AuthenticatedRequest, rep
 
 export async function updateProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
-    const id_Perfil = request.user.id_Account;
     const parts = await request.parts();
-    const fields: any = {};
-    let foto_Perfil: string | undefined;
+    const fields: Record<string, any> = {};
+    let fileBuffer: Buffer | undefined;
+    let fileName: string | undefined;
 
     for await (const part of parts) {
       if (part.type === 'file') {
-        const buffer = await part.toBuffer();
-        foto_Perfil = await uploadToMinio(buffer, part.filename);
+        fileBuffer = await part.toBuffer();
+        fileName = part.filename;
       } else {
         fields[part.fieldname] = part.value;
       }
     }
 
+    const id_Perfil = Number(fields.id_Perfil);
+
+    if (!id_Perfil) {
+      return reply.status(404).send({
+        error: 'Perfil não encontrado',
+        message: 'Não foi encontrado um perfil para este usuário' + id_Perfil
+      });
+    }
+
     const data = updateProfileSchema.parse({
       ...fields,
-      foto_Perfil,
-      id_Perfil: id_Perfil,
+      id_Perfil: id_Perfil
     });
+
+    if (fileBuffer && fileName) {
+      data.foto_Perfil = await uploadToMinio(fileBuffer, fileName);
+    }
 
     const profile = await updateProfileService(data);
     return reply.status(200).send(profile);
