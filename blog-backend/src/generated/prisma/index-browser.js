@@ -133,8 +133,11 @@ exports.Prisma.T_PerfilScalarFieldEnum = {
   email_Perfil: 'email_Perfil',
   foto_Perfil: 'foto_Perfil',
   descricao_Perfil: 'descricao_Perfil',
+  tipo_Perfil: 'tipo_Perfil',
+  semestre_Perfil: 'semestre_Perfil',
   createdAt_Perfil: 'createdAt_Perfil',
   updatedAt_Perfil: 'updatedAt_Perfil',
+  cursoId: 'cursoId',
   id_Account_Perfil: 'id_Account_Perfil'
 };
 
@@ -146,6 +149,12 @@ exports.Prisma.T_PostScalarFieldEnum = {
   createdAt_Post: 'createdAt_Post',
   updatedAt_Post: 'updatedAt_Post',
   id_Perfil_Post: 'id_Perfil_Post'
+};
+
+exports.Prisma.T_CursoScalarFieldEnum = {
+  id_Curso: 'id_Curso',
+  nome_Curso: 'nome_Curso',
+  maxSemestres: 'maxSemestres'
 };
 
 exports.Prisma.SortOrder = {
@@ -162,12 +171,16 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.PerfilTipo = exports.$Enums.PerfilTipo = {
+  PESSOAL: 'PESSOAL',
+  COMUNIDADE: 'COMUNIDADE'
+};
 
 exports.Prisma.ModelName = {
   T_Account: 'T_Account',
   T_Perfil: 'T_Perfil',
-  T_Post: 'T_Post'
+  T_Post: 'T_Post',
+  T_Curso: 'T_Curso'
 };
 
 /**
