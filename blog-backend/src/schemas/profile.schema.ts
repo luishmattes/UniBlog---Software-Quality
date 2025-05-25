@@ -9,16 +9,16 @@ export const createProfileSchema = z.object({
   semestre_Perfil: z.number().int().min(1).max(20).optional(),
   cursoId: z.number().int().positive().optional(),
 }).refine(
-(data) => {
-if (data.tipo_Perfil === 'PESSOAL') {
-return data.semestre_Perfil !== undefined && data.cursoId !== undefined;
-}
-return true;
-},
-{
-message: 'Perfis do tipo pessoal devem informar semestre e curso',
-path: ['semestre'],
-}
+  (data) => {
+    if (data.tipo_Perfil === 'PESSOAL') {
+      return data.semestre_Perfil !== undefined && data.cursoId !== undefined;
+    }
+    return true;
+  },
+  {
+    message: 'Perfis do tipo pessoal devem informar semestre e curso',
+    path: ['semestre'],
+  }
 );
 
 export const updateProfileSchema = z.object({
@@ -26,8 +26,7 @@ export const updateProfileSchema = z.object({
   email_Perfil: z.string().email('Email inválido').max(100, 'O email pode ter no máximo 100 caracteres').optional(),
   foto_Perfil: z.string().optional(),
   descricao_Perfil: z.string().max(255, 'A descrição pode ter no máximo 255 caracteres').optional(),
-  tipo_Perfil: z.enum(['PESSOAL', 'COMUNIDADE']).optional(),
-  semestre: z.number().int().min(1).max(20).optional(),
+  semestre_Perfil: z.number().int().min(1).max(20).optional(),
   cursoId: z.number().int().positive().optional(),
 });
 

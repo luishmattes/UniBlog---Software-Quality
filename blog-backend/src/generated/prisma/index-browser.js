@@ -137,7 +137,7 @@ exports.Prisma.T_PerfilScalarFieldEnum = {
   semestre_Perfil: 'semestre_Perfil',
   createdAt_Perfil: 'createdAt_Perfil',
   updatedAt_Perfil: 'updatedAt_Perfil',
-  cursoId: 'cursoId',
+  id_Curso_perfil: 'id_Curso_perfil',
   id_Account_Perfil: 'id_Account_Perfil'
 };
 
@@ -154,7 +154,7 @@ exports.Prisma.T_PostScalarFieldEnum = {
 exports.Prisma.T_CursoScalarFieldEnum = {
   id_Curso: 'id_Curso',
   nome_Curso: 'nome_Curso',
-  maxSemestres: 'maxSemestres'
+  maxSemestres_Curso: 'maxSemestres_Curso'
 };
 
 exports.Prisma.SortOrder = {

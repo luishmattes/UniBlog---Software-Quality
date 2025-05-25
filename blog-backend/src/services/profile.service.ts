@@ -16,7 +16,6 @@ interface UpdateProfileDataInterface {
   email_Perfil?: string;
   descricao_Perfil?: string;
   foto_Perfil?: string;
-  tipo_Perfil?: 'PESSOAL' | 'COMUNIDADE';
   cursoId?: number;
   semestre_Perfil?: number;
 }
@@ -35,7 +34,8 @@ export async function createProfileService(data: CreateProfileDataInterface, acc
     if (!data.semestre_Perfil) {
       throw new Error('semestre é obrigatório para perfil pessoal.');
     }
-      // Busca o curso para validar o semestre
+
+    // Busca o curso para validar o semestre
     const curso = await db.t_Curso.findUnique({
       where: { id_Curso: data.cursoId }
     });
@@ -75,9 +75,8 @@ export async function updateProfileService(data: UpdateProfileDataInterface) {
       email_Perfil: data.email_Perfil,
       descricao_Perfil: data.descricao_Perfil,
       foto_Perfil: data.foto_Perfil,
-      tipo_Perfil: data.tipo_Perfil,
-      cursoId: data.tipo_Perfil === 'PESSOAL' ? data.cursoId : undefined,
-      semestre_Perfil: data.tipo_Perfil === 'PESSOAL' ? data.semestre_Perfil : undefined,
+      cursoId: data.cursoId,
+      semestre_Perfil: data.semestre_Perfil,
       updatedAt_Perfil: new Date(),
     },
   });
@@ -110,6 +109,7 @@ export async function getProfileService(id_Account_Perfil: number) {
       curso: {
         select: {
           nome_Curso: true,
+
         },
       },
     },

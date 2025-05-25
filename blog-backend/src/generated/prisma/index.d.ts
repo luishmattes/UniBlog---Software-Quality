@@ -2396,14 +2396,14 @@ export namespace Prisma {
   export type T_PerfilAvgAggregateOutputType = {
     id_Perfil: number | null
     semestre_Perfil: number | null
-    cursoId: number | null
+    id_Curso_perfil: number | null
     id_Account_Perfil: number | null
   }
 
   export type T_PerfilSumAggregateOutputType = {
     id_Perfil: number | null
     semestre_Perfil: number | null
-    cursoId: number | null
+    id_Curso_perfil: number | null
     id_Account_Perfil: number | null
   }
 
@@ -2417,7 +2417,7 @@ export namespace Prisma {
     semestre_Perfil: number | null
     createdAt_Perfil: Date | null
     updatedAt_Perfil: Date | null
-    cursoId: number | null
+    id_Curso_perfil: number | null
     id_Account_Perfil: number | null
   }
 
@@ -2431,7 +2431,7 @@ export namespace Prisma {
     semestre_Perfil: number | null
     createdAt_Perfil: Date | null
     updatedAt_Perfil: Date | null
-    cursoId: number | null
+    id_Curso_perfil: number | null
     id_Account_Perfil: number | null
   }
 
@@ -2445,7 +2445,7 @@ export namespace Prisma {
     semestre_Perfil: number
     createdAt_Perfil: number
     updatedAt_Perfil: number
-    cursoId: number
+    id_Curso_perfil: number
     id_Account_Perfil: number
     _all: number
   }
@@ -2454,14 +2454,14 @@ export namespace Prisma {
   export type T_PerfilAvgAggregateInputType = {
     id_Perfil?: true
     semestre_Perfil?: true
-    cursoId?: true
+    id_Curso_perfil?: true
     id_Account_Perfil?: true
   }
 
   export type T_PerfilSumAggregateInputType = {
     id_Perfil?: true
     semestre_Perfil?: true
-    cursoId?: true
+    id_Curso_perfil?: true
     id_Account_Perfil?: true
   }
 
@@ -2475,7 +2475,7 @@ export namespace Prisma {
     semestre_Perfil?: true
     createdAt_Perfil?: true
     updatedAt_Perfil?: true
-    cursoId?: true
+    id_Curso_perfil?: true
     id_Account_Perfil?: true
   }
 
@@ -2489,7 +2489,7 @@ export namespace Prisma {
     semestre_Perfil?: true
     createdAt_Perfil?: true
     updatedAt_Perfil?: true
-    cursoId?: true
+    id_Curso_perfil?: true
     id_Account_Perfil?: true
   }
 
@@ -2503,7 +2503,7 @@ export namespace Prisma {
     semestre_Perfil?: true
     createdAt_Perfil?: true
     updatedAt_Perfil?: true
-    cursoId?: true
+    id_Curso_perfil?: true
     id_Account_Perfil?: true
     _all?: true
   }
@@ -2604,7 +2604,7 @@ export namespace Prisma {
     semestre_Perfil: number | null
     createdAt_Perfil: Date
     updatedAt_Perfil: Date
-    cursoId: number | null
+    id_Curso_perfil: number | null
     id_Account_Perfil: number
     _count: T_PerfilCountAggregateOutputType | null
     _avg: T_PerfilAvgAggregateOutputType | null
@@ -2637,7 +2637,7 @@ export namespace Prisma {
     semestre_Perfil?: boolean
     createdAt_Perfil?: boolean
     updatedAt_Perfil?: boolean
-    cursoId?: boolean
+    id_Curso_perfil?: boolean
     id_Account_Perfil?: boolean
     curso?: boolean | T_Perfil$cursoArgs<ExtArgs>
     account?: boolean | T_AccountDefaultArgs<ExtArgs>
@@ -2655,7 +2655,7 @@ export namespace Prisma {
     semestre_Perfil?: boolean
     createdAt_Perfil?: boolean
     updatedAt_Perfil?: boolean
-    cursoId?: boolean
+    id_Curso_perfil?: boolean
     id_Account_Perfil?: boolean
     curso?: boolean | T_Perfil$cursoArgs<ExtArgs>
     account?: boolean | T_AccountDefaultArgs<ExtArgs>
@@ -2671,7 +2671,7 @@ export namespace Prisma {
     semestre_Perfil?: boolean
     createdAt_Perfil?: boolean
     updatedAt_Perfil?: boolean
-    cursoId?: boolean
+    id_Curso_perfil?: boolean
     id_Account_Perfil?: boolean
     curso?: boolean | T_Perfil$cursoArgs<ExtArgs>
     account?: boolean | T_AccountDefaultArgs<ExtArgs>
@@ -2687,11 +2687,11 @@ export namespace Prisma {
     semestre_Perfil?: boolean
     createdAt_Perfil?: boolean
     updatedAt_Perfil?: boolean
-    cursoId?: boolean
+    id_Curso_perfil?: boolean
     id_Account_Perfil?: boolean
   }
 
-  export type T_PerfilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Perfil" | "nome_Perfil" | "email_Perfil" | "foto_Perfil" | "descricao_Perfil" | "tipo_Perfil" | "semestre_Perfil" | "createdAt_Perfil" | "updatedAt_Perfil" | "cursoId" | "id_Account_Perfil", ExtArgs["result"]["t_Perfil"]>
+  export type T_PerfilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Perfil" | "nome_Perfil" | "email_Perfil" | "foto_Perfil" | "descricao_Perfil" | "tipo_Perfil" | "semestre_Perfil" | "createdAt_Perfil" | "updatedAt_Perfil" | "id_Curso_perfil" | "id_Account_Perfil", ExtArgs["result"]["t_Perfil"]>
   export type T_PerfilInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     curso?: boolean | T_Perfil$cursoArgs<ExtArgs>
     account?: boolean | T_AccountDefaultArgs<ExtArgs>
@@ -2724,7 +2724,7 @@ export namespace Prisma {
       semestre_Perfil: number | null
       createdAt_Perfil: Date
       updatedAt_Perfil: Date
-      cursoId: number | null
+      id_Curso_perfil: number | null
       id_Account_Perfil: number
     }, ExtArgs["result"]["t_Perfil"]>
     composites: {}
@@ -3161,7 +3161,7 @@ export namespace Prisma {
     readonly semestre_Perfil: FieldRef<"T_Perfil", 'Int'>
     readonly createdAt_Perfil: FieldRef<"T_Perfil", 'DateTime'>
     readonly updatedAt_Perfil: FieldRef<"T_Perfil", 'DateTime'>
-    readonly cursoId: FieldRef<"T_Perfil", 'Int'>
+    readonly id_Curso_perfil: FieldRef<"T_Perfil", 'Int'>
     readonly id_Account_Perfil: FieldRef<"T_Perfil", 'Int'>
   }
     
@@ -4756,60 +4756,60 @@ export namespace Prisma {
 
   export type T_CursoAvgAggregateOutputType = {
     id_Curso: number | null
-    maxSemestres: number | null
+    maxSemestres_Curso: number | null
   }
 
   export type T_CursoSumAggregateOutputType = {
     id_Curso: number | null
-    maxSemestres: number | null
+    maxSemestres_Curso: number | null
   }
 
   export type T_CursoMinAggregateOutputType = {
     id_Curso: number | null
     nome_Curso: string | null
-    maxSemestres: number | null
+    maxSemestres_Curso: number | null
   }
 
   export type T_CursoMaxAggregateOutputType = {
     id_Curso: number | null
     nome_Curso: string | null
-    maxSemestres: number | null
+    maxSemestres_Curso: number | null
   }
 
   export type T_CursoCountAggregateOutputType = {
     id_Curso: number
     nome_Curso: number
-    maxSemestres: number
+    maxSemestres_Curso: number
     _all: number
   }
 
 
   export type T_CursoAvgAggregateInputType = {
     id_Curso?: true
-    maxSemestres?: true
+    maxSemestres_Curso?: true
   }
 
   export type T_CursoSumAggregateInputType = {
     id_Curso?: true
-    maxSemestres?: true
+    maxSemestres_Curso?: true
   }
 
   export type T_CursoMinAggregateInputType = {
     id_Curso?: true
     nome_Curso?: true
-    maxSemestres?: true
+    maxSemestres_Curso?: true
   }
 
   export type T_CursoMaxAggregateInputType = {
     id_Curso?: true
     nome_Curso?: true
-    maxSemestres?: true
+    maxSemestres_Curso?: true
   }
 
   export type T_CursoCountAggregateInputType = {
     id_Curso?: true
     nome_Curso?: true
-    maxSemestres?: true
+    maxSemestres_Curso?: true
     _all?: true
   }
 
@@ -4902,7 +4902,7 @@ export namespace Prisma {
   export type T_CursoGroupByOutputType = {
     id_Curso: number
     nome_Curso: string
-    maxSemestres: number
+    maxSemestres_Curso: number
     _count: T_CursoCountAggregateOutputType | null
     _avg: T_CursoAvgAggregateOutputType | null
     _sum: T_CursoSumAggregateOutputType | null
@@ -4927,7 +4927,7 @@ export namespace Prisma {
   export type T_CursoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_Curso?: boolean
     nome_Curso?: boolean
-    maxSemestres?: boolean
+    maxSemestres_Curso?: boolean
     perfis?: boolean | T_Curso$perfisArgs<ExtArgs>
     _count?: boolean | T_CursoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["t_Curso"]>
@@ -4935,22 +4935,22 @@ export namespace Prisma {
   export type T_CursoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_Curso?: boolean
     nome_Curso?: boolean
-    maxSemestres?: boolean
+    maxSemestres_Curso?: boolean
   }, ExtArgs["result"]["t_Curso"]>
 
   export type T_CursoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_Curso?: boolean
     nome_Curso?: boolean
-    maxSemestres?: boolean
+    maxSemestres_Curso?: boolean
   }, ExtArgs["result"]["t_Curso"]>
 
   export type T_CursoSelectScalar = {
     id_Curso?: boolean
     nome_Curso?: boolean
-    maxSemestres?: boolean
+    maxSemestres_Curso?: boolean
   }
 
-  export type T_CursoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Curso" | "nome_Curso" | "maxSemestres", ExtArgs["result"]["t_Curso"]>
+  export type T_CursoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Curso" | "nome_Curso" | "maxSemestres_Curso", ExtArgs["result"]["t_Curso"]>
   export type T_CursoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     perfis?: boolean | T_Curso$perfisArgs<ExtArgs>
     _count?: boolean | T_CursoCountOutputTypeDefaultArgs<ExtArgs>
@@ -4966,7 +4966,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id_Curso: number
       nome_Curso: string
-      maxSemestres: number
+      maxSemestres_Curso: number
     }, ExtArgs["result"]["t_Curso"]>
     composites: {}
   }
@@ -5393,7 +5393,7 @@ export namespace Prisma {
   interface T_CursoFieldRefs {
     readonly id_Curso: FieldRef<"T_Curso", 'Int'>
     readonly nome_Curso: FieldRef<"T_Curso", 'String'>
-    readonly maxSemestres: FieldRef<"T_Curso", 'Int'>
+    readonly maxSemestres_Curso: FieldRef<"T_Curso", 'Int'>
   }
     
 
@@ -5861,7 +5861,7 @@ export namespace Prisma {
     semestre_Perfil: 'semestre_Perfil',
     createdAt_Perfil: 'createdAt_Perfil',
     updatedAt_Perfil: 'updatedAt_Perfil',
-    cursoId: 'cursoId',
+    id_Curso_perfil: 'id_Curso_perfil',
     id_Account_Perfil: 'id_Account_Perfil'
   };
 
@@ -5884,7 +5884,7 @@ export namespace Prisma {
   export const T_CursoScalarFieldEnum: {
     id_Curso: 'id_Curso',
     nome_Curso: 'nome_Curso',
-    maxSemestres: 'maxSemestres'
+    maxSemestres_Curso: 'maxSemestres_Curso'
   };
 
   export type T_CursoScalarFieldEnum = (typeof T_CursoScalarFieldEnum)[keyof typeof T_CursoScalarFieldEnum]
@@ -6072,7 +6072,7 @@ export namespace Prisma {
     semestre_Perfil?: IntNullableFilter<"T_Perfil"> | number | null
     createdAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
     updatedAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
-    cursoId?: IntNullableFilter<"T_Perfil"> | number | null
+    id_Curso_perfil?: IntNullableFilter<"T_Perfil"> | number | null
     id_Account_Perfil?: IntFilter<"T_Perfil"> | number
     curso?: XOR<T_CursoNullableScalarRelationFilter, T_CursoWhereInput> | null
     account?: XOR<T_AccountScalarRelationFilter, T_AccountWhereInput>
@@ -6089,7 +6089,7 @@ export namespace Prisma {
     semestre_Perfil?: SortOrderInput | SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
-    cursoId?: SortOrderInput | SortOrder
+    id_Curso_perfil?: SortOrderInput | SortOrder
     id_Account_Perfil?: SortOrder
     curso?: T_CursoOrderByWithRelationInput
     account?: T_AccountOrderByWithRelationInput
@@ -6109,7 +6109,7 @@ export namespace Prisma {
     semestre_Perfil?: IntNullableFilter<"T_Perfil"> | number | null
     createdAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
     updatedAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
-    cursoId?: IntNullableFilter<"T_Perfil"> | number | null
+    id_Curso_perfil?: IntNullableFilter<"T_Perfil"> | number | null
     id_Account_Perfil?: IntFilter<"T_Perfil"> | number
     curso?: XOR<T_CursoNullableScalarRelationFilter, T_CursoWhereInput> | null
     account?: XOR<T_AccountScalarRelationFilter, T_AccountWhereInput>
@@ -6126,7 +6126,7 @@ export namespace Prisma {
     semestre_Perfil?: SortOrderInput | SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
-    cursoId?: SortOrderInput | SortOrder
+    id_Curso_perfil?: SortOrderInput | SortOrder
     id_Account_Perfil?: SortOrder
     _count?: T_PerfilCountOrderByAggregateInput
     _avg?: T_PerfilAvgOrderByAggregateInput
@@ -6148,7 +6148,7 @@ export namespace Prisma {
     semestre_Perfil?: IntNullableWithAggregatesFilter<"T_Perfil"> | number | null
     createdAt_Perfil?: DateTimeWithAggregatesFilter<"T_Perfil"> | Date | string
     updatedAt_Perfil?: DateTimeWithAggregatesFilter<"T_Perfil"> | Date | string
-    cursoId?: IntNullableWithAggregatesFilter<"T_Perfil"> | number | null
+    id_Curso_perfil?: IntNullableWithAggregatesFilter<"T_Perfil"> | number | null
     id_Account_Perfil?: IntWithAggregatesFilter<"T_Perfil"> | number
   }
 
@@ -6225,14 +6225,14 @@ export namespace Prisma {
     NOT?: T_CursoWhereInput | T_CursoWhereInput[]
     id_Curso?: IntFilter<"T_Curso"> | number
     nome_Curso?: StringFilter<"T_Curso"> | string
-    maxSemestres?: IntFilter<"T_Curso"> | number
+    maxSemestres_Curso?: IntFilter<"T_Curso"> | number
     perfis?: T_PerfilListRelationFilter
   }
 
   export type T_CursoOrderByWithRelationInput = {
     id_Curso?: SortOrder
     nome_Curso?: SortOrder
-    maxSemestres?: SortOrder
+    maxSemestres_Curso?: SortOrder
     perfis?: T_PerfilOrderByRelationAggregateInput
   }
 
@@ -6242,14 +6242,14 @@ export namespace Prisma {
     AND?: T_CursoWhereInput | T_CursoWhereInput[]
     OR?: T_CursoWhereInput[]
     NOT?: T_CursoWhereInput | T_CursoWhereInput[]
-    maxSemestres?: IntFilter<"T_Curso"> | number
+    maxSemestres_Curso?: IntFilter<"T_Curso"> | number
     perfis?: T_PerfilListRelationFilter
   }, "id_Curso" | "nome_Curso">
 
   export type T_CursoOrderByWithAggregationInput = {
     id_Curso?: SortOrder
     nome_Curso?: SortOrder
-    maxSemestres?: SortOrder
+    maxSemestres_Curso?: SortOrder
     _count?: T_CursoCountOrderByAggregateInput
     _avg?: T_CursoAvgOrderByAggregateInput
     _max?: T_CursoMaxOrderByAggregateInput
@@ -6263,7 +6263,7 @@ export namespace Prisma {
     NOT?: T_CursoScalarWhereWithAggregatesInput | T_CursoScalarWhereWithAggregatesInput[]
     id_Curso?: IntWithAggregatesFilter<"T_Curso"> | number
     nome_Curso?: StringWithAggregatesFilter<"T_Curso"> | string
-    maxSemestres?: IntWithAggregatesFilter<"T_Curso"> | number
+    maxSemestres_Curso?: IntWithAggregatesFilter<"T_Curso"> | number
   }
 
   export type T_AccountCreateInput = {
@@ -6361,7 +6361,7 @@ export namespace Prisma {
     semestre_Perfil?: number | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
-    cursoId?: number | null
+    id_Curso_perfil?: number | null
     id_Account_Perfil: number
     id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutPerfilInput
   }
@@ -6390,7 +6390,7 @@ export namespace Prisma {
     semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    cursoId?: NullableIntFieldUpdateOperationsInput | number | null
+    id_Curso_perfil?: NullableIntFieldUpdateOperationsInput | number | null
     id_Account_Perfil?: IntFieldUpdateOperationsInput | number
     id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutPerfilNestedInput
   }
@@ -6405,7 +6405,7 @@ export namespace Prisma {
     semestre_Perfil?: number | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
-    cursoId?: number | null
+    id_Curso_perfil?: number | null
     id_Account_Perfil: number
   }
 
@@ -6430,7 +6430,7 @@ export namespace Prisma {
     semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    cursoId?: NullableIntFieldUpdateOperationsInput | number | null
+    id_Curso_perfil?: NullableIntFieldUpdateOperationsInput | number | null
     id_Account_Perfil?: IntFieldUpdateOperationsInput | number
   }
 
@@ -6502,45 +6502,45 @@ export namespace Prisma {
 
   export type T_CursoCreateInput = {
     nome_Curso: string
-    maxSemestres: number
+    maxSemestres_Curso: number
     perfis?: T_PerfilCreateNestedManyWithoutCursoInput
   }
 
   export type T_CursoUncheckedCreateInput = {
     id_Curso?: number
     nome_Curso: string
-    maxSemestres: number
+    maxSemestres_Curso: number
     perfis?: T_PerfilUncheckedCreateNestedManyWithoutCursoInput
   }
 
   export type T_CursoUpdateInput = {
     nome_Curso?: StringFieldUpdateOperationsInput | string
-    maxSemestres?: IntFieldUpdateOperationsInput | number
+    maxSemestres_Curso?: IntFieldUpdateOperationsInput | number
     perfis?: T_PerfilUpdateManyWithoutCursoNestedInput
   }
 
   export type T_CursoUncheckedUpdateInput = {
     id_Curso?: IntFieldUpdateOperationsInput | number
     nome_Curso?: StringFieldUpdateOperationsInput | string
-    maxSemestres?: IntFieldUpdateOperationsInput | number
+    maxSemestres_Curso?: IntFieldUpdateOperationsInput | number
     perfis?: T_PerfilUncheckedUpdateManyWithoutCursoNestedInput
   }
 
   export type T_CursoCreateManyInput = {
     id_Curso?: number
     nome_Curso: string
-    maxSemestres: number
+    maxSemestres_Curso: number
   }
 
   export type T_CursoUpdateManyMutationInput = {
     nome_Curso?: StringFieldUpdateOperationsInput | string
-    maxSemestres?: IntFieldUpdateOperationsInput | number
+    maxSemestres_Curso?: IntFieldUpdateOperationsInput | number
   }
 
   export type T_CursoUncheckedUpdateManyInput = {
     id_Curso?: IntFieldUpdateOperationsInput | number
     nome_Curso?: StringFieldUpdateOperationsInput | string
-    maxSemestres?: IntFieldUpdateOperationsInput | number
+    maxSemestres_Curso?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -6744,14 +6744,14 @@ export namespace Prisma {
     semestre_Perfil?: SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
-    cursoId?: SortOrder
+    id_Curso_perfil?: SortOrder
     id_Account_Perfil?: SortOrder
   }
 
   export type T_PerfilAvgOrderByAggregateInput = {
     id_Perfil?: SortOrder
     semestre_Perfil?: SortOrder
-    cursoId?: SortOrder
+    id_Curso_perfil?: SortOrder
     id_Account_Perfil?: SortOrder
   }
 
@@ -6765,7 +6765,7 @@ export namespace Prisma {
     semestre_Perfil?: SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
-    cursoId?: SortOrder
+    id_Curso_perfil?: SortOrder
     id_Account_Perfil?: SortOrder
   }
 
@@ -6779,14 +6779,14 @@ export namespace Prisma {
     semestre_Perfil?: SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
-    cursoId?: SortOrder
+    id_Curso_perfil?: SortOrder
     id_Account_Perfil?: SortOrder
   }
 
   export type T_PerfilSumOrderByAggregateInput = {
     id_Perfil?: SortOrder
     semestre_Perfil?: SortOrder
-    cursoId?: SortOrder
+    id_Curso_perfil?: SortOrder
     id_Account_Perfil?: SortOrder
   }
 
@@ -6882,29 +6882,29 @@ export namespace Prisma {
   export type T_CursoCountOrderByAggregateInput = {
     id_Curso?: SortOrder
     nome_Curso?: SortOrder
-    maxSemestres?: SortOrder
+    maxSemestres_Curso?: SortOrder
   }
 
   export type T_CursoAvgOrderByAggregateInput = {
     id_Curso?: SortOrder
-    maxSemestres?: SortOrder
+    maxSemestres_Curso?: SortOrder
   }
 
   export type T_CursoMaxOrderByAggregateInput = {
     id_Curso?: SortOrder
     nome_Curso?: SortOrder
-    maxSemestres?: SortOrder
+    maxSemestres_Curso?: SortOrder
   }
 
   export type T_CursoMinOrderByAggregateInput = {
     id_Curso?: SortOrder
     nome_Curso?: SortOrder
-    maxSemestres?: SortOrder
+    maxSemestres_Curso?: SortOrder
   }
 
   export type T_CursoSumOrderByAggregateInput = {
     id_Curso?: SortOrder
-    maxSemestres?: SortOrder
+    maxSemestres_Curso?: SortOrder
   }
 
   export type T_PerfilCreateNestedManyWithoutAccountInput = {
@@ -7312,7 +7312,7 @@ export namespace Prisma {
     semestre_Perfil?: number | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
-    cursoId?: number | null
+    id_Curso_perfil?: number | null
     id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutPerfilInput
   }
 
@@ -7355,19 +7355,19 @@ export namespace Prisma {
     semestre_Perfil?: IntNullableFilter<"T_Perfil"> | number | null
     createdAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
     updatedAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
-    cursoId?: IntNullableFilter<"T_Perfil"> | number | null
+    id_Curso_perfil?: IntNullableFilter<"T_Perfil"> | number | null
     id_Account_Perfil?: IntFilter<"T_Perfil"> | number
   }
 
   export type T_CursoCreateWithoutPerfisInput = {
     nome_Curso: string
-    maxSemestres: number
+    maxSemestres_Curso: number
   }
 
   export type T_CursoUncheckedCreateWithoutPerfisInput = {
     id_Curso?: number
     nome_Curso: string
-    maxSemestres: number
+    maxSemestres_Curso: number
   }
 
   export type T_CursoCreateOrConnectWithoutPerfisInput = {
@@ -7439,13 +7439,13 @@ export namespace Prisma {
 
   export type T_CursoUpdateWithoutPerfisInput = {
     nome_Curso?: StringFieldUpdateOperationsInput | string
-    maxSemestres?: IntFieldUpdateOperationsInput | number
+    maxSemestres_Curso?: IntFieldUpdateOperationsInput | number
   }
 
   export type T_CursoUncheckedUpdateWithoutPerfisInput = {
     id_Curso?: IntFieldUpdateOperationsInput | number
     nome_Curso?: StringFieldUpdateOperationsInput | string
-    maxSemestres?: IntFieldUpdateOperationsInput | number
+    maxSemestres_Curso?: IntFieldUpdateOperationsInput | number
   }
 
   export type T_AccountUpsertWithoutId_Perfil_AccountInput = {
@@ -7530,7 +7530,7 @@ export namespace Prisma {
     semestre_Perfil?: number | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
-    cursoId?: number | null
+    id_Curso_perfil?: number | null
     id_Account_Perfil: number
   }
 
@@ -7573,7 +7573,7 @@ export namespace Prisma {
     semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    cursoId?: NullableIntFieldUpdateOperationsInput | number | null
+    id_Curso_perfil?: NullableIntFieldUpdateOperationsInput | number | null
     id_Account_Perfil?: IntFieldUpdateOperationsInput | number
   }
 
@@ -7640,7 +7640,7 @@ export namespace Prisma {
     semestre_Perfil?: number | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
-    cursoId?: number | null
+    id_Curso_perfil?: number | null
   }
 
   export type T_PerfilUpdateWithoutAccountInput = {
@@ -7666,7 +7666,7 @@ export namespace Prisma {
     semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    cursoId?: NullableIntFieldUpdateOperationsInput | number | null
+    id_Curso_perfil?: NullableIntFieldUpdateOperationsInput | number | null
     id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutPerfilNestedInput
   }
 
@@ -7680,7 +7680,7 @@ export namespace Prisma {
     semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    cursoId?: NullableIntFieldUpdateOperationsInput | number | null
+    id_Curso_perfil?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type T_PostCreateManyPerfilInput = {

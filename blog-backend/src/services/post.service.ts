@@ -60,13 +60,7 @@ export async function getPostService({ id_Post }: ParamsPostDataInterface, perfi
         select: {
           nome_Perfil: true,
           foto_Perfil: true,
-          tipo_Perfil: true,
           semestre_Perfil: true,
-          curso: {
-            select: {
-              nome_Curso: true,
-            },
-          },
         },
       },
     },
