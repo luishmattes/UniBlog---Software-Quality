@@ -2,6 +2,8 @@ import { FastifyRequest, FastifyReply } from 'fastify';
 import { createProfileService, updateProfileService, deleteProfileService, getProfileService, getAllProfilesService } from '../services/profile.service';
 import { createProfileSchema, deleteProfileSchema, updateProfileSchema } from '../schemas/profile.schema';
 import { uploadToMinio } from '../utils/uploadToMinio';
+import { parseMultipart } from '../utils/parseMultipart';
+
 
 interface AuthenticatedRequest extends FastifyRequest {
   user: {
@@ -11,20 +13,7 @@ interface AuthenticatedRequest extends FastifyRequest {
 
 export async function createProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
-    const parts = await request.parts();
-    const fields: Record<string, any> = {};
-    let fileBuffer: Buffer | null = null;
-    let fileName: string | null = null;
-
-    for await (const part of parts) {
-      if (part.type === 'file') {
-        fileBuffer = await part.toBuffer();
-        fileName = part.filename;
-      } else {
-        fields[part.fieldname] = part.value;
-      }
-    }
-
+    const { fields, fileBuffer, fileName } = await parseMultipart(request);
     const data = createProfileSchema.parse({
       ...fields,
     });
