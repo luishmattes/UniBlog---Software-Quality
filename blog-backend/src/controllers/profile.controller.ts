@@ -1,18 +1,19 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { createProfileService, updateProfileService, deleteProfileService, getProfileService, getAllProfilesService } from '../services/profile.service';
 import { createProfileSchema, deleteProfileSchema, updateProfileSchema } from '../schemas/profile.schema';
-import { uploadToMinio } from '.././utils/uploadToMinio';
+import { uploadToMinio } from '../utils/uploadToMinio';
 
 interface AuthenticatedRequest extends FastifyRequest {
   user: {
     id_Account: number;
   };
 }
+
 export async function createProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
     const parts = await request.parts();
     const fields: any = {};
-    let foto_Perfil = '';
+    let foto_Perfil: string | undefined;
 
     for await (const part of parts) {
       if (part.type === 'file') {
@@ -22,19 +23,20 @@ export async function createProfileController(request: AuthenticatedRequest, rep
         fields[part.fieldname] = part.value;
       }
     }
+
     const data = createProfileSchema.parse({
       ...fields,
       foto_Perfil,
     });
 
     const id_Account_Perfil = request.user.id_Account;
-
     const profile = await createProfileService(data, id_Account_Perfil);
 
     return reply.status(201).send(profile);
   } catch (error) {
+    console.error('Erro ao criar perfil:', error);
     return reply.status(400).send({
-      error: 'Erro de validação',
+      error: 'Erro ao criar perfil',
       message: error instanceof Error ? error.message : 'Erro desconhecido',
       stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined,
     });
@@ -44,14 +46,31 @@ export async function createProfileController(request: AuthenticatedRequest, rep
 export async function updateProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
     const id_Perfil = request.user.id_Account;
+    const parts = await request.parts();
+    const fields: any = {};
+    let foto_Perfil: string | undefined;
 
-    const data = updateProfileSchema.parse(request.body);
-    const profile = await updateProfileService({ id_Perfil, ...data });
+    for await (const part of parts) {
+      if (part.type === 'file') {
+        const buffer = await part.toBuffer();
+        foto_Perfil = await uploadToMinio(buffer, part.filename);
+      } else {
+        fields[part.fieldname] = part.value;
+      }
+    }
 
+    const data = updateProfileSchema.parse({
+      ...fields,
+      foto_Perfil,
+      id_Perfil: id_Perfil,
+    });
+
+    const profile = await updateProfileService(data);
     return reply.status(200).send(profile);
   } catch (error) {
+    console.error('Erro ao atualizar perfil:', error);
     return reply.status(400).send({
-      error: 'Erro ao buscar perfil',
+      error: 'Erro ao atualizar perfil',
       message: error instanceof Error ? error.message : 'Erro desconhecido',
       stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined,
     });
@@ -85,6 +104,7 @@ export async function deleteProfileController(request: FastifyRequest, reply: Fa
     return reply.status(400).send({ error: 'Erro de validação', details: error });
   }
 }
+
 export async function getAllProfilesController(request: FastifyRequest, reply: FastifyReply) {
   try {
     const profiles = await getAllProfilesService();
