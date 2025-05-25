@@ -56,6 +56,7 @@ export async function createProfileService(data: CreateProfileDataInterface, acc
       tipo_Perfil: data.tipo_Perfil,
       id_Curso_Perfil: data.tipo_Perfil === 'PESSOAL' ? data.id_Curso_Perfil : undefined,
       semestre_Perfil: data.tipo_Perfil === 'PESSOAL' ? data.semestre_Perfil : undefined,
+      createdAt_Perfil: new Date(),
     },
   });
   return createdProfile;
@@ -104,11 +105,12 @@ export async function getProfileService(id_Account_Perfil: number) {
       descricao_Perfil: true,
       foto_Perfil: true,
       tipo_Perfil: true,
-      id_Curso_Perfil: true,
       semestre_Perfil: true,
       curso: {
         select: {
+          id_Curso: true,
           nome_Curso: true,
+
 
         },
       },
