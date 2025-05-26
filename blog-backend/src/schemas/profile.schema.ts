@@ -6,8 +6,8 @@ export const createProfileSchema = z.object({
   foto_Perfil: z.string().optional(),
   descricao_Perfil: z.string().max(255, 'A descrição pode ter no máximo 255 caracteres').optional(),
   tipo_Perfil: z.enum(['PESSOAL', 'COMUNIDADE']),
-  semestre_Perfil: z.number().int().min(1).max(20).optional(),
-  id_Curso_Perfil: z.number().int().positive().optional(),
+  semestre_Perfil: z.preprocess(val => Number(val), z.number().int().min(1).max(20).optional()),
+  id_Curso_Perfil: z.preprocess(val => Number(val), z.number().int().positive().optional()),
 }).refine(
   (data) => {
     if (data.tipo_Perfil === 'PESSOAL') {

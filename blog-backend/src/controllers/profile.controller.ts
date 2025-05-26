@@ -40,22 +40,9 @@ export async function createProfileController(request: AuthenticatedRequest, rep
 
 export async function updateProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
-    const parts = await request.parts();
-    const fields: Record<string, any> = {};
-    let fileBuffer: Buffer | undefined;
-    let fileName: string | undefined;
-
-    for await (const part of parts) {
-      if (part.type === 'file') {
-        fileBuffer = await part.toBuffer();
-        fileName = part.filename;
-      } else {
-        fields[part.fieldname] = part.value;
-      }
-    }
+    const { fields, fileBuffer, fileName } = await parseMultipart(request);
 
     const id_Perfil = Number(fields.id_Perfil);
-
     if (!id_Perfil) {
       return reply.status(404).send({
         error: 'Perfil não encontrado',
@@ -65,14 +52,17 @@ export async function updateProfileController(request: AuthenticatedRequest, rep
 
     const data = updateProfileSchema.parse({
       ...fields,
-      id_Perfil: id_Perfil
+      id_Perfil
+
     });
 
     if (fileBuffer && fileName) {
-      data.foto_Perfil = await uploadToMinio(fileBuffer, fileName);
+      const imageUrl = await uploadToMinio(fileBuffer, fileName);
+      data.foto_Perfil = imageUrl;
     }
 
     const profile = await updateProfileService(data);
+
     return reply.status(200).send(profile);
   } catch (error) {
     console.error('Erro ao atualizar perfil:', error);
