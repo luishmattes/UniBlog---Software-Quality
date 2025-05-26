@@ -1,14 +1,25 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { createPostService, deletePostService, getPostService, getAllPostsService } from '../services/post.service';
 import { createPostSchema, deletePostSchema, getPostSchema } from '../schemas/post.schema'
+import { parseMultipart } from '../utils/parseMultipart';
+import { uploadToMinio } from '../utils/uploadToMinio';
 
 export async function createPostController(request: FastifyRequest, reply: FastifyReply) {
     try {
-        const data = createPostSchema.parse(request.body);
+        const { fields, fileBuffer, fileName } = await parseMultipart(request);
+
+        const data = createPostSchema.parse({
+            ...fields,
+        });
 
         const perfilId = Number(request.headers['perfil-id']);
         if (!perfilId) {
             return reply.status(400).send({ error: 'ID do perfil não fornecido no header' });
+        }
+
+        if (fileBuffer && fileName) {
+            const imageUrl = await uploadToMinio(fileBuffer, fileName);
+            data.image_Post = imageUrl;
         }
 
         const post = await createPostService(data, perfilId);

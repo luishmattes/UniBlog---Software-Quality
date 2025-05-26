@@ -10,7 +10,10 @@ services:
       - 3333:3333
     depends_on:
       - db
+      - minio
     command: [ "npm", "run", "dev" ]
+    networks:
+      - uniblog_net
 
   db:
     image: postgres:17
@@ -24,6 +27,8 @@ services:
       - 5432:5432
     volumes:
       - db-data:/var/lib/postgresql/data
+    networks:
+      - uniblog_net
     healthcheck:
       test: [ "CMD", "pg_isready", "-U", "postgres" ]
       interval: 10s
@@ -42,7 +47,13 @@ services:
     volumes:
       - minio-data:/data
     command: server /data --console-address ":9001"
+    networks:
+      - uniblog_net
 
 volumes:
   db-data:
   minio-data:
+
+
+networks:
+  uniblog_net:
