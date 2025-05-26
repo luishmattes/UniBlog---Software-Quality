@@ -1,14 +1,7 @@
-# University Blog API
+# University Blog - UNIBLOG
 
 This project is a university-focused blog API built with Node.js, Fastify, Prisma, PostgreSQL, and TypeScript. It allows users to create posts similar to Twitter, manage their profiles, and authenticate securely.
 
-## Features
-
-- User authentication (registration and login)
-- Profile management (viewing and editing user profiles)
-- Creating and retrieving posts
-- Publication feed for users
-- Middleware for error handling and request validation
 
 ## Technologies Used
 
@@ -20,18 +13,12 @@ This project is a university-focused blog API built with Node.js, Fastify, Prism
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (version 14 or higher)
-- PostgreSQL (version 12 or higher)
-- Docker (optional, for containerized setup)
-
 ### Installation
 
 1. Clone the repository:
    ```
    git clone <repository-url>
-   cd university-blog-api
+   
    ```
 
 2. Install dependencies:
@@ -56,29 +43,3 @@ This project is a university-focused blog API built with Node.js, Fastify, Prism
    ```
    npm run start
    ```
-
-
-### API Endpoints
-
-- **Authentication**
-  - `POST /account/register`: Register a new user
-  - `POST /account/login`: Log in an existing user
-
-- **Profile Management**
-  - `GET /....`: Get user profile information
-  - `PUT /...`: Update user profile information
-
-- **Posts**
-  - `POST /...`: Create a new post
-  - `GET /...`: Retrieve all posts
-
-## Running Tests
-
-To run the tests, use the following command:
-```
-npm run test
-```
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
