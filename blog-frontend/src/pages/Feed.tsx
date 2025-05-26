@@ -21,7 +21,7 @@ export const Feed: React.FC = () => {
     useEffect(() => {
         fetch('http://localhost:3333/posts/', {
             headers: {
-                authorization: `Bearer ${('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9BY2NvdW50IjoxMywiaWF0IjoxNzQ3NjAyMzQ0LCJleHAiOjE3NDgyMDcxNDR9.uPl3vBbhojHFhf6hNDk2Wb-4N1Fl2LckY6VpmA0paSw')}`,
+                authorization: `Bearer ${('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9BY2NvdW50IjoxNCwiaWF0IjoxNzQ4MTkzMzk2LCJleHAiOjE3NDg3OTgxOTZ9.2pEfgGiDysb26Mz6oooq0nlVJy2nDMRY8oWss0jwGJQ')}`,
             },
         })
             .then(res => res.json())

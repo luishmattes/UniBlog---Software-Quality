@@ -28,6 +28,28 @@ export type T_Perfil = $Result.DefaultSelection<Prisma.$T_PerfilPayload>
  * 
  */
 export type T_Post = $Result.DefaultSelection<Prisma.$T_PostPayload>
+/**
+ * Model T_Curso
+ * 
+ */
+export type T_Curso = $Result.DefaultSelection<Prisma.$T_CursoPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const PerfilTipo: {
+  PESSOAL: 'PESSOAL',
+  COMUNIDADE: 'COMUNIDADE'
+};
+
+export type PerfilTipo = (typeof PerfilTipo)[keyof typeof PerfilTipo]
+
+}
+
+export type PerfilTipo = $Enums.PerfilTipo
+
+export const PerfilTipo: typeof $Enums.PerfilTipo
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,6 +205,16 @@ export class PrismaClient<
     * ```
     */
   get t_Post(): Prisma.T_PostDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.t_Curso`: Exposes CRUD operations for the **T_Curso** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more T_Cursos
+    * const t_Cursos = await prisma.t_Curso.findMany()
+    * ```
+    */
+  get t_Curso(): Prisma.T_CursoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -625,7 +657,8 @@ export namespace Prisma {
   export const ModelName: {
     T_Account: 'T_Account',
     T_Perfil: 'T_Perfil',
-    T_Post: 'T_Post'
+    T_Post: 'T_Post',
+    T_Curso: 'T_Curso'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +677,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "t_Account" | "t_Perfil" | "t_Post"
+      modelProps: "t_Account" | "t_Perfil" | "t_Post" | "t_Curso"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -870,6 +903,80 @@ export namespace Prisma {
           }
         }
       }
+      T_Curso: {
+        payload: Prisma.$T_CursoPayload<ExtArgs>
+        fields: Prisma.T_CursoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.T_CursoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.T_CursoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+          }
+          findFirst: {
+            args: Prisma.T_CursoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.T_CursoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+          }
+          findMany: {
+            args: Prisma.T_CursoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>[]
+          }
+          create: {
+            args: Prisma.T_CursoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+          }
+          createMany: {
+            args: Prisma.T_CursoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.T_CursoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>[]
+          }
+          delete: {
+            args: Prisma.T_CursoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+          }
+          update: {
+            args: Prisma.T_CursoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+          }
+          deleteMany: {
+            args: Prisma.T_CursoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.T_CursoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.T_CursoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>[]
+          }
+          upsert: {
+            args: Prisma.T_CursoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+          }
+          aggregate: {
+            args: Prisma.T_CursoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateT_Curso>
+          }
+          groupBy: {
+            args: Prisma.T_CursoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<T_CursoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.T_CursoCountArgs<ExtArgs>
+            result: $Utils.Optional<T_CursoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -957,6 +1064,7 @@ export namespace Prisma {
     t_Account?: T_AccountOmit
     t_Perfil?: T_PerfilOmit
     t_Post?: T_PostOmit
+    t_Curso?: T_CursoOmit
   }
 
   /* Types for Logging */
@@ -1105,6 +1213,37 @@ export namespace Prisma {
    */
   export type T_PerfilCountOutputTypeCountId_Post_PerfilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: T_PostWhereInput
+  }
+
+
+  /**
+   * Count Type T_CursoCountOutputType
+   */
+
+  export type T_CursoCountOutputType = {
+    perfis: number
+  }
+
+  export type T_CursoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    perfis?: boolean | T_CursoCountOutputTypeCountPerfisArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * T_CursoCountOutputType without action
+   */
+  export type T_CursoCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_CursoCountOutputType
+     */
+    select?: T_CursoCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * T_CursoCountOutputType without action
+   */
+  export type T_CursoCountOutputTypeCountPerfisArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: T_PerfilWhereInput
   }
 
 
@@ -2256,11 +2395,15 @@ export namespace Prisma {
 
   export type T_PerfilAvgAggregateOutputType = {
     id_Perfil: number | null
+    semestre_Perfil: number | null
+    id_Curso_Perfil: number | null
     id_Account_Perfil: number | null
   }
 
   export type T_PerfilSumAggregateOutputType = {
     id_Perfil: number | null
+    semestre_Perfil: number | null
+    id_Curso_Perfil: number | null
     id_Account_Perfil: number | null
   }
 
@@ -2270,8 +2413,11 @@ export namespace Prisma {
     email_Perfil: string | null
     foto_Perfil: string | null
     descricao_Perfil: string | null
+    tipo_Perfil: $Enums.PerfilTipo | null
+    semestre_Perfil: number | null
     createdAt_Perfil: Date | null
     updatedAt_Perfil: Date | null
+    id_Curso_Perfil: number | null
     id_Account_Perfil: number | null
   }
 
@@ -2281,8 +2427,11 @@ export namespace Prisma {
     email_Perfil: string | null
     foto_Perfil: string | null
     descricao_Perfil: string | null
+    tipo_Perfil: $Enums.PerfilTipo | null
+    semestre_Perfil: number | null
     createdAt_Perfil: Date | null
     updatedAt_Perfil: Date | null
+    id_Curso_Perfil: number | null
     id_Account_Perfil: number | null
   }
 
@@ -2292,8 +2441,11 @@ export namespace Prisma {
     email_Perfil: number
     foto_Perfil: number
     descricao_Perfil: number
+    tipo_Perfil: number
+    semestre_Perfil: number
     createdAt_Perfil: number
     updatedAt_Perfil: number
+    id_Curso_Perfil: number
     id_Account_Perfil: number
     _all: number
   }
@@ -2301,11 +2453,15 @@ export namespace Prisma {
 
   export type T_PerfilAvgAggregateInputType = {
     id_Perfil?: true
+    semestre_Perfil?: true
+    id_Curso_Perfil?: true
     id_Account_Perfil?: true
   }
 
   export type T_PerfilSumAggregateInputType = {
     id_Perfil?: true
+    semestre_Perfil?: true
+    id_Curso_Perfil?: true
     id_Account_Perfil?: true
   }
 
@@ -2315,8 +2471,11 @@ export namespace Prisma {
     email_Perfil?: true
     foto_Perfil?: true
     descricao_Perfil?: true
+    tipo_Perfil?: true
+    semestre_Perfil?: true
     createdAt_Perfil?: true
     updatedAt_Perfil?: true
+    id_Curso_Perfil?: true
     id_Account_Perfil?: true
   }
 
@@ -2326,8 +2485,11 @@ export namespace Prisma {
     email_Perfil?: true
     foto_Perfil?: true
     descricao_Perfil?: true
+    tipo_Perfil?: true
+    semestre_Perfil?: true
     createdAt_Perfil?: true
     updatedAt_Perfil?: true
+    id_Curso_Perfil?: true
     id_Account_Perfil?: true
   }
 
@@ -2337,8 +2499,11 @@ export namespace Prisma {
     email_Perfil?: true
     foto_Perfil?: true
     descricao_Perfil?: true
+    tipo_Perfil?: true
+    semestre_Perfil?: true
     createdAt_Perfil?: true
     updatedAt_Perfil?: true
+    id_Curso_Perfil?: true
     id_Account_Perfil?: true
     _all?: true
   }
@@ -2435,8 +2600,11 @@ export namespace Prisma {
     email_Perfil: string
     foto_Perfil: string | null
     descricao_Perfil: string | null
+    tipo_Perfil: $Enums.PerfilTipo
+    semestre_Perfil: number | null
     createdAt_Perfil: Date
     updatedAt_Perfil: Date
+    id_Curso_Perfil: number | null
     id_Account_Perfil: number
     _count: T_PerfilCountAggregateOutputType | null
     _avg: T_PerfilAvgAggregateOutputType | null
@@ -2465,9 +2633,13 @@ export namespace Prisma {
     email_Perfil?: boolean
     foto_Perfil?: boolean
     descricao_Perfil?: boolean
+    tipo_Perfil?: boolean
+    semestre_Perfil?: boolean
     createdAt_Perfil?: boolean
     updatedAt_Perfil?: boolean
+    id_Curso_Perfil?: boolean
     id_Account_Perfil?: boolean
+    curso?: boolean | T_Perfil$cursoArgs<ExtArgs>
     account?: boolean | T_AccountDefaultArgs<ExtArgs>
     id_Post_Perfil?: boolean | T_Perfil$id_Post_PerfilArgs<ExtArgs>
     _count?: boolean | T_PerfilCountOutputTypeDefaultArgs<ExtArgs>
@@ -2479,9 +2651,13 @@ export namespace Prisma {
     email_Perfil?: boolean
     foto_Perfil?: boolean
     descricao_Perfil?: boolean
+    tipo_Perfil?: boolean
+    semestre_Perfil?: boolean
     createdAt_Perfil?: boolean
     updatedAt_Perfil?: boolean
+    id_Curso_Perfil?: boolean
     id_Account_Perfil?: boolean
+    curso?: boolean | T_Perfil$cursoArgs<ExtArgs>
     account?: boolean | T_AccountDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["t_Perfil"]>
 
@@ -2491,9 +2667,13 @@ export namespace Prisma {
     email_Perfil?: boolean
     foto_Perfil?: boolean
     descricao_Perfil?: boolean
+    tipo_Perfil?: boolean
+    semestre_Perfil?: boolean
     createdAt_Perfil?: boolean
     updatedAt_Perfil?: boolean
+    id_Curso_Perfil?: boolean
     id_Account_Perfil?: boolean
+    curso?: boolean | T_Perfil$cursoArgs<ExtArgs>
     account?: boolean | T_AccountDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["t_Perfil"]>
 
@@ -2503,27 +2683,34 @@ export namespace Prisma {
     email_Perfil?: boolean
     foto_Perfil?: boolean
     descricao_Perfil?: boolean
+    tipo_Perfil?: boolean
+    semestre_Perfil?: boolean
     createdAt_Perfil?: boolean
     updatedAt_Perfil?: boolean
+    id_Curso_Perfil?: boolean
     id_Account_Perfil?: boolean
   }
 
-  export type T_PerfilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Perfil" | "nome_Perfil" | "email_Perfil" | "foto_Perfil" | "descricao_Perfil" | "createdAt_Perfil" | "updatedAt_Perfil" | "id_Account_Perfil", ExtArgs["result"]["t_Perfil"]>
+  export type T_PerfilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Perfil" | "nome_Perfil" | "email_Perfil" | "foto_Perfil" | "descricao_Perfil" | "tipo_Perfil" | "semestre_Perfil" | "createdAt_Perfil" | "updatedAt_Perfil" | "id_Curso_Perfil" | "id_Account_Perfil", ExtArgs["result"]["t_Perfil"]>
   export type T_PerfilInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    curso?: boolean | T_Perfil$cursoArgs<ExtArgs>
     account?: boolean | T_AccountDefaultArgs<ExtArgs>
     id_Post_Perfil?: boolean | T_Perfil$id_Post_PerfilArgs<ExtArgs>
     _count?: boolean | T_PerfilCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type T_PerfilIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    curso?: boolean | T_Perfil$cursoArgs<ExtArgs>
     account?: boolean | T_AccountDefaultArgs<ExtArgs>
   }
   export type T_PerfilIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    curso?: boolean | T_Perfil$cursoArgs<ExtArgs>
     account?: boolean | T_AccountDefaultArgs<ExtArgs>
   }
 
   export type $T_PerfilPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "T_Perfil"
     objects: {
+      curso: Prisma.$T_CursoPayload<ExtArgs> | null
       account: Prisma.$T_AccountPayload<ExtArgs>
       id_Post_Perfil: Prisma.$T_PostPayload<ExtArgs>[]
     }
@@ -2533,8 +2720,11 @@ export namespace Prisma {
       email_Perfil: string
       foto_Perfil: string | null
       descricao_Perfil: string | null
+      tipo_Perfil: $Enums.PerfilTipo
+      semestre_Perfil: number | null
       createdAt_Perfil: Date
       updatedAt_Perfil: Date
+      id_Curso_Perfil: number | null
       id_Account_Perfil: number
     }, ExtArgs["result"]["t_Perfil"]>
     composites: {}
@@ -2930,6 +3120,7 @@ export namespace Prisma {
    */
   export interface Prisma__T_PerfilClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    curso<T extends T_Perfil$cursoArgs<ExtArgs> = {}>(args?: Subset<T, T_Perfil$cursoArgs<ExtArgs>>): Prisma__T_CursoClient<$Result.GetResult<Prisma.$T_CursoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     account<T extends T_AccountDefaultArgs<ExtArgs> = {}>(args?: Subset<T, T_AccountDefaultArgs<ExtArgs>>): Prisma__T_AccountClient<$Result.GetResult<Prisma.$T_AccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     id_Post_Perfil<T extends T_Perfil$id_Post_PerfilArgs<ExtArgs> = {}>(args?: Subset<T, T_Perfil$id_Post_PerfilArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -2966,8 +3157,11 @@ export namespace Prisma {
     readonly email_Perfil: FieldRef<"T_Perfil", 'String'>
     readonly foto_Perfil: FieldRef<"T_Perfil", 'String'>
     readonly descricao_Perfil: FieldRef<"T_Perfil", 'String'>
+    readonly tipo_Perfil: FieldRef<"T_Perfil", 'PerfilTipo'>
+    readonly semestre_Perfil: FieldRef<"T_Perfil", 'Int'>
     readonly createdAt_Perfil: FieldRef<"T_Perfil", 'DateTime'>
     readonly updatedAt_Perfil: FieldRef<"T_Perfil", 'DateTime'>
+    readonly id_Curso_Perfil: FieldRef<"T_Perfil", 'Int'>
     readonly id_Account_Perfil: FieldRef<"T_Perfil", 'Int'>
   }
     
@@ -3362,6 +3556,25 @@ export namespace Prisma {
      * Limit how many T_Perfils to delete.
      */
     limit?: number
+  }
+
+  /**
+   * T_Perfil.curso
+   */
+  export type T_Perfil$cursoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Curso
+     */
+    select?: T_CursoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Curso
+     */
+    omit?: T_CursoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_CursoInclude<ExtArgs> | null
+    where?: T_CursoWhereInput
   }
 
   /**
@@ -4530,6 +4743,1088 @@ export namespace Prisma {
 
 
   /**
+   * Model T_Curso
+   */
+
+  export type AggregateT_Curso = {
+    _count: T_CursoCountAggregateOutputType | null
+    _avg: T_CursoAvgAggregateOutputType | null
+    _sum: T_CursoSumAggregateOutputType | null
+    _min: T_CursoMinAggregateOutputType | null
+    _max: T_CursoMaxAggregateOutputType | null
+  }
+
+  export type T_CursoAvgAggregateOutputType = {
+    id_Curso: number | null
+    maxSemestres_Curso: number | null
+  }
+
+  export type T_CursoSumAggregateOutputType = {
+    id_Curso: number | null
+    maxSemestres_Curso: number | null
+  }
+
+  export type T_CursoMinAggregateOutputType = {
+    id_Curso: number | null
+    nome_Curso: string | null
+    maxSemestres_Curso: number | null
+  }
+
+  export type T_CursoMaxAggregateOutputType = {
+    id_Curso: number | null
+    nome_Curso: string | null
+    maxSemestres_Curso: number | null
+  }
+
+  export type T_CursoCountAggregateOutputType = {
+    id_Curso: number
+    nome_Curso: number
+    maxSemestres_Curso: number
+    _all: number
+  }
+
+
+  export type T_CursoAvgAggregateInputType = {
+    id_Curso?: true
+    maxSemestres_Curso?: true
+  }
+
+  export type T_CursoSumAggregateInputType = {
+    id_Curso?: true
+    maxSemestres_Curso?: true
+  }
+
+  export type T_CursoMinAggregateInputType = {
+    id_Curso?: true
+    nome_Curso?: true
+    maxSemestres_Curso?: true
+  }
+
+  export type T_CursoMaxAggregateInputType = {
+    id_Curso?: true
+    nome_Curso?: true
+    maxSemestres_Curso?: true
+  }
+
+  export type T_CursoCountAggregateInputType = {
+    id_Curso?: true
+    nome_Curso?: true
+    maxSemestres_Curso?: true
+    _all?: true
+  }
+
+  export type T_CursoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which T_Curso to aggregate.
+     */
+    where?: T_CursoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_Cursos to fetch.
+     */
+    orderBy?: T_CursoOrderByWithRelationInput | T_CursoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: T_CursoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_Cursos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_Cursos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned T_Cursos
+    **/
+    _count?: true | T_CursoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: T_CursoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: T_CursoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: T_CursoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: T_CursoMaxAggregateInputType
+  }
+
+  export type GetT_CursoAggregateType<T extends T_CursoAggregateArgs> = {
+        [P in keyof T & keyof AggregateT_Curso]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateT_Curso[P]>
+      : GetScalarType<T[P], AggregateT_Curso[P]>
+  }
+
+
+
+
+  export type T_CursoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: T_CursoWhereInput
+    orderBy?: T_CursoOrderByWithAggregationInput | T_CursoOrderByWithAggregationInput[]
+    by: T_CursoScalarFieldEnum[] | T_CursoScalarFieldEnum
+    having?: T_CursoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: T_CursoCountAggregateInputType | true
+    _avg?: T_CursoAvgAggregateInputType
+    _sum?: T_CursoSumAggregateInputType
+    _min?: T_CursoMinAggregateInputType
+    _max?: T_CursoMaxAggregateInputType
+  }
+
+  export type T_CursoGroupByOutputType = {
+    id_Curso: number
+    nome_Curso: string
+    maxSemestres_Curso: number
+    _count: T_CursoCountAggregateOutputType | null
+    _avg: T_CursoAvgAggregateOutputType | null
+    _sum: T_CursoSumAggregateOutputType | null
+    _min: T_CursoMinAggregateOutputType | null
+    _max: T_CursoMaxAggregateOutputType | null
+  }
+
+  type GetT_CursoGroupByPayload<T extends T_CursoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<T_CursoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof T_CursoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], T_CursoGroupByOutputType[P]>
+            : GetScalarType<T[P], T_CursoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type T_CursoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_Curso?: boolean
+    nome_Curso?: boolean
+    maxSemestres_Curso?: boolean
+    perfis?: boolean | T_Curso$perfisArgs<ExtArgs>
+    _count?: boolean | T_CursoCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["t_Curso"]>
+
+  export type T_CursoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_Curso?: boolean
+    nome_Curso?: boolean
+    maxSemestres_Curso?: boolean
+  }, ExtArgs["result"]["t_Curso"]>
+
+  export type T_CursoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_Curso?: boolean
+    nome_Curso?: boolean
+    maxSemestres_Curso?: boolean
+  }, ExtArgs["result"]["t_Curso"]>
+
+  export type T_CursoSelectScalar = {
+    id_Curso?: boolean
+    nome_Curso?: boolean
+    maxSemestres_Curso?: boolean
+  }
+
+  export type T_CursoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Curso" | "nome_Curso" | "maxSemestres_Curso", ExtArgs["result"]["t_Curso"]>
+  export type T_CursoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    perfis?: boolean | T_Curso$perfisArgs<ExtArgs>
+    _count?: boolean | T_CursoCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type T_CursoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type T_CursoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $T_CursoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "T_Curso"
+    objects: {
+      perfis: Prisma.$T_PerfilPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_Curso: number
+      nome_Curso: string
+      maxSemestres_Curso: number
+    }, ExtArgs["result"]["t_Curso"]>
+    composites: {}
+  }
+
+  type T_CursoGetPayload<S extends boolean | null | undefined | T_CursoDefaultArgs> = $Result.GetResult<Prisma.$T_CursoPayload, S>
+
+  type T_CursoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<T_CursoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: T_CursoCountAggregateInputType | true
+    }
+
+  export interface T_CursoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['T_Curso'], meta: { name: 'T_Curso' } }
+    /**
+     * Find zero or one T_Curso that matches the filter.
+     * @param {T_CursoFindUniqueArgs} args - Arguments to find a T_Curso
+     * @example
+     * // Get one T_Curso
+     * const t_Curso = await prisma.t_Curso.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends T_CursoFindUniqueArgs>(args: SelectSubset<T, T_CursoFindUniqueArgs<ExtArgs>>): Prisma__T_CursoClient<$Result.GetResult<Prisma.$T_CursoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one T_Curso that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {T_CursoFindUniqueOrThrowArgs} args - Arguments to find a T_Curso
+     * @example
+     * // Get one T_Curso
+     * const t_Curso = await prisma.t_Curso.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends T_CursoFindUniqueOrThrowArgs>(args: SelectSubset<T, T_CursoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__T_CursoClient<$Result.GetResult<Prisma.$T_CursoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first T_Curso that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_CursoFindFirstArgs} args - Arguments to find a T_Curso
+     * @example
+     * // Get one T_Curso
+     * const t_Curso = await prisma.t_Curso.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends T_CursoFindFirstArgs>(args?: SelectSubset<T, T_CursoFindFirstArgs<ExtArgs>>): Prisma__T_CursoClient<$Result.GetResult<Prisma.$T_CursoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first T_Curso that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_CursoFindFirstOrThrowArgs} args - Arguments to find a T_Curso
+     * @example
+     * // Get one T_Curso
+     * const t_Curso = await prisma.t_Curso.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends T_CursoFindFirstOrThrowArgs>(args?: SelectSubset<T, T_CursoFindFirstOrThrowArgs<ExtArgs>>): Prisma__T_CursoClient<$Result.GetResult<Prisma.$T_CursoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more T_Cursos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_CursoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all T_Cursos
+     * const t_Cursos = await prisma.t_Curso.findMany()
+     * 
+     * // Get first 10 T_Cursos
+     * const t_Cursos = await prisma.t_Curso.findMany({ take: 10 })
+     * 
+     * // Only select the `id_Curso`
+     * const t_CursoWithId_CursoOnly = await prisma.t_Curso.findMany({ select: { id_Curso: true } })
+     * 
+     */
+    findMany<T extends T_CursoFindManyArgs>(args?: SelectSubset<T, T_CursoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_CursoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a T_Curso.
+     * @param {T_CursoCreateArgs} args - Arguments to create a T_Curso.
+     * @example
+     * // Create one T_Curso
+     * const T_Curso = await prisma.t_Curso.create({
+     *   data: {
+     *     // ... data to create a T_Curso
+     *   }
+     * })
+     * 
+     */
+    create<T extends T_CursoCreateArgs>(args: SelectSubset<T, T_CursoCreateArgs<ExtArgs>>): Prisma__T_CursoClient<$Result.GetResult<Prisma.$T_CursoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many T_Cursos.
+     * @param {T_CursoCreateManyArgs} args - Arguments to create many T_Cursos.
+     * @example
+     * // Create many T_Cursos
+     * const t_Curso = await prisma.t_Curso.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends T_CursoCreateManyArgs>(args?: SelectSubset<T, T_CursoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many T_Cursos and returns the data saved in the database.
+     * @param {T_CursoCreateManyAndReturnArgs} args - Arguments to create many T_Cursos.
+     * @example
+     * // Create many T_Cursos
+     * const t_Curso = await prisma.t_Curso.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many T_Cursos and only return the `id_Curso`
+     * const t_CursoWithId_CursoOnly = await prisma.t_Curso.createManyAndReturn({
+     *   select: { id_Curso: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends T_CursoCreateManyAndReturnArgs>(args?: SelectSubset<T, T_CursoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_CursoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a T_Curso.
+     * @param {T_CursoDeleteArgs} args - Arguments to delete one T_Curso.
+     * @example
+     * // Delete one T_Curso
+     * const T_Curso = await prisma.t_Curso.delete({
+     *   where: {
+     *     // ... filter to delete one T_Curso
+     *   }
+     * })
+     * 
+     */
+    delete<T extends T_CursoDeleteArgs>(args: SelectSubset<T, T_CursoDeleteArgs<ExtArgs>>): Prisma__T_CursoClient<$Result.GetResult<Prisma.$T_CursoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one T_Curso.
+     * @param {T_CursoUpdateArgs} args - Arguments to update one T_Curso.
+     * @example
+     * // Update one T_Curso
+     * const t_Curso = await prisma.t_Curso.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends T_CursoUpdateArgs>(args: SelectSubset<T, T_CursoUpdateArgs<ExtArgs>>): Prisma__T_CursoClient<$Result.GetResult<Prisma.$T_CursoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more T_Cursos.
+     * @param {T_CursoDeleteManyArgs} args - Arguments to filter T_Cursos to delete.
+     * @example
+     * // Delete a few T_Cursos
+     * const { count } = await prisma.t_Curso.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends T_CursoDeleteManyArgs>(args?: SelectSubset<T, T_CursoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more T_Cursos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_CursoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many T_Cursos
+     * const t_Curso = await prisma.t_Curso.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends T_CursoUpdateManyArgs>(args: SelectSubset<T, T_CursoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more T_Cursos and returns the data updated in the database.
+     * @param {T_CursoUpdateManyAndReturnArgs} args - Arguments to update many T_Cursos.
+     * @example
+     * // Update many T_Cursos
+     * const t_Curso = await prisma.t_Curso.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more T_Cursos and only return the `id_Curso`
+     * const t_CursoWithId_CursoOnly = await prisma.t_Curso.updateManyAndReturn({
+     *   select: { id_Curso: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends T_CursoUpdateManyAndReturnArgs>(args: SelectSubset<T, T_CursoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_CursoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one T_Curso.
+     * @param {T_CursoUpsertArgs} args - Arguments to update or create a T_Curso.
+     * @example
+     * // Update or create a T_Curso
+     * const t_Curso = await prisma.t_Curso.upsert({
+     *   create: {
+     *     // ... data to create a T_Curso
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the T_Curso we want to update
+     *   }
+     * })
+     */
+    upsert<T extends T_CursoUpsertArgs>(args: SelectSubset<T, T_CursoUpsertArgs<ExtArgs>>): Prisma__T_CursoClient<$Result.GetResult<Prisma.$T_CursoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of T_Cursos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_CursoCountArgs} args - Arguments to filter T_Cursos to count.
+     * @example
+     * // Count the number of T_Cursos
+     * const count = await prisma.t_Curso.count({
+     *   where: {
+     *     // ... the filter for the T_Cursos we want to count
+     *   }
+     * })
+    **/
+    count<T extends T_CursoCountArgs>(
+      args?: Subset<T, T_CursoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], T_CursoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a T_Curso.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_CursoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends T_CursoAggregateArgs>(args: Subset<T, T_CursoAggregateArgs>): Prisma.PrismaPromise<GetT_CursoAggregateType<T>>
+
+    /**
+     * Group by T_Curso.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_CursoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends T_CursoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: T_CursoGroupByArgs['orderBy'] }
+        : { orderBy?: T_CursoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, T_CursoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetT_CursoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the T_Curso model
+   */
+  readonly fields: T_CursoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for T_Curso.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__T_CursoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    perfis<T extends T_Curso$perfisArgs<ExtArgs> = {}>(args?: Subset<T, T_Curso$perfisArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PerfilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the T_Curso model
+   */
+  interface T_CursoFieldRefs {
+    readonly id_Curso: FieldRef<"T_Curso", 'Int'>
+    readonly nome_Curso: FieldRef<"T_Curso", 'String'>
+    readonly maxSemestres_Curso: FieldRef<"T_Curso", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * T_Curso findUnique
+   */
+  export type T_CursoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Curso
+     */
+    select?: T_CursoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Curso
+     */
+    omit?: T_CursoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_CursoInclude<ExtArgs> | null
+    /**
+     * Filter, which T_Curso to fetch.
+     */
+    where: T_CursoWhereUniqueInput
+  }
+
+  /**
+   * T_Curso findUniqueOrThrow
+   */
+  export type T_CursoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Curso
+     */
+    select?: T_CursoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Curso
+     */
+    omit?: T_CursoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_CursoInclude<ExtArgs> | null
+    /**
+     * Filter, which T_Curso to fetch.
+     */
+    where: T_CursoWhereUniqueInput
+  }
+
+  /**
+   * T_Curso findFirst
+   */
+  export type T_CursoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Curso
+     */
+    select?: T_CursoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Curso
+     */
+    omit?: T_CursoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_CursoInclude<ExtArgs> | null
+    /**
+     * Filter, which T_Curso to fetch.
+     */
+    where?: T_CursoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_Cursos to fetch.
+     */
+    orderBy?: T_CursoOrderByWithRelationInput | T_CursoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for T_Cursos.
+     */
+    cursor?: T_CursoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_Cursos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_Cursos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of T_Cursos.
+     */
+    distinct?: T_CursoScalarFieldEnum | T_CursoScalarFieldEnum[]
+  }
+
+  /**
+   * T_Curso findFirstOrThrow
+   */
+  export type T_CursoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Curso
+     */
+    select?: T_CursoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Curso
+     */
+    omit?: T_CursoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_CursoInclude<ExtArgs> | null
+    /**
+     * Filter, which T_Curso to fetch.
+     */
+    where?: T_CursoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_Cursos to fetch.
+     */
+    orderBy?: T_CursoOrderByWithRelationInput | T_CursoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for T_Cursos.
+     */
+    cursor?: T_CursoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_Cursos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_Cursos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of T_Cursos.
+     */
+    distinct?: T_CursoScalarFieldEnum | T_CursoScalarFieldEnum[]
+  }
+
+  /**
+   * T_Curso findMany
+   */
+  export type T_CursoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Curso
+     */
+    select?: T_CursoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Curso
+     */
+    omit?: T_CursoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_CursoInclude<ExtArgs> | null
+    /**
+     * Filter, which T_Cursos to fetch.
+     */
+    where?: T_CursoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_Cursos to fetch.
+     */
+    orderBy?: T_CursoOrderByWithRelationInput | T_CursoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing T_Cursos.
+     */
+    cursor?: T_CursoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_Cursos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_Cursos.
+     */
+    skip?: number
+    distinct?: T_CursoScalarFieldEnum | T_CursoScalarFieldEnum[]
+  }
+
+  /**
+   * T_Curso create
+   */
+  export type T_CursoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Curso
+     */
+    select?: T_CursoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Curso
+     */
+    omit?: T_CursoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_CursoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a T_Curso.
+     */
+    data: XOR<T_CursoCreateInput, T_CursoUncheckedCreateInput>
+  }
+
+  /**
+   * T_Curso createMany
+   */
+  export type T_CursoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many T_Cursos.
+     */
+    data: T_CursoCreateManyInput | T_CursoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * T_Curso createManyAndReturn
+   */
+  export type T_CursoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Curso
+     */
+    select?: T_CursoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Curso
+     */
+    omit?: T_CursoOmit<ExtArgs> | null
+    /**
+     * The data used to create many T_Cursos.
+     */
+    data: T_CursoCreateManyInput | T_CursoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * T_Curso update
+   */
+  export type T_CursoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Curso
+     */
+    select?: T_CursoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Curso
+     */
+    omit?: T_CursoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_CursoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a T_Curso.
+     */
+    data: XOR<T_CursoUpdateInput, T_CursoUncheckedUpdateInput>
+    /**
+     * Choose, which T_Curso to update.
+     */
+    where: T_CursoWhereUniqueInput
+  }
+
+  /**
+   * T_Curso updateMany
+   */
+  export type T_CursoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update T_Cursos.
+     */
+    data: XOR<T_CursoUpdateManyMutationInput, T_CursoUncheckedUpdateManyInput>
+    /**
+     * Filter which T_Cursos to update
+     */
+    where?: T_CursoWhereInput
+    /**
+     * Limit how many T_Cursos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * T_Curso updateManyAndReturn
+   */
+  export type T_CursoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Curso
+     */
+    select?: T_CursoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Curso
+     */
+    omit?: T_CursoOmit<ExtArgs> | null
+    /**
+     * The data used to update T_Cursos.
+     */
+    data: XOR<T_CursoUpdateManyMutationInput, T_CursoUncheckedUpdateManyInput>
+    /**
+     * Filter which T_Cursos to update
+     */
+    where?: T_CursoWhereInput
+    /**
+     * Limit how many T_Cursos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * T_Curso upsert
+   */
+  export type T_CursoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Curso
+     */
+    select?: T_CursoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Curso
+     */
+    omit?: T_CursoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_CursoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the T_Curso to update in case it exists.
+     */
+    where: T_CursoWhereUniqueInput
+    /**
+     * In case the T_Curso found by the `where` argument doesn't exist, create a new T_Curso with this data.
+     */
+    create: XOR<T_CursoCreateInput, T_CursoUncheckedCreateInput>
+    /**
+     * In case the T_Curso was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<T_CursoUpdateInput, T_CursoUncheckedUpdateInput>
+  }
+
+  /**
+   * T_Curso delete
+   */
+  export type T_CursoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Curso
+     */
+    select?: T_CursoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Curso
+     */
+    omit?: T_CursoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_CursoInclude<ExtArgs> | null
+    /**
+     * Filter which T_Curso to delete.
+     */
+    where: T_CursoWhereUniqueInput
+  }
+
+  /**
+   * T_Curso deleteMany
+   */
+  export type T_CursoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which T_Cursos to delete
+     */
+    where?: T_CursoWhereInput
+    /**
+     * Limit how many T_Cursos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * T_Curso.perfis
+   */
+  export type T_Curso$perfisArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Perfil
+     */
+    select?: T_PerfilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Perfil
+     */
+    omit?: T_PerfilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PerfilInclude<ExtArgs> | null
+    where?: T_PerfilWhereInput
+    orderBy?: T_PerfilOrderByWithRelationInput | T_PerfilOrderByWithRelationInput[]
+    cursor?: T_PerfilWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: T_PerfilScalarFieldEnum | T_PerfilScalarFieldEnum[]
+  }
+
+  /**
+   * T_Curso without action
+   */
+  export type T_CursoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Curso
+     */
+    select?: T_CursoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Curso
+     */
+    omit?: T_CursoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_CursoInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4562,8 +5857,11 @@ export namespace Prisma {
     email_Perfil: 'email_Perfil',
     foto_Perfil: 'foto_Perfil',
     descricao_Perfil: 'descricao_Perfil',
+    tipo_Perfil: 'tipo_Perfil',
+    semestre_Perfil: 'semestre_Perfil',
     createdAt_Perfil: 'createdAt_Perfil',
     updatedAt_Perfil: 'updatedAt_Perfil',
+    id_Curso_Perfil: 'id_Curso_Perfil',
     id_Account_Perfil: 'id_Account_Perfil'
   };
 
@@ -4581,6 +5879,15 @@ export namespace Prisma {
   };
 
   export type T_PostScalarFieldEnum = (typeof T_PostScalarFieldEnum)[keyof typeof T_PostScalarFieldEnum]
+
+
+  export const T_CursoScalarFieldEnum: {
+    id_Curso: 'id_Curso',
+    nome_Curso: 'nome_Curso',
+    maxSemestres_Curso: 'maxSemestres_Curso'
+  };
+
+  export type T_CursoScalarFieldEnum = (typeof T_CursoScalarFieldEnum)[keyof typeof T_CursoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4651,6 +5958,20 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'PerfilTipo'
+   */
+  export type EnumPerfilTipoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PerfilTipo'>
+    
+
+
+  /**
+   * Reference to a field of type 'PerfilTipo[]'
+   */
+  export type ListEnumPerfilTipoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PerfilTipo[]'>
     
 
 
@@ -4747,9 +6068,13 @@ export namespace Prisma {
     email_Perfil?: StringFilter<"T_Perfil"> | string
     foto_Perfil?: StringNullableFilter<"T_Perfil"> | string | null
     descricao_Perfil?: StringNullableFilter<"T_Perfil"> | string | null
+    tipo_Perfil?: EnumPerfilTipoFilter<"T_Perfil"> | $Enums.PerfilTipo
+    semestre_Perfil?: IntNullableFilter<"T_Perfil"> | number | null
     createdAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
     updatedAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
+    id_Curso_Perfil?: IntNullableFilter<"T_Perfil"> | number | null
     id_Account_Perfil?: IntFilter<"T_Perfil"> | number
+    curso?: XOR<T_CursoNullableScalarRelationFilter, T_CursoWhereInput> | null
     account?: XOR<T_AccountScalarRelationFilter, T_AccountWhereInput>
     id_Post_Perfil?: T_PostListRelationFilter
   }
@@ -4760,9 +6085,13 @@ export namespace Prisma {
     email_Perfil?: SortOrder
     foto_Perfil?: SortOrderInput | SortOrder
     descricao_Perfil?: SortOrderInput | SortOrder
+    tipo_Perfil?: SortOrder
+    semestre_Perfil?: SortOrderInput | SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
+    id_Curso_Perfil?: SortOrderInput | SortOrder
     id_Account_Perfil?: SortOrder
+    curso?: T_CursoOrderByWithRelationInput
     account?: T_AccountOrderByWithRelationInput
     id_Post_Perfil?: T_PostOrderByRelationAggregateInput
   }
@@ -4776,9 +6105,13 @@ export namespace Prisma {
     nome_Perfil?: StringFilter<"T_Perfil"> | string
     foto_Perfil?: StringNullableFilter<"T_Perfil"> | string | null
     descricao_Perfil?: StringNullableFilter<"T_Perfil"> | string | null
+    tipo_Perfil?: EnumPerfilTipoFilter<"T_Perfil"> | $Enums.PerfilTipo
+    semestre_Perfil?: IntNullableFilter<"T_Perfil"> | number | null
     createdAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
     updatedAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
+    id_Curso_Perfil?: IntNullableFilter<"T_Perfil"> | number | null
     id_Account_Perfil?: IntFilter<"T_Perfil"> | number
+    curso?: XOR<T_CursoNullableScalarRelationFilter, T_CursoWhereInput> | null
     account?: XOR<T_AccountScalarRelationFilter, T_AccountWhereInput>
     id_Post_Perfil?: T_PostListRelationFilter
   }, "id_Perfil" | "email_Perfil">
@@ -4789,8 +6122,11 @@ export namespace Prisma {
     email_Perfil?: SortOrder
     foto_Perfil?: SortOrderInput | SortOrder
     descricao_Perfil?: SortOrderInput | SortOrder
+    tipo_Perfil?: SortOrder
+    semestre_Perfil?: SortOrderInput | SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
+    id_Curso_Perfil?: SortOrderInput | SortOrder
     id_Account_Perfil?: SortOrder
     _count?: T_PerfilCountOrderByAggregateInput
     _avg?: T_PerfilAvgOrderByAggregateInput
@@ -4808,8 +6144,11 @@ export namespace Prisma {
     email_Perfil?: StringWithAggregatesFilter<"T_Perfil"> | string
     foto_Perfil?: StringNullableWithAggregatesFilter<"T_Perfil"> | string | null
     descricao_Perfil?: StringNullableWithAggregatesFilter<"T_Perfil"> | string | null
+    tipo_Perfil?: EnumPerfilTipoWithAggregatesFilter<"T_Perfil"> | $Enums.PerfilTipo
+    semestre_Perfil?: IntNullableWithAggregatesFilter<"T_Perfil"> | number | null
     createdAt_Perfil?: DateTimeWithAggregatesFilter<"T_Perfil"> | Date | string
     updatedAt_Perfil?: DateTimeWithAggregatesFilter<"T_Perfil"> | Date | string
+    id_Curso_Perfil?: IntNullableWithAggregatesFilter<"T_Perfil"> | number | null
     id_Account_Perfil?: IntWithAggregatesFilter<"T_Perfil"> | number
   }
 
@@ -4878,6 +6217,53 @@ export namespace Prisma {
     createdAt_Post?: DateTimeWithAggregatesFilter<"T_Post"> | Date | string
     updatedAt_Post?: DateTimeWithAggregatesFilter<"T_Post"> | Date | string
     id_Perfil_Post?: IntWithAggregatesFilter<"T_Post"> | number
+  }
+
+  export type T_CursoWhereInput = {
+    AND?: T_CursoWhereInput | T_CursoWhereInput[]
+    OR?: T_CursoWhereInput[]
+    NOT?: T_CursoWhereInput | T_CursoWhereInput[]
+    id_Curso?: IntFilter<"T_Curso"> | number
+    nome_Curso?: StringFilter<"T_Curso"> | string
+    maxSemestres_Curso?: IntFilter<"T_Curso"> | number
+    perfis?: T_PerfilListRelationFilter
+  }
+
+  export type T_CursoOrderByWithRelationInput = {
+    id_Curso?: SortOrder
+    nome_Curso?: SortOrder
+    maxSemestres_Curso?: SortOrder
+    perfis?: T_PerfilOrderByRelationAggregateInput
+  }
+
+  export type T_CursoWhereUniqueInput = Prisma.AtLeast<{
+    id_Curso?: number
+    nome_Curso?: string
+    AND?: T_CursoWhereInput | T_CursoWhereInput[]
+    OR?: T_CursoWhereInput[]
+    NOT?: T_CursoWhereInput | T_CursoWhereInput[]
+    maxSemestres_Curso?: IntFilter<"T_Curso"> | number
+    perfis?: T_PerfilListRelationFilter
+  }, "id_Curso" | "nome_Curso">
+
+  export type T_CursoOrderByWithAggregationInput = {
+    id_Curso?: SortOrder
+    nome_Curso?: SortOrder
+    maxSemestres_Curso?: SortOrder
+    _count?: T_CursoCountOrderByAggregateInput
+    _avg?: T_CursoAvgOrderByAggregateInput
+    _max?: T_CursoMaxOrderByAggregateInput
+    _min?: T_CursoMinOrderByAggregateInput
+    _sum?: T_CursoSumOrderByAggregateInput
+  }
+
+  export type T_CursoScalarWhereWithAggregatesInput = {
+    AND?: T_CursoScalarWhereWithAggregatesInput | T_CursoScalarWhereWithAggregatesInput[]
+    OR?: T_CursoScalarWhereWithAggregatesInput[]
+    NOT?: T_CursoScalarWhereWithAggregatesInput | T_CursoScalarWhereWithAggregatesInput[]
+    id_Curso?: IntWithAggregatesFilter<"T_Curso"> | number
+    nome_Curso?: StringWithAggregatesFilter<"T_Curso"> | string
+    maxSemestres_Curso?: IntWithAggregatesFilter<"T_Curso"> | number
   }
 
   export type T_AccountCreateInput = {
@@ -4956,8 +6342,11 @@ export namespace Prisma {
     email_Perfil: string
     foto_Perfil?: string | null
     descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
+    curso?: T_CursoCreateNestedOneWithoutPerfisInput
     account: T_AccountCreateNestedOneWithoutId_Perfil_AccountInput
     id_Post_Perfil?: T_PostCreateNestedManyWithoutPerfilInput
   }
@@ -4968,8 +6357,11 @@ export namespace Prisma {
     email_Perfil: string
     foto_Perfil?: string | null
     descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
+    id_Curso_Perfil?: number | null
     id_Account_Perfil: number
     id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutPerfilInput
   }
@@ -4979,8 +6371,11 @@ export namespace Prisma {
     email_Perfil?: StringFieldUpdateOperationsInput | string
     foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    curso?: T_CursoUpdateOneWithoutPerfisNestedInput
     account?: T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput
     id_Post_Perfil?: T_PostUpdateManyWithoutPerfilNestedInput
   }
@@ -4991,8 +6386,11 @@ export namespace Prisma {
     email_Perfil?: StringFieldUpdateOperationsInput | string
     foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_Curso_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     id_Account_Perfil?: IntFieldUpdateOperationsInput | number
     id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutPerfilNestedInput
   }
@@ -5003,8 +6401,11 @@ export namespace Prisma {
     email_Perfil: string
     foto_Perfil?: string | null
     descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
+    id_Curso_Perfil?: number | null
     id_Account_Perfil: number
   }
 
@@ -5013,6 +6414,8 @@ export namespace Prisma {
     email_Perfil?: StringFieldUpdateOperationsInput | string
     foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5023,8 +6426,11 @@ export namespace Prisma {
     email_Perfil?: StringFieldUpdateOperationsInput | string
     foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_Curso_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     id_Account_Perfil?: IntFieldUpdateOperationsInput | number
   }
 
@@ -5092,6 +6498,49 @@ export namespace Prisma {
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     id_Perfil_Post?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type T_CursoCreateInput = {
+    nome_Curso: string
+    maxSemestres_Curso: number
+    perfis?: T_PerfilCreateNestedManyWithoutCursoInput
+  }
+
+  export type T_CursoUncheckedCreateInput = {
+    id_Curso?: number
+    nome_Curso: string
+    maxSemestres_Curso: number
+    perfis?: T_PerfilUncheckedCreateNestedManyWithoutCursoInput
+  }
+
+  export type T_CursoUpdateInput = {
+    nome_Curso?: StringFieldUpdateOperationsInput | string
+    maxSemestres_Curso?: IntFieldUpdateOperationsInput | number
+    perfis?: T_PerfilUpdateManyWithoutCursoNestedInput
+  }
+
+  export type T_CursoUncheckedUpdateInput = {
+    id_Curso?: IntFieldUpdateOperationsInput | number
+    nome_Curso?: StringFieldUpdateOperationsInput | string
+    maxSemestres_Curso?: IntFieldUpdateOperationsInput | number
+    perfis?: T_PerfilUncheckedUpdateManyWithoutCursoNestedInput
+  }
+
+  export type T_CursoCreateManyInput = {
+    id_Curso?: number
+    nome_Curso: string
+    maxSemestres_Curso: number
+  }
+
+  export type T_CursoUpdateManyMutationInput = {
+    nome_Curso?: StringFieldUpdateOperationsInput | string
+    maxSemestres_Curso?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type T_CursoUncheckedUpdateManyInput = {
+    id_Curso?: IntFieldUpdateOperationsInput | number
+    nome_Curso?: StringFieldUpdateOperationsInput | string
+    maxSemestres_Curso?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -5242,6 +6691,29 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type EnumPerfilTipoFilter<$PrismaModel = never> = {
+    equals?: $Enums.PerfilTipo | EnumPerfilTipoFieldRefInput<$PrismaModel>
+    in?: $Enums.PerfilTipo[] | ListEnumPerfilTipoFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PerfilTipo[] | ListEnumPerfilTipoFieldRefInput<$PrismaModel>
+    not?: NestedEnumPerfilTipoFilter<$PrismaModel> | $Enums.PerfilTipo
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type T_CursoNullableScalarRelationFilter = {
+    is?: T_CursoWhereInput | null
+    isNot?: T_CursoWhereInput | null
+  }
+
   export type T_AccountScalarRelationFilter = {
     is?: T_AccountWhereInput
     isNot?: T_AccountWhereInput
@@ -5268,13 +6740,18 @@ export namespace Prisma {
     email_Perfil?: SortOrder
     foto_Perfil?: SortOrder
     descricao_Perfil?: SortOrder
+    tipo_Perfil?: SortOrder
+    semestre_Perfil?: SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
+    id_Curso_Perfil?: SortOrder
     id_Account_Perfil?: SortOrder
   }
 
   export type T_PerfilAvgOrderByAggregateInput = {
     id_Perfil?: SortOrder
+    semestre_Perfil?: SortOrder
+    id_Curso_Perfil?: SortOrder
     id_Account_Perfil?: SortOrder
   }
 
@@ -5284,8 +6761,11 @@ export namespace Prisma {
     email_Perfil?: SortOrder
     foto_Perfil?: SortOrder
     descricao_Perfil?: SortOrder
+    tipo_Perfil?: SortOrder
+    semestre_Perfil?: SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
+    id_Curso_Perfil?: SortOrder
     id_Account_Perfil?: SortOrder
   }
 
@@ -5295,13 +6775,18 @@ export namespace Prisma {
     email_Perfil?: SortOrder
     foto_Perfil?: SortOrder
     descricao_Perfil?: SortOrder
+    tipo_Perfil?: SortOrder
+    semestre_Perfil?: SortOrder
     createdAt_Perfil?: SortOrder
     updatedAt_Perfil?: SortOrder
+    id_Curso_Perfil?: SortOrder
     id_Account_Perfil?: SortOrder
   }
 
   export type T_PerfilSumOrderByAggregateInput = {
     id_Perfil?: SortOrder
+    semestre_Perfil?: SortOrder
+    id_Curso_Perfil?: SortOrder
     id_Account_Perfil?: SortOrder
   }
 
@@ -5321,6 +6806,32 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type EnumPerfilTipoWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PerfilTipo | EnumPerfilTipoFieldRefInput<$PrismaModel>
+    in?: $Enums.PerfilTipo[] | ListEnumPerfilTipoFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PerfilTipo[] | ListEnumPerfilTipoFieldRefInput<$PrismaModel>
+    not?: NestedEnumPerfilTipoWithAggregatesFilter<$PrismaModel> | $Enums.PerfilTipo
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPerfilTipoFilter<$PrismaModel>
+    _max?: NestedEnumPerfilTipoFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type T_PerfilScalarRelationFilter = {
@@ -5366,6 +6877,34 @@ export namespace Prisma {
   export type T_PostSumOrderByAggregateInput = {
     id_Post?: SortOrder
     id_Perfil_Post?: SortOrder
+  }
+
+  export type T_CursoCountOrderByAggregateInput = {
+    id_Curso?: SortOrder
+    nome_Curso?: SortOrder
+    maxSemestres_Curso?: SortOrder
+  }
+
+  export type T_CursoAvgOrderByAggregateInput = {
+    id_Curso?: SortOrder
+    maxSemestres_Curso?: SortOrder
+  }
+
+  export type T_CursoMaxOrderByAggregateInput = {
+    id_Curso?: SortOrder
+    nome_Curso?: SortOrder
+    maxSemestres_Curso?: SortOrder
+  }
+
+  export type T_CursoMinOrderByAggregateInput = {
+    id_Curso?: SortOrder
+    nome_Curso?: SortOrder
+    maxSemestres_Curso?: SortOrder
+  }
+
+  export type T_CursoSumOrderByAggregateInput = {
+    id_Curso?: SortOrder
+    maxSemestres_Curso?: SortOrder
   }
 
   export type T_PerfilCreateNestedManyWithoutAccountInput = {
@@ -5426,6 +6965,12 @@ export namespace Prisma {
     deleteMany?: T_PerfilScalarWhereInput | T_PerfilScalarWhereInput[]
   }
 
+  export type T_CursoCreateNestedOneWithoutPerfisInput = {
+    create?: XOR<T_CursoCreateWithoutPerfisInput, T_CursoUncheckedCreateWithoutPerfisInput>
+    connectOrCreate?: T_CursoCreateOrConnectWithoutPerfisInput
+    connect?: T_CursoWhereUniqueInput
+  }
+
   export type T_AccountCreateNestedOneWithoutId_Perfil_AccountInput = {
     create?: XOR<T_AccountCreateWithoutId_Perfil_AccountInput, T_AccountUncheckedCreateWithoutId_Perfil_AccountInput>
     connectOrCreate?: T_AccountCreateOrConnectWithoutId_Perfil_AccountInput
@@ -5448,6 +6993,28 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type EnumPerfilTipoFieldUpdateOperationsInput = {
+    set?: $Enums.PerfilTipo
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type T_CursoUpdateOneWithoutPerfisNestedInput = {
+    create?: XOR<T_CursoCreateWithoutPerfisInput, T_CursoUncheckedCreateWithoutPerfisInput>
+    connectOrCreate?: T_CursoCreateOrConnectWithoutPerfisInput
+    upsert?: T_CursoUpsertWithoutPerfisInput
+    disconnect?: T_CursoWhereInput | boolean
+    delete?: T_CursoWhereInput | boolean
+    connect?: T_CursoWhereUniqueInput
+    update?: XOR<XOR<T_CursoUpdateToOneWithWhereWithoutPerfisInput, T_CursoUpdateWithoutPerfisInput>, T_CursoUncheckedUpdateWithoutPerfisInput>
   }
 
   export type T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput = {
@@ -5498,6 +7065,48 @@ export namespace Prisma {
     upsert?: T_PerfilUpsertWithoutId_Post_PerfilInput
     connect?: T_PerfilWhereUniqueInput
     update?: XOR<XOR<T_PerfilUpdateToOneWithWhereWithoutId_Post_PerfilInput, T_PerfilUpdateWithoutId_Post_PerfilInput>, T_PerfilUncheckedUpdateWithoutId_Post_PerfilInput>
+  }
+
+  export type T_PerfilCreateNestedManyWithoutCursoInput = {
+    create?: XOR<T_PerfilCreateWithoutCursoInput, T_PerfilUncheckedCreateWithoutCursoInput> | T_PerfilCreateWithoutCursoInput[] | T_PerfilUncheckedCreateWithoutCursoInput[]
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutCursoInput | T_PerfilCreateOrConnectWithoutCursoInput[]
+    createMany?: T_PerfilCreateManyCursoInputEnvelope
+    connect?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
+  }
+
+  export type T_PerfilUncheckedCreateNestedManyWithoutCursoInput = {
+    create?: XOR<T_PerfilCreateWithoutCursoInput, T_PerfilUncheckedCreateWithoutCursoInput> | T_PerfilCreateWithoutCursoInput[] | T_PerfilUncheckedCreateWithoutCursoInput[]
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutCursoInput | T_PerfilCreateOrConnectWithoutCursoInput[]
+    createMany?: T_PerfilCreateManyCursoInputEnvelope
+    connect?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
+  }
+
+  export type T_PerfilUpdateManyWithoutCursoNestedInput = {
+    create?: XOR<T_PerfilCreateWithoutCursoInput, T_PerfilUncheckedCreateWithoutCursoInput> | T_PerfilCreateWithoutCursoInput[] | T_PerfilUncheckedCreateWithoutCursoInput[]
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutCursoInput | T_PerfilCreateOrConnectWithoutCursoInput[]
+    upsert?: T_PerfilUpsertWithWhereUniqueWithoutCursoInput | T_PerfilUpsertWithWhereUniqueWithoutCursoInput[]
+    createMany?: T_PerfilCreateManyCursoInputEnvelope
+    set?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
+    disconnect?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
+    delete?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
+    connect?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
+    update?: T_PerfilUpdateWithWhereUniqueWithoutCursoInput | T_PerfilUpdateWithWhereUniqueWithoutCursoInput[]
+    updateMany?: T_PerfilUpdateManyWithWhereWithoutCursoInput | T_PerfilUpdateManyWithWhereWithoutCursoInput[]
+    deleteMany?: T_PerfilScalarWhereInput | T_PerfilScalarWhereInput[]
+  }
+
+  export type T_PerfilUncheckedUpdateManyWithoutCursoNestedInput = {
+    create?: XOR<T_PerfilCreateWithoutCursoInput, T_PerfilUncheckedCreateWithoutCursoInput> | T_PerfilCreateWithoutCursoInput[] | T_PerfilUncheckedCreateWithoutCursoInput[]
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutCursoInput | T_PerfilCreateOrConnectWithoutCursoInput[]
+    upsert?: T_PerfilUpsertWithWhereUniqueWithoutCursoInput | T_PerfilUpsertWithWhereUniqueWithoutCursoInput[]
+    createMany?: T_PerfilCreateManyCursoInputEnvelope
+    set?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
+    disconnect?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
+    delete?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
+    connect?: T_PerfilWhereUniqueInput | T_PerfilWhereUniqueInput[]
+    update?: T_PerfilUpdateWithWhereUniqueWithoutCursoInput | T_PerfilUpdateWithWhereUniqueWithoutCursoInput[]
+    updateMany?: T_PerfilUpdateManyWithWhereWithoutCursoInput | T_PerfilUpdateManyWithWhereWithoutCursoInput[]
+    deleteMany?: T_PerfilScalarWhereInput | T_PerfilScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -5608,6 +7217,24 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedEnumPerfilTipoFilter<$PrismaModel = never> = {
+    equals?: $Enums.PerfilTipo | EnumPerfilTipoFieldRefInput<$PrismaModel>
+    in?: $Enums.PerfilTipo[] | ListEnumPerfilTipoFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PerfilTipo[] | ListEnumPerfilTipoFieldRefInput<$PrismaModel>
+    not?: NestedEnumPerfilTipoFilter<$PrismaModel> | $Enums.PerfilTipo
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -5625,7 +7252,17 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
+  export type NestedEnumPerfilTipoWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PerfilTipo | EnumPerfilTipoFieldRefInput<$PrismaModel>
+    in?: $Enums.PerfilTipo[] | ListEnumPerfilTipoFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PerfilTipo[] | ListEnumPerfilTipoFieldRefInput<$PrismaModel>
+    not?: NestedEnumPerfilTipoWithAggregatesFilter<$PrismaModel> | $Enums.PerfilTipo
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPerfilTipoFilter<$PrismaModel>
+    _max?: NestedEnumPerfilTipoFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -5633,7 +7270,23 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type T_PerfilCreateWithoutAccountInput = {
@@ -5641,8 +7294,11 @@ export namespace Prisma {
     email_Perfil: string
     foto_Perfil?: string | null
     descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
+    curso?: T_CursoCreateNestedOneWithoutPerfisInput
     id_Post_Perfil?: T_PostCreateNestedManyWithoutPerfilInput
   }
 
@@ -5652,8 +7308,11 @@ export namespace Prisma {
     email_Perfil: string
     foto_Perfil?: string | null
     descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
+    id_Curso_Perfil?: number | null
     id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutPerfilInput
   }
 
@@ -5692,9 +7351,28 @@ export namespace Prisma {
     email_Perfil?: StringFilter<"T_Perfil"> | string
     foto_Perfil?: StringNullableFilter<"T_Perfil"> | string | null
     descricao_Perfil?: StringNullableFilter<"T_Perfil"> | string | null
+    tipo_Perfil?: EnumPerfilTipoFilter<"T_Perfil"> | $Enums.PerfilTipo
+    semestre_Perfil?: IntNullableFilter<"T_Perfil"> | number | null
     createdAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
     updatedAt_Perfil?: DateTimeFilter<"T_Perfil"> | Date | string
+    id_Curso_Perfil?: IntNullableFilter<"T_Perfil"> | number | null
     id_Account_Perfil?: IntFilter<"T_Perfil"> | number
+  }
+
+  export type T_CursoCreateWithoutPerfisInput = {
+    nome_Curso: string
+    maxSemestres_Curso: number
+  }
+
+  export type T_CursoUncheckedCreateWithoutPerfisInput = {
+    id_Curso?: number
+    nome_Curso: string
+    maxSemestres_Curso: number
+  }
+
+  export type T_CursoCreateOrConnectWithoutPerfisInput = {
+    where: T_CursoWhereUniqueInput
+    create: XOR<T_CursoCreateWithoutPerfisInput, T_CursoUncheckedCreateWithoutPerfisInput>
   }
 
   export type T_AccountCreateWithoutId_Perfil_AccountInput = {
@@ -5746,6 +7424,28 @@ export namespace Prisma {
   export type T_PostCreateManyPerfilInputEnvelope = {
     data: T_PostCreateManyPerfilInput | T_PostCreateManyPerfilInput[]
     skipDuplicates?: boolean
+  }
+
+  export type T_CursoUpsertWithoutPerfisInput = {
+    update: XOR<T_CursoUpdateWithoutPerfisInput, T_CursoUncheckedUpdateWithoutPerfisInput>
+    create: XOR<T_CursoCreateWithoutPerfisInput, T_CursoUncheckedCreateWithoutPerfisInput>
+    where?: T_CursoWhereInput
+  }
+
+  export type T_CursoUpdateToOneWithWhereWithoutPerfisInput = {
+    where?: T_CursoWhereInput
+    data: XOR<T_CursoUpdateWithoutPerfisInput, T_CursoUncheckedUpdateWithoutPerfisInput>
+  }
+
+  export type T_CursoUpdateWithoutPerfisInput = {
+    nome_Curso?: StringFieldUpdateOperationsInput | string
+    maxSemestres_Curso?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type T_CursoUncheckedUpdateWithoutPerfisInput = {
+    id_Curso?: IntFieldUpdateOperationsInput | number
+    nome_Curso?: StringFieldUpdateOperationsInput | string
+    maxSemestres_Curso?: IntFieldUpdateOperationsInput | number
   }
 
   export type T_AccountUpsertWithoutId_Perfil_AccountInput = {
@@ -5812,8 +7512,11 @@ export namespace Prisma {
     email_Perfil: string
     foto_Perfil?: string | null
     descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
+    curso?: T_CursoCreateNestedOneWithoutPerfisInput
     account: T_AccountCreateNestedOneWithoutId_Perfil_AccountInput
   }
 
@@ -5823,8 +7526,11 @@ export namespace Prisma {
     email_Perfil: string
     foto_Perfil?: string | null
     descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
+    id_Curso_Perfil?: number | null
     id_Account_Perfil: number
   }
 
@@ -5849,8 +7555,11 @@ export namespace Prisma {
     email_Perfil?: StringFieldUpdateOperationsInput | string
     foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    curso?: T_CursoUpdateOneWithoutPerfisNestedInput
     account?: T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput
   }
 
@@ -5860,9 +7569,65 @@ export namespace Prisma {
     email_Perfil?: StringFieldUpdateOperationsInput | string
     foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_Curso_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     id_Account_Perfil?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type T_PerfilCreateWithoutCursoInput = {
+    nome_Perfil: string
+    email_Perfil: string
+    foto_Perfil?: string | null
+    descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
+    createdAt_Perfil?: Date | string
+    updatedAt_Perfil?: Date | string
+    account: T_AccountCreateNestedOneWithoutId_Perfil_AccountInput
+    id_Post_Perfil?: T_PostCreateNestedManyWithoutPerfilInput
+  }
+
+  export type T_PerfilUncheckedCreateWithoutCursoInput = {
+    id_Perfil?: number
+    nome_Perfil: string
+    email_Perfil: string
+    foto_Perfil?: string | null
+    descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
+    createdAt_Perfil?: Date | string
+    updatedAt_Perfil?: Date | string
+    id_Account_Perfil: number
+    id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutPerfilInput
+  }
+
+  export type T_PerfilCreateOrConnectWithoutCursoInput = {
+    where: T_PerfilWhereUniqueInput
+    create: XOR<T_PerfilCreateWithoutCursoInput, T_PerfilUncheckedCreateWithoutCursoInput>
+  }
+
+  export type T_PerfilCreateManyCursoInputEnvelope = {
+    data: T_PerfilCreateManyCursoInput | T_PerfilCreateManyCursoInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type T_PerfilUpsertWithWhereUniqueWithoutCursoInput = {
+    where: T_PerfilWhereUniqueInput
+    update: XOR<T_PerfilUpdateWithoutCursoInput, T_PerfilUncheckedUpdateWithoutCursoInput>
+    create: XOR<T_PerfilCreateWithoutCursoInput, T_PerfilUncheckedCreateWithoutCursoInput>
+  }
+
+  export type T_PerfilUpdateWithWhereUniqueWithoutCursoInput = {
+    where: T_PerfilWhereUniqueInput
+    data: XOR<T_PerfilUpdateWithoutCursoInput, T_PerfilUncheckedUpdateWithoutCursoInput>
+  }
+
+  export type T_PerfilUpdateManyWithWhereWithoutCursoInput = {
+    where: T_PerfilScalarWhereInput
+    data: XOR<T_PerfilUpdateManyMutationInput, T_PerfilUncheckedUpdateManyWithoutCursoInput>
   }
 
   export type T_PerfilCreateManyAccountInput = {
@@ -5871,8 +7636,11 @@ export namespace Prisma {
     email_Perfil: string
     foto_Perfil?: string | null
     descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
+    id_Curso_Perfil?: number | null
   }
 
   export type T_PerfilUpdateWithoutAccountInput = {
@@ -5880,8 +7648,11 @@ export namespace Prisma {
     email_Perfil?: StringFieldUpdateOperationsInput | string
     foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    curso?: T_CursoUpdateOneWithoutPerfisNestedInput
     id_Post_Perfil?: T_PostUpdateManyWithoutPerfilNestedInput
   }
 
@@ -5891,8 +7662,11 @@ export namespace Prisma {
     email_Perfil?: StringFieldUpdateOperationsInput | string
     foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_Curso_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutPerfilNestedInput
   }
 
@@ -5902,8 +7676,11 @@ export namespace Prisma {
     email_Perfil?: StringFieldUpdateOperationsInput | string
     foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
     descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_Curso_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type T_PostCreateManyPerfilInput = {
@@ -5939,6 +7716,59 @@ export namespace Prisma {
     image_Post?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type T_PerfilCreateManyCursoInput = {
+    id_Perfil?: number
+    nome_Perfil: string
+    email_Perfil: string
+    foto_Perfil?: string | null
+    descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
+    createdAt_Perfil?: Date | string
+    updatedAt_Perfil?: Date | string
+    id_Account_Perfil: number
+  }
+
+  export type T_PerfilUpdateWithoutCursoInput = {
+    nome_Perfil?: StringFieldUpdateOperationsInput | string
+    email_Perfil?: StringFieldUpdateOperationsInput | string
+    foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    account?: T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput
+    id_Post_Perfil?: T_PostUpdateManyWithoutPerfilNestedInput
+  }
+
+  export type T_PerfilUncheckedUpdateWithoutCursoInput = {
+    id_Perfil?: IntFieldUpdateOperationsInput | number
+    nome_Perfil?: StringFieldUpdateOperationsInput | string
+    email_Perfil?: StringFieldUpdateOperationsInput | string
+    foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_Account_Perfil?: IntFieldUpdateOperationsInput | number
+    id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutPerfilNestedInput
+  }
+
+  export type T_PerfilUncheckedUpdateManyWithoutCursoInput = {
+    id_Perfil?: IntFieldUpdateOperationsInput | number
+    nome_Perfil?: StringFieldUpdateOperationsInput | string
+    email_Perfil?: StringFieldUpdateOperationsInput | string
+    foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_Account_Perfil?: IntFieldUpdateOperationsInput | number
   }
 
 
