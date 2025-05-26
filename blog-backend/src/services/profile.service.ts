@@ -7,6 +7,9 @@ interface CreateProfileDataInterface {
   email_Perfil: string;
   descricao_Perfil?: string;
   foto_Perfil?: string;
+  tipo_Perfil: 'PESSOAL' | 'COMUNIDADE';
+  id_Curso_Perfil?: number;
+  semestre_Perfil?: number;
 }
 interface UpdateProfileDataInterface {
   id_Perfil: number;
@@ -14,6 +17,8 @@ interface UpdateProfileDataInterface {
   email_Perfil?: string;
   descricao_Perfil?: string;
   foto_Perfil?: string;
+  id_Curso_Perfil?: number;
+  semestre_Perfil?: number;
 }
 
 interface DeleteProfileDataInterface {
@@ -22,10 +27,27 @@ interface DeleteProfileDataInterface {
 
 
 
-export async function createProfileService(
-  data: CreateProfileDataInterface,
-  accountId: number,
-) {
+export async function createProfileService(data: CreateProfileDataInterface, accountId: number) {
+  if (data.tipo_Perfil === 'PESSOAL') {
+    if (!data.id_Curso_Perfil) {
+      throw new Error('curso Id é obrigatório para perfil pessoal.');
+    }
+    if (!data.semestre_Perfil) {
+      throw new Error('semestre é obrigatório para perfil pessoal.');
+    }
+
+    // Busca o curso para validar o semestre
+    const curso = await db.t_Curso.findUnique({
+      where: { id_Curso: data.id_Curso_Perfil }
+    });
+    if (!curso) {
+      throw new Error('Curso não encontrado.');
+    }
+    if (data.semestre_Perfil < 1 || data.semestre_Perfil > curso.maxSemestres_Curso) {
+      throw new Error(`O semestre deve ser entre 1 e ${curso.maxSemestres_Curso}.`);
+    }
+  }
+
   const createdProfile = await db.t_Perfil.create({
     data: {
       nome_Perfil: data.nome_Perfil,
@@ -33,6 +55,10 @@ export async function createProfileService(
       descricao_Perfil: data.descricao_Perfil,
       foto_Perfil: data.foto_Perfil,
       id_Account_Perfil: accountId,
+      tipo_Perfil: data.tipo_Perfil,
+      id_Curso_Perfil: data.tipo_Perfil === 'PESSOAL' ? data.id_Curso_Perfil : undefined,
+      semestre_Perfil: data.tipo_Perfil === 'PESSOAL' ? data.semestre_Perfil : undefined,
+      createdAt_Perfil: new Date(),
     },
   });
   return createdProfile;
@@ -56,6 +82,8 @@ export async function updateProfileService(
       email_Perfil: data.email_Perfil,
       descricao_Perfil: data.descricao_Perfil,
       foto_Perfil: data.foto_Perfil,
+      id_Curso_Perfil: data.id_Curso_Perfil,
+      semestre_Perfil: data.semestre_Perfil,
       updatedAt_Perfil: new Date(),
     },
   });
@@ -83,7 +111,17 @@ export async function getProfileService(id_Account_Perfil: number) {
       nome_Perfil: true,
       email_Perfil: true,
       descricao_Perfil: true,
-      foto_Perfil: true
+      foto_Perfil: true,
+      tipo_Perfil: true,
+      semestre_Perfil: true,
+      curso: {
+        select: {
+          id_Curso: true,
+          nome_Curso: true,
+
+
+        },
+      },
     },
   });
 

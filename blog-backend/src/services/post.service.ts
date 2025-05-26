@@ -56,6 +56,13 @@ export async function getPostService({ id_Post }: ParamsPostDataInterface, perfi
       title_Post: true,
       content_Post: true,
       image_Post: true,
+      perfil: {
+        select: {
+          nome_Perfil: true,
+          foto_Perfil: true,
+          semestre_Perfil: true,
+        },
+      },
     },
   });
 
