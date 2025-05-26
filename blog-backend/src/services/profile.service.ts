@@ -1,3 +1,4 @@
+import { uploadToMinio } from '../utils/uploadToMinio';
 import { PrismaClient } from '../generated/prisma';
 
 const db = new PrismaClient();
@@ -21,7 +22,10 @@ interface DeleteProfileDataInterface {
 
 
 
-export async function createProfileService(data: CreateProfileDataInterface, accountId: number) {
+export async function createProfileService(
+  data: CreateProfileDataInterface,
+  accountId: number,
+) {
   const createdProfile = await db.t_Perfil.create({
     data: {
       nome_Perfil: data.nome_Perfil,
@@ -34,13 +38,17 @@ export async function createProfileService(data: CreateProfileDataInterface, acc
   return createdProfile;
 }
 
-export async function updateProfileService(data: UpdateProfileDataInterface) {
+export async function updateProfileService(
+  data: UpdateProfileDataInterface,
+) {
   const getProfile = await db.t_Perfil.findFirst({
     where: { id_Perfil: data.id_Perfil },
   });
+
   if (!getProfile) {
     throw new Error('Perfil não encontrado.');
   }
+
   const updatedProfile = await db.t_Perfil.update({
     where: { id_Perfil: data.id_Perfil },
     data: {
@@ -51,9 +59,11 @@ export async function updateProfileService(data: UpdateProfileDataInterface) {
       updatedAt_Perfil: new Date(),
     },
   });
+
   if (!updatedProfile) {
     throw new Error('Erro ao atualizar o perfil.');
   }
+
   return updatedProfile;
 }
 
