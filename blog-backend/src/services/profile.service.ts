@@ -21,7 +21,7 @@ interface UpdateProfileDataInterface {
   semestre_Perfil?: number;
 }
 
-interface DeleteProfileDataInterface {
+interface IdProfileDataInterface {
   id_Perfil: number;
 }
 
@@ -95,7 +95,7 @@ export async function updateProfileService(
   return updatedProfile;
 }
 
-export async function deleteProfileService({ id_Perfil }: DeleteProfileDataInterface) {
+export async function deleteProfileService({ id_Perfil }: IdProfileDataInterface) {
   const deletedProfile = await db.t_Perfil.delete({
     where: { id_Perfil: id_Perfil },
   });
@@ -103,9 +103,9 @@ export async function deleteProfileService({ id_Perfil }: DeleteProfileDataInter
   return deletedProfile;
 }
 
-export async function getProfileService(id_Account_Perfil: number) {
+export async function getProfileService({ id_Perfil }: IdProfileDataInterface) {
   const getProfile = await db.t_Perfil.findFirst({
-    where: { id_Account_Perfil },
+    where: { id_Perfil: id_Perfil },
     select: {
       id_Perfil: true,
       nome_Perfil: true,

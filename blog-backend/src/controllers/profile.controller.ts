@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { createProfileService, updateProfileService, deleteProfileService, getProfileService, getAllProfilesService } from '../services/profile.service';
-import { createProfileSchema, deleteProfileSchema, updateProfileSchema } from '../schemas/profile.schema';
+import { createProfileSchema, idProfileSchema, updateProfileSchema } from '../schemas/profile.schema';
 import { uploadToMinio } from '../utils/uploadToMinio';
 import { parseMultipart } from '../utils/parseMultipart';
 
@@ -76,9 +76,8 @@ export async function updateProfileController(request: AuthenticatedRequest, rep
 
 export async function getProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
-    const id_Account_Perfil = request.user.id_Account;
-
-    const profile = await getProfileService(id_Account_Perfil);
+    const { id_Perfil } = idProfileSchema.parse({ id_Perfil: request.headers['id_perfil'] });
+    const profile = await getProfileService({ id_Perfil });
 
     return reply.status(200).send(profile);
   } catch (error) {
@@ -92,7 +91,7 @@ export async function getProfileController(request: AuthenticatedRequest, reply:
 
 export async function deleteProfileController(request: FastifyRequest, reply: FastifyReply) {
   try {
-    const data = deleteProfileSchema.parse(request.body);
+    const data = idProfileSchema.parse(request.headers);
 
     const profile = await deleteProfileService(data);
 
