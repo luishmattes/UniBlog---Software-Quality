@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify';
-import { createProfileController, deleteProfileController, getAllProfilesController, getProfileController, updateProfileController } from '../controllers/profile.controller';
+import { createProfileController, deleteProfileController, getAllProfilesController, getProfileController, updateProfileController, getProfilesByAccountIdController } from '../controllers/profile.controller';
 import { verifyJWT } from '../middlewares/auth.middleware';
 
 export async function userRoutes(app: FastifyInstance) {
@@ -9,5 +9,6 @@ export async function userRoutes(app: FastifyInstance) {
   app.get('/get', getProfileController);
   app.put('/update', updateProfileController);
   app.delete('/delete/:id', deleteProfileController);
+  app.get('/take/profiles', getProfilesByAccountIdController);
   app.get('/', getAllProfilesController);
 }

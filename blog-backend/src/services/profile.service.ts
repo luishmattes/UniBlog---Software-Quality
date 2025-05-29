@@ -147,3 +147,20 @@ export async function getAllProfilesService() {
 
   return profiles;
 }
+export async function getProfilesByAccountIdService(accountId: number) {
+  const profiles = await db.t_Perfil.findMany({
+    where: { id_Account_Perfil: accountId },
+    select: {
+      id_Perfil: true,
+      nome_Perfil: true,
+      foto_Perfil: true,
+      tipo_Perfil: true,
+    },
+  });
+
+  if (!profiles || profiles.length === 0) {
+    throw new Error('Perfil não encontrado para esta conta.');
+  }
+
+  return profiles;
+}

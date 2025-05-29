@@ -27,8 +27,8 @@ export const updateProfileSchema = z.object({
   email_Perfil: z.string().email('Email inválido').max(100, 'O email pode ter no máximo 100 caracteres').optional(),
   foto_Perfil: z.string().optional(),
   descricao_Perfil: z.string().max(255, 'A descrição pode ter no máximo 255 caracteres').optional(),
-  semestre_Perfil: z.preprocess(val => Number(val), z.number().int().min(1).max(20).optional()),
-  id_Curso_Perfil: z.preprocess(val => Number(val), z.number().int().positive().optional()),
+  semestre_Perfil: z.coerce.number().int().min(1).max(20).optional(),
+  id_Curso_Perfil: z.coerce.number().int().positive().optional(),
 });
 
 export const idProfileSchema = z.object({
