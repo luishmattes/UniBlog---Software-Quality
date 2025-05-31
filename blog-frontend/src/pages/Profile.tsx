@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useApi } from '../hooks/useApi';
+import { useNavigate } from 'react-router-dom';
 
 interface ProfileData {
     id_Perfil: number;
@@ -19,6 +20,7 @@ export const Profile: React.FC = () => {
     const [profile, setProfile] = useState<ProfileData | null>(null);
     const [error, setError] = useState<string>('');
     const { fetchWithAuth } = useApi();
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchProfile();
@@ -44,6 +46,12 @@ export const Profile: React.FC = () => {
 
     return (
         <div className="bg-gray-800 min-h-screen w-[40rem] flex flex-col items-center justify-center">
+            <button
+                className="self-start mb-4 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-colors"
+                onClick={() => navigate('/select-profile')}
+            >
+                Voltar para escolha de perfil
+            </button>
             <h1 className="text-2xl font-bold mb-6 text-white">Perfil</h1>
             <div className="bg-white p-6 rounded-lg shadow-lg w-full">
                 <div className="space-y-4">
