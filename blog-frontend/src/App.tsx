@@ -6,6 +6,7 @@ import { Login } from './pages/Login'
 import { AuthProvider } from './contexts/AuthContext'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import { useAuth } from './contexts/AuthContext'
+import { ProfileSelection } from './components/ProfileSelection'
 
 const AppContent = () => {
     const { isAuthenticated, logout } = useAuth();
@@ -40,6 +41,14 @@ const AppContent = () => {
                     }
                 />
                 <Route
+                    path="/select-profile"
+                    element={
+                        <ProtectedRoute>
+                            <ProfileSelection />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
                     path="/login"
                     element={
                         isAuthenticated ? <Navigate to="/feed" replace /> : <Login />
@@ -49,7 +58,6 @@ const AppContent = () => {
         </div>
     );
 };
-
 
 function App() {
     return (

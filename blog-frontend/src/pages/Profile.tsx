@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useApi } from '../hooks/useApi';
 
 interface ProfileData {
     id_Perfil: number;
@@ -17,34 +18,21 @@ interface ProfileData {
 export const Profile: React.FC = () => {
     const [profile, setProfile] = useState<ProfileData | null>(null);
     const [error, setError] = useState<string>('');
+    const { fetchWithAuth } = useApi();
 
     useEffect(() => {
-        const id_Perfil = localStorage.getItem('id_Perfil');
-        if (!id_Perfil) {
-            setError('ID do perfil não encontrado');
-            return;
-        }
-
-        fetch('http://localhost:3333/profile/get', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json',
-                'id_Perfil': id_Perfil
-            },
-        })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error('Erro ao buscar perfil');
-                }
-                return res.json();
-            })
-            .then(data => setProfile(data))
-            .catch(err => {
-                console.error('Erro ao buscar perfil:', err);
-                setError('Erro ao carregar o perfil');
-            });
+        fetchProfile();
     }, []);
+
+    const fetchProfile = async () => {
+        try {
+            const data = await fetchWithAuth('/profile/get');
+            setProfile(data);
+        } catch (err) {
+            console.error('Erro ao buscar perfil:', err);
+            setError('Erro ao carregar o perfil');
+        }
+    };
 
     if (error) {
         return <div className="text-red-500 text-center mt-4">{error}</div>;
@@ -56,15 +44,54 @@ export const Profile: React.FC = () => {
 
     return (
         <div className="bg-gray-800 min-h-screen w-[40rem] flex flex-col items-center justify-center">
-            <h1 className="text-2xl font-bold mb-6">Perfil</h1>
-            <div key={profile.id_Perfil}>
-                <h2>{profile.nome_Perfil}</h2>
-                <p>{profile.email_Perfil}</p>
-                <p>{profile.descricao_Perfil}</p>
-                <img src={profile.foto_Perfil} alt={profile.nome_Perfil} />
-                <p>{profile.tipo_Perfil}</p>
-                <p>{profile.semestre_Perfil}</p>
-                <p>{profile.curso.nome_Curso}</p>
+            <h1 className="text-2xl font-bold mb-6 text-white">Perfil</h1>
+            <div className="bg-white p-6 rounded-lg shadow-lg w-full">
+                <div className="space-y-4">
+                    <div>
+                        <h2 className="text-xl font-semibold">{profile.nome_Perfil}</h2>
+                        <p className="text-gray-600">{profile.email_Perfil}</p>
+                    </div>
+
+                    {profile.descricao_Perfil && (
+                        <div>
+                            <h3 className="text-lg font-medium">Descrição</h3>
+                            <p className="text-gray-700">{profile.descricao_Perfil}</p>
+                        </div>
+                    )}
+
+                    {profile.foto_Perfil && (
+                        <div className="flex justify-center">
+                            <img
+                                src={profile.foto_Perfil}
+                                alt={profile.nome_Perfil}
+                                className="w-32 h-32 rounded-full object-cover"
+                            />
+                        </div>
+                    )}
+
+                    <div>
+                        <h3 className="text-lg font-medium">Tipo de Perfil</h3>
+                        <p className="text-gray-700">{profile.tipo_Perfil}</p>
+                    </div>
+
+                    {profile.tipo_Perfil === 'PESSOAL' && (
+                        <>
+                            {profile.semestre_Perfil && (
+                                <div>
+                                    <h3 className="text-lg font-medium">Semestre</h3>
+                                    <p className="text-gray-700">{profile.semestre_Perfil}º semestre</p>
+                                </div>
+                            )}
+
+                            {profile.curso && (
+                                <div>
+                                    <h3 className="text-lg font-medium">Curso</h3>
+                                    <p className="text-gray-700">{profile.curso.nome_Curso}</p>
+                                </div>
+                            )}
+                        </>
+                    )}
+                </div>
             </div>
         </div>
     );

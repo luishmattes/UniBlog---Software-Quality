@@ -39,7 +39,11 @@ export const LoginAccount: React.FC = () => {
 
             if (data.token) {
                 login(data.token, data.id_Perfil || '');
-                navigate('/feed');
+                if (isCreatingAccount || !data.id_Perfil) {
+                    navigate('/select-profile');
+                } else {
+                    navigate('/feed');
+                }
             }
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Erro ao processar requisição');
