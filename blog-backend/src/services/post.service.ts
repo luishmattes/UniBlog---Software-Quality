@@ -11,7 +11,7 @@ export interface ParamsPostDataInterface {
   id_Post: number;
 }
 export interface PerfilHeaderDataInterface {
-  'perfil-id': number;
+  'id_Perfil': number;
 }
 
 export async function createPostService(data: CreatePostDataInterface, id_Perfil_Post: number) {
@@ -31,7 +31,7 @@ export async function createPostService(data: CreatePostDataInterface, id_Perfil
 }
 
 
-export async function deletePostService({ id_Post }: ParamsPostDataInterface, id_Perfil_Post: PerfilHeaderDataInterface['perfil-id']) {
+export async function deletePostService({ id_Post }: ParamsPostDataInterface, id_Perfil_Post: PerfilHeaderDataInterface['id_Perfil']) {
   const post = await db.t_Post.findFirst({
     where: { id_Post: id_Post, perfil: { id_Perfil: id_Perfil_Post } },
   });
@@ -47,10 +47,10 @@ export async function deletePostService({ id_Post }: ParamsPostDataInterface, id
 }
 
 
-export async function getPostService({ id_Post }: ParamsPostDataInterface, perfilId: PerfilHeaderDataInterface['perfil-id']) {
+export async function getPostByProfileService({ id_Perfil }: PerfilHeaderDataInterface) {
 
-  const getPost = await db.t_Post.findFirst({
-    where: { id_Post, perfil: { id_Perfil: perfilId } },
+  const getPost = await db.t_Post.findMany({
+    where: { perfil: { id_Perfil: id_Perfil } },
     select: {
       id_Post: true,
       title_Post: true,
@@ -60,7 +60,6 @@ export async function getPostService({ id_Post }: ParamsPostDataInterface, perfi
         select: {
           nome_Perfil: true,
           foto_Perfil: true,
-          semestre_Perfil: true,
         },
       },
     },
