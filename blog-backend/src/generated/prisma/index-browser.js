@@ -141,6 +141,12 @@ exports.Prisma.T_PerfilScalarFieldEnum = {
   id_Account_Perfil: 'id_Account_Perfil'
 };
 
+exports.Prisma.T_CursoScalarFieldEnum = {
+  id_Curso: 'id_Curso',
+  nome_Curso: 'nome_Curso',
+  maxSemestres_Curso: 'maxSemestres_Curso'
+};
+
 exports.Prisma.T_PostScalarFieldEnum = {
   id_Post: 'id_Post',
   title_Post: 'title_Post',
@@ -151,10 +157,23 @@ exports.Prisma.T_PostScalarFieldEnum = {
   id_Perfil_Post: 'id_Perfil_Post'
 };
 
-exports.Prisma.T_CursoScalarFieldEnum = {
-  id_Curso: 'id_Curso',
-  nome_Curso: 'nome_Curso',
-  maxSemestres_Curso: 'maxSemestres_Curso'
+exports.Prisma.T_PostInteracaoCapaScalarFieldEnum = {
+  id_PIC: 'id_PIC',
+  id_Post_PIC: 'id_Post_PIC',
+  visualizacao_PIC: 'visualizacao_PIC'
+};
+
+exports.Prisma.T_PIC_CurtidasScalarFieldEnum = {
+  id_Curtida: 'id_Curtida',
+  id_Perfil_Curtida: 'id_Perfil_Curtida',
+  id_PIC_Curtida: 'id_PIC_Curtida'
+};
+
+exports.Prisma.T_PIC_ComentariosScalarFieldEnum = {
+  id_Comentario: 'id_Comentario',
+  id_Perfil_Comentario: 'id_Perfil_Comentario',
+  conteudo_Comentario: 'conteudo_Comentario',
+  id_PIC_Comentario: 'id_PIC_Comentario'
 };
 
 exports.Prisma.SortOrder = {
@@ -179,8 +198,11 @@ exports.PerfilTipo = exports.$Enums.PerfilTipo = {
 exports.Prisma.ModelName = {
   T_Account: 'T_Account',
   T_Perfil: 'T_Perfil',
+  T_Curso: 'T_Curso',
   T_Post: 'T_Post',
-  T_Curso: 'T_Curso'
+  T_PostInteracaoCapa: 'T_PostInteracaoCapa',
+  T_PIC_Curtidas: 'T_PIC_Curtidas',
+  T_PIC_Comentarios: 'T_PIC_Comentarios'
 };
 
 /**

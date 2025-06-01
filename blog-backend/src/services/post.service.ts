@@ -21,7 +21,7 @@ export async function createPostService(data: CreatePostDataInterface, id_Perfil
       title_Post: data.title_Post,
       content_Post: data.content_Post,
       image_Post: data.image_Post,
-      perfil: {
+      T_Perfil: {
         connect: { id_Perfil: id_Perfil_Post },
       },
     },
@@ -33,7 +33,7 @@ export async function createPostService(data: CreatePostDataInterface, id_Perfil
 
 export async function deletePostService({ id_Post }: ParamsPostDataInterface, id_Perfil_Post: PerfilHeaderDataInterface['id_Perfil']) {
   const post = await db.t_Post.findFirst({
-    where: { id_Post: id_Post, perfil: { id_Perfil: id_Perfil_Post } },
+    where: { id_Post: id_Post, T_Perfil: { id_Perfil: id_Perfil_Post } },
   });
   if (!post) {
     throw new Error('Post não encontrado.');
@@ -50,13 +50,13 @@ export async function deletePostService({ id_Post }: ParamsPostDataInterface, id
 export async function getPostByProfileService({ id_Perfil }: PerfilHeaderDataInterface) {
 
   const getPost = await db.t_Post.findMany({
-    where: { perfil: { id_Perfil: id_Perfil } },
+    where: { T_Perfil: { id_Perfil: id_Perfil } },
     select: {
       id_Post: true,
       title_Post: true,
       content_Post: true,
       image_Post: true,
-      perfil: {
+      T_Perfil: {
         select: {
           nome_Perfil: true,
           foto_Perfil: true,
@@ -81,7 +81,7 @@ export async function getAllPostsService() {
       content_Post: true,
       image_Post: true,
       createdAt_Post: true,
-      perfil: {
+      T_Perfil: {
         select: {
           id_Perfil: true,
           nome_Perfil: true,

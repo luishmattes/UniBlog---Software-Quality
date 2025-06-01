@@ -36,12 +36,22 @@ model T_Perfil {
   account           T_Account @relation(fields: [id_Account_Perfil], references: [id_Account])
   id_Account_Perfil Int
 
-  id_Post_Perfil T_Post[]
+  id_Post_Perfil           T_Post[]
+  PostInteracaoCurtidas    T_PIC_Curtidas[]
+  PostInteracaoComentarios T_PIC_Comentarios[]
 }
 
 enum PerfilTipo {
   PESSOAL
   COMUNIDADE
+}
+
+model T_Curso {
+  id_Curso           Int    @id @default(autoincrement())
+  nome_Curso         String @unique
+  maxSemestres_Curso Int
+
+  perfis T_Perfil[]
 }
 
 model T_Post {
@@ -51,15 +61,38 @@ model T_Post {
   image_Post     String?
   createdAt_Post DateTime @default(now())
   updatedAt_Post DateTime @updatedAt
-
-  perfil         T_Perfil @relation(fields: [id_Perfil_Post], references: [id_Perfil])
   id_Perfil_Post Int
+
+  T_Perfil            T_Perfil              @relation(fields: [id_Perfil_Post], references: [id_Perfil])
+  T_PostInteracaoCapa T_PostInteracaoCapa[]
 }
 
-model T_Curso {
-  id_Curso           Int    @id @default(autoincrement())
-  nome_Curso         String @unique
-  maxSemestres_Curso Int
+model T_PostInteracaoCapa {
+  id_PIC           Int   @id @default(autoincrement())
+  id_Post_PIC      Int
+  visualizacao_PIC Int[]
 
-  perfis T_Perfil[]
+  curtidas_PIC    T_PIC_Curtidas[]
+  comentarios_PIC T_PIC_Comentarios[]
+
+  T_Post T_Post @relation(fields: [id_Post_PIC], references: [id_Post])
+}
+
+model T_PIC_Curtidas {
+  id_Curtida        Int  @id @default(autoincrement())
+  id_Perfil_Curtida Int
+  id_PIC_Curtida    Int?
+
+  T_PostInteracaoCapa T_PostInteracaoCapa? @relation(fields: [id_PIC_Curtida], references: [id_PIC])
+  T_Perfil            T_Perfil             @relation(fields: [id_Perfil_Curtida], references: [id_Perfil])
+}
+
+model T_PIC_Comentarios {
+  id_Comentario        Int    @id @default(autoincrement())
+  id_Perfil_Comentario Int
+  conteudo_Comentario  String
+  id_PIC_Comentario    Int?
+
+  T_PostInteracaoCapa T_PostInteracaoCapa? @relation(fields: [id_PIC_Comentario], references: [id_PIC])
+  T_Perfil            T_Perfil             @relation(fields: [id_Perfil_Comentario], references: [id_Perfil])
 }
