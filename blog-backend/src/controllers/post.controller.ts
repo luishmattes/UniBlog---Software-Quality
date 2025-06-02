@@ -24,7 +24,9 @@ export async function createPostController(request: FastifyRequest, reply: Fasti
         }
 
         const post = await createPostService(data, perfilId);
-        return reply.status(201).send(post);
+        const postInteracaoCapa = await (post.id_Post);
+
+        return reply.status(201).send({ post, postInteracaoCapa });
     } catch (error) {
         return reply.status(400).send({
             error: 'Erro de validação',

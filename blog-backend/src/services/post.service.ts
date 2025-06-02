@@ -27,6 +27,14 @@ export async function createPostService(data: CreatePostDataInterface, id_Perfil
     },
   });
 
+  // Cria a interação de capa vinculada ao post
+  await db.t_PostInteracaoCapa.create({
+    data: {
+      id_Post_PIC: createdPost.id_Post,
+      visualizacao_PIC: [],
+    },
+  });
+
   return createdPost;
 }
 

@@ -70,7 +70,7 @@ model T_Post {
 model T_PostInteracaoCapa {
   id_PIC           Int   @id @default(autoincrement())
   id_Post_PIC      Int
-  visualizacao_PIC Int[]
+  visualizacao_PIC Int[] @default([0])
 
   curtidas_PIC    T_PIC_Curtidas[]
   comentarios_PIC T_PIC_Comentarios[]
