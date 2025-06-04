@@ -4,6 +4,7 @@ import { createPostSchema, deletePostSchema, getPostSchema } from '../schemas/po
 import { parseMultipart } from '../utils/parseMultipart';
 import { uploadToMinio } from '../utils/uploadToMinio';
 import { idProfileSchema } from '../schemas/profile.schema';
+import { getInteracoesByPostIdService, } from '../services/interacoes.service';
 
 export async function createPostController(request: FastifyRequest, reply: FastifyReply) {
     try {
@@ -72,8 +73,22 @@ export async function getPostController(request: FastifyRequest, reply: FastifyR
 }
 export async function getAllPostsController(request: FastifyRequest, reply: FastifyReply) {
     try {
-        const posts = await getAllPostsService();
-        return reply.status(200).send(posts);
+        const postsData = await getAllPostsService();
+
+        const postsWithInteractions = await Promise.all(
+            postsData.map(async (post) => {
+                const interacoes = await getInteracoesByPostIdService({
+                    id_Post_PIC: post.id_Post,
+                    id_PIC: 0,
+                    visualizacao_PIC: 0,
+                    curtidas_PIC: [],
+                    comentarios_PIC: [],
+                });
+                return { ...post, interacoes };
+            })
+        );
+
+        return reply.status(200).send(postsWithInteractions);
     } catch (error) {
         return reply.status(400).send({
             error: 'Erro de validação',
