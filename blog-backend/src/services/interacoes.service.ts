@@ -21,8 +21,7 @@ export interface GetInteracoesInterface {
     comentarios_PIC: ComentarData[];
 }
 
-export async function getInteracoesByPostIdService({ id_Post_PIC }: GetInteracoesInterface) {
-
+export async function getInteracoesByPostIdService(id_Post_PIC: number) {
     const getInteracoesFromPost = await db.t_PostInteracaoCapa.findFirst({
         where: { T_Post: { id_Post: id_Post_PIC } },
         select: {

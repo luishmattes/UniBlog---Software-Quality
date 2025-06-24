@@ -5147,6 +5147,7 @@ export namespace Prisma {
     title_Post: string | null
     content_Post: string | null
     image_Post: string | null
+    TAG_Post: string | null
     createdAt_Post: Date | null
     updatedAt_Post: Date | null
     id_Perfil_Post: number | null
@@ -5157,6 +5158,7 @@ export namespace Prisma {
     title_Post: string | null
     content_Post: string | null
     image_Post: string | null
+    TAG_Post: string | null
     createdAt_Post: Date | null
     updatedAt_Post: Date | null
     id_Perfil_Post: number | null
@@ -5167,6 +5169,7 @@ export namespace Prisma {
     title_Post: number
     content_Post: number
     image_Post: number
+    TAG_Post: number
     createdAt_Post: number
     updatedAt_Post: number
     id_Perfil_Post: number
@@ -5189,6 +5192,7 @@ export namespace Prisma {
     title_Post?: true
     content_Post?: true
     image_Post?: true
+    TAG_Post?: true
     createdAt_Post?: true
     updatedAt_Post?: true
     id_Perfil_Post?: true
@@ -5199,6 +5203,7 @@ export namespace Prisma {
     title_Post?: true
     content_Post?: true
     image_Post?: true
+    TAG_Post?: true
     createdAt_Post?: true
     updatedAt_Post?: true
     id_Perfil_Post?: true
@@ -5209,6 +5214,7 @@ export namespace Prisma {
     title_Post?: true
     content_Post?: true
     image_Post?: true
+    TAG_Post?: true
     createdAt_Post?: true
     updatedAt_Post?: true
     id_Perfil_Post?: true
@@ -5306,6 +5312,7 @@ export namespace Prisma {
     title_Post: string | null
     content_Post: string | null
     image_Post: string | null
+    TAG_Post: string | null
     createdAt_Post: Date
     updatedAt_Post: Date
     id_Perfil_Post: number
@@ -5335,6 +5342,7 @@ export namespace Prisma {
     title_Post?: boolean
     content_Post?: boolean
     image_Post?: boolean
+    TAG_Post?: boolean
     createdAt_Post?: boolean
     updatedAt_Post?: boolean
     id_Perfil_Post?: boolean
@@ -5348,6 +5356,7 @@ export namespace Prisma {
     title_Post?: boolean
     content_Post?: boolean
     image_Post?: boolean
+    TAG_Post?: boolean
     createdAt_Post?: boolean
     updatedAt_Post?: boolean
     id_Perfil_Post?: boolean
@@ -5359,6 +5368,7 @@ export namespace Prisma {
     title_Post?: boolean
     content_Post?: boolean
     image_Post?: boolean
+    TAG_Post?: boolean
     createdAt_Post?: boolean
     updatedAt_Post?: boolean
     id_Perfil_Post?: boolean
@@ -5370,12 +5380,13 @@ export namespace Prisma {
     title_Post?: boolean
     content_Post?: boolean
     image_Post?: boolean
+    TAG_Post?: boolean
     createdAt_Post?: boolean
     updatedAt_Post?: boolean
     id_Perfil_Post?: boolean
   }
 
-  export type T_PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Post" | "title_Post" | "content_Post" | "image_Post" | "createdAt_Post" | "updatedAt_Post" | "id_Perfil_Post", ExtArgs["result"]["t_Post"]>
+  export type T_PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Post" | "title_Post" | "content_Post" | "image_Post" | "TAG_Post" | "createdAt_Post" | "updatedAt_Post" | "id_Perfil_Post", ExtArgs["result"]["t_Post"]>
   export type T_PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
     T_PostInteracaoCapa?: boolean | T_Post$T_PostInteracaoCapaArgs<ExtArgs>
@@ -5399,6 +5410,7 @@ export namespace Prisma {
       title_Post: string | null
       content_Post: string | null
       image_Post: string | null
+      TAG_Post: string | null
       createdAt_Post: Date
       updatedAt_Post: Date
       id_Perfil_Post: number
@@ -5831,6 +5843,7 @@ export namespace Prisma {
     readonly title_Post: FieldRef<"T_Post", 'String'>
     readonly content_Post: FieldRef<"T_Post", 'String'>
     readonly image_Post: FieldRef<"T_Post", 'String'>
+    readonly TAG_Post: FieldRef<"T_Post", 'String'>
     readonly createdAt_Post: FieldRef<"T_Post", 'DateTime'>
     readonly updatedAt_Post: FieldRef<"T_Post", 'DateTime'>
     readonly id_Perfil_Post: FieldRef<"T_Post", 'Int'>
@@ -9673,6 +9686,7 @@ export namespace Prisma {
     title_Post: 'title_Post',
     content_Post: 'content_Post',
     image_Post: 'image_Post',
+    TAG_Post: 'TAG_Post',
     createdAt_Post: 'createdAt_Post',
     updatedAt_Post: 'updatedAt_Post',
     id_Perfil_Post: 'id_Perfil_Post'
@@ -10032,6 +10046,7 @@ export namespace Prisma {
     title_Post?: StringNullableFilter<"T_Post"> | string | null
     content_Post?: StringNullableFilter<"T_Post"> | string | null
     image_Post?: StringNullableFilter<"T_Post"> | string | null
+    TAG_Post?: StringNullableFilter<"T_Post"> | string | null
     createdAt_Post?: DateTimeFilter<"T_Post"> | Date | string
     updatedAt_Post?: DateTimeFilter<"T_Post"> | Date | string
     id_Perfil_Post?: IntFilter<"T_Post"> | number
@@ -10044,6 +10059,7 @@ export namespace Prisma {
     title_Post?: SortOrderInput | SortOrder
     content_Post?: SortOrderInput | SortOrder
     image_Post?: SortOrderInput | SortOrder
+    TAG_Post?: SortOrderInput | SortOrder
     createdAt_Post?: SortOrder
     updatedAt_Post?: SortOrder
     id_Perfil_Post?: SortOrder
@@ -10059,6 +10075,7 @@ export namespace Prisma {
     title_Post?: StringNullableFilter<"T_Post"> | string | null
     content_Post?: StringNullableFilter<"T_Post"> | string | null
     image_Post?: StringNullableFilter<"T_Post"> | string | null
+    TAG_Post?: StringNullableFilter<"T_Post"> | string | null
     createdAt_Post?: DateTimeFilter<"T_Post"> | Date | string
     updatedAt_Post?: DateTimeFilter<"T_Post"> | Date | string
     id_Perfil_Post?: IntFilter<"T_Post"> | number
@@ -10071,6 +10088,7 @@ export namespace Prisma {
     title_Post?: SortOrderInput | SortOrder
     content_Post?: SortOrderInput | SortOrder
     image_Post?: SortOrderInput | SortOrder
+    TAG_Post?: SortOrderInput | SortOrder
     createdAt_Post?: SortOrder
     updatedAt_Post?: SortOrder
     id_Perfil_Post?: SortOrder
@@ -10089,6 +10107,7 @@ export namespace Prisma {
     title_Post?: StringNullableWithAggregatesFilter<"T_Post"> | string | null
     content_Post?: StringNullableWithAggregatesFilter<"T_Post"> | string | null
     image_Post?: StringNullableWithAggregatesFilter<"T_Post"> | string | null
+    TAG_Post?: StringNullableWithAggregatesFilter<"T_Post"> | string | null
     createdAt_Post?: DateTimeWithAggregatesFilter<"T_Post"> | Date | string
     updatedAt_Post?: DateTimeWithAggregatesFilter<"T_Post"> | Date | string
     id_Perfil_Post?: IntWithAggregatesFilter<"T_Post"> | number
@@ -10475,6 +10494,7 @@ export namespace Prisma {
     title_Post?: string | null
     content_Post?: string | null
     image_Post?: string | null
+    TAG_Post?: string | null
     createdAt_Post?: Date | string
     updatedAt_Post?: Date | string
     T_Perfil: T_PerfilCreateNestedOneWithoutId_Post_PerfilInput
@@ -10486,6 +10506,7 @@ export namespace Prisma {
     title_Post?: string | null
     content_Post?: string | null
     image_Post?: string | null
+    TAG_Post?: string | null
     createdAt_Post?: Date | string
     updatedAt_Post?: Date | string
     id_Perfil_Post: number
@@ -10496,6 +10517,7 @@ export namespace Prisma {
     title_Post?: NullableStringFieldUpdateOperationsInput | string | null
     content_Post?: NullableStringFieldUpdateOperationsInput | string | null
     image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     T_Perfil?: T_PerfilUpdateOneRequiredWithoutId_Post_PerfilNestedInput
@@ -10507,6 +10529,7 @@ export namespace Prisma {
     title_Post?: NullableStringFieldUpdateOperationsInput | string | null
     content_Post?: NullableStringFieldUpdateOperationsInput | string | null
     image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     id_Perfil_Post?: IntFieldUpdateOperationsInput | number
@@ -10518,6 +10541,7 @@ export namespace Prisma {
     title_Post?: string | null
     content_Post?: string | null
     image_Post?: string | null
+    TAG_Post?: string | null
     createdAt_Post?: Date | string
     updatedAt_Post?: Date | string
     id_Perfil_Post: number
@@ -10527,6 +10551,7 @@ export namespace Prisma {
     title_Post?: NullableStringFieldUpdateOperationsInput | string | null
     content_Post?: NullableStringFieldUpdateOperationsInput | string | null
     image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10536,6 +10561,7 @@ export namespace Prisma {
     title_Post?: NullableStringFieldUpdateOperationsInput | string | null
     content_Post?: NullableStringFieldUpdateOperationsInput | string | null
     image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     id_Perfil_Post?: IntFieldUpdateOperationsInput | number
@@ -11028,6 +11054,7 @@ export namespace Prisma {
     title_Post?: SortOrder
     content_Post?: SortOrder
     image_Post?: SortOrder
+    TAG_Post?: SortOrder
     createdAt_Post?: SortOrder
     updatedAt_Post?: SortOrder
     id_Perfil_Post?: SortOrder
@@ -11043,6 +11070,7 @@ export namespace Prisma {
     title_Post?: SortOrder
     content_Post?: SortOrder
     image_Post?: SortOrder
+    TAG_Post?: SortOrder
     createdAt_Post?: SortOrder
     updatedAt_Post?: SortOrder
     id_Perfil_Post?: SortOrder
@@ -11053,6 +11081,7 @@ export namespace Prisma {
     title_Post?: SortOrder
     content_Post?: SortOrder
     image_Post?: SortOrder
+    TAG_Post?: SortOrder
     createdAt_Post?: SortOrder
     updatedAt_Post?: SortOrder
     id_Perfil_Post?: SortOrder
@@ -11965,6 +11994,7 @@ export namespace Prisma {
     title_Post?: string | null
     content_Post?: string | null
     image_Post?: string | null
+    TAG_Post?: string | null
     createdAt_Post?: Date | string
     updatedAt_Post?: Date | string
     T_PostInteracaoCapa?: T_PostInteracaoCapaCreateNestedManyWithoutT_PostInput
@@ -11975,6 +12005,7 @@ export namespace Prisma {
     title_Post?: string | null
     content_Post?: string | null
     image_Post?: string | null
+    TAG_Post?: string | null
     createdAt_Post?: Date | string
     updatedAt_Post?: Date | string
     T_PostInteracaoCapa?: T_PostInteracaoCapaUncheckedCreateNestedManyWithoutT_PostInput
@@ -12106,6 +12137,7 @@ export namespace Prisma {
     title_Post?: StringNullableFilter<"T_Post"> | string | null
     content_Post?: StringNullableFilter<"T_Post"> | string | null
     image_Post?: StringNullableFilter<"T_Post"> | string | null
+    TAG_Post?: StringNullableFilter<"T_Post"> | string | null
     createdAt_Post?: DateTimeFilter<"T_Post"> | Date | string
     updatedAt_Post?: DateTimeFilter<"T_Post"> | Date | string
     id_Perfil_Post?: IntFilter<"T_Post"> | number
@@ -12389,6 +12421,7 @@ export namespace Prisma {
     title_Post?: string | null
     content_Post?: string | null
     image_Post?: string | null
+    TAG_Post?: string | null
     createdAt_Post?: Date | string
     updatedAt_Post?: Date | string
     T_Perfil: T_PerfilCreateNestedOneWithoutId_Post_PerfilInput
@@ -12399,6 +12432,7 @@ export namespace Prisma {
     title_Post?: string | null
     content_Post?: string | null
     image_Post?: string | null
+    TAG_Post?: string | null
     createdAt_Post?: Date | string
     updatedAt_Post?: Date | string
     id_Perfil_Post: number
@@ -12456,6 +12490,7 @@ export namespace Prisma {
     title_Post?: NullableStringFieldUpdateOperationsInput | string | null
     content_Post?: NullableStringFieldUpdateOperationsInput | string | null
     image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     T_Perfil?: T_PerfilUpdateOneRequiredWithoutId_Post_PerfilNestedInput
@@ -12466,6 +12501,7 @@ export namespace Prisma {
     title_Post?: NullableStringFieldUpdateOperationsInput | string | null
     content_Post?: NullableStringFieldUpdateOperationsInput | string | null
     image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     id_Perfil_Post?: IntFieldUpdateOperationsInput | number
@@ -12773,6 +12809,7 @@ export namespace Prisma {
     title_Post?: string | null
     content_Post?: string | null
     image_Post?: string | null
+    TAG_Post?: string | null
     createdAt_Post?: Date | string
     updatedAt_Post?: Date | string
   }
@@ -12792,6 +12829,7 @@ export namespace Prisma {
     title_Post?: NullableStringFieldUpdateOperationsInput | string | null
     content_Post?: NullableStringFieldUpdateOperationsInput | string | null
     image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     T_PostInteracaoCapa?: T_PostInteracaoCapaUpdateManyWithoutT_PostNestedInput
@@ -12802,6 +12840,7 @@ export namespace Prisma {
     title_Post?: NullableStringFieldUpdateOperationsInput | string | null
     content_Post?: NullableStringFieldUpdateOperationsInput | string | null
     image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     T_PostInteracaoCapa?: T_PostInteracaoCapaUncheckedUpdateManyWithoutT_PostNestedInput
@@ -12812,6 +12851,7 @@ export namespace Prisma {
     title_Post?: NullableStringFieldUpdateOperationsInput | string | null
     content_Post?: NullableStringFieldUpdateOperationsInput | string | null
     image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
   }

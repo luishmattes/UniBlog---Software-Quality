@@ -59,6 +59,7 @@ model T_Post {
   title_Post     String?
   content_Post   String?
   image_Post     String?
+  TAG_Post       String?
   createdAt_Post DateTime @default(now())
   updatedAt_Post DateTime @updatedAt
   id_Perfil_Post Int

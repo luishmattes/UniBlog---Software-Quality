@@ -4,6 +4,6 @@ import { curtirController, descurtirController, comentarController, deletarComen
 export async function interacoesRoutes(app: FastifyInstance) {
     app.post('/', curtirController);
     app.delete('/', descurtirController);
-    app.post('/comentar', comentarController);
-    app.delete('/comentar', deletarComentarioController);
+    app.post('/comentario', comentarController);
+    app.delete('/comentario', deletarComentarioController);
 }

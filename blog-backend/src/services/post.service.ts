@@ -6,6 +6,7 @@ export interface CreatePostDataInterface {
   title_Post?: string;
   content_Post?: string;
   image_Post?: string;
+  TAG_Post?: string;
 }
 export interface ParamsPostDataInterface {
   id_Post: number;
@@ -21,6 +22,7 @@ export async function createPostService(data: CreatePostDataInterface, id_Perfil
       title_Post: data.title_Post,
       content_Post: data.content_Post,
       image_Post: data.image_Post,
+      TAG_Post: data.TAG_Post,
       T_Perfil: {
         connect: { id_Perfil: id_Perfil_Post },
       },
@@ -64,6 +66,7 @@ export async function getPostByProfileService({ id_Perfil }: PerfilHeaderDataInt
       title_Post: true,
       content_Post: true,
       image_Post: true,
+      TAG_Post: true,
       T_Perfil: {
         select: {
           nome_Perfil: true,
@@ -88,6 +91,7 @@ export async function getAllPostsService() {
       title_Post: true,
       content_Post: true,
       image_Post: true,
+      TAG_Post: true,
       createdAt_Post: true,
       T_Perfil: {
         select: {

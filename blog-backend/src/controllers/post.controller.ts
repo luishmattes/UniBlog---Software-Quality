@@ -14,7 +14,7 @@ export async function createPostController(request: FastifyRequest, reply: Fasti
             ...fields,
         });
 
-        const perfilId = Number(request.headers['id_perfil']);
+        const perfilId = Number(request.headers['id_Perfil']);
         if (!perfilId) {
             return reply.status(400).send({ error: 'ID do perfil não fornecido no header' });
         }
@@ -39,7 +39,7 @@ export async function createPostController(request: FastifyRequest, reply: Fasti
 
 export async function deletePostController(request: FastifyRequest, reply: FastifyReply) {
     try {
-        const perfilId = Number(request.headers['id_perfil']);
+        const perfilId = Number(request.headers['id_Perfil']);
         const postId = deletePostSchema.parse(request.params);
         const post = await deletePostService(postId, perfilId);
         return reply.status(200).send(post);
@@ -54,7 +54,7 @@ export async function deletePostController(request: FastifyRequest, reply: Fasti
 
 export async function getPostController(request: FastifyRequest, reply: FastifyReply) {
     try {
-        const { id_Perfil } = idProfileSchema.parse({ id_Perfil: request.headers['id_perfil'] });
+        const { id_Perfil } = idProfileSchema.parse({ id_Perfil: request.headers['id_Perfil'] });
 
         const post = await getPostByProfileService({ id_Perfil });
         if (!post || post.length === 0) {
@@ -77,14 +77,8 @@ export async function getAllPostsController(request: FastifyRequest, reply: Fast
 
         const postsWithInteractions = await Promise.all(
             postsData.map(async (post) => {
-                const interacoes = await getInteracoesByPostIdService({
-                    id_Post_PIC: post.id_Post,
-                    id_PIC: 0,
-                    visualizacao_PIC: 0,
-                    curtidas_PIC: [],
-                    comentarios_PIC: [],
-                });
-                return { ...post, interacoes };
+                const interacoes = await getInteracoesByPostIdService(post.id_Post);
+                return { ...post, T_PostInteracaoCapa: interacoes };
             })
         );
 

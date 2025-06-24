@@ -59,6 +59,7 @@ model T_Post {
   title_Post     String?
   content_Post   String?
   image_Post     String?
+  TAG_Post       String?
   createdAt_Post DateTime @default(now())
   updatedAt_Post DateTime @updatedAt
   id_Perfil_Post Int
@@ -70,7 +71,7 @@ model T_Post {
 model T_PostInteracaoCapa {
   id_PIC           Int   @id @default(autoincrement())
   id_Post_PIC      Int
-  visualizacao_PIC Int[]
+  visualizacao_PIC Int[] @default([0])
 
   curtidas_PIC    T_PIC_Curtidas[]
   comentarios_PIC T_PIC_Comentarios[]

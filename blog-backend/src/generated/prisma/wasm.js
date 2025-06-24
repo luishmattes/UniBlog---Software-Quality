@@ -152,6 +152,7 @@ exports.Prisma.T_PostScalarFieldEnum = {
   title_Post: 'title_Post',
   content_Post: 'content_Post',
   image_Post: 'image_Post',
+  TAG_Post: 'TAG_Post',
   createdAt_Post: 'createdAt_Post',
   updatedAt_Post: 'updatedAt_Post',
   id_Perfil_Post: 'id_Perfil_Post'
