@@ -1,7 +1,9 @@
-# University Blog API
+# University Blog 
+![Brazil](https://raw.githubusercontent.com/stevenrskelton/flag-icon/master/png/16/country-4x3/br.png "Brazil")</br>
+Este projeto é o UniBlog, Blog-Universitario!, criado para transformar a forma como os estudantes se conectam, buscam informações, e fazem novas amizades. Nosso objetivo também, é poder eternizar alguns dos melhores momentos de sua passagem pela vida academica!
 
-This project is a university-focused blog API built with Node.js, Fastify, Prisma, PostgreSQL, and TypeScript. It allows users to create posts similar to Twitter, manage their profiles, and authenticate securely.
-
+![United States](https://raw.githubusercontent.com/stevenrskelton/flag-icon/master/png/16/country-4x3/us.png "United States")</br>
+This project is UniBlog, the University Blog! Created to transform the way students connect, find information, and build new friendships. Our goal is also to eternalize some of the best moments of your academic journey!
 ## Features
 
 - User authentication (registration and login)
@@ -20,65 +22,43 @@ This project is a university-focused blog API built with Node.js, Fastify, Prism
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (version 14 or higher)
-- PostgreSQL (version 12 or higher)
-- Docker (optional, for containerized setup)
-
 ### Installation
 
 1. Clone the repository:
    ```
    git clone <repository-url>
-   cd university-blog-api
+   cd UniBlog
    ```
 
-2. Install dependencies:
+2. Install backend-dependencies:
    ```
+   cd blog-backend
    npm install
    ```
 
-3. Set up the environment variables:
+2.1. Set up the environment variables:
    - Copy `.env.example` to `.env` and fill in the required values.
 
-4. Start DB with docker:
+2.2. Start DB with docker:
    ```
    docker compose up --build
    ```
 
-5. Run database migrations:
+2.3. Run database migrations:
    ```
    npx prisma migrate dev
    ```
 
-6. Start the server:
+2.4. Start the server:
    ```
    npm run start
    ```
-
-
-### API Endpoints
-
-- **Authentication**
-  - `POST /account/register`: Register a new user
-  - `POST /account/login`: Log in an existing user
-
-- **Profile Management**
-  - `GET /....`: Get user profile information
-  - `PUT /...`: Update user profile information
-
-- **Posts**
-  - `POST /...`: Create a new post
-  - `GET /...`: Retrieve all posts
-
-## Running Tests
-
-To run the tests, use the following command:
-```
-npm run test
-```
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
+3. Install frontend-dependencies:
+   ```
+   cd blog-frontend
+   npm install
+   ```
+3.1. Start the server:
+   ```
+   npm run start
+   ```
