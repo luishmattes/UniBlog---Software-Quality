@@ -53,6 +53,7 @@ export async function comentarController(request: FastifyRequest, reply: Fastify
             return reply.status(400).send({ error: 'ID do perfil não fornecido no header' });
         }
 
+
         const result = await comentarService({ ...data, id_Perfil_Comentario: id_Perfil });
         return reply.status(201).send(result);
     } catch (error) {
