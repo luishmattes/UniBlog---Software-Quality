@@ -58,12 +58,13 @@ const Post: React.FC<PostProps> = ({ post, onInteractionSuccess }) => {
                 </div>
             )}
 
+
             <div className="mt-4 pt-2 border-t border-gray-100">
-                <div className="flex gap-x-4 gap-y-1 text-xs text-gray-500 mb-3 flex-wrap">
+                {/* <div className="flex gap-x-4 gap-y-1 text-xs text-gray-500 mb-3 flex-wrap">
                     <span>{T_PostInteracaoCapa?.visualizacao_PIC} visualizações</span>
                     <span>{T_PostInteracaoCapa?.curtidas_PIC?.length || 0} curtidas</span>
                     <span>{T_PostInteracaoCapa?.comentarios_PIC?.length || 0} comentários</span>
-                </div>
+                </div> */}
 
 
 

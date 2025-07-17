@@ -5,23 +5,20 @@ import { idProfileSchema } from '../schemas/profile.schema';
 
 export async function curtirController(request: FastifyRequest, reply: FastifyReply) {
     try {
+        const { id_PIC_Curtida } = curtirSchema.parse(request.body);
 
-        const data = curtirSchema.parse(request.body);
+        const { id_Perfil } = idProfileSchema.parse({ id_Perfil: request.headers['id_perfil'] });
 
-        const { id_Perfil } = idProfileSchema.parse({ id_Perfil: request.headers['id_Perfil'] });
-
-        if (!id_Perfil) {
-            return reply.status(400).send({ error: 'ID do perfil não fornecido no header' });
-        }
-
-        const result = await curtirService({ ...data, id_Perfil_Curtida: id_Perfil });
+        const result = await curtirService({
+            id_PIC_Curtida: id_PIC_Curtida,
+            id_Perfil_Curtida: id_Perfil
+        });
 
         return reply.status(201).send(result);
     } catch (error) {
         return reply.status(400).send({
-            error: 'Erro ao curtir',
+            error: 'Erro ao processar a curtida',
             message: error instanceof Error ? error.message : 'Erro desconhecido',
-            stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined,
         });
     }
 }
@@ -29,14 +26,15 @@ export async function curtirController(request: FastifyRequest, reply: FastifyRe
 export async function descurtirController(request: FastifyRequest, reply: FastifyReply) {
     try {
 
-        const data = curtirSchema.parse(request.body);
-        const { id_Perfil } = idProfileSchema.parse({ id_Perfil: request.headers['id_Perfil'] });
+        const { id_PIC_Curtida } = curtirSchema.parse(request.body);
 
-        if (!id_Perfil) {
-            return reply.status(400).send({ error: 'ID do perfil não fornecido no header' });
-        }
+        const { id_Perfil } = idProfileSchema.parse({ id_Perfil: request.headers['id_perfil'] });
 
-        const result = await descurtirService({ ...data, id_Perfil_Curtida: id_Perfil });
+        const result = await descurtirService({
+            id_PIC_Curtida: id_PIC_Curtida,
+            id_Perfil_Curtida: id_Perfil
+        });
+
         return reply.status(200).send(result);
     } catch (error) {
         return reply.status(400).send({

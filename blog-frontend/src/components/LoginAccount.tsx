@@ -38,7 +38,7 @@ export const LoginAccount: React.FC = () => {
             }
 
             if (data.token) {
-                login(data.token, data.id_Perfil || '');
+                login(data.token, data.id_Perfil);
                 if (isCreatingAccount || !data.id_Perfil) {
                     navigate('/select-profile');
                 } else {
