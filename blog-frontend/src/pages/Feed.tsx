@@ -65,12 +65,11 @@ export const Feed: React.FC = () => {
                 <h1 className="text-3xl font-bold mb-8 text-gray-100 text-center">Feed de Notícias</h1>
                 {posts.length > 0 ? (
                     posts.map(post =>
-                        // Ensure post and T_Perfil are valid before rendering
                         post && post.T_Perfil ? (
                             <Post
                                 key={post.id_Post}
                                 post={{ ...post, T_Perfil: post.T_Perfil! }}
-                                onInteractionSuccess={handleInteractionSuccess} // Pass the callback
+                                onInteractionSuccess={handleInteractionSuccess}
                             />
                         ) : null
                     )

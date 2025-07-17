@@ -17,7 +17,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [profileId, setProfileId] = useState<string | null>(null);
 
     useEffect(() => {
-        // Check authentication status on mount
         const storedToken = localStorage.getItem('token');
         const storedProfileId = localStorage.getItem('id_Perfil');
         if (storedToken) {

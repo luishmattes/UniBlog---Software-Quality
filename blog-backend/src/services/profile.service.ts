@@ -36,7 +36,6 @@ export async function createProfileService(data: CreateProfileDataInterface, acc
       throw new Error('semestre é obrigatório para perfil pessoal.');
     }
 
-    // Busca o curso para validar o semestre
     const curso = await db.t_Curso.findUnique({
       where: { id_Curso: data.id_Curso_Perfil }
     });
