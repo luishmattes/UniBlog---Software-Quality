@@ -21,7 +21,7 @@ export const ProfileSelection: React.FC = () => {
 
     const fetchProfiles = async () => {
         try {
-            const data = await fetchWithAuth('/profile/take/profiles');
+            const data = await fetchWithAuth('/profile/get/AccountProfiles');
             setProfiles(data);
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Erro ao carregar perfis');
