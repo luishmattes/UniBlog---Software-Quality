@@ -6,12 +6,13 @@ export interface CreatePostDataInterface {
   title_Post?: string;
   content_Post?: string;
   image_Post?: string;
+  TAG_Post?: string;
 }
 export interface ParamsPostDataInterface {
   id_Post: number;
 }
 export interface PerfilHeaderDataInterface {
-  'perfil-id': number;
+  'id_Perfil': number;
 }
 
 export async function createPostService(data: CreatePostDataInterface, id_Perfil_Post: number) {
@@ -21,9 +22,17 @@ export async function createPostService(data: CreatePostDataInterface, id_Perfil
       title_Post: data.title_Post,
       content_Post: data.content_Post,
       image_Post: data.image_Post,
-      perfil: {
+      TAG_Post: data.TAG_Post,
+      T_Perfil: {
         connect: { id_Perfil: id_Perfil_Post },
       },
+    },
+  });
+
+  await db.t_PostInteracaoCapa.create({
+    data: {
+      id_Post_PIC: createdPost.id_Post,
+      visualizacao_PIC: [],
     },
   });
 
@@ -31,9 +40,9 @@ export async function createPostService(data: CreatePostDataInterface, id_Perfil
 }
 
 
-export async function deletePostService({ id_Post }: ParamsPostDataInterface, id_Perfil_Post: PerfilHeaderDataInterface['perfil-id']) {
+export async function deletePostService({ id_Post }: ParamsPostDataInterface, id_Perfil_Post: PerfilHeaderDataInterface['id_Perfil']) {
   const post = await db.t_Post.findFirst({
-    where: { id_Post: id_Post, perfil: { id_Perfil: id_Perfil_Post } },
+    where: { id_Post: id_Post, T_Perfil: { id_Perfil: id_Perfil_Post } },
   });
   if (!post) {
     throw new Error('Post não encontrado.');
@@ -47,20 +56,20 @@ export async function deletePostService({ id_Post }: ParamsPostDataInterface, id
 }
 
 
-export async function getPostService({ id_Post }: ParamsPostDataInterface, perfilId: PerfilHeaderDataInterface['perfil-id']) {
+export async function getPostByProfileService({ id_Perfil }: PerfilHeaderDataInterface) {
 
-  const getPost = await db.t_Post.findFirst({
-    where: { id_Post, perfil: { id_Perfil: perfilId } },
+  const getPost = await db.t_Post.findMany({
+    where: { T_Perfil: { id_Perfil: id_Perfil } },
     select: {
       id_Post: true,
       title_Post: true,
       content_Post: true,
       image_Post: true,
-      perfil: {
+      TAG_Post: true,
+      T_Perfil: {
         select: {
           nome_Perfil: true,
           foto_Perfil: true,
-          semestre_Perfil: true,
         },
       },
     },
@@ -81,8 +90,9 @@ export async function getAllPostsService() {
       title_Post: true,
       content_Post: true,
       image_Post: true,
+      TAG_Post: true,
       createdAt_Post: true,
-      perfil: {
+      T_Perfil: {
         select: {
           id_Perfil: true,
           nome_Perfil: true,

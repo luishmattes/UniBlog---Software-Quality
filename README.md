@@ -27,6 +27,7 @@ This project is UniBlog, the University Blog! Created to transform the way stude
 1. Clone the repository:
    ```
    git clone <repository-url>
+   
    cd UniBlog
    ```
 

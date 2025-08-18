@@ -24,15 +24,30 @@ export type T_Account = $Result.DefaultSelection<Prisma.$T_AccountPayload>
  */
 export type T_Perfil = $Result.DefaultSelection<Prisma.$T_PerfilPayload>
 /**
+ * Model T_Curso
+ * 
+ */
+export type T_Curso = $Result.DefaultSelection<Prisma.$T_CursoPayload>
+/**
  * Model T_Post
  * 
  */
 export type T_Post = $Result.DefaultSelection<Prisma.$T_PostPayload>
 /**
- * Model T_Curso
+ * Model T_PostInteracaoCapa
  * 
  */
-export type T_Curso = $Result.DefaultSelection<Prisma.$T_CursoPayload>
+export type T_PostInteracaoCapa = $Result.DefaultSelection<Prisma.$T_PostInteracaoCapaPayload>
+/**
+ * Model T_PIC_Curtidas
+ * 
+ */
+export type T_PIC_Curtidas = $Result.DefaultSelection<Prisma.$T_PIC_CurtidasPayload>
+/**
+ * Model T_PIC_Comentarios
+ * 
+ */
+export type T_PIC_Comentarios = $Result.DefaultSelection<Prisma.$T_PIC_ComentariosPayload>
 
 /**
  * Enums
@@ -197,6 +212,16 @@ export class PrismaClient<
   get t_Perfil(): Prisma.T_PerfilDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.t_Curso`: Exposes CRUD operations for the **T_Curso** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more T_Cursos
+    * const t_Cursos = await prisma.t_Curso.findMany()
+    * ```
+    */
+  get t_Curso(): Prisma.T_CursoDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.t_Post`: Exposes CRUD operations for the **T_Post** model.
     * Example usage:
     * ```ts
@@ -207,14 +232,34 @@ export class PrismaClient<
   get t_Post(): Prisma.T_PostDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.t_Curso`: Exposes CRUD operations for the **T_Curso** model.
+   * `prisma.t_PostInteracaoCapa`: Exposes CRUD operations for the **T_PostInteracaoCapa** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more T_Cursos
-    * const t_Cursos = await prisma.t_Curso.findMany()
+    * // Fetch zero or more T_PostInteracaoCapas
+    * const t_PostInteracaoCapas = await prisma.t_PostInteracaoCapa.findMany()
     * ```
     */
-  get t_Curso(): Prisma.T_CursoDelegate<ExtArgs, ClientOptions>;
+  get t_PostInteracaoCapa(): Prisma.T_PostInteracaoCapaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.t_PIC_Curtidas`: Exposes CRUD operations for the **T_PIC_Curtidas** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more T_PIC_Curtidas
+    * const t_PIC_Curtidas = await prisma.t_PIC_Curtidas.findMany()
+    * ```
+    */
+  get t_PIC_Curtidas(): Prisma.T_PIC_CurtidasDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.t_PIC_Comentarios`: Exposes CRUD operations for the **T_PIC_Comentarios** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more T_PIC_Comentarios
+    * const t_PIC_Comentarios = await prisma.t_PIC_Comentarios.findMany()
+    * ```
+    */
+  get t_PIC_Comentarios(): Prisma.T_PIC_ComentariosDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -657,8 +702,11 @@ export namespace Prisma {
   export const ModelName: {
     T_Account: 'T_Account',
     T_Perfil: 'T_Perfil',
+    T_Curso: 'T_Curso',
     T_Post: 'T_Post',
-    T_Curso: 'T_Curso'
+    T_PostInteracaoCapa: 'T_PostInteracaoCapa',
+    T_PIC_Curtidas: 'T_PIC_Curtidas',
+    T_PIC_Comentarios: 'T_PIC_Comentarios'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -677,7 +725,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "t_Account" | "t_Perfil" | "t_Post" | "t_Curso"
+      modelProps: "t_Account" | "t_Perfil" | "t_Curso" | "t_Post" | "t_PostInteracaoCapa" | "t_PIC_Curtidas" | "t_PIC_Comentarios"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -829,6 +877,80 @@ export namespace Prisma {
           }
         }
       }
+      T_Curso: {
+        payload: Prisma.$T_CursoPayload<ExtArgs>
+        fields: Prisma.T_CursoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.T_CursoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.T_CursoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+          }
+          findFirst: {
+            args: Prisma.T_CursoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.T_CursoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+          }
+          findMany: {
+            args: Prisma.T_CursoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>[]
+          }
+          create: {
+            args: Prisma.T_CursoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+          }
+          createMany: {
+            args: Prisma.T_CursoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.T_CursoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>[]
+          }
+          delete: {
+            args: Prisma.T_CursoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+          }
+          update: {
+            args: Prisma.T_CursoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+          }
+          deleteMany: {
+            args: Prisma.T_CursoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.T_CursoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.T_CursoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>[]
+          }
+          upsert: {
+            args: Prisma.T_CursoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+          }
+          aggregate: {
+            args: Prisma.T_CursoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateT_Curso>
+          }
+          groupBy: {
+            args: Prisma.T_CursoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<T_CursoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.T_CursoCountArgs<ExtArgs>
+            result: $Utils.Optional<T_CursoCountAggregateOutputType> | number
+          }
+        }
+      }
       T_Post: {
         payload: Prisma.$T_PostPayload<ExtArgs>
         fields: Prisma.T_PostFieldRefs
@@ -903,77 +1025,225 @@ export namespace Prisma {
           }
         }
       }
-      T_Curso: {
-        payload: Prisma.$T_CursoPayload<ExtArgs>
-        fields: Prisma.T_CursoFieldRefs
+      T_PostInteracaoCapa: {
+        payload: Prisma.$T_PostInteracaoCapaPayload<ExtArgs>
+        fields: Prisma.T_PostInteracaoCapaFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.T_CursoFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload> | null
+            args: Prisma.T_PostInteracaoCapaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PostInteracaoCapaPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.T_CursoFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+            args: Prisma.T_PostInteracaoCapaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PostInteracaoCapaPayload>
           }
           findFirst: {
-            args: Prisma.T_CursoFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload> | null
+            args: Prisma.T_PostInteracaoCapaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PostInteracaoCapaPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.T_CursoFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+            args: Prisma.T_PostInteracaoCapaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PostInteracaoCapaPayload>
           }
           findMany: {
-            args: Prisma.T_CursoFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>[]
+            args: Prisma.T_PostInteracaoCapaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PostInteracaoCapaPayload>[]
           }
           create: {
-            args: Prisma.T_CursoCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+            args: Prisma.T_PostInteracaoCapaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PostInteracaoCapaPayload>
           }
           createMany: {
-            args: Prisma.T_CursoCreateManyArgs<ExtArgs>
+            args: Prisma.T_PostInteracaoCapaCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.T_CursoCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>[]
+            args: Prisma.T_PostInteracaoCapaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PostInteracaoCapaPayload>[]
           }
           delete: {
-            args: Prisma.T_CursoDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+            args: Prisma.T_PostInteracaoCapaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PostInteracaoCapaPayload>
           }
           update: {
-            args: Prisma.T_CursoUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+            args: Prisma.T_PostInteracaoCapaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PostInteracaoCapaPayload>
           }
           deleteMany: {
-            args: Prisma.T_CursoDeleteManyArgs<ExtArgs>
+            args: Prisma.T_PostInteracaoCapaDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.T_CursoUpdateManyArgs<ExtArgs>
+            args: Prisma.T_PostInteracaoCapaUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.T_CursoUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>[]
+            args: Prisma.T_PostInteracaoCapaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PostInteracaoCapaPayload>[]
           }
           upsert: {
-            args: Prisma.T_CursoUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$T_CursoPayload>
+            args: Prisma.T_PostInteracaoCapaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PostInteracaoCapaPayload>
           }
           aggregate: {
-            args: Prisma.T_CursoAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateT_Curso>
+            args: Prisma.T_PostInteracaoCapaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateT_PostInteracaoCapa>
           }
           groupBy: {
-            args: Prisma.T_CursoGroupByArgs<ExtArgs>
-            result: $Utils.Optional<T_CursoGroupByOutputType>[]
+            args: Prisma.T_PostInteracaoCapaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<T_PostInteracaoCapaGroupByOutputType>[]
           }
           count: {
-            args: Prisma.T_CursoCountArgs<ExtArgs>
-            result: $Utils.Optional<T_CursoCountAggregateOutputType> | number
+            args: Prisma.T_PostInteracaoCapaCountArgs<ExtArgs>
+            result: $Utils.Optional<T_PostInteracaoCapaCountAggregateOutputType> | number
+          }
+        }
+      }
+      T_PIC_Curtidas: {
+        payload: Prisma.$T_PIC_CurtidasPayload<ExtArgs>
+        fields: Prisma.T_PIC_CurtidasFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.T_PIC_CurtidasFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_CurtidasPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.T_PIC_CurtidasFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_CurtidasPayload>
+          }
+          findFirst: {
+            args: Prisma.T_PIC_CurtidasFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_CurtidasPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.T_PIC_CurtidasFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_CurtidasPayload>
+          }
+          findMany: {
+            args: Prisma.T_PIC_CurtidasFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_CurtidasPayload>[]
+          }
+          create: {
+            args: Prisma.T_PIC_CurtidasCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_CurtidasPayload>
+          }
+          createMany: {
+            args: Prisma.T_PIC_CurtidasCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.T_PIC_CurtidasCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_CurtidasPayload>[]
+          }
+          delete: {
+            args: Prisma.T_PIC_CurtidasDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_CurtidasPayload>
+          }
+          update: {
+            args: Prisma.T_PIC_CurtidasUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_CurtidasPayload>
+          }
+          deleteMany: {
+            args: Prisma.T_PIC_CurtidasDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.T_PIC_CurtidasUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.T_PIC_CurtidasUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_CurtidasPayload>[]
+          }
+          upsert: {
+            args: Prisma.T_PIC_CurtidasUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_CurtidasPayload>
+          }
+          aggregate: {
+            args: Prisma.T_PIC_CurtidasAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateT_PIC_Curtidas>
+          }
+          groupBy: {
+            args: Prisma.T_PIC_CurtidasGroupByArgs<ExtArgs>
+            result: $Utils.Optional<T_PIC_CurtidasGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.T_PIC_CurtidasCountArgs<ExtArgs>
+            result: $Utils.Optional<T_PIC_CurtidasCountAggregateOutputType> | number
+          }
+        }
+      }
+      T_PIC_Comentarios: {
+        payload: Prisma.$T_PIC_ComentariosPayload<ExtArgs>
+        fields: Prisma.T_PIC_ComentariosFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.T_PIC_ComentariosFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_ComentariosPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.T_PIC_ComentariosFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_ComentariosPayload>
+          }
+          findFirst: {
+            args: Prisma.T_PIC_ComentariosFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_ComentariosPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.T_PIC_ComentariosFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_ComentariosPayload>
+          }
+          findMany: {
+            args: Prisma.T_PIC_ComentariosFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_ComentariosPayload>[]
+          }
+          create: {
+            args: Prisma.T_PIC_ComentariosCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_ComentariosPayload>
+          }
+          createMany: {
+            args: Prisma.T_PIC_ComentariosCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.T_PIC_ComentariosCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_ComentariosPayload>[]
+          }
+          delete: {
+            args: Prisma.T_PIC_ComentariosDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_ComentariosPayload>
+          }
+          update: {
+            args: Prisma.T_PIC_ComentariosUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_ComentariosPayload>
+          }
+          deleteMany: {
+            args: Prisma.T_PIC_ComentariosDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.T_PIC_ComentariosUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.T_PIC_ComentariosUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_ComentariosPayload>[]
+          }
+          upsert: {
+            args: Prisma.T_PIC_ComentariosUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$T_PIC_ComentariosPayload>
+          }
+          aggregate: {
+            args: Prisma.T_PIC_ComentariosAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateT_PIC_Comentarios>
+          }
+          groupBy: {
+            args: Prisma.T_PIC_ComentariosGroupByArgs<ExtArgs>
+            result: $Utils.Optional<T_PIC_ComentariosGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.T_PIC_ComentariosCountArgs<ExtArgs>
+            result: $Utils.Optional<T_PIC_ComentariosCountAggregateOutputType> | number
           }
         }
       }
@@ -1063,8 +1333,11 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     t_Account?: T_AccountOmit
     t_Perfil?: T_PerfilOmit
-    t_Post?: T_PostOmit
     t_Curso?: T_CursoOmit
+    t_Post?: T_PostOmit
+    t_PostInteracaoCapa?: T_PostInteracaoCapaOmit
+    t_PIC_Curtidas?: T_PIC_CurtidasOmit
+    t_PIC_Comentarios?: T_PIC_ComentariosOmit
   }
 
   /* Types for Logging */
@@ -1191,10 +1464,14 @@ export namespace Prisma {
 
   export type T_PerfilCountOutputType = {
     id_Post_Perfil: number
+    PostInteracaoCurtidas: number
+    PostInteracaoComentarios: number
   }
 
   export type T_PerfilCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     id_Post_Perfil?: boolean | T_PerfilCountOutputTypeCountId_Post_PerfilArgs
+    PostInteracaoCurtidas?: boolean | T_PerfilCountOutputTypeCountPostInteracaoCurtidasArgs
+    PostInteracaoComentarios?: boolean | T_PerfilCountOutputTypeCountPostInteracaoComentariosArgs
   }
 
   // Custom InputTypes
@@ -1213,6 +1490,20 @@ export namespace Prisma {
    */
   export type T_PerfilCountOutputTypeCountId_Post_PerfilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: T_PostWhereInput
+  }
+
+  /**
+   * T_PerfilCountOutputType without action
+   */
+  export type T_PerfilCountOutputTypeCountPostInteracaoCurtidasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: T_PIC_CurtidasWhereInput
+  }
+
+  /**
+   * T_PerfilCountOutputType without action
+   */
+  export type T_PerfilCountOutputTypeCountPostInteracaoComentariosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: T_PIC_ComentariosWhereInput
   }
 
 
@@ -1244,6 +1535,77 @@ export namespace Prisma {
    */
   export type T_CursoCountOutputTypeCountPerfisArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: T_PerfilWhereInput
+  }
+
+
+  /**
+   * Count Type T_PostCountOutputType
+   */
+
+  export type T_PostCountOutputType = {
+    T_PostInteracaoCapa: number
+  }
+
+  export type T_PostCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    T_PostInteracaoCapa?: boolean | T_PostCountOutputTypeCountT_PostInteracaoCapaArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * T_PostCountOutputType without action
+   */
+  export type T_PostCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostCountOutputType
+     */
+    select?: T_PostCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * T_PostCountOutputType without action
+   */
+  export type T_PostCountOutputTypeCountT_PostInteracaoCapaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: T_PostInteracaoCapaWhereInput
+  }
+
+
+  /**
+   * Count Type T_PostInteracaoCapaCountOutputType
+   */
+
+  export type T_PostInteracaoCapaCountOutputType = {
+    curtidas_PIC: number
+    comentarios_PIC: number
+  }
+
+  export type T_PostInteracaoCapaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    curtidas_PIC?: boolean | T_PostInteracaoCapaCountOutputTypeCountCurtidas_PICArgs
+    comentarios_PIC?: boolean | T_PostInteracaoCapaCountOutputTypeCountComentarios_PICArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * T_PostInteracaoCapaCountOutputType without action
+   */
+  export type T_PostInteracaoCapaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapaCountOutputType
+     */
+    select?: T_PostInteracaoCapaCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * T_PostInteracaoCapaCountOutputType without action
+   */
+  export type T_PostInteracaoCapaCountOutputTypeCountCurtidas_PICArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: T_PIC_CurtidasWhereInput
+  }
+
+  /**
+   * T_PostInteracaoCapaCountOutputType without action
+   */
+  export type T_PostInteracaoCapaCountOutputTypeCountComentarios_PICArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: T_PIC_ComentariosWhereInput
   }
 
 
@@ -2642,6 +3004,8 @@ export namespace Prisma {
     curso?: boolean | T_Perfil$cursoArgs<ExtArgs>
     account?: boolean | T_AccountDefaultArgs<ExtArgs>
     id_Post_Perfil?: boolean | T_Perfil$id_Post_PerfilArgs<ExtArgs>
+    PostInteracaoCurtidas?: boolean | T_Perfil$PostInteracaoCurtidasArgs<ExtArgs>
+    PostInteracaoComentarios?: boolean | T_Perfil$PostInteracaoComentariosArgs<ExtArgs>
     _count?: boolean | T_PerfilCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["t_Perfil"]>
 
@@ -2696,6 +3060,8 @@ export namespace Prisma {
     curso?: boolean | T_Perfil$cursoArgs<ExtArgs>
     account?: boolean | T_AccountDefaultArgs<ExtArgs>
     id_Post_Perfil?: boolean | T_Perfil$id_Post_PerfilArgs<ExtArgs>
+    PostInteracaoCurtidas?: boolean | T_Perfil$PostInteracaoCurtidasArgs<ExtArgs>
+    PostInteracaoComentarios?: boolean | T_Perfil$PostInteracaoComentariosArgs<ExtArgs>
     _count?: boolean | T_PerfilCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type T_PerfilIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2713,6 +3079,8 @@ export namespace Prisma {
       curso: Prisma.$T_CursoPayload<ExtArgs> | null
       account: Prisma.$T_AccountPayload<ExtArgs>
       id_Post_Perfil: Prisma.$T_PostPayload<ExtArgs>[]
+      PostInteracaoCurtidas: Prisma.$T_PIC_CurtidasPayload<ExtArgs>[]
+      PostInteracaoComentarios: Prisma.$T_PIC_ComentariosPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id_Perfil: number
@@ -3123,6 +3491,8 @@ export namespace Prisma {
     curso<T extends T_Perfil$cursoArgs<ExtArgs> = {}>(args?: Subset<T, T_Perfil$cursoArgs<ExtArgs>>): Prisma__T_CursoClient<$Result.GetResult<Prisma.$T_CursoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     account<T extends T_AccountDefaultArgs<ExtArgs> = {}>(args?: Subset<T, T_AccountDefaultArgs<ExtArgs>>): Prisma__T_AccountClient<$Result.GetResult<Prisma.$T_AccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     id_Post_Perfil<T extends T_Perfil$id_Post_PerfilArgs<ExtArgs> = {}>(args?: Subset<T, T_Perfil$id_Post_PerfilArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    PostInteracaoCurtidas<T extends T_Perfil$PostInteracaoCurtidasArgs<ExtArgs> = {}>(args?: Subset<T, T_Perfil$PostInteracaoCurtidasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PIC_CurtidasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    PostInteracaoComentarios<T extends T_Perfil$PostInteracaoComentariosArgs<ExtArgs> = {}>(args?: Subset<T, T_Perfil$PostInteracaoComentariosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PIC_ComentariosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3602,6 +3972,54 @@ export namespace Prisma {
   }
 
   /**
+   * T_Perfil.PostInteracaoCurtidas
+   */
+  export type T_Perfil$PostInteracaoCurtidasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasInclude<ExtArgs> | null
+    where?: T_PIC_CurtidasWhereInput
+    orderBy?: T_PIC_CurtidasOrderByWithRelationInput | T_PIC_CurtidasOrderByWithRelationInput[]
+    cursor?: T_PIC_CurtidasWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: T_PIC_CurtidasScalarFieldEnum | T_PIC_CurtidasScalarFieldEnum[]
+  }
+
+  /**
+   * T_Perfil.PostInteracaoComentarios
+   */
+  export type T_Perfil$PostInteracaoComentariosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosInclude<ExtArgs> | null
+    where?: T_PIC_ComentariosWhereInput
+    orderBy?: T_PIC_ComentariosOrderByWithRelationInput | T_PIC_ComentariosOrderByWithRelationInput[]
+    cursor?: T_PIC_ComentariosWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: T_PIC_ComentariosScalarFieldEnum | T_PIC_ComentariosScalarFieldEnum[]
+  }
+
+  /**
    * T_Perfil without action
    */
   export type T_PerfilDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3617,1128 +4035,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: T_PerfilInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model T_Post
-   */
-
-  export type AggregateT_Post = {
-    _count: T_PostCountAggregateOutputType | null
-    _avg: T_PostAvgAggregateOutputType | null
-    _sum: T_PostSumAggregateOutputType | null
-    _min: T_PostMinAggregateOutputType | null
-    _max: T_PostMaxAggregateOutputType | null
-  }
-
-  export type T_PostAvgAggregateOutputType = {
-    id_Post: number | null
-    id_Perfil_Post: number | null
-  }
-
-  export type T_PostSumAggregateOutputType = {
-    id_Post: number | null
-    id_Perfil_Post: number | null
-  }
-
-  export type T_PostMinAggregateOutputType = {
-    id_Post: number | null
-    title_Post: string | null
-    content_Post: string | null
-    image_Post: string | null
-    createdAt_Post: Date | null
-    updatedAt_Post: Date | null
-    id_Perfil_Post: number | null
-  }
-
-  export type T_PostMaxAggregateOutputType = {
-    id_Post: number | null
-    title_Post: string | null
-    content_Post: string | null
-    image_Post: string | null
-    createdAt_Post: Date | null
-    updatedAt_Post: Date | null
-    id_Perfil_Post: number | null
-  }
-
-  export type T_PostCountAggregateOutputType = {
-    id_Post: number
-    title_Post: number
-    content_Post: number
-    image_Post: number
-    createdAt_Post: number
-    updatedAt_Post: number
-    id_Perfil_Post: number
-    _all: number
-  }
-
-
-  export type T_PostAvgAggregateInputType = {
-    id_Post?: true
-    id_Perfil_Post?: true
-  }
-
-  export type T_PostSumAggregateInputType = {
-    id_Post?: true
-    id_Perfil_Post?: true
-  }
-
-  export type T_PostMinAggregateInputType = {
-    id_Post?: true
-    title_Post?: true
-    content_Post?: true
-    image_Post?: true
-    createdAt_Post?: true
-    updatedAt_Post?: true
-    id_Perfil_Post?: true
-  }
-
-  export type T_PostMaxAggregateInputType = {
-    id_Post?: true
-    title_Post?: true
-    content_Post?: true
-    image_Post?: true
-    createdAt_Post?: true
-    updatedAt_Post?: true
-    id_Perfil_Post?: true
-  }
-
-  export type T_PostCountAggregateInputType = {
-    id_Post?: true
-    title_Post?: true
-    content_Post?: true
-    image_Post?: true
-    createdAt_Post?: true
-    updatedAt_Post?: true
-    id_Perfil_Post?: true
-    _all?: true
-  }
-
-  export type T_PostAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which T_Post to aggregate.
-     */
-    where?: T_PostWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of T_Posts to fetch.
-     */
-    orderBy?: T_PostOrderByWithRelationInput | T_PostOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: T_PostWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` T_Posts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` T_Posts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned T_Posts
-    **/
-    _count?: true | T_PostCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: T_PostAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: T_PostSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: T_PostMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: T_PostMaxAggregateInputType
-  }
-
-  export type GetT_PostAggregateType<T extends T_PostAggregateArgs> = {
-        [P in keyof T & keyof AggregateT_Post]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateT_Post[P]>
-      : GetScalarType<T[P], AggregateT_Post[P]>
-  }
-
-
-
-
-  export type T_PostGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: T_PostWhereInput
-    orderBy?: T_PostOrderByWithAggregationInput | T_PostOrderByWithAggregationInput[]
-    by: T_PostScalarFieldEnum[] | T_PostScalarFieldEnum
-    having?: T_PostScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: T_PostCountAggregateInputType | true
-    _avg?: T_PostAvgAggregateInputType
-    _sum?: T_PostSumAggregateInputType
-    _min?: T_PostMinAggregateInputType
-    _max?: T_PostMaxAggregateInputType
-  }
-
-  export type T_PostGroupByOutputType = {
-    id_Post: number
-    title_Post: string | null
-    content_Post: string | null
-    image_Post: string | null
-    createdAt_Post: Date
-    updatedAt_Post: Date
-    id_Perfil_Post: number
-    _count: T_PostCountAggregateOutputType | null
-    _avg: T_PostAvgAggregateOutputType | null
-    _sum: T_PostSumAggregateOutputType | null
-    _min: T_PostMinAggregateOutputType | null
-    _max: T_PostMaxAggregateOutputType | null
-  }
-
-  type GetT_PostGroupByPayload<T extends T_PostGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<T_PostGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof T_PostGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], T_PostGroupByOutputType[P]>
-            : GetScalarType<T[P], T_PostGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type T_PostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id_Post?: boolean
-    title_Post?: boolean
-    content_Post?: boolean
-    image_Post?: boolean
-    createdAt_Post?: boolean
-    updatedAt_Post?: boolean
-    id_Perfil_Post?: boolean
-    perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["t_Post"]>
-
-  export type T_PostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id_Post?: boolean
-    title_Post?: boolean
-    content_Post?: boolean
-    image_Post?: boolean
-    createdAt_Post?: boolean
-    updatedAt_Post?: boolean
-    id_Perfil_Post?: boolean
-    perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["t_Post"]>
-
-  export type T_PostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id_Post?: boolean
-    title_Post?: boolean
-    content_Post?: boolean
-    image_Post?: boolean
-    createdAt_Post?: boolean
-    updatedAt_Post?: boolean
-    id_Perfil_Post?: boolean
-    perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["t_Post"]>
-
-  export type T_PostSelectScalar = {
-    id_Post?: boolean
-    title_Post?: boolean
-    content_Post?: boolean
-    image_Post?: boolean
-    createdAt_Post?: boolean
-    updatedAt_Post?: boolean
-    id_Perfil_Post?: boolean
-  }
-
-  export type T_PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Post" | "title_Post" | "content_Post" | "image_Post" | "createdAt_Post" | "updatedAt_Post" | "id_Perfil_Post", ExtArgs["result"]["t_Post"]>
-  export type T_PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
-  }
-  export type T_PostIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
-  }
-  export type T_PostIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
-  }
-
-  export type $T_PostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "T_Post"
-    objects: {
-      perfil: Prisma.$T_PerfilPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id_Post: number
-      title_Post: string | null
-      content_Post: string | null
-      image_Post: string | null
-      createdAt_Post: Date
-      updatedAt_Post: Date
-      id_Perfil_Post: number
-    }, ExtArgs["result"]["t_Post"]>
-    composites: {}
-  }
-
-  type T_PostGetPayload<S extends boolean | null | undefined | T_PostDefaultArgs> = $Result.GetResult<Prisma.$T_PostPayload, S>
-
-  type T_PostCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<T_PostFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: T_PostCountAggregateInputType | true
-    }
-
-  export interface T_PostDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['T_Post'], meta: { name: 'T_Post' } }
-    /**
-     * Find zero or one T_Post that matches the filter.
-     * @param {T_PostFindUniqueArgs} args - Arguments to find a T_Post
-     * @example
-     * // Get one T_Post
-     * const t_Post = await prisma.t_Post.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends T_PostFindUniqueArgs>(args: SelectSubset<T, T_PostFindUniqueArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one T_Post that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {T_PostFindUniqueOrThrowArgs} args - Arguments to find a T_Post
-     * @example
-     * // Get one T_Post
-     * const t_Post = await prisma.t_Post.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends T_PostFindUniqueOrThrowArgs>(args: SelectSubset<T, T_PostFindUniqueOrThrowArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first T_Post that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {T_PostFindFirstArgs} args - Arguments to find a T_Post
-     * @example
-     * // Get one T_Post
-     * const t_Post = await prisma.t_Post.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends T_PostFindFirstArgs>(args?: SelectSubset<T, T_PostFindFirstArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first T_Post that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {T_PostFindFirstOrThrowArgs} args - Arguments to find a T_Post
-     * @example
-     * // Get one T_Post
-     * const t_Post = await prisma.t_Post.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends T_PostFindFirstOrThrowArgs>(args?: SelectSubset<T, T_PostFindFirstOrThrowArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more T_Posts that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {T_PostFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all T_Posts
-     * const t_Posts = await prisma.t_Post.findMany()
-     * 
-     * // Get first 10 T_Posts
-     * const t_Posts = await prisma.t_Post.findMany({ take: 10 })
-     * 
-     * // Only select the `id_Post`
-     * const t_PostWithId_PostOnly = await prisma.t_Post.findMany({ select: { id_Post: true } })
-     * 
-     */
-    findMany<T extends T_PostFindManyArgs>(args?: SelectSubset<T, T_PostFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a T_Post.
-     * @param {T_PostCreateArgs} args - Arguments to create a T_Post.
-     * @example
-     * // Create one T_Post
-     * const T_Post = await prisma.t_Post.create({
-     *   data: {
-     *     // ... data to create a T_Post
-     *   }
-     * })
-     * 
-     */
-    create<T extends T_PostCreateArgs>(args: SelectSubset<T, T_PostCreateArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many T_Posts.
-     * @param {T_PostCreateManyArgs} args - Arguments to create many T_Posts.
-     * @example
-     * // Create many T_Posts
-     * const t_Post = await prisma.t_Post.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends T_PostCreateManyArgs>(args?: SelectSubset<T, T_PostCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many T_Posts and returns the data saved in the database.
-     * @param {T_PostCreateManyAndReturnArgs} args - Arguments to create many T_Posts.
-     * @example
-     * // Create many T_Posts
-     * const t_Post = await prisma.t_Post.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many T_Posts and only return the `id_Post`
-     * const t_PostWithId_PostOnly = await prisma.t_Post.createManyAndReturn({
-     *   select: { id_Post: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends T_PostCreateManyAndReturnArgs>(args?: SelectSubset<T, T_PostCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a T_Post.
-     * @param {T_PostDeleteArgs} args - Arguments to delete one T_Post.
-     * @example
-     * // Delete one T_Post
-     * const T_Post = await prisma.t_Post.delete({
-     *   where: {
-     *     // ... filter to delete one T_Post
-     *   }
-     * })
-     * 
-     */
-    delete<T extends T_PostDeleteArgs>(args: SelectSubset<T, T_PostDeleteArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one T_Post.
-     * @param {T_PostUpdateArgs} args - Arguments to update one T_Post.
-     * @example
-     * // Update one T_Post
-     * const t_Post = await prisma.t_Post.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends T_PostUpdateArgs>(args: SelectSubset<T, T_PostUpdateArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more T_Posts.
-     * @param {T_PostDeleteManyArgs} args - Arguments to filter T_Posts to delete.
-     * @example
-     * // Delete a few T_Posts
-     * const { count } = await prisma.t_Post.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends T_PostDeleteManyArgs>(args?: SelectSubset<T, T_PostDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more T_Posts.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {T_PostUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many T_Posts
-     * const t_Post = await prisma.t_Post.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends T_PostUpdateManyArgs>(args: SelectSubset<T, T_PostUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more T_Posts and returns the data updated in the database.
-     * @param {T_PostUpdateManyAndReturnArgs} args - Arguments to update many T_Posts.
-     * @example
-     * // Update many T_Posts
-     * const t_Post = await prisma.t_Post.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more T_Posts and only return the `id_Post`
-     * const t_PostWithId_PostOnly = await prisma.t_Post.updateManyAndReturn({
-     *   select: { id_Post: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends T_PostUpdateManyAndReturnArgs>(args: SelectSubset<T, T_PostUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one T_Post.
-     * @param {T_PostUpsertArgs} args - Arguments to update or create a T_Post.
-     * @example
-     * // Update or create a T_Post
-     * const t_Post = await prisma.t_Post.upsert({
-     *   create: {
-     *     // ... data to create a T_Post
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the T_Post we want to update
-     *   }
-     * })
-     */
-    upsert<T extends T_PostUpsertArgs>(args: SelectSubset<T, T_PostUpsertArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of T_Posts.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {T_PostCountArgs} args - Arguments to filter T_Posts to count.
-     * @example
-     * // Count the number of T_Posts
-     * const count = await prisma.t_Post.count({
-     *   where: {
-     *     // ... the filter for the T_Posts we want to count
-     *   }
-     * })
-    **/
-    count<T extends T_PostCountArgs>(
-      args?: Subset<T, T_PostCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], T_PostCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a T_Post.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {T_PostAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends T_PostAggregateArgs>(args: Subset<T, T_PostAggregateArgs>): Prisma.PrismaPromise<GetT_PostAggregateType<T>>
-
-    /**
-     * Group by T_Post.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {T_PostGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends T_PostGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: T_PostGroupByArgs['orderBy'] }
-        : { orderBy?: T_PostGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, T_PostGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetT_PostGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the T_Post model
-   */
-  readonly fields: T_PostFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for T_Post.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__T_PostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    perfil<T extends T_PerfilDefaultArgs<ExtArgs> = {}>(args?: Subset<T, T_PerfilDefaultArgs<ExtArgs>>): Prisma__T_PerfilClient<$Result.GetResult<Prisma.$T_PerfilPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the T_Post model
-   */
-  interface T_PostFieldRefs {
-    readonly id_Post: FieldRef<"T_Post", 'Int'>
-    readonly title_Post: FieldRef<"T_Post", 'String'>
-    readonly content_Post: FieldRef<"T_Post", 'String'>
-    readonly image_Post: FieldRef<"T_Post", 'String'>
-    readonly createdAt_Post: FieldRef<"T_Post", 'DateTime'>
-    readonly updatedAt_Post: FieldRef<"T_Post", 'DateTime'>
-    readonly id_Perfil_Post: FieldRef<"T_Post", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * T_Post findUnique
-   */
-  export type T_PostFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the T_Post
-     */
-    select?: T_PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the T_Post
-     */
-    omit?: T_PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: T_PostInclude<ExtArgs> | null
-    /**
-     * Filter, which T_Post to fetch.
-     */
-    where: T_PostWhereUniqueInput
-  }
-
-  /**
-   * T_Post findUniqueOrThrow
-   */
-  export type T_PostFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the T_Post
-     */
-    select?: T_PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the T_Post
-     */
-    omit?: T_PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: T_PostInclude<ExtArgs> | null
-    /**
-     * Filter, which T_Post to fetch.
-     */
-    where: T_PostWhereUniqueInput
-  }
-
-  /**
-   * T_Post findFirst
-   */
-  export type T_PostFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the T_Post
-     */
-    select?: T_PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the T_Post
-     */
-    omit?: T_PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: T_PostInclude<ExtArgs> | null
-    /**
-     * Filter, which T_Post to fetch.
-     */
-    where?: T_PostWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of T_Posts to fetch.
-     */
-    orderBy?: T_PostOrderByWithRelationInput | T_PostOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for T_Posts.
-     */
-    cursor?: T_PostWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` T_Posts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` T_Posts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of T_Posts.
-     */
-    distinct?: T_PostScalarFieldEnum | T_PostScalarFieldEnum[]
-  }
-
-  /**
-   * T_Post findFirstOrThrow
-   */
-  export type T_PostFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the T_Post
-     */
-    select?: T_PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the T_Post
-     */
-    omit?: T_PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: T_PostInclude<ExtArgs> | null
-    /**
-     * Filter, which T_Post to fetch.
-     */
-    where?: T_PostWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of T_Posts to fetch.
-     */
-    orderBy?: T_PostOrderByWithRelationInput | T_PostOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for T_Posts.
-     */
-    cursor?: T_PostWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` T_Posts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` T_Posts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of T_Posts.
-     */
-    distinct?: T_PostScalarFieldEnum | T_PostScalarFieldEnum[]
-  }
-
-  /**
-   * T_Post findMany
-   */
-  export type T_PostFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the T_Post
-     */
-    select?: T_PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the T_Post
-     */
-    omit?: T_PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: T_PostInclude<ExtArgs> | null
-    /**
-     * Filter, which T_Posts to fetch.
-     */
-    where?: T_PostWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of T_Posts to fetch.
-     */
-    orderBy?: T_PostOrderByWithRelationInput | T_PostOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing T_Posts.
-     */
-    cursor?: T_PostWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` T_Posts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` T_Posts.
-     */
-    skip?: number
-    distinct?: T_PostScalarFieldEnum | T_PostScalarFieldEnum[]
-  }
-
-  /**
-   * T_Post create
-   */
-  export type T_PostCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the T_Post
-     */
-    select?: T_PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the T_Post
-     */
-    omit?: T_PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: T_PostInclude<ExtArgs> | null
-    /**
-     * The data needed to create a T_Post.
-     */
-    data: XOR<T_PostCreateInput, T_PostUncheckedCreateInput>
-  }
-
-  /**
-   * T_Post createMany
-   */
-  export type T_PostCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many T_Posts.
-     */
-    data: T_PostCreateManyInput | T_PostCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * T_Post createManyAndReturn
-   */
-  export type T_PostCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the T_Post
-     */
-    select?: T_PostSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the T_Post
-     */
-    omit?: T_PostOmit<ExtArgs> | null
-    /**
-     * The data used to create many T_Posts.
-     */
-    data: T_PostCreateManyInput | T_PostCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: T_PostIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * T_Post update
-   */
-  export type T_PostUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the T_Post
-     */
-    select?: T_PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the T_Post
-     */
-    omit?: T_PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: T_PostInclude<ExtArgs> | null
-    /**
-     * The data needed to update a T_Post.
-     */
-    data: XOR<T_PostUpdateInput, T_PostUncheckedUpdateInput>
-    /**
-     * Choose, which T_Post to update.
-     */
-    where: T_PostWhereUniqueInput
-  }
-
-  /**
-   * T_Post updateMany
-   */
-  export type T_PostUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update T_Posts.
-     */
-    data: XOR<T_PostUpdateManyMutationInput, T_PostUncheckedUpdateManyInput>
-    /**
-     * Filter which T_Posts to update
-     */
-    where?: T_PostWhereInput
-    /**
-     * Limit how many T_Posts to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * T_Post updateManyAndReturn
-   */
-  export type T_PostUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the T_Post
-     */
-    select?: T_PostSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the T_Post
-     */
-    omit?: T_PostOmit<ExtArgs> | null
-    /**
-     * The data used to update T_Posts.
-     */
-    data: XOR<T_PostUpdateManyMutationInput, T_PostUncheckedUpdateManyInput>
-    /**
-     * Filter which T_Posts to update
-     */
-    where?: T_PostWhereInput
-    /**
-     * Limit how many T_Posts to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: T_PostIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * T_Post upsert
-   */
-  export type T_PostUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the T_Post
-     */
-    select?: T_PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the T_Post
-     */
-    omit?: T_PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: T_PostInclude<ExtArgs> | null
-    /**
-     * The filter to search for the T_Post to update in case it exists.
-     */
-    where: T_PostWhereUniqueInput
-    /**
-     * In case the T_Post found by the `where` argument doesn't exist, create a new T_Post with this data.
-     */
-    create: XOR<T_PostCreateInput, T_PostUncheckedCreateInput>
-    /**
-     * In case the T_Post was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<T_PostUpdateInput, T_PostUncheckedUpdateInput>
-  }
-
-  /**
-   * T_Post delete
-   */
-  export type T_PostDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the T_Post
-     */
-    select?: T_PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the T_Post
-     */
-    omit?: T_PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: T_PostInclude<ExtArgs> | null
-    /**
-     * Filter which T_Post to delete.
-     */
-    where: T_PostWhereUniqueInput
-  }
-
-  /**
-   * T_Post deleteMany
-   */
-  export type T_PostDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which T_Posts to delete
-     */
-    where?: T_PostWhereInput
-    /**
-     * Limit how many T_Posts to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * T_Post without action
-   */
-  export type T_PostDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the T_Post
-     */
-    select?: T_PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the T_Post
-     */
-    omit?: T_PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: T_PostInclude<ExtArgs> | null
   }
 
 
@@ -5825,6 +5121,4514 @@ export namespace Prisma {
 
 
   /**
+   * Model T_Post
+   */
+
+  export type AggregateT_Post = {
+    _count: T_PostCountAggregateOutputType | null
+    _avg: T_PostAvgAggregateOutputType | null
+    _sum: T_PostSumAggregateOutputType | null
+    _min: T_PostMinAggregateOutputType | null
+    _max: T_PostMaxAggregateOutputType | null
+  }
+
+  export type T_PostAvgAggregateOutputType = {
+    id_Post: number | null
+    id_Perfil_Post: number | null
+  }
+
+  export type T_PostSumAggregateOutputType = {
+    id_Post: number | null
+    id_Perfil_Post: number | null
+  }
+
+  export type T_PostMinAggregateOutputType = {
+    id_Post: number | null
+    title_Post: string | null
+    content_Post: string | null
+    image_Post: string | null
+    TAG_Post: string | null
+    createdAt_Post: Date | null
+    updatedAt_Post: Date | null
+    id_Perfil_Post: number | null
+  }
+
+  export type T_PostMaxAggregateOutputType = {
+    id_Post: number | null
+    title_Post: string | null
+    content_Post: string | null
+    image_Post: string | null
+    TAG_Post: string | null
+    createdAt_Post: Date | null
+    updatedAt_Post: Date | null
+    id_Perfil_Post: number | null
+  }
+
+  export type T_PostCountAggregateOutputType = {
+    id_Post: number
+    title_Post: number
+    content_Post: number
+    image_Post: number
+    TAG_Post: number
+    createdAt_Post: number
+    updatedAt_Post: number
+    id_Perfil_Post: number
+    _all: number
+  }
+
+
+  export type T_PostAvgAggregateInputType = {
+    id_Post?: true
+    id_Perfil_Post?: true
+  }
+
+  export type T_PostSumAggregateInputType = {
+    id_Post?: true
+    id_Perfil_Post?: true
+  }
+
+  export type T_PostMinAggregateInputType = {
+    id_Post?: true
+    title_Post?: true
+    content_Post?: true
+    image_Post?: true
+    TAG_Post?: true
+    createdAt_Post?: true
+    updatedAt_Post?: true
+    id_Perfil_Post?: true
+  }
+
+  export type T_PostMaxAggregateInputType = {
+    id_Post?: true
+    title_Post?: true
+    content_Post?: true
+    image_Post?: true
+    TAG_Post?: true
+    createdAt_Post?: true
+    updatedAt_Post?: true
+    id_Perfil_Post?: true
+  }
+
+  export type T_PostCountAggregateInputType = {
+    id_Post?: true
+    title_Post?: true
+    content_Post?: true
+    image_Post?: true
+    TAG_Post?: true
+    createdAt_Post?: true
+    updatedAt_Post?: true
+    id_Perfil_Post?: true
+    _all?: true
+  }
+
+  export type T_PostAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which T_Post to aggregate.
+     */
+    where?: T_PostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_Posts to fetch.
+     */
+    orderBy?: T_PostOrderByWithRelationInput | T_PostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: T_PostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_Posts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_Posts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned T_Posts
+    **/
+    _count?: true | T_PostCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: T_PostAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: T_PostSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: T_PostMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: T_PostMaxAggregateInputType
+  }
+
+  export type GetT_PostAggregateType<T extends T_PostAggregateArgs> = {
+        [P in keyof T & keyof AggregateT_Post]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateT_Post[P]>
+      : GetScalarType<T[P], AggregateT_Post[P]>
+  }
+
+
+
+
+  export type T_PostGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: T_PostWhereInput
+    orderBy?: T_PostOrderByWithAggregationInput | T_PostOrderByWithAggregationInput[]
+    by: T_PostScalarFieldEnum[] | T_PostScalarFieldEnum
+    having?: T_PostScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: T_PostCountAggregateInputType | true
+    _avg?: T_PostAvgAggregateInputType
+    _sum?: T_PostSumAggregateInputType
+    _min?: T_PostMinAggregateInputType
+    _max?: T_PostMaxAggregateInputType
+  }
+
+  export type T_PostGroupByOutputType = {
+    id_Post: number
+    title_Post: string | null
+    content_Post: string | null
+    image_Post: string | null
+    TAG_Post: string | null
+    createdAt_Post: Date
+    updatedAt_Post: Date
+    id_Perfil_Post: number
+    _count: T_PostCountAggregateOutputType | null
+    _avg: T_PostAvgAggregateOutputType | null
+    _sum: T_PostSumAggregateOutputType | null
+    _min: T_PostMinAggregateOutputType | null
+    _max: T_PostMaxAggregateOutputType | null
+  }
+
+  type GetT_PostGroupByPayload<T extends T_PostGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<T_PostGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof T_PostGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], T_PostGroupByOutputType[P]>
+            : GetScalarType<T[P], T_PostGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type T_PostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_Post?: boolean
+    title_Post?: boolean
+    content_Post?: boolean
+    image_Post?: boolean
+    TAG_Post?: boolean
+    createdAt_Post?: boolean
+    updatedAt_Post?: boolean
+    id_Perfil_Post?: boolean
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+    T_PostInteracaoCapa?: boolean | T_Post$T_PostInteracaoCapaArgs<ExtArgs>
+    _count?: boolean | T_PostCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["t_Post"]>
+
+  export type T_PostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_Post?: boolean
+    title_Post?: boolean
+    content_Post?: boolean
+    image_Post?: boolean
+    TAG_Post?: boolean
+    createdAt_Post?: boolean
+    updatedAt_Post?: boolean
+    id_Perfil_Post?: boolean
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["t_Post"]>
+
+  export type T_PostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_Post?: boolean
+    title_Post?: boolean
+    content_Post?: boolean
+    image_Post?: boolean
+    TAG_Post?: boolean
+    createdAt_Post?: boolean
+    updatedAt_Post?: boolean
+    id_Perfil_Post?: boolean
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["t_Post"]>
+
+  export type T_PostSelectScalar = {
+    id_Post?: boolean
+    title_Post?: boolean
+    content_Post?: boolean
+    image_Post?: boolean
+    TAG_Post?: boolean
+    createdAt_Post?: boolean
+    updatedAt_Post?: boolean
+    id_Perfil_Post?: boolean
+  }
+
+  export type T_PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Post" | "title_Post" | "content_Post" | "image_Post" | "TAG_Post" | "createdAt_Post" | "updatedAt_Post" | "id_Perfil_Post", ExtArgs["result"]["t_Post"]>
+  export type T_PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+    T_PostInteracaoCapa?: boolean | T_Post$T_PostInteracaoCapaArgs<ExtArgs>
+    _count?: boolean | T_PostCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type T_PostIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }
+  export type T_PostIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }
+
+  export type $T_PostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "T_Post"
+    objects: {
+      T_Perfil: Prisma.$T_PerfilPayload<ExtArgs>
+      T_PostInteracaoCapa: Prisma.$T_PostInteracaoCapaPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_Post: number
+      title_Post: string | null
+      content_Post: string | null
+      image_Post: string | null
+      TAG_Post: string | null
+      createdAt_Post: Date
+      updatedAt_Post: Date
+      id_Perfil_Post: number
+    }, ExtArgs["result"]["t_Post"]>
+    composites: {}
+  }
+
+  type T_PostGetPayload<S extends boolean | null | undefined | T_PostDefaultArgs> = $Result.GetResult<Prisma.$T_PostPayload, S>
+
+  type T_PostCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<T_PostFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: T_PostCountAggregateInputType | true
+    }
+
+  export interface T_PostDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['T_Post'], meta: { name: 'T_Post' } }
+    /**
+     * Find zero or one T_Post that matches the filter.
+     * @param {T_PostFindUniqueArgs} args - Arguments to find a T_Post
+     * @example
+     * // Get one T_Post
+     * const t_Post = await prisma.t_Post.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends T_PostFindUniqueArgs>(args: SelectSubset<T, T_PostFindUniqueArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one T_Post that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {T_PostFindUniqueOrThrowArgs} args - Arguments to find a T_Post
+     * @example
+     * // Get one T_Post
+     * const t_Post = await prisma.t_Post.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends T_PostFindUniqueOrThrowArgs>(args: SelectSubset<T, T_PostFindUniqueOrThrowArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first T_Post that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostFindFirstArgs} args - Arguments to find a T_Post
+     * @example
+     * // Get one T_Post
+     * const t_Post = await prisma.t_Post.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends T_PostFindFirstArgs>(args?: SelectSubset<T, T_PostFindFirstArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first T_Post that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostFindFirstOrThrowArgs} args - Arguments to find a T_Post
+     * @example
+     * // Get one T_Post
+     * const t_Post = await prisma.t_Post.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends T_PostFindFirstOrThrowArgs>(args?: SelectSubset<T, T_PostFindFirstOrThrowArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more T_Posts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all T_Posts
+     * const t_Posts = await prisma.t_Post.findMany()
+     * 
+     * // Get first 10 T_Posts
+     * const t_Posts = await prisma.t_Post.findMany({ take: 10 })
+     * 
+     * // Only select the `id_Post`
+     * const t_PostWithId_PostOnly = await prisma.t_Post.findMany({ select: { id_Post: true } })
+     * 
+     */
+    findMany<T extends T_PostFindManyArgs>(args?: SelectSubset<T, T_PostFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a T_Post.
+     * @param {T_PostCreateArgs} args - Arguments to create a T_Post.
+     * @example
+     * // Create one T_Post
+     * const T_Post = await prisma.t_Post.create({
+     *   data: {
+     *     // ... data to create a T_Post
+     *   }
+     * })
+     * 
+     */
+    create<T extends T_PostCreateArgs>(args: SelectSubset<T, T_PostCreateArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many T_Posts.
+     * @param {T_PostCreateManyArgs} args - Arguments to create many T_Posts.
+     * @example
+     * // Create many T_Posts
+     * const t_Post = await prisma.t_Post.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends T_PostCreateManyArgs>(args?: SelectSubset<T, T_PostCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many T_Posts and returns the data saved in the database.
+     * @param {T_PostCreateManyAndReturnArgs} args - Arguments to create many T_Posts.
+     * @example
+     * // Create many T_Posts
+     * const t_Post = await prisma.t_Post.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many T_Posts and only return the `id_Post`
+     * const t_PostWithId_PostOnly = await prisma.t_Post.createManyAndReturn({
+     *   select: { id_Post: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends T_PostCreateManyAndReturnArgs>(args?: SelectSubset<T, T_PostCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a T_Post.
+     * @param {T_PostDeleteArgs} args - Arguments to delete one T_Post.
+     * @example
+     * // Delete one T_Post
+     * const T_Post = await prisma.t_Post.delete({
+     *   where: {
+     *     // ... filter to delete one T_Post
+     *   }
+     * })
+     * 
+     */
+    delete<T extends T_PostDeleteArgs>(args: SelectSubset<T, T_PostDeleteArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one T_Post.
+     * @param {T_PostUpdateArgs} args - Arguments to update one T_Post.
+     * @example
+     * // Update one T_Post
+     * const t_Post = await prisma.t_Post.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends T_PostUpdateArgs>(args: SelectSubset<T, T_PostUpdateArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more T_Posts.
+     * @param {T_PostDeleteManyArgs} args - Arguments to filter T_Posts to delete.
+     * @example
+     * // Delete a few T_Posts
+     * const { count } = await prisma.t_Post.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends T_PostDeleteManyArgs>(args?: SelectSubset<T, T_PostDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more T_Posts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many T_Posts
+     * const t_Post = await prisma.t_Post.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends T_PostUpdateManyArgs>(args: SelectSubset<T, T_PostUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more T_Posts and returns the data updated in the database.
+     * @param {T_PostUpdateManyAndReturnArgs} args - Arguments to update many T_Posts.
+     * @example
+     * // Update many T_Posts
+     * const t_Post = await prisma.t_Post.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more T_Posts and only return the `id_Post`
+     * const t_PostWithId_PostOnly = await prisma.t_Post.updateManyAndReturn({
+     *   select: { id_Post: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends T_PostUpdateManyAndReturnArgs>(args: SelectSubset<T, T_PostUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one T_Post.
+     * @param {T_PostUpsertArgs} args - Arguments to update or create a T_Post.
+     * @example
+     * // Update or create a T_Post
+     * const t_Post = await prisma.t_Post.upsert({
+     *   create: {
+     *     // ... data to create a T_Post
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the T_Post we want to update
+     *   }
+     * })
+     */
+    upsert<T extends T_PostUpsertArgs>(args: SelectSubset<T, T_PostUpsertArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of T_Posts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostCountArgs} args - Arguments to filter T_Posts to count.
+     * @example
+     * // Count the number of T_Posts
+     * const count = await prisma.t_Post.count({
+     *   where: {
+     *     // ... the filter for the T_Posts we want to count
+     *   }
+     * })
+    **/
+    count<T extends T_PostCountArgs>(
+      args?: Subset<T, T_PostCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], T_PostCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a T_Post.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends T_PostAggregateArgs>(args: Subset<T, T_PostAggregateArgs>): Prisma.PrismaPromise<GetT_PostAggregateType<T>>
+
+    /**
+     * Group by T_Post.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends T_PostGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: T_PostGroupByArgs['orderBy'] }
+        : { orderBy?: T_PostGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, T_PostGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetT_PostGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the T_Post model
+   */
+  readonly fields: T_PostFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for T_Post.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__T_PostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    T_Perfil<T extends T_PerfilDefaultArgs<ExtArgs> = {}>(args?: Subset<T, T_PerfilDefaultArgs<ExtArgs>>): Prisma__T_PerfilClient<$Result.GetResult<Prisma.$T_PerfilPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    T_PostInteracaoCapa<T extends T_Post$T_PostInteracaoCapaArgs<ExtArgs> = {}>(args?: Subset<T, T_Post$T_PostInteracaoCapaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the T_Post model
+   */
+  interface T_PostFieldRefs {
+    readonly id_Post: FieldRef<"T_Post", 'Int'>
+    readonly title_Post: FieldRef<"T_Post", 'String'>
+    readonly content_Post: FieldRef<"T_Post", 'String'>
+    readonly image_Post: FieldRef<"T_Post", 'String'>
+    readonly TAG_Post: FieldRef<"T_Post", 'String'>
+    readonly createdAt_Post: FieldRef<"T_Post", 'DateTime'>
+    readonly updatedAt_Post: FieldRef<"T_Post", 'DateTime'>
+    readonly id_Perfil_Post: FieldRef<"T_Post", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * T_Post findUnique
+   */
+  export type T_PostFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Post
+     */
+    select?: T_PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Post
+     */
+    omit?: T_PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInclude<ExtArgs> | null
+    /**
+     * Filter, which T_Post to fetch.
+     */
+    where: T_PostWhereUniqueInput
+  }
+
+  /**
+   * T_Post findUniqueOrThrow
+   */
+  export type T_PostFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Post
+     */
+    select?: T_PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Post
+     */
+    omit?: T_PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInclude<ExtArgs> | null
+    /**
+     * Filter, which T_Post to fetch.
+     */
+    where: T_PostWhereUniqueInput
+  }
+
+  /**
+   * T_Post findFirst
+   */
+  export type T_PostFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Post
+     */
+    select?: T_PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Post
+     */
+    omit?: T_PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInclude<ExtArgs> | null
+    /**
+     * Filter, which T_Post to fetch.
+     */
+    where?: T_PostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_Posts to fetch.
+     */
+    orderBy?: T_PostOrderByWithRelationInput | T_PostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for T_Posts.
+     */
+    cursor?: T_PostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_Posts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_Posts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of T_Posts.
+     */
+    distinct?: T_PostScalarFieldEnum | T_PostScalarFieldEnum[]
+  }
+
+  /**
+   * T_Post findFirstOrThrow
+   */
+  export type T_PostFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Post
+     */
+    select?: T_PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Post
+     */
+    omit?: T_PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInclude<ExtArgs> | null
+    /**
+     * Filter, which T_Post to fetch.
+     */
+    where?: T_PostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_Posts to fetch.
+     */
+    orderBy?: T_PostOrderByWithRelationInput | T_PostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for T_Posts.
+     */
+    cursor?: T_PostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_Posts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_Posts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of T_Posts.
+     */
+    distinct?: T_PostScalarFieldEnum | T_PostScalarFieldEnum[]
+  }
+
+  /**
+   * T_Post findMany
+   */
+  export type T_PostFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Post
+     */
+    select?: T_PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Post
+     */
+    omit?: T_PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInclude<ExtArgs> | null
+    /**
+     * Filter, which T_Posts to fetch.
+     */
+    where?: T_PostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_Posts to fetch.
+     */
+    orderBy?: T_PostOrderByWithRelationInput | T_PostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing T_Posts.
+     */
+    cursor?: T_PostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_Posts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_Posts.
+     */
+    skip?: number
+    distinct?: T_PostScalarFieldEnum | T_PostScalarFieldEnum[]
+  }
+
+  /**
+   * T_Post create
+   */
+  export type T_PostCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Post
+     */
+    select?: T_PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Post
+     */
+    omit?: T_PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInclude<ExtArgs> | null
+    /**
+     * The data needed to create a T_Post.
+     */
+    data: XOR<T_PostCreateInput, T_PostUncheckedCreateInput>
+  }
+
+  /**
+   * T_Post createMany
+   */
+  export type T_PostCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many T_Posts.
+     */
+    data: T_PostCreateManyInput | T_PostCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * T_Post createManyAndReturn
+   */
+  export type T_PostCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Post
+     */
+    select?: T_PostSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Post
+     */
+    omit?: T_PostOmit<ExtArgs> | null
+    /**
+     * The data used to create many T_Posts.
+     */
+    data: T_PostCreateManyInput | T_PostCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * T_Post update
+   */
+  export type T_PostUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Post
+     */
+    select?: T_PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Post
+     */
+    omit?: T_PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInclude<ExtArgs> | null
+    /**
+     * The data needed to update a T_Post.
+     */
+    data: XOR<T_PostUpdateInput, T_PostUncheckedUpdateInput>
+    /**
+     * Choose, which T_Post to update.
+     */
+    where: T_PostWhereUniqueInput
+  }
+
+  /**
+   * T_Post updateMany
+   */
+  export type T_PostUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update T_Posts.
+     */
+    data: XOR<T_PostUpdateManyMutationInput, T_PostUncheckedUpdateManyInput>
+    /**
+     * Filter which T_Posts to update
+     */
+    where?: T_PostWhereInput
+    /**
+     * Limit how many T_Posts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * T_Post updateManyAndReturn
+   */
+  export type T_PostUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Post
+     */
+    select?: T_PostSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Post
+     */
+    omit?: T_PostOmit<ExtArgs> | null
+    /**
+     * The data used to update T_Posts.
+     */
+    data: XOR<T_PostUpdateManyMutationInput, T_PostUncheckedUpdateManyInput>
+    /**
+     * Filter which T_Posts to update
+     */
+    where?: T_PostWhereInput
+    /**
+     * Limit how many T_Posts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * T_Post upsert
+   */
+  export type T_PostUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Post
+     */
+    select?: T_PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Post
+     */
+    omit?: T_PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInclude<ExtArgs> | null
+    /**
+     * The filter to search for the T_Post to update in case it exists.
+     */
+    where: T_PostWhereUniqueInput
+    /**
+     * In case the T_Post found by the `where` argument doesn't exist, create a new T_Post with this data.
+     */
+    create: XOR<T_PostCreateInput, T_PostUncheckedCreateInput>
+    /**
+     * In case the T_Post was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<T_PostUpdateInput, T_PostUncheckedUpdateInput>
+  }
+
+  /**
+   * T_Post delete
+   */
+  export type T_PostDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Post
+     */
+    select?: T_PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Post
+     */
+    omit?: T_PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInclude<ExtArgs> | null
+    /**
+     * Filter which T_Post to delete.
+     */
+    where: T_PostWhereUniqueInput
+  }
+
+  /**
+   * T_Post deleteMany
+   */
+  export type T_PostDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which T_Posts to delete
+     */
+    where?: T_PostWhereInput
+    /**
+     * Limit how many T_Posts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * T_Post.T_PostInteracaoCapa
+   */
+  export type T_Post$T_PostInteracaoCapaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaInclude<ExtArgs> | null
+    where?: T_PostInteracaoCapaWhereInput
+    orderBy?: T_PostInteracaoCapaOrderByWithRelationInput | T_PostInteracaoCapaOrderByWithRelationInput[]
+    cursor?: T_PostInteracaoCapaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: T_PostInteracaoCapaScalarFieldEnum | T_PostInteracaoCapaScalarFieldEnum[]
+  }
+
+  /**
+   * T_Post without action
+   */
+  export type T_PostDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_Post
+     */
+    select?: T_PostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_Post
+     */
+    omit?: T_PostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model T_PostInteracaoCapa
+   */
+
+  export type AggregateT_PostInteracaoCapa = {
+    _count: T_PostInteracaoCapaCountAggregateOutputType | null
+    _avg: T_PostInteracaoCapaAvgAggregateOutputType | null
+    _sum: T_PostInteracaoCapaSumAggregateOutputType | null
+    _min: T_PostInteracaoCapaMinAggregateOutputType | null
+    _max: T_PostInteracaoCapaMaxAggregateOutputType | null
+  }
+
+  export type T_PostInteracaoCapaAvgAggregateOutputType = {
+    id_PIC: number | null
+    id_Post_PIC: number | null
+    visualizacao_PIC: number | null
+  }
+
+  export type T_PostInteracaoCapaSumAggregateOutputType = {
+    id_PIC: number | null
+    id_Post_PIC: number | null
+    visualizacao_PIC: number[]
+  }
+
+  export type T_PostInteracaoCapaMinAggregateOutputType = {
+    id_PIC: number | null
+    id_Post_PIC: number | null
+  }
+
+  export type T_PostInteracaoCapaMaxAggregateOutputType = {
+    id_PIC: number | null
+    id_Post_PIC: number | null
+  }
+
+  export type T_PostInteracaoCapaCountAggregateOutputType = {
+    id_PIC: number
+    id_Post_PIC: number
+    visualizacao_PIC: number
+    _all: number
+  }
+
+
+  export type T_PostInteracaoCapaAvgAggregateInputType = {
+    id_PIC?: true
+    id_Post_PIC?: true
+    visualizacao_PIC?: true
+  }
+
+  export type T_PostInteracaoCapaSumAggregateInputType = {
+    id_PIC?: true
+    id_Post_PIC?: true
+    visualizacao_PIC?: true
+  }
+
+  export type T_PostInteracaoCapaMinAggregateInputType = {
+    id_PIC?: true
+    id_Post_PIC?: true
+  }
+
+  export type T_PostInteracaoCapaMaxAggregateInputType = {
+    id_PIC?: true
+    id_Post_PIC?: true
+  }
+
+  export type T_PostInteracaoCapaCountAggregateInputType = {
+    id_PIC?: true
+    id_Post_PIC?: true
+    visualizacao_PIC?: true
+    _all?: true
+  }
+
+  export type T_PostInteracaoCapaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which T_PostInteracaoCapa to aggregate.
+     */
+    where?: T_PostInteracaoCapaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_PostInteracaoCapas to fetch.
+     */
+    orderBy?: T_PostInteracaoCapaOrderByWithRelationInput | T_PostInteracaoCapaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: T_PostInteracaoCapaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_PostInteracaoCapas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_PostInteracaoCapas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned T_PostInteracaoCapas
+    **/
+    _count?: true | T_PostInteracaoCapaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: T_PostInteracaoCapaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: T_PostInteracaoCapaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: T_PostInteracaoCapaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: T_PostInteracaoCapaMaxAggregateInputType
+  }
+
+  export type GetT_PostInteracaoCapaAggregateType<T extends T_PostInteracaoCapaAggregateArgs> = {
+        [P in keyof T & keyof AggregateT_PostInteracaoCapa]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateT_PostInteracaoCapa[P]>
+      : GetScalarType<T[P], AggregateT_PostInteracaoCapa[P]>
+  }
+
+
+
+
+  export type T_PostInteracaoCapaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: T_PostInteracaoCapaWhereInput
+    orderBy?: T_PostInteracaoCapaOrderByWithAggregationInput | T_PostInteracaoCapaOrderByWithAggregationInput[]
+    by: T_PostInteracaoCapaScalarFieldEnum[] | T_PostInteracaoCapaScalarFieldEnum
+    having?: T_PostInteracaoCapaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: T_PostInteracaoCapaCountAggregateInputType | true
+    _avg?: T_PostInteracaoCapaAvgAggregateInputType
+    _sum?: T_PostInteracaoCapaSumAggregateInputType
+    _min?: T_PostInteracaoCapaMinAggregateInputType
+    _max?: T_PostInteracaoCapaMaxAggregateInputType
+  }
+
+  export type T_PostInteracaoCapaGroupByOutputType = {
+    id_PIC: number
+    id_Post_PIC: number
+    visualizacao_PIC: number[]
+    _count: T_PostInteracaoCapaCountAggregateOutputType | null
+    _avg: T_PostInteracaoCapaAvgAggregateOutputType | null
+    _sum: T_PostInteracaoCapaSumAggregateOutputType | null
+    _min: T_PostInteracaoCapaMinAggregateOutputType | null
+    _max: T_PostInteracaoCapaMaxAggregateOutputType | null
+  }
+
+  type GetT_PostInteracaoCapaGroupByPayload<T extends T_PostInteracaoCapaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<T_PostInteracaoCapaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof T_PostInteracaoCapaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], T_PostInteracaoCapaGroupByOutputType[P]>
+            : GetScalarType<T[P], T_PostInteracaoCapaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type T_PostInteracaoCapaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_PIC?: boolean
+    id_Post_PIC?: boolean
+    visualizacao_PIC?: boolean
+    curtidas_PIC?: boolean | T_PostInteracaoCapa$curtidas_PICArgs<ExtArgs>
+    comentarios_PIC?: boolean | T_PostInteracaoCapa$comentarios_PICArgs<ExtArgs>
+    T_Post?: boolean | T_PostDefaultArgs<ExtArgs>
+    _count?: boolean | T_PostInteracaoCapaCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["t_PostInteracaoCapa"]>
+
+  export type T_PostInteracaoCapaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_PIC?: boolean
+    id_Post_PIC?: boolean
+    visualizacao_PIC?: boolean
+    T_Post?: boolean | T_PostDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["t_PostInteracaoCapa"]>
+
+  export type T_PostInteracaoCapaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_PIC?: boolean
+    id_Post_PIC?: boolean
+    visualizacao_PIC?: boolean
+    T_Post?: boolean | T_PostDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["t_PostInteracaoCapa"]>
+
+  export type T_PostInteracaoCapaSelectScalar = {
+    id_PIC?: boolean
+    id_Post_PIC?: boolean
+    visualizacao_PIC?: boolean
+  }
+
+  export type T_PostInteracaoCapaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_PIC" | "id_Post_PIC" | "visualizacao_PIC", ExtArgs["result"]["t_PostInteracaoCapa"]>
+  export type T_PostInteracaoCapaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    curtidas_PIC?: boolean | T_PostInteracaoCapa$curtidas_PICArgs<ExtArgs>
+    comentarios_PIC?: boolean | T_PostInteracaoCapa$comentarios_PICArgs<ExtArgs>
+    T_Post?: boolean | T_PostDefaultArgs<ExtArgs>
+    _count?: boolean | T_PostInteracaoCapaCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type T_PostInteracaoCapaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    T_Post?: boolean | T_PostDefaultArgs<ExtArgs>
+  }
+  export type T_PostInteracaoCapaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    T_Post?: boolean | T_PostDefaultArgs<ExtArgs>
+  }
+
+  export type $T_PostInteracaoCapaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "T_PostInteracaoCapa"
+    objects: {
+      curtidas_PIC: Prisma.$T_PIC_CurtidasPayload<ExtArgs>[]
+      comentarios_PIC: Prisma.$T_PIC_ComentariosPayload<ExtArgs>[]
+      T_Post: Prisma.$T_PostPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_PIC: number
+      id_Post_PIC: number
+      visualizacao_PIC: number[]
+    }, ExtArgs["result"]["t_PostInteracaoCapa"]>
+    composites: {}
+  }
+
+  type T_PostInteracaoCapaGetPayload<S extends boolean | null | undefined | T_PostInteracaoCapaDefaultArgs> = $Result.GetResult<Prisma.$T_PostInteracaoCapaPayload, S>
+
+  type T_PostInteracaoCapaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<T_PostInteracaoCapaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: T_PostInteracaoCapaCountAggregateInputType | true
+    }
+
+  export interface T_PostInteracaoCapaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['T_PostInteracaoCapa'], meta: { name: 'T_PostInteracaoCapa' } }
+    /**
+     * Find zero or one T_PostInteracaoCapa that matches the filter.
+     * @param {T_PostInteracaoCapaFindUniqueArgs} args - Arguments to find a T_PostInteracaoCapa
+     * @example
+     * // Get one T_PostInteracaoCapa
+     * const t_PostInteracaoCapa = await prisma.t_PostInteracaoCapa.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends T_PostInteracaoCapaFindUniqueArgs>(args: SelectSubset<T, T_PostInteracaoCapaFindUniqueArgs<ExtArgs>>): Prisma__T_PostInteracaoCapaClient<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one T_PostInteracaoCapa that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {T_PostInteracaoCapaFindUniqueOrThrowArgs} args - Arguments to find a T_PostInteracaoCapa
+     * @example
+     * // Get one T_PostInteracaoCapa
+     * const t_PostInteracaoCapa = await prisma.t_PostInteracaoCapa.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends T_PostInteracaoCapaFindUniqueOrThrowArgs>(args: SelectSubset<T, T_PostInteracaoCapaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__T_PostInteracaoCapaClient<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first T_PostInteracaoCapa that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostInteracaoCapaFindFirstArgs} args - Arguments to find a T_PostInteracaoCapa
+     * @example
+     * // Get one T_PostInteracaoCapa
+     * const t_PostInteracaoCapa = await prisma.t_PostInteracaoCapa.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends T_PostInteracaoCapaFindFirstArgs>(args?: SelectSubset<T, T_PostInteracaoCapaFindFirstArgs<ExtArgs>>): Prisma__T_PostInteracaoCapaClient<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first T_PostInteracaoCapa that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostInteracaoCapaFindFirstOrThrowArgs} args - Arguments to find a T_PostInteracaoCapa
+     * @example
+     * // Get one T_PostInteracaoCapa
+     * const t_PostInteracaoCapa = await prisma.t_PostInteracaoCapa.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends T_PostInteracaoCapaFindFirstOrThrowArgs>(args?: SelectSubset<T, T_PostInteracaoCapaFindFirstOrThrowArgs<ExtArgs>>): Prisma__T_PostInteracaoCapaClient<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more T_PostInteracaoCapas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostInteracaoCapaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all T_PostInteracaoCapas
+     * const t_PostInteracaoCapas = await prisma.t_PostInteracaoCapa.findMany()
+     * 
+     * // Get first 10 T_PostInteracaoCapas
+     * const t_PostInteracaoCapas = await prisma.t_PostInteracaoCapa.findMany({ take: 10 })
+     * 
+     * // Only select the `id_PIC`
+     * const t_PostInteracaoCapaWithId_PICOnly = await prisma.t_PostInteracaoCapa.findMany({ select: { id_PIC: true } })
+     * 
+     */
+    findMany<T extends T_PostInteracaoCapaFindManyArgs>(args?: SelectSubset<T, T_PostInteracaoCapaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a T_PostInteracaoCapa.
+     * @param {T_PostInteracaoCapaCreateArgs} args - Arguments to create a T_PostInteracaoCapa.
+     * @example
+     * // Create one T_PostInteracaoCapa
+     * const T_PostInteracaoCapa = await prisma.t_PostInteracaoCapa.create({
+     *   data: {
+     *     // ... data to create a T_PostInteracaoCapa
+     *   }
+     * })
+     * 
+     */
+    create<T extends T_PostInteracaoCapaCreateArgs>(args: SelectSubset<T, T_PostInteracaoCapaCreateArgs<ExtArgs>>): Prisma__T_PostInteracaoCapaClient<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many T_PostInteracaoCapas.
+     * @param {T_PostInteracaoCapaCreateManyArgs} args - Arguments to create many T_PostInteracaoCapas.
+     * @example
+     * // Create many T_PostInteracaoCapas
+     * const t_PostInteracaoCapa = await prisma.t_PostInteracaoCapa.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends T_PostInteracaoCapaCreateManyArgs>(args?: SelectSubset<T, T_PostInteracaoCapaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many T_PostInteracaoCapas and returns the data saved in the database.
+     * @param {T_PostInteracaoCapaCreateManyAndReturnArgs} args - Arguments to create many T_PostInteracaoCapas.
+     * @example
+     * // Create many T_PostInteracaoCapas
+     * const t_PostInteracaoCapa = await prisma.t_PostInteracaoCapa.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many T_PostInteracaoCapas and only return the `id_PIC`
+     * const t_PostInteracaoCapaWithId_PICOnly = await prisma.t_PostInteracaoCapa.createManyAndReturn({
+     *   select: { id_PIC: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends T_PostInteracaoCapaCreateManyAndReturnArgs>(args?: SelectSubset<T, T_PostInteracaoCapaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a T_PostInteracaoCapa.
+     * @param {T_PostInteracaoCapaDeleteArgs} args - Arguments to delete one T_PostInteracaoCapa.
+     * @example
+     * // Delete one T_PostInteracaoCapa
+     * const T_PostInteracaoCapa = await prisma.t_PostInteracaoCapa.delete({
+     *   where: {
+     *     // ... filter to delete one T_PostInteracaoCapa
+     *   }
+     * })
+     * 
+     */
+    delete<T extends T_PostInteracaoCapaDeleteArgs>(args: SelectSubset<T, T_PostInteracaoCapaDeleteArgs<ExtArgs>>): Prisma__T_PostInteracaoCapaClient<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one T_PostInteracaoCapa.
+     * @param {T_PostInteracaoCapaUpdateArgs} args - Arguments to update one T_PostInteracaoCapa.
+     * @example
+     * // Update one T_PostInteracaoCapa
+     * const t_PostInteracaoCapa = await prisma.t_PostInteracaoCapa.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends T_PostInteracaoCapaUpdateArgs>(args: SelectSubset<T, T_PostInteracaoCapaUpdateArgs<ExtArgs>>): Prisma__T_PostInteracaoCapaClient<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more T_PostInteracaoCapas.
+     * @param {T_PostInteracaoCapaDeleteManyArgs} args - Arguments to filter T_PostInteracaoCapas to delete.
+     * @example
+     * // Delete a few T_PostInteracaoCapas
+     * const { count } = await prisma.t_PostInteracaoCapa.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends T_PostInteracaoCapaDeleteManyArgs>(args?: SelectSubset<T, T_PostInteracaoCapaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more T_PostInteracaoCapas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostInteracaoCapaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many T_PostInteracaoCapas
+     * const t_PostInteracaoCapa = await prisma.t_PostInteracaoCapa.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends T_PostInteracaoCapaUpdateManyArgs>(args: SelectSubset<T, T_PostInteracaoCapaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more T_PostInteracaoCapas and returns the data updated in the database.
+     * @param {T_PostInteracaoCapaUpdateManyAndReturnArgs} args - Arguments to update many T_PostInteracaoCapas.
+     * @example
+     * // Update many T_PostInteracaoCapas
+     * const t_PostInteracaoCapa = await prisma.t_PostInteracaoCapa.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more T_PostInteracaoCapas and only return the `id_PIC`
+     * const t_PostInteracaoCapaWithId_PICOnly = await prisma.t_PostInteracaoCapa.updateManyAndReturn({
+     *   select: { id_PIC: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends T_PostInteracaoCapaUpdateManyAndReturnArgs>(args: SelectSubset<T, T_PostInteracaoCapaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one T_PostInteracaoCapa.
+     * @param {T_PostInteracaoCapaUpsertArgs} args - Arguments to update or create a T_PostInteracaoCapa.
+     * @example
+     * // Update or create a T_PostInteracaoCapa
+     * const t_PostInteracaoCapa = await prisma.t_PostInteracaoCapa.upsert({
+     *   create: {
+     *     // ... data to create a T_PostInteracaoCapa
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the T_PostInteracaoCapa we want to update
+     *   }
+     * })
+     */
+    upsert<T extends T_PostInteracaoCapaUpsertArgs>(args: SelectSubset<T, T_PostInteracaoCapaUpsertArgs<ExtArgs>>): Prisma__T_PostInteracaoCapaClient<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of T_PostInteracaoCapas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostInteracaoCapaCountArgs} args - Arguments to filter T_PostInteracaoCapas to count.
+     * @example
+     * // Count the number of T_PostInteracaoCapas
+     * const count = await prisma.t_PostInteracaoCapa.count({
+     *   where: {
+     *     // ... the filter for the T_PostInteracaoCapas we want to count
+     *   }
+     * })
+    **/
+    count<T extends T_PostInteracaoCapaCountArgs>(
+      args?: Subset<T, T_PostInteracaoCapaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], T_PostInteracaoCapaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a T_PostInteracaoCapa.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostInteracaoCapaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends T_PostInteracaoCapaAggregateArgs>(args: Subset<T, T_PostInteracaoCapaAggregateArgs>): Prisma.PrismaPromise<GetT_PostInteracaoCapaAggregateType<T>>
+
+    /**
+     * Group by T_PostInteracaoCapa.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PostInteracaoCapaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends T_PostInteracaoCapaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: T_PostInteracaoCapaGroupByArgs['orderBy'] }
+        : { orderBy?: T_PostInteracaoCapaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, T_PostInteracaoCapaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetT_PostInteracaoCapaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the T_PostInteracaoCapa model
+   */
+  readonly fields: T_PostInteracaoCapaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for T_PostInteracaoCapa.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__T_PostInteracaoCapaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    curtidas_PIC<T extends T_PostInteracaoCapa$curtidas_PICArgs<ExtArgs> = {}>(args?: Subset<T, T_PostInteracaoCapa$curtidas_PICArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PIC_CurtidasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    comentarios_PIC<T extends T_PostInteracaoCapa$comentarios_PICArgs<ExtArgs> = {}>(args?: Subset<T, T_PostInteracaoCapa$comentarios_PICArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PIC_ComentariosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    T_Post<T extends T_PostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, T_PostDefaultArgs<ExtArgs>>): Prisma__T_PostClient<$Result.GetResult<Prisma.$T_PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the T_PostInteracaoCapa model
+   */
+  interface T_PostInteracaoCapaFieldRefs {
+    readonly id_PIC: FieldRef<"T_PostInteracaoCapa", 'Int'>
+    readonly id_Post_PIC: FieldRef<"T_PostInteracaoCapa", 'Int'>
+    readonly visualizacao_PIC: FieldRef<"T_PostInteracaoCapa", 'Int[]'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * T_PostInteracaoCapa findUnique
+   */
+  export type T_PostInteracaoCapaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PostInteracaoCapa to fetch.
+     */
+    where: T_PostInteracaoCapaWhereUniqueInput
+  }
+
+  /**
+   * T_PostInteracaoCapa findUniqueOrThrow
+   */
+  export type T_PostInteracaoCapaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PostInteracaoCapa to fetch.
+     */
+    where: T_PostInteracaoCapaWhereUniqueInput
+  }
+
+  /**
+   * T_PostInteracaoCapa findFirst
+   */
+  export type T_PostInteracaoCapaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PostInteracaoCapa to fetch.
+     */
+    where?: T_PostInteracaoCapaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_PostInteracaoCapas to fetch.
+     */
+    orderBy?: T_PostInteracaoCapaOrderByWithRelationInput | T_PostInteracaoCapaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for T_PostInteracaoCapas.
+     */
+    cursor?: T_PostInteracaoCapaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_PostInteracaoCapas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_PostInteracaoCapas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of T_PostInteracaoCapas.
+     */
+    distinct?: T_PostInteracaoCapaScalarFieldEnum | T_PostInteracaoCapaScalarFieldEnum[]
+  }
+
+  /**
+   * T_PostInteracaoCapa findFirstOrThrow
+   */
+  export type T_PostInteracaoCapaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PostInteracaoCapa to fetch.
+     */
+    where?: T_PostInteracaoCapaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_PostInteracaoCapas to fetch.
+     */
+    orderBy?: T_PostInteracaoCapaOrderByWithRelationInput | T_PostInteracaoCapaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for T_PostInteracaoCapas.
+     */
+    cursor?: T_PostInteracaoCapaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_PostInteracaoCapas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_PostInteracaoCapas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of T_PostInteracaoCapas.
+     */
+    distinct?: T_PostInteracaoCapaScalarFieldEnum | T_PostInteracaoCapaScalarFieldEnum[]
+  }
+
+  /**
+   * T_PostInteracaoCapa findMany
+   */
+  export type T_PostInteracaoCapaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PostInteracaoCapas to fetch.
+     */
+    where?: T_PostInteracaoCapaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_PostInteracaoCapas to fetch.
+     */
+    orderBy?: T_PostInteracaoCapaOrderByWithRelationInput | T_PostInteracaoCapaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing T_PostInteracaoCapas.
+     */
+    cursor?: T_PostInteracaoCapaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_PostInteracaoCapas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_PostInteracaoCapas.
+     */
+    skip?: number
+    distinct?: T_PostInteracaoCapaScalarFieldEnum | T_PostInteracaoCapaScalarFieldEnum[]
+  }
+
+  /**
+   * T_PostInteracaoCapa create
+   */
+  export type T_PostInteracaoCapaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a T_PostInteracaoCapa.
+     */
+    data: XOR<T_PostInteracaoCapaCreateInput, T_PostInteracaoCapaUncheckedCreateInput>
+  }
+
+  /**
+   * T_PostInteracaoCapa createMany
+   */
+  export type T_PostInteracaoCapaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many T_PostInteracaoCapas.
+     */
+    data: T_PostInteracaoCapaCreateManyInput | T_PostInteracaoCapaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * T_PostInteracaoCapa createManyAndReturn
+   */
+  export type T_PostInteracaoCapaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * The data used to create many T_PostInteracaoCapas.
+     */
+    data: T_PostInteracaoCapaCreateManyInput | T_PostInteracaoCapaCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * T_PostInteracaoCapa update
+   */
+  export type T_PostInteracaoCapaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a T_PostInteracaoCapa.
+     */
+    data: XOR<T_PostInteracaoCapaUpdateInput, T_PostInteracaoCapaUncheckedUpdateInput>
+    /**
+     * Choose, which T_PostInteracaoCapa to update.
+     */
+    where: T_PostInteracaoCapaWhereUniqueInput
+  }
+
+  /**
+   * T_PostInteracaoCapa updateMany
+   */
+  export type T_PostInteracaoCapaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update T_PostInteracaoCapas.
+     */
+    data: XOR<T_PostInteracaoCapaUpdateManyMutationInput, T_PostInteracaoCapaUncheckedUpdateManyInput>
+    /**
+     * Filter which T_PostInteracaoCapas to update
+     */
+    where?: T_PostInteracaoCapaWhereInput
+    /**
+     * Limit how many T_PostInteracaoCapas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * T_PostInteracaoCapa updateManyAndReturn
+   */
+  export type T_PostInteracaoCapaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * The data used to update T_PostInteracaoCapas.
+     */
+    data: XOR<T_PostInteracaoCapaUpdateManyMutationInput, T_PostInteracaoCapaUncheckedUpdateManyInput>
+    /**
+     * Filter which T_PostInteracaoCapas to update
+     */
+    where?: T_PostInteracaoCapaWhereInput
+    /**
+     * Limit how many T_PostInteracaoCapas to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * T_PostInteracaoCapa upsert
+   */
+  export type T_PostInteracaoCapaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the T_PostInteracaoCapa to update in case it exists.
+     */
+    where: T_PostInteracaoCapaWhereUniqueInput
+    /**
+     * In case the T_PostInteracaoCapa found by the `where` argument doesn't exist, create a new T_PostInteracaoCapa with this data.
+     */
+    create: XOR<T_PostInteracaoCapaCreateInput, T_PostInteracaoCapaUncheckedCreateInput>
+    /**
+     * In case the T_PostInteracaoCapa was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<T_PostInteracaoCapaUpdateInput, T_PostInteracaoCapaUncheckedUpdateInput>
+  }
+
+  /**
+   * T_PostInteracaoCapa delete
+   */
+  export type T_PostInteracaoCapaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaInclude<ExtArgs> | null
+    /**
+     * Filter which T_PostInteracaoCapa to delete.
+     */
+    where: T_PostInteracaoCapaWhereUniqueInput
+  }
+
+  /**
+   * T_PostInteracaoCapa deleteMany
+   */
+  export type T_PostInteracaoCapaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which T_PostInteracaoCapas to delete
+     */
+    where?: T_PostInteracaoCapaWhereInput
+    /**
+     * Limit how many T_PostInteracaoCapas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * T_PostInteracaoCapa.curtidas_PIC
+   */
+  export type T_PostInteracaoCapa$curtidas_PICArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasInclude<ExtArgs> | null
+    where?: T_PIC_CurtidasWhereInput
+    orderBy?: T_PIC_CurtidasOrderByWithRelationInput | T_PIC_CurtidasOrderByWithRelationInput[]
+    cursor?: T_PIC_CurtidasWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: T_PIC_CurtidasScalarFieldEnum | T_PIC_CurtidasScalarFieldEnum[]
+  }
+
+  /**
+   * T_PostInteracaoCapa.comentarios_PIC
+   */
+  export type T_PostInteracaoCapa$comentarios_PICArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosInclude<ExtArgs> | null
+    where?: T_PIC_ComentariosWhereInput
+    orderBy?: T_PIC_ComentariosOrderByWithRelationInput | T_PIC_ComentariosOrderByWithRelationInput[]
+    cursor?: T_PIC_ComentariosWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: T_PIC_ComentariosScalarFieldEnum | T_PIC_ComentariosScalarFieldEnum[]
+  }
+
+  /**
+   * T_PostInteracaoCapa without action
+   */
+  export type T_PostInteracaoCapaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model T_PIC_Curtidas
+   */
+
+  export type AggregateT_PIC_Curtidas = {
+    _count: T_PIC_CurtidasCountAggregateOutputType | null
+    _avg: T_PIC_CurtidasAvgAggregateOutputType | null
+    _sum: T_PIC_CurtidasSumAggregateOutputType | null
+    _min: T_PIC_CurtidasMinAggregateOutputType | null
+    _max: T_PIC_CurtidasMaxAggregateOutputType | null
+  }
+
+  export type T_PIC_CurtidasAvgAggregateOutputType = {
+    id_Curtida: number | null
+    id_Perfil_Curtida: number | null
+    id_PIC_Curtida: number | null
+  }
+
+  export type T_PIC_CurtidasSumAggregateOutputType = {
+    id_Curtida: number | null
+    id_Perfil_Curtida: number | null
+    id_PIC_Curtida: number | null
+  }
+
+  export type T_PIC_CurtidasMinAggregateOutputType = {
+    id_Curtida: number | null
+    id_Perfil_Curtida: number | null
+    id_PIC_Curtida: number | null
+  }
+
+  export type T_PIC_CurtidasMaxAggregateOutputType = {
+    id_Curtida: number | null
+    id_Perfil_Curtida: number | null
+    id_PIC_Curtida: number | null
+  }
+
+  export type T_PIC_CurtidasCountAggregateOutputType = {
+    id_Curtida: number
+    id_Perfil_Curtida: number
+    id_PIC_Curtida: number
+    _all: number
+  }
+
+
+  export type T_PIC_CurtidasAvgAggregateInputType = {
+    id_Curtida?: true
+    id_Perfil_Curtida?: true
+    id_PIC_Curtida?: true
+  }
+
+  export type T_PIC_CurtidasSumAggregateInputType = {
+    id_Curtida?: true
+    id_Perfil_Curtida?: true
+    id_PIC_Curtida?: true
+  }
+
+  export type T_PIC_CurtidasMinAggregateInputType = {
+    id_Curtida?: true
+    id_Perfil_Curtida?: true
+    id_PIC_Curtida?: true
+  }
+
+  export type T_PIC_CurtidasMaxAggregateInputType = {
+    id_Curtida?: true
+    id_Perfil_Curtida?: true
+    id_PIC_Curtida?: true
+  }
+
+  export type T_PIC_CurtidasCountAggregateInputType = {
+    id_Curtida?: true
+    id_Perfil_Curtida?: true
+    id_PIC_Curtida?: true
+    _all?: true
+  }
+
+  export type T_PIC_CurtidasAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which T_PIC_Curtidas to aggregate.
+     */
+    where?: T_PIC_CurtidasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_PIC_Curtidas to fetch.
+     */
+    orderBy?: T_PIC_CurtidasOrderByWithRelationInput | T_PIC_CurtidasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: T_PIC_CurtidasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_PIC_Curtidas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_PIC_Curtidas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned T_PIC_Curtidas
+    **/
+    _count?: true | T_PIC_CurtidasCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: T_PIC_CurtidasAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: T_PIC_CurtidasSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: T_PIC_CurtidasMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: T_PIC_CurtidasMaxAggregateInputType
+  }
+
+  export type GetT_PIC_CurtidasAggregateType<T extends T_PIC_CurtidasAggregateArgs> = {
+        [P in keyof T & keyof AggregateT_PIC_Curtidas]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateT_PIC_Curtidas[P]>
+      : GetScalarType<T[P], AggregateT_PIC_Curtidas[P]>
+  }
+
+
+
+
+  export type T_PIC_CurtidasGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: T_PIC_CurtidasWhereInput
+    orderBy?: T_PIC_CurtidasOrderByWithAggregationInput | T_PIC_CurtidasOrderByWithAggregationInput[]
+    by: T_PIC_CurtidasScalarFieldEnum[] | T_PIC_CurtidasScalarFieldEnum
+    having?: T_PIC_CurtidasScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: T_PIC_CurtidasCountAggregateInputType | true
+    _avg?: T_PIC_CurtidasAvgAggregateInputType
+    _sum?: T_PIC_CurtidasSumAggregateInputType
+    _min?: T_PIC_CurtidasMinAggregateInputType
+    _max?: T_PIC_CurtidasMaxAggregateInputType
+  }
+
+  export type T_PIC_CurtidasGroupByOutputType = {
+    id_Curtida: number
+    id_Perfil_Curtida: number
+    id_PIC_Curtida: number | null
+    _count: T_PIC_CurtidasCountAggregateOutputType | null
+    _avg: T_PIC_CurtidasAvgAggregateOutputType | null
+    _sum: T_PIC_CurtidasSumAggregateOutputType | null
+    _min: T_PIC_CurtidasMinAggregateOutputType | null
+    _max: T_PIC_CurtidasMaxAggregateOutputType | null
+  }
+
+  type GetT_PIC_CurtidasGroupByPayload<T extends T_PIC_CurtidasGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<T_PIC_CurtidasGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof T_PIC_CurtidasGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], T_PIC_CurtidasGroupByOutputType[P]>
+            : GetScalarType<T[P], T_PIC_CurtidasGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type T_PIC_CurtidasSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_Curtida?: boolean
+    id_Perfil_Curtida?: boolean
+    id_PIC_Curtida?: boolean
+    T_PostInteracaoCapa?: boolean | T_PIC_Curtidas$T_PostInteracaoCapaArgs<ExtArgs>
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["t_PIC_Curtidas"]>
+
+  export type T_PIC_CurtidasSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_Curtida?: boolean
+    id_Perfil_Curtida?: boolean
+    id_PIC_Curtida?: boolean
+    T_PostInteracaoCapa?: boolean | T_PIC_Curtidas$T_PostInteracaoCapaArgs<ExtArgs>
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["t_PIC_Curtidas"]>
+
+  export type T_PIC_CurtidasSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_Curtida?: boolean
+    id_Perfil_Curtida?: boolean
+    id_PIC_Curtida?: boolean
+    T_PostInteracaoCapa?: boolean | T_PIC_Curtidas$T_PostInteracaoCapaArgs<ExtArgs>
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["t_PIC_Curtidas"]>
+
+  export type T_PIC_CurtidasSelectScalar = {
+    id_Curtida?: boolean
+    id_Perfil_Curtida?: boolean
+    id_PIC_Curtida?: boolean
+  }
+
+  export type T_PIC_CurtidasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Curtida" | "id_Perfil_Curtida" | "id_PIC_Curtida", ExtArgs["result"]["t_PIC_Curtidas"]>
+  export type T_PIC_CurtidasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    T_PostInteracaoCapa?: boolean | T_PIC_Curtidas$T_PostInteracaoCapaArgs<ExtArgs>
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }
+  export type T_PIC_CurtidasIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    T_PostInteracaoCapa?: boolean | T_PIC_Curtidas$T_PostInteracaoCapaArgs<ExtArgs>
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }
+  export type T_PIC_CurtidasIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    T_PostInteracaoCapa?: boolean | T_PIC_Curtidas$T_PostInteracaoCapaArgs<ExtArgs>
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }
+
+  export type $T_PIC_CurtidasPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "T_PIC_Curtidas"
+    objects: {
+      T_PostInteracaoCapa: Prisma.$T_PostInteracaoCapaPayload<ExtArgs> | null
+      T_Perfil: Prisma.$T_PerfilPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_Curtida: number
+      id_Perfil_Curtida: number
+      id_PIC_Curtida: number | null
+    }, ExtArgs["result"]["t_PIC_Curtidas"]>
+    composites: {}
+  }
+
+  type T_PIC_CurtidasGetPayload<S extends boolean | null | undefined | T_PIC_CurtidasDefaultArgs> = $Result.GetResult<Prisma.$T_PIC_CurtidasPayload, S>
+
+  type T_PIC_CurtidasCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<T_PIC_CurtidasFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: T_PIC_CurtidasCountAggregateInputType | true
+    }
+
+  export interface T_PIC_CurtidasDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['T_PIC_Curtidas'], meta: { name: 'T_PIC_Curtidas' } }
+    /**
+     * Find zero or one T_PIC_Curtidas that matches the filter.
+     * @param {T_PIC_CurtidasFindUniqueArgs} args - Arguments to find a T_PIC_Curtidas
+     * @example
+     * // Get one T_PIC_Curtidas
+     * const t_PIC_Curtidas = await prisma.t_PIC_Curtidas.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends T_PIC_CurtidasFindUniqueArgs>(args: SelectSubset<T, T_PIC_CurtidasFindUniqueArgs<ExtArgs>>): Prisma__T_PIC_CurtidasClient<$Result.GetResult<Prisma.$T_PIC_CurtidasPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one T_PIC_Curtidas that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {T_PIC_CurtidasFindUniqueOrThrowArgs} args - Arguments to find a T_PIC_Curtidas
+     * @example
+     * // Get one T_PIC_Curtidas
+     * const t_PIC_Curtidas = await prisma.t_PIC_Curtidas.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends T_PIC_CurtidasFindUniqueOrThrowArgs>(args: SelectSubset<T, T_PIC_CurtidasFindUniqueOrThrowArgs<ExtArgs>>): Prisma__T_PIC_CurtidasClient<$Result.GetResult<Prisma.$T_PIC_CurtidasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first T_PIC_Curtidas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_CurtidasFindFirstArgs} args - Arguments to find a T_PIC_Curtidas
+     * @example
+     * // Get one T_PIC_Curtidas
+     * const t_PIC_Curtidas = await prisma.t_PIC_Curtidas.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends T_PIC_CurtidasFindFirstArgs>(args?: SelectSubset<T, T_PIC_CurtidasFindFirstArgs<ExtArgs>>): Prisma__T_PIC_CurtidasClient<$Result.GetResult<Prisma.$T_PIC_CurtidasPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first T_PIC_Curtidas that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_CurtidasFindFirstOrThrowArgs} args - Arguments to find a T_PIC_Curtidas
+     * @example
+     * // Get one T_PIC_Curtidas
+     * const t_PIC_Curtidas = await prisma.t_PIC_Curtidas.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends T_PIC_CurtidasFindFirstOrThrowArgs>(args?: SelectSubset<T, T_PIC_CurtidasFindFirstOrThrowArgs<ExtArgs>>): Prisma__T_PIC_CurtidasClient<$Result.GetResult<Prisma.$T_PIC_CurtidasPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more T_PIC_Curtidas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_CurtidasFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all T_PIC_Curtidas
+     * const t_PIC_Curtidas = await prisma.t_PIC_Curtidas.findMany()
+     * 
+     * // Get first 10 T_PIC_Curtidas
+     * const t_PIC_Curtidas = await prisma.t_PIC_Curtidas.findMany({ take: 10 })
+     * 
+     * // Only select the `id_Curtida`
+     * const t_PIC_CurtidasWithId_CurtidaOnly = await prisma.t_PIC_Curtidas.findMany({ select: { id_Curtida: true } })
+     * 
+     */
+    findMany<T extends T_PIC_CurtidasFindManyArgs>(args?: SelectSubset<T, T_PIC_CurtidasFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PIC_CurtidasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a T_PIC_Curtidas.
+     * @param {T_PIC_CurtidasCreateArgs} args - Arguments to create a T_PIC_Curtidas.
+     * @example
+     * // Create one T_PIC_Curtidas
+     * const T_PIC_Curtidas = await prisma.t_PIC_Curtidas.create({
+     *   data: {
+     *     // ... data to create a T_PIC_Curtidas
+     *   }
+     * })
+     * 
+     */
+    create<T extends T_PIC_CurtidasCreateArgs>(args: SelectSubset<T, T_PIC_CurtidasCreateArgs<ExtArgs>>): Prisma__T_PIC_CurtidasClient<$Result.GetResult<Prisma.$T_PIC_CurtidasPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many T_PIC_Curtidas.
+     * @param {T_PIC_CurtidasCreateManyArgs} args - Arguments to create many T_PIC_Curtidas.
+     * @example
+     * // Create many T_PIC_Curtidas
+     * const t_PIC_Curtidas = await prisma.t_PIC_Curtidas.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends T_PIC_CurtidasCreateManyArgs>(args?: SelectSubset<T, T_PIC_CurtidasCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many T_PIC_Curtidas and returns the data saved in the database.
+     * @param {T_PIC_CurtidasCreateManyAndReturnArgs} args - Arguments to create many T_PIC_Curtidas.
+     * @example
+     * // Create many T_PIC_Curtidas
+     * const t_PIC_Curtidas = await prisma.t_PIC_Curtidas.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many T_PIC_Curtidas and only return the `id_Curtida`
+     * const t_PIC_CurtidasWithId_CurtidaOnly = await prisma.t_PIC_Curtidas.createManyAndReturn({
+     *   select: { id_Curtida: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends T_PIC_CurtidasCreateManyAndReturnArgs>(args?: SelectSubset<T, T_PIC_CurtidasCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PIC_CurtidasPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a T_PIC_Curtidas.
+     * @param {T_PIC_CurtidasDeleteArgs} args - Arguments to delete one T_PIC_Curtidas.
+     * @example
+     * // Delete one T_PIC_Curtidas
+     * const T_PIC_Curtidas = await prisma.t_PIC_Curtidas.delete({
+     *   where: {
+     *     // ... filter to delete one T_PIC_Curtidas
+     *   }
+     * })
+     * 
+     */
+    delete<T extends T_PIC_CurtidasDeleteArgs>(args: SelectSubset<T, T_PIC_CurtidasDeleteArgs<ExtArgs>>): Prisma__T_PIC_CurtidasClient<$Result.GetResult<Prisma.$T_PIC_CurtidasPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one T_PIC_Curtidas.
+     * @param {T_PIC_CurtidasUpdateArgs} args - Arguments to update one T_PIC_Curtidas.
+     * @example
+     * // Update one T_PIC_Curtidas
+     * const t_PIC_Curtidas = await prisma.t_PIC_Curtidas.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends T_PIC_CurtidasUpdateArgs>(args: SelectSubset<T, T_PIC_CurtidasUpdateArgs<ExtArgs>>): Prisma__T_PIC_CurtidasClient<$Result.GetResult<Prisma.$T_PIC_CurtidasPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more T_PIC_Curtidas.
+     * @param {T_PIC_CurtidasDeleteManyArgs} args - Arguments to filter T_PIC_Curtidas to delete.
+     * @example
+     * // Delete a few T_PIC_Curtidas
+     * const { count } = await prisma.t_PIC_Curtidas.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends T_PIC_CurtidasDeleteManyArgs>(args?: SelectSubset<T, T_PIC_CurtidasDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more T_PIC_Curtidas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_CurtidasUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many T_PIC_Curtidas
+     * const t_PIC_Curtidas = await prisma.t_PIC_Curtidas.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends T_PIC_CurtidasUpdateManyArgs>(args: SelectSubset<T, T_PIC_CurtidasUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more T_PIC_Curtidas and returns the data updated in the database.
+     * @param {T_PIC_CurtidasUpdateManyAndReturnArgs} args - Arguments to update many T_PIC_Curtidas.
+     * @example
+     * // Update many T_PIC_Curtidas
+     * const t_PIC_Curtidas = await prisma.t_PIC_Curtidas.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more T_PIC_Curtidas and only return the `id_Curtida`
+     * const t_PIC_CurtidasWithId_CurtidaOnly = await prisma.t_PIC_Curtidas.updateManyAndReturn({
+     *   select: { id_Curtida: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends T_PIC_CurtidasUpdateManyAndReturnArgs>(args: SelectSubset<T, T_PIC_CurtidasUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PIC_CurtidasPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one T_PIC_Curtidas.
+     * @param {T_PIC_CurtidasUpsertArgs} args - Arguments to update or create a T_PIC_Curtidas.
+     * @example
+     * // Update or create a T_PIC_Curtidas
+     * const t_PIC_Curtidas = await prisma.t_PIC_Curtidas.upsert({
+     *   create: {
+     *     // ... data to create a T_PIC_Curtidas
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the T_PIC_Curtidas we want to update
+     *   }
+     * })
+     */
+    upsert<T extends T_PIC_CurtidasUpsertArgs>(args: SelectSubset<T, T_PIC_CurtidasUpsertArgs<ExtArgs>>): Prisma__T_PIC_CurtidasClient<$Result.GetResult<Prisma.$T_PIC_CurtidasPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of T_PIC_Curtidas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_CurtidasCountArgs} args - Arguments to filter T_PIC_Curtidas to count.
+     * @example
+     * // Count the number of T_PIC_Curtidas
+     * const count = await prisma.t_PIC_Curtidas.count({
+     *   where: {
+     *     // ... the filter for the T_PIC_Curtidas we want to count
+     *   }
+     * })
+    **/
+    count<T extends T_PIC_CurtidasCountArgs>(
+      args?: Subset<T, T_PIC_CurtidasCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], T_PIC_CurtidasCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a T_PIC_Curtidas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_CurtidasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends T_PIC_CurtidasAggregateArgs>(args: Subset<T, T_PIC_CurtidasAggregateArgs>): Prisma.PrismaPromise<GetT_PIC_CurtidasAggregateType<T>>
+
+    /**
+     * Group by T_PIC_Curtidas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_CurtidasGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends T_PIC_CurtidasGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: T_PIC_CurtidasGroupByArgs['orderBy'] }
+        : { orderBy?: T_PIC_CurtidasGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, T_PIC_CurtidasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetT_PIC_CurtidasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the T_PIC_Curtidas model
+   */
+  readonly fields: T_PIC_CurtidasFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for T_PIC_Curtidas.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__T_PIC_CurtidasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    T_PostInteracaoCapa<T extends T_PIC_Curtidas$T_PostInteracaoCapaArgs<ExtArgs> = {}>(args?: Subset<T, T_PIC_Curtidas$T_PostInteracaoCapaArgs<ExtArgs>>): Prisma__T_PostInteracaoCapaClient<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    T_Perfil<T extends T_PerfilDefaultArgs<ExtArgs> = {}>(args?: Subset<T, T_PerfilDefaultArgs<ExtArgs>>): Prisma__T_PerfilClient<$Result.GetResult<Prisma.$T_PerfilPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the T_PIC_Curtidas model
+   */
+  interface T_PIC_CurtidasFieldRefs {
+    readonly id_Curtida: FieldRef<"T_PIC_Curtidas", 'Int'>
+    readonly id_Perfil_Curtida: FieldRef<"T_PIC_Curtidas", 'Int'>
+    readonly id_PIC_Curtida: FieldRef<"T_PIC_Curtidas", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * T_PIC_Curtidas findUnique
+   */
+  export type T_PIC_CurtidasFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PIC_Curtidas to fetch.
+     */
+    where: T_PIC_CurtidasWhereUniqueInput
+  }
+
+  /**
+   * T_PIC_Curtidas findUniqueOrThrow
+   */
+  export type T_PIC_CurtidasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PIC_Curtidas to fetch.
+     */
+    where: T_PIC_CurtidasWhereUniqueInput
+  }
+
+  /**
+   * T_PIC_Curtidas findFirst
+   */
+  export type T_PIC_CurtidasFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PIC_Curtidas to fetch.
+     */
+    where?: T_PIC_CurtidasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_PIC_Curtidas to fetch.
+     */
+    orderBy?: T_PIC_CurtidasOrderByWithRelationInput | T_PIC_CurtidasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for T_PIC_Curtidas.
+     */
+    cursor?: T_PIC_CurtidasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_PIC_Curtidas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_PIC_Curtidas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of T_PIC_Curtidas.
+     */
+    distinct?: T_PIC_CurtidasScalarFieldEnum | T_PIC_CurtidasScalarFieldEnum[]
+  }
+
+  /**
+   * T_PIC_Curtidas findFirstOrThrow
+   */
+  export type T_PIC_CurtidasFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PIC_Curtidas to fetch.
+     */
+    where?: T_PIC_CurtidasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_PIC_Curtidas to fetch.
+     */
+    orderBy?: T_PIC_CurtidasOrderByWithRelationInput | T_PIC_CurtidasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for T_PIC_Curtidas.
+     */
+    cursor?: T_PIC_CurtidasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_PIC_Curtidas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_PIC_Curtidas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of T_PIC_Curtidas.
+     */
+    distinct?: T_PIC_CurtidasScalarFieldEnum | T_PIC_CurtidasScalarFieldEnum[]
+  }
+
+  /**
+   * T_PIC_Curtidas findMany
+   */
+  export type T_PIC_CurtidasFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PIC_Curtidas to fetch.
+     */
+    where?: T_PIC_CurtidasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_PIC_Curtidas to fetch.
+     */
+    orderBy?: T_PIC_CurtidasOrderByWithRelationInput | T_PIC_CurtidasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing T_PIC_Curtidas.
+     */
+    cursor?: T_PIC_CurtidasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_PIC_Curtidas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_PIC_Curtidas.
+     */
+    skip?: number
+    distinct?: T_PIC_CurtidasScalarFieldEnum | T_PIC_CurtidasScalarFieldEnum[]
+  }
+
+  /**
+   * T_PIC_Curtidas create
+   */
+  export type T_PIC_CurtidasCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasInclude<ExtArgs> | null
+    /**
+     * The data needed to create a T_PIC_Curtidas.
+     */
+    data: XOR<T_PIC_CurtidasCreateInput, T_PIC_CurtidasUncheckedCreateInput>
+  }
+
+  /**
+   * T_PIC_Curtidas createMany
+   */
+  export type T_PIC_CurtidasCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many T_PIC_Curtidas.
+     */
+    data: T_PIC_CurtidasCreateManyInput | T_PIC_CurtidasCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * T_PIC_Curtidas createManyAndReturn
+   */
+  export type T_PIC_CurtidasCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * The data used to create many T_PIC_Curtidas.
+     */
+    data: T_PIC_CurtidasCreateManyInput | T_PIC_CurtidasCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * T_PIC_Curtidas update
+   */
+  export type T_PIC_CurtidasUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasInclude<ExtArgs> | null
+    /**
+     * The data needed to update a T_PIC_Curtidas.
+     */
+    data: XOR<T_PIC_CurtidasUpdateInput, T_PIC_CurtidasUncheckedUpdateInput>
+    /**
+     * Choose, which T_PIC_Curtidas to update.
+     */
+    where: T_PIC_CurtidasWhereUniqueInput
+  }
+
+  /**
+   * T_PIC_Curtidas updateMany
+   */
+  export type T_PIC_CurtidasUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update T_PIC_Curtidas.
+     */
+    data: XOR<T_PIC_CurtidasUpdateManyMutationInput, T_PIC_CurtidasUncheckedUpdateManyInput>
+    /**
+     * Filter which T_PIC_Curtidas to update
+     */
+    where?: T_PIC_CurtidasWhereInput
+    /**
+     * Limit how many T_PIC_Curtidas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * T_PIC_Curtidas updateManyAndReturn
+   */
+  export type T_PIC_CurtidasUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * The data used to update T_PIC_Curtidas.
+     */
+    data: XOR<T_PIC_CurtidasUpdateManyMutationInput, T_PIC_CurtidasUncheckedUpdateManyInput>
+    /**
+     * Filter which T_PIC_Curtidas to update
+     */
+    where?: T_PIC_CurtidasWhereInput
+    /**
+     * Limit how many T_PIC_Curtidas to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * T_PIC_Curtidas upsert
+   */
+  export type T_PIC_CurtidasUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasInclude<ExtArgs> | null
+    /**
+     * The filter to search for the T_PIC_Curtidas to update in case it exists.
+     */
+    where: T_PIC_CurtidasWhereUniqueInput
+    /**
+     * In case the T_PIC_Curtidas found by the `where` argument doesn't exist, create a new T_PIC_Curtidas with this data.
+     */
+    create: XOR<T_PIC_CurtidasCreateInput, T_PIC_CurtidasUncheckedCreateInput>
+    /**
+     * In case the T_PIC_Curtidas was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<T_PIC_CurtidasUpdateInput, T_PIC_CurtidasUncheckedUpdateInput>
+  }
+
+  /**
+   * T_PIC_Curtidas delete
+   */
+  export type T_PIC_CurtidasDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasInclude<ExtArgs> | null
+    /**
+     * Filter which T_PIC_Curtidas to delete.
+     */
+    where: T_PIC_CurtidasWhereUniqueInput
+  }
+
+  /**
+   * T_PIC_Curtidas deleteMany
+   */
+  export type T_PIC_CurtidasDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which T_PIC_Curtidas to delete
+     */
+    where?: T_PIC_CurtidasWhereInput
+    /**
+     * Limit how many T_PIC_Curtidas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * T_PIC_Curtidas.T_PostInteracaoCapa
+   */
+  export type T_PIC_Curtidas$T_PostInteracaoCapaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaInclude<ExtArgs> | null
+    where?: T_PostInteracaoCapaWhereInput
+  }
+
+  /**
+   * T_PIC_Curtidas without action
+   */
+  export type T_PIC_CurtidasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Curtidas
+     */
+    select?: T_PIC_CurtidasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Curtidas
+     */
+    omit?: T_PIC_CurtidasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_CurtidasInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model T_PIC_Comentarios
+   */
+
+  export type AggregateT_PIC_Comentarios = {
+    _count: T_PIC_ComentariosCountAggregateOutputType | null
+    _avg: T_PIC_ComentariosAvgAggregateOutputType | null
+    _sum: T_PIC_ComentariosSumAggregateOutputType | null
+    _min: T_PIC_ComentariosMinAggregateOutputType | null
+    _max: T_PIC_ComentariosMaxAggregateOutputType | null
+  }
+
+  export type T_PIC_ComentariosAvgAggregateOutputType = {
+    id_Comentario: number | null
+    id_Perfil_Comentario: number | null
+    id_PIC_Comentario: number | null
+  }
+
+  export type T_PIC_ComentariosSumAggregateOutputType = {
+    id_Comentario: number | null
+    id_Perfil_Comentario: number | null
+    id_PIC_Comentario: number | null
+  }
+
+  export type T_PIC_ComentariosMinAggregateOutputType = {
+    id_Comentario: number | null
+    id_Perfil_Comentario: number | null
+    conteudo_Comentario: string | null
+    id_PIC_Comentario: number | null
+  }
+
+  export type T_PIC_ComentariosMaxAggregateOutputType = {
+    id_Comentario: number | null
+    id_Perfil_Comentario: number | null
+    conteudo_Comentario: string | null
+    id_PIC_Comentario: number | null
+  }
+
+  export type T_PIC_ComentariosCountAggregateOutputType = {
+    id_Comentario: number
+    id_Perfil_Comentario: number
+    conteudo_Comentario: number
+    id_PIC_Comentario: number
+    _all: number
+  }
+
+
+  export type T_PIC_ComentariosAvgAggregateInputType = {
+    id_Comentario?: true
+    id_Perfil_Comentario?: true
+    id_PIC_Comentario?: true
+  }
+
+  export type T_PIC_ComentariosSumAggregateInputType = {
+    id_Comentario?: true
+    id_Perfil_Comentario?: true
+    id_PIC_Comentario?: true
+  }
+
+  export type T_PIC_ComentariosMinAggregateInputType = {
+    id_Comentario?: true
+    id_Perfil_Comentario?: true
+    conteudo_Comentario?: true
+    id_PIC_Comentario?: true
+  }
+
+  export type T_PIC_ComentariosMaxAggregateInputType = {
+    id_Comentario?: true
+    id_Perfil_Comentario?: true
+    conteudo_Comentario?: true
+    id_PIC_Comentario?: true
+  }
+
+  export type T_PIC_ComentariosCountAggregateInputType = {
+    id_Comentario?: true
+    id_Perfil_Comentario?: true
+    conteudo_Comentario?: true
+    id_PIC_Comentario?: true
+    _all?: true
+  }
+
+  export type T_PIC_ComentariosAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which T_PIC_Comentarios to aggregate.
+     */
+    where?: T_PIC_ComentariosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_PIC_Comentarios to fetch.
+     */
+    orderBy?: T_PIC_ComentariosOrderByWithRelationInput | T_PIC_ComentariosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: T_PIC_ComentariosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_PIC_Comentarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_PIC_Comentarios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned T_PIC_Comentarios
+    **/
+    _count?: true | T_PIC_ComentariosCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: T_PIC_ComentariosAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: T_PIC_ComentariosSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: T_PIC_ComentariosMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: T_PIC_ComentariosMaxAggregateInputType
+  }
+
+  export type GetT_PIC_ComentariosAggregateType<T extends T_PIC_ComentariosAggregateArgs> = {
+        [P in keyof T & keyof AggregateT_PIC_Comentarios]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateT_PIC_Comentarios[P]>
+      : GetScalarType<T[P], AggregateT_PIC_Comentarios[P]>
+  }
+
+
+
+
+  export type T_PIC_ComentariosGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: T_PIC_ComentariosWhereInput
+    orderBy?: T_PIC_ComentariosOrderByWithAggregationInput | T_PIC_ComentariosOrderByWithAggregationInput[]
+    by: T_PIC_ComentariosScalarFieldEnum[] | T_PIC_ComentariosScalarFieldEnum
+    having?: T_PIC_ComentariosScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: T_PIC_ComentariosCountAggregateInputType | true
+    _avg?: T_PIC_ComentariosAvgAggregateInputType
+    _sum?: T_PIC_ComentariosSumAggregateInputType
+    _min?: T_PIC_ComentariosMinAggregateInputType
+    _max?: T_PIC_ComentariosMaxAggregateInputType
+  }
+
+  export type T_PIC_ComentariosGroupByOutputType = {
+    id_Comentario: number
+    id_Perfil_Comentario: number
+    conteudo_Comentario: string
+    id_PIC_Comentario: number | null
+    _count: T_PIC_ComentariosCountAggregateOutputType | null
+    _avg: T_PIC_ComentariosAvgAggregateOutputType | null
+    _sum: T_PIC_ComentariosSumAggregateOutputType | null
+    _min: T_PIC_ComentariosMinAggregateOutputType | null
+    _max: T_PIC_ComentariosMaxAggregateOutputType | null
+  }
+
+  type GetT_PIC_ComentariosGroupByPayload<T extends T_PIC_ComentariosGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<T_PIC_ComentariosGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof T_PIC_ComentariosGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], T_PIC_ComentariosGroupByOutputType[P]>
+            : GetScalarType<T[P], T_PIC_ComentariosGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type T_PIC_ComentariosSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_Comentario?: boolean
+    id_Perfil_Comentario?: boolean
+    conteudo_Comentario?: boolean
+    id_PIC_Comentario?: boolean
+    T_PostInteracaoCapa?: boolean | T_PIC_Comentarios$T_PostInteracaoCapaArgs<ExtArgs>
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["t_PIC_Comentarios"]>
+
+  export type T_PIC_ComentariosSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_Comentario?: boolean
+    id_Perfil_Comentario?: boolean
+    conteudo_Comentario?: boolean
+    id_PIC_Comentario?: boolean
+    T_PostInteracaoCapa?: boolean | T_PIC_Comentarios$T_PostInteracaoCapaArgs<ExtArgs>
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["t_PIC_Comentarios"]>
+
+  export type T_PIC_ComentariosSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_Comentario?: boolean
+    id_Perfil_Comentario?: boolean
+    conteudo_Comentario?: boolean
+    id_PIC_Comentario?: boolean
+    T_PostInteracaoCapa?: boolean | T_PIC_Comentarios$T_PostInteracaoCapaArgs<ExtArgs>
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["t_PIC_Comentarios"]>
+
+  export type T_PIC_ComentariosSelectScalar = {
+    id_Comentario?: boolean
+    id_Perfil_Comentario?: boolean
+    conteudo_Comentario?: boolean
+    id_PIC_Comentario?: boolean
+  }
+
+  export type T_PIC_ComentariosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_Comentario" | "id_Perfil_Comentario" | "conteudo_Comentario" | "id_PIC_Comentario", ExtArgs["result"]["t_PIC_Comentarios"]>
+  export type T_PIC_ComentariosInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    T_PostInteracaoCapa?: boolean | T_PIC_Comentarios$T_PostInteracaoCapaArgs<ExtArgs>
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }
+  export type T_PIC_ComentariosIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    T_PostInteracaoCapa?: boolean | T_PIC_Comentarios$T_PostInteracaoCapaArgs<ExtArgs>
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }
+  export type T_PIC_ComentariosIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    T_PostInteracaoCapa?: boolean | T_PIC_Comentarios$T_PostInteracaoCapaArgs<ExtArgs>
+    T_Perfil?: boolean | T_PerfilDefaultArgs<ExtArgs>
+  }
+
+  export type $T_PIC_ComentariosPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "T_PIC_Comentarios"
+    objects: {
+      T_PostInteracaoCapa: Prisma.$T_PostInteracaoCapaPayload<ExtArgs> | null
+      T_Perfil: Prisma.$T_PerfilPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_Comentario: number
+      id_Perfil_Comentario: number
+      conteudo_Comentario: string
+      id_PIC_Comentario: number | null
+    }, ExtArgs["result"]["t_PIC_Comentarios"]>
+    composites: {}
+  }
+
+  type T_PIC_ComentariosGetPayload<S extends boolean | null | undefined | T_PIC_ComentariosDefaultArgs> = $Result.GetResult<Prisma.$T_PIC_ComentariosPayload, S>
+
+  type T_PIC_ComentariosCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<T_PIC_ComentariosFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: T_PIC_ComentariosCountAggregateInputType | true
+    }
+
+  export interface T_PIC_ComentariosDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['T_PIC_Comentarios'], meta: { name: 'T_PIC_Comentarios' } }
+    /**
+     * Find zero or one T_PIC_Comentarios that matches the filter.
+     * @param {T_PIC_ComentariosFindUniqueArgs} args - Arguments to find a T_PIC_Comentarios
+     * @example
+     * // Get one T_PIC_Comentarios
+     * const t_PIC_Comentarios = await prisma.t_PIC_Comentarios.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends T_PIC_ComentariosFindUniqueArgs>(args: SelectSubset<T, T_PIC_ComentariosFindUniqueArgs<ExtArgs>>): Prisma__T_PIC_ComentariosClient<$Result.GetResult<Prisma.$T_PIC_ComentariosPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one T_PIC_Comentarios that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {T_PIC_ComentariosFindUniqueOrThrowArgs} args - Arguments to find a T_PIC_Comentarios
+     * @example
+     * // Get one T_PIC_Comentarios
+     * const t_PIC_Comentarios = await prisma.t_PIC_Comentarios.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends T_PIC_ComentariosFindUniqueOrThrowArgs>(args: SelectSubset<T, T_PIC_ComentariosFindUniqueOrThrowArgs<ExtArgs>>): Prisma__T_PIC_ComentariosClient<$Result.GetResult<Prisma.$T_PIC_ComentariosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first T_PIC_Comentarios that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_ComentariosFindFirstArgs} args - Arguments to find a T_PIC_Comentarios
+     * @example
+     * // Get one T_PIC_Comentarios
+     * const t_PIC_Comentarios = await prisma.t_PIC_Comentarios.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends T_PIC_ComentariosFindFirstArgs>(args?: SelectSubset<T, T_PIC_ComentariosFindFirstArgs<ExtArgs>>): Prisma__T_PIC_ComentariosClient<$Result.GetResult<Prisma.$T_PIC_ComentariosPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first T_PIC_Comentarios that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_ComentariosFindFirstOrThrowArgs} args - Arguments to find a T_PIC_Comentarios
+     * @example
+     * // Get one T_PIC_Comentarios
+     * const t_PIC_Comentarios = await prisma.t_PIC_Comentarios.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends T_PIC_ComentariosFindFirstOrThrowArgs>(args?: SelectSubset<T, T_PIC_ComentariosFindFirstOrThrowArgs<ExtArgs>>): Prisma__T_PIC_ComentariosClient<$Result.GetResult<Prisma.$T_PIC_ComentariosPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more T_PIC_Comentarios that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_ComentariosFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all T_PIC_Comentarios
+     * const t_PIC_Comentarios = await prisma.t_PIC_Comentarios.findMany()
+     * 
+     * // Get first 10 T_PIC_Comentarios
+     * const t_PIC_Comentarios = await prisma.t_PIC_Comentarios.findMany({ take: 10 })
+     * 
+     * // Only select the `id_Comentario`
+     * const t_PIC_ComentariosWithId_ComentarioOnly = await prisma.t_PIC_Comentarios.findMany({ select: { id_Comentario: true } })
+     * 
+     */
+    findMany<T extends T_PIC_ComentariosFindManyArgs>(args?: SelectSubset<T, T_PIC_ComentariosFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PIC_ComentariosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a T_PIC_Comentarios.
+     * @param {T_PIC_ComentariosCreateArgs} args - Arguments to create a T_PIC_Comentarios.
+     * @example
+     * // Create one T_PIC_Comentarios
+     * const T_PIC_Comentarios = await prisma.t_PIC_Comentarios.create({
+     *   data: {
+     *     // ... data to create a T_PIC_Comentarios
+     *   }
+     * })
+     * 
+     */
+    create<T extends T_PIC_ComentariosCreateArgs>(args: SelectSubset<T, T_PIC_ComentariosCreateArgs<ExtArgs>>): Prisma__T_PIC_ComentariosClient<$Result.GetResult<Prisma.$T_PIC_ComentariosPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many T_PIC_Comentarios.
+     * @param {T_PIC_ComentariosCreateManyArgs} args - Arguments to create many T_PIC_Comentarios.
+     * @example
+     * // Create many T_PIC_Comentarios
+     * const t_PIC_Comentarios = await prisma.t_PIC_Comentarios.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends T_PIC_ComentariosCreateManyArgs>(args?: SelectSubset<T, T_PIC_ComentariosCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many T_PIC_Comentarios and returns the data saved in the database.
+     * @param {T_PIC_ComentariosCreateManyAndReturnArgs} args - Arguments to create many T_PIC_Comentarios.
+     * @example
+     * // Create many T_PIC_Comentarios
+     * const t_PIC_Comentarios = await prisma.t_PIC_Comentarios.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many T_PIC_Comentarios and only return the `id_Comentario`
+     * const t_PIC_ComentariosWithId_ComentarioOnly = await prisma.t_PIC_Comentarios.createManyAndReturn({
+     *   select: { id_Comentario: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends T_PIC_ComentariosCreateManyAndReturnArgs>(args?: SelectSubset<T, T_PIC_ComentariosCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PIC_ComentariosPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a T_PIC_Comentarios.
+     * @param {T_PIC_ComentariosDeleteArgs} args - Arguments to delete one T_PIC_Comentarios.
+     * @example
+     * // Delete one T_PIC_Comentarios
+     * const T_PIC_Comentarios = await prisma.t_PIC_Comentarios.delete({
+     *   where: {
+     *     // ... filter to delete one T_PIC_Comentarios
+     *   }
+     * })
+     * 
+     */
+    delete<T extends T_PIC_ComentariosDeleteArgs>(args: SelectSubset<T, T_PIC_ComentariosDeleteArgs<ExtArgs>>): Prisma__T_PIC_ComentariosClient<$Result.GetResult<Prisma.$T_PIC_ComentariosPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one T_PIC_Comentarios.
+     * @param {T_PIC_ComentariosUpdateArgs} args - Arguments to update one T_PIC_Comentarios.
+     * @example
+     * // Update one T_PIC_Comentarios
+     * const t_PIC_Comentarios = await prisma.t_PIC_Comentarios.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends T_PIC_ComentariosUpdateArgs>(args: SelectSubset<T, T_PIC_ComentariosUpdateArgs<ExtArgs>>): Prisma__T_PIC_ComentariosClient<$Result.GetResult<Prisma.$T_PIC_ComentariosPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more T_PIC_Comentarios.
+     * @param {T_PIC_ComentariosDeleteManyArgs} args - Arguments to filter T_PIC_Comentarios to delete.
+     * @example
+     * // Delete a few T_PIC_Comentarios
+     * const { count } = await prisma.t_PIC_Comentarios.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends T_PIC_ComentariosDeleteManyArgs>(args?: SelectSubset<T, T_PIC_ComentariosDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more T_PIC_Comentarios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_ComentariosUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many T_PIC_Comentarios
+     * const t_PIC_Comentarios = await prisma.t_PIC_Comentarios.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends T_PIC_ComentariosUpdateManyArgs>(args: SelectSubset<T, T_PIC_ComentariosUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more T_PIC_Comentarios and returns the data updated in the database.
+     * @param {T_PIC_ComentariosUpdateManyAndReturnArgs} args - Arguments to update many T_PIC_Comentarios.
+     * @example
+     * // Update many T_PIC_Comentarios
+     * const t_PIC_Comentarios = await prisma.t_PIC_Comentarios.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more T_PIC_Comentarios and only return the `id_Comentario`
+     * const t_PIC_ComentariosWithId_ComentarioOnly = await prisma.t_PIC_Comentarios.updateManyAndReturn({
+     *   select: { id_Comentario: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends T_PIC_ComentariosUpdateManyAndReturnArgs>(args: SelectSubset<T, T_PIC_ComentariosUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$T_PIC_ComentariosPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one T_PIC_Comentarios.
+     * @param {T_PIC_ComentariosUpsertArgs} args - Arguments to update or create a T_PIC_Comentarios.
+     * @example
+     * // Update or create a T_PIC_Comentarios
+     * const t_PIC_Comentarios = await prisma.t_PIC_Comentarios.upsert({
+     *   create: {
+     *     // ... data to create a T_PIC_Comentarios
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the T_PIC_Comentarios we want to update
+     *   }
+     * })
+     */
+    upsert<T extends T_PIC_ComentariosUpsertArgs>(args: SelectSubset<T, T_PIC_ComentariosUpsertArgs<ExtArgs>>): Prisma__T_PIC_ComentariosClient<$Result.GetResult<Prisma.$T_PIC_ComentariosPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of T_PIC_Comentarios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_ComentariosCountArgs} args - Arguments to filter T_PIC_Comentarios to count.
+     * @example
+     * // Count the number of T_PIC_Comentarios
+     * const count = await prisma.t_PIC_Comentarios.count({
+     *   where: {
+     *     // ... the filter for the T_PIC_Comentarios we want to count
+     *   }
+     * })
+    **/
+    count<T extends T_PIC_ComentariosCountArgs>(
+      args?: Subset<T, T_PIC_ComentariosCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], T_PIC_ComentariosCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a T_PIC_Comentarios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_ComentariosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends T_PIC_ComentariosAggregateArgs>(args: Subset<T, T_PIC_ComentariosAggregateArgs>): Prisma.PrismaPromise<GetT_PIC_ComentariosAggregateType<T>>
+
+    /**
+     * Group by T_PIC_Comentarios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {T_PIC_ComentariosGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends T_PIC_ComentariosGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: T_PIC_ComentariosGroupByArgs['orderBy'] }
+        : { orderBy?: T_PIC_ComentariosGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, T_PIC_ComentariosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetT_PIC_ComentariosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the T_PIC_Comentarios model
+   */
+  readonly fields: T_PIC_ComentariosFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for T_PIC_Comentarios.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__T_PIC_ComentariosClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    T_PostInteracaoCapa<T extends T_PIC_Comentarios$T_PostInteracaoCapaArgs<ExtArgs> = {}>(args?: Subset<T, T_PIC_Comentarios$T_PostInteracaoCapaArgs<ExtArgs>>): Prisma__T_PostInteracaoCapaClient<$Result.GetResult<Prisma.$T_PostInteracaoCapaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    T_Perfil<T extends T_PerfilDefaultArgs<ExtArgs> = {}>(args?: Subset<T, T_PerfilDefaultArgs<ExtArgs>>): Prisma__T_PerfilClient<$Result.GetResult<Prisma.$T_PerfilPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the T_PIC_Comentarios model
+   */
+  interface T_PIC_ComentariosFieldRefs {
+    readonly id_Comentario: FieldRef<"T_PIC_Comentarios", 'Int'>
+    readonly id_Perfil_Comentario: FieldRef<"T_PIC_Comentarios", 'Int'>
+    readonly conteudo_Comentario: FieldRef<"T_PIC_Comentarios", 'String'>
+    readonly id_PIC_Comentario: FieldRef<"T_PIC_Comentarios", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * T_PIC_Comentarios findUnique
+   */
+  export type T_PIC_ComentariosFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PIC_Comentarios to fetch.
+     */
+    where: T_PIC_ComentariosWhereUniqueInput
+  }
+
+  /**
+   * T_PIC_Comentarios findUniqueOrThrow
+   */
+  export type T_PIC_ComentariosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PIC_Comentarios to fetch.
+     */
+    where: T_PIC_ComentariosWhereUniqueInput
+  }
+
+  /**
+   * T_PIC_Comentarios findFirst
+   */
+  export type T_PIC_ComentariosFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PIC_Comentarios to fetch.
+     */
+    where?: T_PIC_ComentariosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_PIC_Comentarios to fetch.
+     */
+    orderBy?: T_PIC_ComentariosOrderByWithRelationInput | T_PIC_ComentariosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for T_PIC_Comentarios.
+     */
+    cursor?: T_PIC_ComentariosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_PIC_Comentarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_PIC_Comentarios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of T_PIC_Comentarios.
+     */
+    distinct?: T_PIC_ComentariosScalarFieldEnum | T_PIC_ComentariosScalarFieldEnum[]
+  }
+
+  /**
+   * T_PIC_Comentarios findFirstOrThrow
+   */
+  export type T_PIC_ComentariosFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PIC_Comentarios to fetch.
+     */
+    where?: T_PIC_ComentariosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_PIC_Comentarios to fetch.
+     */
+    orderBy?: T_PIC_ComentariosOrderByWithRelationInput | T_PIC_ComentariosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for T_PIC_Comentarios.
+     */
+    cursor?: T_PIC_ComentariosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_PIC_Comentarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_PIC_Comentarios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of T_PIC_Comentarios.
+     */
+    distinct?: T_PIC_ComentariosScalarFieldEnum | T_PIC_ComentariosScalarFieldEnum[]
+  }
+
+  /**
+   * T_PIC_Comentarios findMany
+   */
+  export type T_PIC_ComentariosFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosInclude<ExtArgs> | null
+    /**
+     * Filter, which T_PIC_Comentarios to fetch.
+     */
+    where?: T_PIC_ComentariosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of T_PIC_Comentarios to fetch.
+     */
+    orderBy?: T_PIC_ComentariosOrderByWithRelationInput | T_PIC_ComentariosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing T_PIC_Comentarios.
+     */
+    cursor?: T_PIC_ComentariosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` T_PIC_Comentarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` T_PIC_Comentarios.
+     */
+    skip?: number
+    distinct?: T_PIC_ComentariosScalarFieldEnum | T_PIC_ComentariosScalarFieldEnum[]
+  }
+
+  /**
+   * T_PIC_Comentarios create
+   */
+  export type T_PIC_ComentariosCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosInclude<ExtArgs> | null
+    /**
+     * The data needed to create a T_PIC_Comentarios.
+     */
+    data: XOR<T_PIC_ComentariosCreateInput, T_PIC_ComentariosUncheckedCreateInput>
+  }
+
+  /**
+   * T_PIC_Comentarios createMany
+   */
+  export type T_PIC_ComentariosCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many T_PIC_Comentarios.
+     */
+    data: T_PIC_ComentariosCreateManyInput | T_PIC_ComentariosCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * T_PIC_Comentarios createManyAndReturn
+   */
+  export type T_PIC_ComentariosCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * The data used to create many T_PIC_Comentarios.
+     */
+    data: T_PIC_ComentariosCreateManyInput | T_PIC_ComentariosCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * T_PIC_Comentarios update
+   */
+  export type T_PIC_ComentariosUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosInclude<ExtArgs> | null
+    /**
+     * The data needed to update a T_PIC_Comentarios.
+     */
+    data: XOR<T_PIC_ComentariosUpdateInput, T_PIC_ComentariosUncheckedUpdateInput>
+    /**
+     * Choose, which T_PIC_Comentarios to update.
+     */
+    where: T_PIC_ComentariosWhereUniqueInput
+  }
+
+  /**
+   * T_PIC_Comentarios updateMany
+   */
+  export type T_PIC_ComentariosUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update T_PIC_Comentarios.
+     */
+    data: XOR<T_PIC_ComentariosUpdateManyMutationInput, T_PIC_ComentariosUncheckedUpdateManyInput>
+    /**
+     * Filter which T_PIC_Comentarios to update
+     */
+    where?: T_PIC_ComentariosWhereInput
+    /**
+     * Limit how many T_PIC_Comentarios to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * T_PIC_Comentarios updateManyAndReturn
+   */
+  export type T_PIC_ComentariosUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * The data used to update T_PIC_Comentarios.
+     */
+    data: XOR<T_PIC_ComentariosUpdateManyMutationInput, T_PIC_ComentariosUncheckedUpdateManyInput>
+    /**
+     * Filter which T_PIC_Comentarios to update
+     */
+    where?: T_PIC_ComentariosWhereInput
+    /**
+     * Limit how many T_PIC_Comentarios to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * T_PIC_Comentarios upsert
+   */
+  export type T_PIC_ComentariosUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosInclude<ExtArgs> | null
+    /**
+     * The filter to search for the T_PIC_Comentarios to update in case it exists.
+     */
+    where: T_PIC_ComentariosWhereUniqueInput
+    /**
+     * In case the T_PIC_Comentarios found by the `where` argument doesn't exist, create a new T_PIC_Comentarios with this data.
+     */
+    create: XOR<T_PIC_ComentariosCreateInput, T_PIC_ComentariosUncheckedCreateInput>
+    /**
+     * In case the T_PIC_Comentarios was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<T_PIC_ComentariosUpdateInput, T_PIC_ComentariosUncheckedUpdateInput>
+  }
+
+  /**
+   * T_PIC_Comentarios delete
+   */
+  export type T_PIC_ComentariosDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosInclude<ExtArgs> | null
+    /**
+     * Filter which T_PIC_Comentarios to delete.
+     */
+    where: T_PIC_ComentariosWhereUniqueInput
+  }
+
+  /**
+   * T_PIC_Comentarios deleteMany
+   */
+  export type T_PIC_ComentariosDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which T_PIC_Comentarios to delete
+     */
+    where?: T_PIC_ComentariosWhereInput
+    /**
+     * Limit how many T_PIC_Comentarios to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * T_PIC_Comentarios.T_PostInteracaoCapa
+   */
+  export type T_PIC_Comentarios$T_PostInteracaoCapaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PostInteracaoCapa
+     */
+    select?: T_PostInteracaoCapaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PostInteracaoCapa
+     */
+    omit?: T_PostInteracaoCapaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PostInteracaoCapaInclude<ExtArgs> | null
+    where?: T_PostInteracaoCapaWhereInput
+  }
+
+  /**
+   * T_PIC_Comentarios without action
+   */
+  export type T_PIC_ComentariosDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the T_PIC_Comentarios
+     */
+    select?: T_PIC_ComentariosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the T_PIC_Comentarios
+     */
+    omit?: T_PIC_ComentariosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: T_PIC_ComentariosInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5868,11 +9672,21 @@ export namespace Prisma {
   export type T_PerfilScalarFieldEnum = (typeof T_PerfilScalarFieldEnum)[keyof typeof T_PerfilScalarFieldEnum]
 
 
+  export const T_CursoScalarFieldEnum: {
+    id_Curso: 'id_Curso',
+    nome_Curso: 'nome_Curso',
+    maxSemestres_Curso: 'maxSemestres_Curso'
+  };
+
+  export type T_CursoScalarFieldEnum = (typeof T_CursoScalarFieldEnum)[keyof typeof T_CursoScalarFieldEnum]
+
+
   export const T_PostScalarFieldEnum: {
     id_Post: 'id_Post',
     title_Post: 'title_Post',
     content_Post: 'content_Post',
     image_Post: 'image_Post',
+    TAG_Post: 'TAG_Post',
     createdAt_Post: 'createdAt_Post',
     updatedAt_Post: 'updatedAt_Post',
     id_Perfil_Post: 'id_Perfil_Post'
@@ -5881,13 +9695,32 @@ export namespace Prisma {
   export type T_PostScalarFieldEnum = (typeof T_PostScalarFieldEnum)[keyof typeof T_PostScalarFieldEnum]
 
 
-  export const T_CursoScalarFieldEnum: {
-    id_Curso: 'id_Curso',
-    nome_Curso: 'nome_Curso',
-    maxSemestres_Curso: 'maxSemestres_Curso'
+  export const T_PostInteracaoCapaScalarFieldEnum: {
+    id_PIC: 'id_PIC',
+    id_Post_PIC: 'id_Post_PIC',
+    visualizacao_PIC: 'visualizacao_PIC'
   };
 
-  export type T_CursoScalarFieldEnum = (typeof T_CursoScalarFieldEnum)[keyof typeof T_CursoScalarFieldEnum]
+  export type T_PostInteracaoCapaScalarFieldEnum = (typeof T_PostInteracaoCapaScalarFieldEnum)[keyof typeof T_PostInteracaoCapaScalarFieldEnum]
+
+
+  export const T_PIC_CurtidasScalarFieldEnum: {
+    id_Curtida: 'id_Curtida',
+    id_Perfil_Curtida: 'id_Perfil_Curtida',
+    id_PIC_Curtida: 'id_PIC_Curtida'
+  };
+
+  export type T_PIC_CurtidasScalarFieldEnum = (typeof T_PIC_CurtidasScalarFieldEnum)[keyof typeof T_PIC_CurtidasScalarFieldEnum]
+
+
+  export const T_PIC_ComentariosScalarFieldEnum: {
+    id_Comentario: 'id_Comentario',
+    id_Perfil_Comentario: 'id_Perfil_Comentario',
+    conteudo_Comentario: 'conteudo_Comentario',
+    id_PIC_Comentario: 'id_PIC_Comentario'
+  };
+
+  export type T_PIC_ComentariosScalarFieldEnum = (typeof T_PIC_ComentariosScalarFieldEnum)[keyof typeof T_PIC_ComentariosScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6077,6 +9910,8 @@ export namespace Prisma {
     curso?: XOR<T_CursoNullableScalarRelationFilter, T_CursoWhereInput> | null
     account?: XOR<T_AccountScalarRelationFilter, T_AccountWhereInput>
     id_Post_Perfil?: T_PostListRelationFilter
+    PostInteracaoCurtidas?: T_PIC_CurtidasListRelationFilter
+    PostInteracaoComentarios?: T_PIC_ComentariosListRelationFilter
   }
 
   export type T_PerfilOrderByWithRelationInput = {
@@ -6094,6 +9929,8 @@ export namespace Prisma {
     curso?: T_CursoOrderByWithRelationInput
     account?: T_AccountOrderByWithRelationInput
     id_Post_Perfil?: T_PostOrderByRelationAggregateInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasOrderByRelationAggregateInput
+    PostInteracaoComentarios?: T_PIC_ComentariosOrderByRelationAggregateInput
   }
 
   export type T_PerfilWhereUniqueInput = Prisma.AtLeast<{
@@ -6114,6 +9951,8 @@ export namespace Prisma {
     curso?: XOR<T_CursoNullableScalarRelationFilter, T_CursoWhereInput> | null
     account?: XOR<T_AccountScalarRelationFilter, T_AccountWhereInput>
     id_Post_Perfil?: T_PostListRelationFilter
+    PostInteracaoCurtidas?: T_PIC_CurtidasListRelationFilter
+    PostInteracaoComentarios?: T_PIC_ComentariosListRelationFilter
   }, "id_Perfil" | "email_Perfil">
 
   export type T_PerfilOrderByWithAggregationInput = {
@@ -6150,73 +9989,6 @@ export namespace Prisma {
     updatedAt_Perfil?: DateTimeWithAggregatesFilter<"T_Perfil"> | Date | string
     id_Curso_Perfil?: IntNullableWithAggregatesFilter<"T_Perfil"> | number | null
     id_Account_Perfil?: IntWithAggregatesFilter<"T_Perfil"> | number
-  }
-
-  export type T_PostWhereInput = {
-    AND?: T_PostWhereInput | T_PostWhereInput[]
-    OR?: T_PostWhereInput[]
-    NOT?: T_PostWhereInput | T_PostWhereInput[]
-    id_Post?: IntFilter<"T_Post"> | number
-    title_Post?: StringNullableFilter<"T_Post"> | string | null
-    content_Post?: StringNullableFilter<"T_Post"> | string | null
-    image_Post?: StringNullableFilter<"T_Post"> | string | null
-    createdAt_Post?: DateTimeFilter<"T_Post"> | Date | string
-    updatedAt_Post?: DateTimeFilter<"T_Post"> | Date | string
-    id_Perfil_Post?: IntFilter<"T_Post"> | number
-    perfil?: XOR<T_PerfilScalarRelationFilter, T_PerfilWhereInput>
-  }
-
-  export type T_PostOrderByWithRelationInput = {
-    id_Post?: SortOrder
-    title_Post?: SortOrderInput | SortOrder
-    content_Post?: SortOrderInput | SortOrder
-    image_Post?: SortOrderInput | SortOrder
-    createdAt_Post?: SortOrder
-    updatedAt_Post?: SortOrder
-    id_Perfil_Post?: SortOrder
-    perfil?: T_PerfilOrderByWithRelationInput
-  }
-
-  export type T_PostWhereUniqueInput = Prisma.AtLeast<{
-    id_Post?: number
-    AND?: T_PostWhereInput | T_PostWhereInput[]
-    OR?: T_PostWhereInput[]
-    NOT?: T_PostWhereInput | T_PostWhereInput[]
-    title_Post?: StringNullableFilter<"T_Post"> | string | null
-    content_Post?: StringNullableFilter<"T_Post"> | string | null
-    image_Post?: StringNullableFilter<"T_Post"> | string | null
-    createdAt_Post?: DateTimeFilter<"T_Post"> | Date | string
-    updatedAt_Post?: DateTimeFilter<"T_Post"> | Date | string
-    id_Perfil_Post?: IntFilter<"T_Post"> | number
-    perfil?: XOR<T_PerfilScalarRelationFilter, T_PerfilWhereInput>
-  }, "id_Post">
-
-  export type T_PostOrderByWithAggregationInput = {
-    id_Post?: SortOrder
-    title_Post?: SortOrderInput | SortOrder
-    content_Post?: SortOrderInput | SortOrder
-    image_Post?: SortOrderInput | SortOrder
-    createdAt_Post?: SortOrder
-    updatedAt_Post?: SortOrder
-    id_Perfil_Post?: SortOrder
-    _count?: T_PostCountOrderByAggregateInput
-    _avg?: T_PostAvgOrderByAggregateInput
-    _max?: T_PostMaxOrderByAggregateInput
-    _min?: T_PostMinOrderByAggregateInput
-    _sum?: T_PostSumOrderByAggregateInput
-  }
-
-  export type T_PostScalarWhereWithAggregatesInput = {
-    AND?: T_PostScalarWhereWithAggregatesInput | T_PostScalarWhereWithAggregatesInput[]
-    OR?: T_PostScalarWhereWithAggregatesInput[]
-    NOT?: T_PostScalarWhereWithAggregatesInput | T_PostScalarWhereWithAggregatesInput[]
-    id_Post?: IntWithAggregatesFilter<"T_Post"> | number
-    title_Post?: StringNullableWithAggregatesFilter<"T_Post"> | string | null
-    content_Post?: StringNullableWithAggregatesFilter<"T_Post"> | string | null
-    image_Post?: StringNullableWithAggregatesFilter<"T_Post"> | string | null
-    createdAt_Post?: DateTimeWithAggregatesFilter<"T_Post"> | Date | string
-    updatedAt_Post?: DateTimeWithAggregatesFilter<"T_Post"> | Date | string
-    id_Perfil_Post?: IntWithAggregatesFilter<"T_Post"> | number
   }
 
   export type T_CursoWhereInput = {
@@ -6264,6 +10036,239 @@ export namespace Prisma {
     id_Curso?: IntWithAggregatesFilter<"T_Curso"> | number
     nome_Curso?: StringWithAggregatesFilter<"T_Curso"> | string
     maxSemestres_Curso?: IntWithAggregatesFilter<"T_Curso"> | number
+  }
+
+  export type T_PostWhereInput = {
+    AND?: T_PostWhereInput | T_PostWhereInput[]
+    OR?: T_PostWhereInput[]
+    NOT?: T_PostWhereInput | T_PostWhereInput[]
+    id_Post?: IntFilter<"T_Post"> | number
+    title_Post?: StringNullableFilter<"T_Post"> | string | null
+    content_Post?: StringNullableFilter<"T_Post"> | string | null
+    image_Post?: StringNullableFilter<"T_Post"> | string | null
+    TAG_Post?: StringNullableFilter<"T_Post"> | string | null
+    createdAt_Post?: DateTimeFilter<"T_Post"> | Date | string
+    updatedAt_Post?: DateTimeFilter<"T_Post"> | Date | string
+    id_Perfil_Post?: IntFilter<"T_Post"> | number
+    T_Perfil?: XOR<T_PerfilScalarRelationFilter, T_PerfilWhereInput>
+    T_PostInteracaoCapa?: T_PostInteracaoCapaListRelationFilter
+  }
+
+  export type T_PostOrderByWithRelationInput = {
+    id_Post?: SortOrder
+    title_Post?: SortOrderInput | SortOrder
+    content_Post?: SortOrderInput | SortOrder
+    image_Post?: SortOrderInput | SortOrder
+    TAG_Post?: SortOrderInput | SortOrder
+    createdAt_Post?: SortOrder
+    updatedAt_Post?: SortOrder
+    id_Perfil_Post?: SortOrder
+    T_Perfil?: T_PerfilOrderByWithRelationInput
+    T_PostInteracaoCapa?: T_PostInteracaoCapaOrderByRelationAggregateInput
+  }
+
+  export type T_PostWhereUniqueInput = Prisma.AtLeast<{
+    id_Post?: number
+    AND?: T_PostWhereInput | T_PostWhereInput[]
+    OR?: T_PostWhereInput[]
+    NOT?: T_PostWhereInput | T_PostWhereInput[]
+    title_Post?: StringNullableFilter<"T_Post"> | string | null
+    content_Post?: StringNullableFilter<"T_Post"> | string | null
+    image_Post?: StringNullableFilter<"T_Post"> | string | null
+    TAG_Post?: StringNullableFilter<"T_Post"> | string | null
+    createdAt_Post?: DateTimeFilter<"T_Post"> | Date | string
+    updatedAt_Post?: DateTimeFilter<"T_Post"> | Date | string
+    id_Perfil_Post?: IntFilter<"T_Post"> | number
+    T_Perfil?: XOR<T_PerfilScalarRelationFilter, T_PerfilWhereInput>
+    T_PostInteracaoCapa?: T_PostInteracaoCapaListRelationFilter
+  }, "id_Post">
+
+  export type T_PostOrderByWithAggregationInput = {
+    id_Post?: SortOrder
+    title_Post?: SortOrderInput | SortOrder
+    content_Post?: SortOrderInput | SortOrder
+    image_Post?: SortOrderInput | SortOrder
+    TAG_Post?: SortOrderInput | SortOrder
+    createdAt_Post?: SortOrder
+    updatedAt_Post?: SortOrder
+    id_Perfil_Post?: SortOrder
+    _count?: T_PostCountOrderByAggregateInput
+    _avg?: T_PostAvgOrderByAggregateInput
+    _max?: T_PostMaxOrderByAggregateInput
+    _min?: T_PostMinOrderByAggregateInput
+    _sum?: T_PostSumOrderByAggregateInput
+  }
+
+  export type T_PostScalarWhereWithAggregatesInput = {
+    AND?: T_PostScalarWhereWithAggregatesInput | T_PostScalarWhereWithAggregatesInput[]
+    OR?: T_PostScalarWhereWithAggregatesInput[]
+    NOT?: T_PostScalarWhereWithAggregatesInput | T_PostScalarWhereWithAggregatesInput[]
+    id_Post?: IntWithAggregatesFilter<"T_Post"> | number
+    title_Post?: StringNullableWithAggregatesFilter<"T_Post"> | string | null
+    content_Post?: StringNullableWithAggregatesFilter<"T_Post"> | string | null
+    image_Post?: StringNullableWithAggregatesFilter<"T_Post"> | string | null
+    TAG_Post?: StringNullableWithAggregatesFilter<"T_Post"> | string | null
+    createdAt_Post?: DateTimeWithAggregatesFilter<"T_Post"> | Date | string
+    updatedAt_Post?: DateTimeWithAggregatesFilter<"T_Post"> | Date | string
+    id_Perfil_Post?: IntWithAggregatesFilter<"T_Post"> | number
+  }
+
+  export type T_PostInteracaoCapaWhereInput = {
+    AND?: T_PostInteracaoCapaWhereInput | T_PostInteracaoCapaWhereInput[]
+    OR?: T_PostInteracaoCapaWhereInput[]
+    NOT?: T_PostInteracaoCapaWhereInput | T_PostInteracaoCapaWhereInput[]
+    id_PIC?: IntFilter<"T_PostInteracaoCapa"> | number
+    id_Post_PIC?: IntFilter<"T_PostInteracaoCapa"> | number
+    visualizacao_PIC?: IntNullableListFilter<"T_PostInteracaoCapa">
+    curtidas_PIC?: T_PIC_CurtidasListRelationFilter
+    comentarios_PIC?: T_PIC_ComentariosListRelationFilter
+    T_Post?: XOR<T_PostScalarRelationFilter, T_PostWhereInput>
+  }
+
+  export type T_PostInteracaoCapaOrderByWithRelationInput = {
+    id_PIC?: SortOrder
+    id_Post_PIC?: SortOrder
+    visualizacao_PIC?: SortOrder
+    curtidas_PIC?: T_PIC_CurtidasOrderByRelationAggregateInput
+    comentarios_PIC?: T_PIC_ComentariosOrderByRelationAggregateInput
+    T_Post?: T_PostOrderByWithRelationInput
+  }
+
+  export type T_PostInteracaoCapaWhereUniqueInput = Prisma.AtLeast<{
+    id_PIC?: number
+    AND?: T_PostInteracaoCapaWhereInput | T_PostInteracaoCapaWhereInput[]
+    OR?: T_PostInteracaoCapaWhereInput[]
+    NOT?: T_PostInteracaoCapaWhereInput | T_PostInteracaoCapaWhereInput[]
+    id_Post_PIC?: IntFilter<"T_PostInteracaoCapa"> | number
+    visualizacao_PIC?: IntNullableListFilter<"T_PostInteracaoCapa">
+    curtidas_PIC?: T_PIC_CurtidasListRelationFilter
+    comentarios_PIC?: T_PIC_ComentariosListRelationFilter
+    T_Post?: XOR<T_PostScalarRelationFilter, T_PostWhereInput>
+  }, "id_PIC">
+
+  export type T_PostInteracaoCapaOrderByWithAggregationInput = {
+    id_PIC?: SortOrder
+    id_Post_PIC?: SortOrder
+    visualizacao_PIC?: SortOrder
+    _count?: T_PostInteracaoCapaCountOrderByAggregateInput
+    _avg?: T_PostInteracaoCapaAvgOrderByAggregateInput
+    _max?: T_PostInteracaoCapaMaxOrderByAggregateInput
+    _min?: T_PostInteracaoCapaMinOrderByAggregateInput
+    _sum?: T_PostInteracaoCapaSumOrderByAggregateInput
+  }
+
+  export type T_PostInteracaoCapaScalarWhereWithAggregatesInput = {
+    AND?: T_PostInteracaoCapaScalarWhereWithAggregatesInput | T_PostInteracaoCapaScalarWhereWithAggregatesInput[]
+    OR?: T_PostInteracaoCapaScalarWhereWithAggregatesInput[]
+    NOT?: T_PostInteracaoCapaScalarWhereWithAggregatesInput | T_PostInteracaoCapaScalarWhereWithAggregatesInput[]
+    id_PIC?: IntWithAggregatesFilter<"T_PostInteracaoCapa"> | number
+    id_Post_PIC?: IntWithAggregatesFilter<"T_PostInteracaoCapa"> | number
+    visualizacao_PIC?: IntNullableListFilter<"T_PostInteracaoCapa">
+  }
+
+  export type T_PIC_CurtidasWhereInput = {
+    AND?: T_PIC_CurtidasWhereInput | T_PIC_CurtidasWhereInput[]
+    OR?: T_PIC_CurtidasWhereInput[]
+    NOT?: T_PIC_CurtidasWhereInput | T_PIC_CurtidasWhereInput[]
+    id_Curtida?: IntFilter<"T_PIC_Curtidas"> | number
+    id_Perfil_Curtida?: IntFilter<"T_PIC_Curtidas"> | number
+    id_PIC_Curtida?: IntNullableFilter<"T_PIC_Curtidas"> | number | null
+    T_PostInteracaoCapa?: XOR<T_PostInteracaoCapaNullableScalarRelationFilter, T_PostInteracaoCapaWhereInput> | null
+    T_Perfil?: XOR<T_PerfilScalarRelationFilter, T_PerfilWhereInput>
+  }
+
+  export type T_PIC_CurtidasOrderByWithRelationInput = {
+    id_Curtida?: SortOrder
+    id_Perfil_Curtida?: SortOrder
+    id_PIC_Curtida?: SortOrderInput | SortOrder
+    T_PostInteracaoCapa?: T_PostInteracaoCapaOrderByWithRelationInput
+    T_Perfil?: T_PerfilOrderByWithRelationInput
+  }
+
+  export type T_PIC_CurtidasWhereUniqueInput = Prisma.AtLeast<{
+    id_Curtida?: number
+    AND?: T_PIC_CurtidasWhereInput | T_PIC_CurtidasWhereInput[]
+    OR?: T_PIC_CurtidasWhereInput[]
+    NOT?: T_PIC_CurtidasWhereInput | T_PIC_CurtidasWhereInput[]
+    id_Perfil_Curtida?: IntFilter<"T_PIC_Curtidas"> | number
+    id_PIC_Curtida?: IntNullableFilter<"T_PIC_Curtidas"> | number | null
+    T_PostInteracaoCapa?: XOR<T_PostInteracaoCapaNullableScalarRelationFilter, T_PostInteracaoCapaWhereInput> | null
+    T_Perfil?: XOR<T_PerfilScalarRelationFilter, T_PerfilWhereInput>
+  }, "id_Curtida">
+
+  export type T_PIC_CurtidasOrderByWithAggregationInput = {
+    id_Curtida?: SortOrder
+    id_Perfil_Curtida?: SortOrder
+    id_PIC_Curtida?: SortOrderInput | SortOrder
+    _count?: T_PIC_CurtidasCountOrderByAggregateInput
+    _avg?: T_PIC_CurtidasAvgOrderByAggregateInput
+    _max?: T_PIC_CurtidasMaxOrderByAggregateInput
+    _min?: T_PIC_CurtidasMinOrderByAggregateInput
+    _sum?: T_PIC_CurtidasSumOrderByAggregateInput
+  }
+
+  export type T_PIC_CurtidasScalarWhereWithAggregatesInput = {
+    AND?: T_PIC_CurtidasScalarWhereWithAggregatesInput | T_PIC_CurtidasScalarWhereWithAggregatesInput[]
+    OR?: T_PIC_CurtidasScalarWhereWithAggregatesInput[]
+    NOT?: T_PIC_CurtidasScalarWhereWithAggregatesInput | T_PIC_CurtidasScalarWhereWithAggregatesInput[]
+    id_Curtida?: IntWithAggregatesFilter<"T_PIC_Curtidas"> | number
+    id_Perfil_Curtida?: IntWithAggregatesFilter<"T_PIC_Curtidas"> | number
+    id_PIC_Curtida?: IntNullableWithAggregatesFilter<"T_PIC_Curtidas"> | number | null
+  }
+
+  export type T_PIC_ComentariosWhereInput = {
+    AND?: T_PIC_ComentariosWhereInput | T_PIC_ComentariosWhereInput[]
+    OR?: T_PIC_ComentariosWhereInput[]
+    NOT?: T_PIC_ComentariosWhereInput | T_PIC_ComentariosWhereInput[]
+    id_Comentario?: IntFilter<"T_PIC_Comentarios"> | number
+    id_Perfil_Comentario?: IntFilter<"T_PIC_Comentarios"> | number
+    conteudo_Comentario?: StringFilter<"T_PIC_Comentarios"> | string
+    id_PIC_Comentario?: IntNullableFilter<"T_PIC_Comentarios"> | number | null
+    T_PostInteracaoCapa?: XOR<T_PostInteracaoCapaNullableScalarRelationFilter, T_PostInteracaoCapaWhereInput> | null
+    T_Perfil?: XOR<T_PerfilScalarRelationFilter, T_PerfilWhereInput>
+  }
+
+  export type T_PIC_ComentariosOrderByWithRelationInput = {
+    id_Comentario?: SortOrder
+    id_Perfil_Comentario?: SortOrder
+    conteudo_Comentario?: SortOrder
+    id_PIC_Comentario?: SortOrderInput | SortOrder
+    T_PostInteracaoCapa?: T_PostInteracaoCapaOrderByWithRelationInput
+    T_Perfil?: T_PerfilOrderByWithRelationInput
+  }
+
+  export type T_PIC_ComentariosWhereUniqueInput = Prisma.AtLeast<{
+    id_Comentario?: number
+    AND?: T_PIC_ComentariosWhereInput | T_PIC_ComentariosWhereInput[]
+    OR?: T_PIC_ComentariosWhereInput[]
+    NOT?: T_PIC_ComentariosWhereInput | T_PIC_ComentariosWhereInput[]
+    id_Perfil_Comentario?: IntFilter<"T_PIC_Comentarios"> | number
+    conteudo_Comentario?: StringFilter<"T_PIC_Comentarios"> | string
+    id_PIC_Comentario?: IntNullableFilter<"T_PIC_Comentarios"> | number | null
+    T_PostInteracaoCapa?: XOR<T_PostInteracaoCapaNullableScalarRelationFilter, T_PostInteracaoCapaWhereInput> | null
+    T_Perfil?: XOR<T_PerfilScalarRelationFilter, T_PerfilWhereInput>
+  }, "id_Comentario">
+
+  export type T_PIC_ComentariosOrderByWithAggregationInput = {
+    id_Comentario?: SortOrder
+    id_Perfil_Comentario?: SortOrder
+    conteudo_Comentario?: SortOrder
+    id_PIC_Comentario?: SortOrderInput | SortOrder
+    _count?: T_PIC_ComentariosCountOrderByAggregateInput
+    _avg?: T_PIC_ComentariosAvgOrderByAggregateInput
+    _max?: T_PIC_ComentariosMaxOrderByAggregateInput
+    _min?: T_PIC_ComentariosMinOrderByAggregateInput
+    _sum?: T_PIC_ComentariosSumOrderByAggregateInput
+  }
+
+  export type T_PIC_ComentariosScalarWhereWithAggregatesInput = {
+    AND?: T_PIC_ComentariosScalarWhereWithAggregatesInput | T_PIC_ComentariosScalarWhereWithAggregatesInput[]
+    OR?: T_PIC_ComentariosScalarWhereWithAggregatesInput[]
+    NOT?: T_PIC_ComentariosScalarWhereWithAggregatesInput | T_PIC_ComentariosScalarWhereWithAggregatesInput[]
+    id_Comentario?: IntWithAggregatesFilter<"T_PIC_Comentarios"> | number
+    id_Perfil_Comentario?: IntWithAggregatesFilter<"T_PIC_Comentarios"> | number
+    conteudo_Comentario?: StringWithAggregatesFilter<"T_PIC_Comentarios"> | string
+    id_PIC_Comentario?: IntNullableWithAggregatesFilter<"T_PIC_Comentarios"> | number | null
   }
 
   export type T_AccountCreateInput = {
@@ -6348,7 +10353,9 @@ export namespace Prisma {
     updatedAt_Perfil?: Date | string
     curso?: T_CursoCreateNestedOneWithoutPerfisInput
     account: T_AccountCreateNestedOneWithoutId_Perfil_AccountInput
-    id_Post_Perfil?: T_PostCreateNestedManyWithoutPerfilInput
+    id_Post_Perfil?: T_PostCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoComentarios?: T_PIC_ComentariosCreateNestedManyWithoutT_PerfilInput
   }
 
   export type T_PerfilUncheckedCreateInput = {
@@ -6363,7 +10370,9 @@ export namespace Prisma {
     updatedAt_Perfil?: Date | string
     id_Curso_Perfil?: number | null
     id_Account_Perfil: number
-    id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutPerfilInput
+    id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasUncheckedCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUncheckedCreateNestedManyWithoutT_PerfilInput
   }
 
   export type T_PerfilUpdateInput = {
@@ -6377,7 +10386,9 @@ export namespace Prisma {
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     curso?: T_CursoUpdateOneWithoutPerfisNestedInput
     account?: T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput
-    id_Post_Perfil?: T_PostUpdateManyWithoutPerfilNestedInput
+    id_Post_Perfil?: T_PostUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUpdateManyWithoutT_PerfilNestedInput
   }
 
   export type T_PerfilUncheckedUpdateInput = {
@@ -6392,7 +10403,9 @@ export namespace Prisma {
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     id_Curso_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     id_Account_Perfil?: IntFieldUpdateOperationsInput | number
-    id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutPerfilNestedInput
+    id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasUncheckedUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUncheckedUpdateManyWithoutT_PerfilNestedInput
   }
 
   export type T_PerfilCreateManyInput = {
@@ -6432,72 +10445,6 @@ export namespace Prisma {
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     id_Curso_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
     id_Account_Perfil?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type T_PostCreateInput = {
-    title_Post?: string | null
-    content_Post?: string | null
-    image_Post?: string | null
-    createdAt_Post?: Date | string
-    updatedAt_Post?: Date | string
-    perfil: T_PerfilCreateNestedOneWithoutId_Post_PerfilInput
-  }
-
-  export type T_PostUncheckedCreateInput = {
-    id_Post?: number
-    title_Post?: string | null
-    content_Post?: string | null
-    image_Post?: string | null
-    createdAt_Post?: Date | string
-    updatedAt_Post?: Date | string
-    id_Perfil_Post: number
-  }
-
-  export type T_PostUpdateInput = {
-    title_Post?: NullableStringFieldUpdateOperationsInput | string | null
-    content_Post?: NullableStringFieldUpdateOperationsInput | string | null
-    image_Post?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
-    perfil?: T_PerfilUpdateOneRequiredWithoutId_Post_PerfilNestedInput
-  }
-
-  export type T_PostUncheckedUpdateInput = {
-    id_Post?: IntFieldUpdateOperationsInput | number
-    title_Post?: NullableStringFieldUpdateOperationsInput | string | null
-    content_Post?: NullableStringFieldUpdateOperationsInput | string | null
-    image_Post?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_Perfil_Post?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type T_PostCreateManyInput = {
-    id_Post?: number
-    title_Post?: string | null
-    content_Post?: string | null
-    image_Post?: string | null
-    createdAt_Post?: Date | string
-    updatedAt_Post?: Date | string
-    id_Perfil_Post: number
-  }
-
-  export type T_PostUpdateManyMutationInput = {
-    title_Post?: NullableStringFieldUpdateOperationsInput | string | null
-    content_Post?: NullableStringFieldUpdateOperationsInput | string | null
-    image_Post?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type T_PostUncheckedUpdateManyInput = {
-    id_Post?: IntFieldUpdateOperationsInput | number
-    title_Post?: NullableStringFieldUpdateOperationsInput | string | null
-    content_Post?: NullableStringFieldUpdateOperationsInput | string | null
-    image_Post?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_Perfil_Post?: IntFieldUpdateOperationsInput | number
   }
 
   export type T_CursoCreateInput = {
@@ -6541,6 +10488,211 @@ export namespace Prisma {
     id_Curso?: IntFieldUpdateOperationsInput | number
     nome_Curso?: StringFieldUpdateOperationsInput | string
     maxSemestres_Curso?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type T_PostCreateInput = {
+    title_Post?: string | null
+    content_Post?: string | null
+    image_Post?: string | null
+    TAG_Post?: string | null
+    createdAt_Post?: Date | string
+    updatedAt_Post?: Date | string
+    T_Perfil: T_PerfilCreateNestedOneWithoutId_Post_PerfilInput
+    T_PostInteracaoCapa?: T_PostInteracaoCapaCreateNestedManyWithoutT_PostInput
+  }
+
+  export type T_PostUncheckedCreateInput = {
+    id_Post?: number
+    title_Post?: string | null
+    content_Post?: string | null
+    image_Post?: string | null
+    TAG_Post?: string | null
+    createdAt_Post?: Date | string
+    updatedAt_Post?: Date | string
+    id_Perfil_Post: number
+    T_PostInteracaoCapa?: T_PostInteracaoCapaUncheckedCreateNestedManyWithoutT_PostInput
+  }
+
+  export type T_PostUpdateInput = {
+    title_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    content_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+    T_Perfil?: T_PerfilUpdateOneRequiredWithoutId_Post_PerfilNestedInput
+    T_PostInteracaoCapa?: T_PostInteracaoCapaUpdateManyWithoutT_PostNestedInput
+  }
+
+  export type T_PostUncheckedUpdateInput = {
+    id_Post?: IntFieldUpdateOperationsInput | number
+    title_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    content_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_Perfil_Post?: IntFieldUpdateOperationsInput | number
+    T_PostInteracaoCapa?: T_PostInteracaoCapaUncheckedUpdateManyWithoutT_PostNestedInput
+  }
+
+  export type T_PostCreateManyInput = {
+    id_Post?: number
+    title_Post?: string | null
+    content_Post?: string | null
+    image_Post?: string | null
+    TAG_Post?: string | null
+    createdAt_Post?: Date | string
+    updatedAt_Post?: Date | string
+    id_Perfil_Post: number
+  }
+
+  export type T_PostUpdateManyMutationInput = {
+    title_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    content_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type T_PostUncheckedUpdateManyInput = {
+    id_Post?: IntFieldUpdateOperationsInput | number
+    title_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    content_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_Perfil_Post?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type T_PostInteracaoCapaCreateInput = {
+    visualizacao_PIC?: T_PostInteracaoCapaCreatevisualizacao_PICInput | number[]
+    curtidas_PIC?: T_PIC_CurtidasCreateNestedManyWithoutT_PostInteracaoCapaInput
+    comentarios_PIC?: T_PIC_ComentariosCreateNestedManyWithoutT_PostInteracaoCapaInput
+    T_Post: T_PostCreateNestedOneWithoutT_PostInteracaoCapaInput
+  }
+
+  export type T_PostInteracaoCapaUncheckedCreateInput = {
+    id_PIC?: number
+    id_Post_PIC: number
+    visualizacao_PIC?: T_PostInteracaoCapaCreatevisualizacao_PICInput | number[]
+    curtidas_PIC?: T_PIC_CurtidasUncheckedCreateNestedManyWithoutT_PostInteracaoCapaInput
+    comentarios_PIC?: T_PIC_ComentariosUncheckedCreateNestedManyWithoutT_PostInteracaoCapaInput
+  }
+
+  export type T_PostInteracaoCapaUpdateInput = {
+    visualizacao_PIC?: T_PostInteracaoCapaUpdatevisualizacao_PICInput | number[]
+    curtidas_PIC?: T_PIC_CurtidasUpdateManyWithoutT_PostInteracaoCapaNestedInput
+    comentarios_PIC?: T_PIC_ComentariosUpdateManyWithoutT_PostInteracaoCapaNestedInput
+    T_Post?: T_PostUpdateOneRequiredWithoutT_PostInteracaoCapaNestedInput
+  }
+
+  export type T_PostInteracaoCapaUncheckedUpdateInput = {
+    id_PIC?: IntFieldUpdateOperationsInput | number
+    id_Post_PIC?: IntFieldUpdateOperationsInput | number
+    visualizacao_PIC?: T_PostInteracaoCapaUpdatevisualizacao_PICInput | number[]
+    curtidas_PIC?: T_PIC_CurtidasUncheckedUpdateManyWithoutT_PostInteracaoCapaNestedInput
+    comentarios_PIC?: T_PIC_ComentariosUncheckedUpdateManyWithoutT_PostInteracaoCapaNestedInput
+  }
+
+  export type T_PostInteracaoCapaCreateManyInput = {
+    id_PIC?: number
+    id_Post_PIC: number
+    visualizacao_PIC?: T_PostInteracaoCapaCreatevisualizacao_PICInput | number[]
+  }
+
+  export type T_PostInteracaoCapaUpdateManyMutationInput = {
+    visualizacao_PIC?: T_PostInteracaoCapaUpdatevisualizacao_PICInput | number[]
+  }
+
+  export type T_PostInteracaoCapaUncheckedUpdateManyInput = {
+    id_PIC?: IntFieldUpdateOperationsInput | number
+    id_Post_PIC?: IntFieldUpdateOperationsInput | number
+    visualizacao_PIC?: T_PostInteracaoCapaUpdatevisualizacao_PICInput | number[]
+  }
+
+  export type T_PIC_CurtidasCreateInput = {
+    T_PostInteracaoCapa?: T_PostInteracaoCapaCreateNestedOneWithoutCurtidas_PICInput
+    T_Perfil: T_PerfilCreateNestedOneWithoutPostInteracaoCurtidasInput
+  }
+
+  export type T_PIC_CurtidasUncheckedCreateInput = {
+    id_Curtida?: number
+    id_Perfil_Curtida: number
+    id_PIC_Curtida?: number | null
+  }
+
+  export type T_PIC_CurtidasUpdateInput = {
+    T_PostInteracaoCapa?: T_PostInteracaoCapaUpdateOneWithoutCurtidas_PICNestedInput
+    T_Perfil?: T_PerfilUpdateOneRequiredWithoutPostInteracaoCurtidasNestedInput
+  }
+
+  export type T_PIC_CurtidasUncheckedUpdateInput = {
+    id_Curtida?: IntFieldUpdateOperationsInput | number
+    id_Perfil_Curtida?: IntFieldUpdateOperationsInput | number
+    id_PIC_Curtida?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type T_PIC_CurtidasCreateManyInput = {
+    id_Curtida?: number
+    id_Perfil_Curtida: number
+    id_PIC_Curtida?: number | null
+  }
+
+  export type T_PIC_CurtidasUpdateManyMutationInput = {
+
+  }
+
+  export type T_PIC_CurtidasUncheckedUpdateManyInput = {
+    id_Curtida?: IntFieldUpdateOperationsInput | number
+    id_Perfil_Curtida?: IntFieldUpdateOperationsInput | number
+    id_PIC_Curtida?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type T_PIC_ComentariosCreateInput = {
+    conteudo_Comentario: string
+    T_PostInteracaoCapa?: T_PostInteracaoCapaCreateNestedOneWithoutComentarios_PICInput
+    T_Perfil: T_PerfilCreateNestedOneWithoutPostInteracaoComentariosInput
+  }
+
+  export type T_PIC_ComentariosUncheckedCreateInput = {
+    id_Comentario?: number
+    id_Perfil_Comentario: number
+    conteudo_Comentario: string
+    id_PIC_Comentario?: number | null
+  }
+
+  export type T_PIC_ComentariosUpdateInput = {
+    conteudo_Comentario?: StringFieldUpdateOperationsInput | string
+    T_PostInteracaoCapa?: T_PostInteracaoCapaUpdateOneWithoutComentarios_PICNestedInput
+    T_Perfil?: T_PerfilUpdateOneRequiredWithoutPostInteracaoComentariosNestedInput
+  }
+
+  export type T_PIC_ComentariosUncheckedUpdateInput = {
+    id_Comentario?: IntFieldUpdateOperationsInput | number
+    id_Perfil_Comentario?: IntFieldUpdateOperationsInput | number
+    conteudo_Comentario?: StringFieldUpdateOperationsInput | string
+    id_PIC_Comentario?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type T_PIC_ComentariosCreateManyInput = {
+    id_Comentario?: number
+    id_Perfil_Comentario: number
+    conteudo_Comentario: string
+    id_PIC_Comentario?: number | null
+  }
+
+  export type T_PIC_ComentariosUpdateManyMutationInput = {
+    conteudo_Comentario?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type T_PIC_ComentariosUncheckedUpdateManyInput = {
+    id_Comentario?: IntFieldUpdateOperationsInput | number
+    id_Perfil_Comentario?: IntFieldUpdateOperationsInput | number
+    conteudo_Comentario?: StringFieldUpdateOperationsInput | string
+    id_PIC_Comentario?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -6725,12 +10877,32 @@ export namespace Prisma {
     none?: T_PostWhereInput
   }
 
+  export type T_PIC_CurtidasListRelationFilter = {
+    every?: T_PIC_CurtidasWhereInput
+    some?: T_PIC_CurtidasWhereInput
+    none?: T_PIC_CurtidasWhereInput
+  }
+
+  export type T_PIC_ComentariosListRelationFilter = {
+    every?: T_PIC_ComentariosWhereInput
+    some?: T_PIC_ComentariosWhereInput
+    none?: T_PIC_ComentariosWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type T_PostOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type T_PIC_CurtidasOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type T_PIC_ComentariosOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6834,51 +11006,6 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type T_PerfilScalarRelationFilter = {
-    is?: T_PerfilWhereInput
-    isNot?: T_PerfilWhereInput
-  }
-
-  export type T_PostCountOrderByAggregateInput = {
-    id_Post?: SortOrder
-    title_Post?: SortOrder
-    content_Post?: SortOrder
-    image_Post?: SortOrder
-    createdAt_Post?: SortOrder
-    updatedAt_Post?: SortOrder
-    id_Perfil_Post?: SortOrder
-  }
-
-  export type T_PostAvgOrderByAggregateInput = {
-    id_Post?: SortOrder
-    id_Perfil_Post?: SortOrder
-  }
-
-  export type T_PostMaxOrderByAggregateInput = {
-    id_Post?: SortOrder
-    title_Post?: SortOrder
-    content_Post?: SortOrder
-    image_Post?: SortOrder
-    createdAt_Post?: SortOrder
-    updatedAt_Post?: SortOrder
-    id_Perfil_Post?: SortOrder
-  }
-
-  export type T_PostMinOrderByAggregateInput = {
-    id_Post?: SortOrder
-    title_Post?: SortOrder
-    content_Post?: SortOrder
-    image_Post?: SortOrder
-    createdAt_Post?: SortOrder
-    updatedAt_Post?: SortOrder
-    id_Perfil_Post?: SortOrder
-  }
-
-  export type T_PostSumOrderByAggregateInput = {
-    id_Post?: SortOrder
-    id_Perfil_Post?: SortOrder
-  }
-
   export type T_CursoCountOrderByAggregateInput = {
     id_Curso?: SortOrder
     nome_Curso?: SortOrder
@@ -6905,6 +11032,173 @@ export namespace Prisma {
   export type T_CursoSumOrderByAggregateInput = {
     id_Curso?: SortOrder
     maxSemestres_Curso?: SortOrder
+  }
+
+  export type T_PerfilScalarRelationFilter = {
+    is?: T_PerfilWhereInput
+    isNot?: T_PerfilWhereInput
+  }
+
+  export type T_PostInteracaoCapaListRelationFilter = {
+    every?: T_PostInteracaoCapaWhereInput
+    some?: T_PostInteracaoCapaWhereInput
+    none?: T_PostInteracaoCapaWhereInput
+  }
+
+  export type T_PostInteracaoCapaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type T_PostCountOrderByAggregateInput = {
+    id_Post?: SortOrder
+    title_Post?: SortOrder
+    content_Post?: SortOrder
+    image_Post?: SortOrder
+    TAG_Post?: SortOrder
+    createdAt_Post?: SortOrder
+    updatedAt_Post?: SortOrder
+    id_Perfil_Post?: SortOrder
+  }
+
+  export type T_PostAvgOrderByAggregateInput = {
+    id_Post?: SortOrder
+    id_Perfil_Post?: SortOrder
+  }
+
+  export type T_PostMaxOrderByAggregateInput = {
+    id_Post?: SortOrder
+    title_Post?: SortOrder
+    content_Post?: SortOrder
+    image_Post?: SortOrder
+    TAG_Post?: SortOrder
+    createdAt_Post?: SortOrder
+    updatedAt_Post?: SortOrder
+    id_Perfil_Post?: SortOrder
+  }
+
+  export type T_PostMinOrderByAggregateInput = {
+    id_Post?: SortOrder
+    title_Post?: SortOrder
+    content_Post?: SortOrder
+    image_Post?: SortOrder
+    TAG_Post?: SortOrder
+    createdAt_Post?: SortOrder
+    updatedAt_Post?: SortOrder
+    id_Perfil_Post?: SortOrder
+  }
+
+  export type T_PostSumOrderByAggregateInput = {
+    id_Post?: SortOrder
+    id_Perfil_Post?: SortOrder
+  }
+
+  export type IntNullableListFilter<$PrismaModel = never> = {
+    equals?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    has?: number | IntFieldRefInput<$PrismaModel> | null
+    hasEvery?: number[] | ListIntFieldRefInput<$PrismaModel>
+    hasSome?: number[] | ListIntFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type T_PostScalarRelationFilter = {
+    is?: T_PostWhereInput
+    isNot?: T_PostWhereInput
+  }
+
+  export type T_PostInteracaoCapaCountOrderByAggregateInput = {
+    id_PIC?: SortOrder
+    id_Post_PIC?: SortOrder
+    visualizacao_PIC?: SortOrder
+  }
+
+  export type T_PostInteracaoCapaAvgOrderByAggregateInput = {
+    id_PIC?: SortOrder
+    id_Post_PIC?: SortOrder
+    visualizacao_PIC?: SortOrder
+  }
+
+  export type T_PostInteracaoCapaMaxOrderByAggregateInput = {
+    id_PIC?: SortOrder
+    id_Post_PIC?: SortOrder
+  }
+
+  export type T_PostInteracaoCapaMinOrderByAggregateInput = {
+    id_PIC?: SortOrder
+    id_Post_PIC?: SortOrder
+  }
+
+  export type T_PostInteracaoCapaSumOrderByAggregateInput = {
+    id_PIC?: SortOrder
+    id_Post_PIC?: SortOrder
+    visualizacao_PIC?: SortOrder
+  }
+
+  export type T_PostInteracaoCapaNullableScalarRelationFilter = {
+    is?: T_PostInteracaoCapaWhereInput | null
+    isNot?: T_PostInteracaoCapaWhereInput | null
+  }
+
+  export type T_PIC_CurtidasCountOrderByAggregateInput = {
+    id_Curtida?: SortOrder
+    id_Perfil_Curtida?: SortOrder
+    id_PIC_Curtida?: SortOrder
+  }
+
+  export type T_PIC_CurtidasAvgOrderByAggregateInput = {
+    id_Curtida?: SortOrder
+    id_Perfil_Curtida?: SortOrder
+    id_PIC_Curtida?: SortOrder
+  }
+
+  export type T_PIC_CurtidasMaxOrderByAggregateInput = {
+    id_Curtida?: SortOrder
+    id_Perfil_Curtida?: SortOrder
+    id_PIC_Curtida?: SortOrder
+  }
+
+  export type T_PIC_CurtidasMinOrderByAggregateInput = {
+    id_Curtida?: SortOrder
+    id_Perfil_Curtida?: SortOrder
+    id_PIC_Curtida?: SortOrder
+  }
+
+  export type T_PIC_CurtidasSumOrderByAggregateInput = {
+    id_Curtida?: SortOrder
+    id_Perfil_Curtida?: SortOrder
+    id_PIC_Curtida?: SortOrder
+  }
+
+  export type T_PIC_ComentariosCountOrderByAggregateInput = {
+    id_Comentario?: SortOrder
+    id_Perfil_Comentario?: SortOrder
+    conteudo_Comentario?: SortOrder
+    id_PIC_Comentario?: SortOrder
+  }
+
+  export type T_PIC_ComentariosAvgOrderByAggregateInput = {
+    id_Comentario?: SortOrder
+    id_Perfil_Comentario?: SortOrder
+    id_PIC_Comentario?: SortOrder
+  }
+
+  export type T_PIC_ComentariosMaxOrderByAggregateInput = {
+    id_Comentario?: SortOrder
+    id_Perfil_Comentario?: SortOrder
+    conteudo_Comentario?: SortOrder
+    id_PIC_Comentario?: SortOrder
+  }
+
+  export type T_PIC_ComentariosMinOrderByAggregateInput = {
+    id_Comentario?: SortOrder
+    id_Perfil_Comentario?: SortOrder
+    conteudo_Comentario?: SortOrder
+    id_PIC_Comentario?: SortOrder
+  }
+
+  export type T_PIC_ComentariosSumOrderByAggregateInput = {
+    id_Comentario?: SortOrder
+    id_Perfil_Comentario?: SortOrder
+    id_PIC_Comentario?: SortOrder
   }
 
   export type T_PerfilCreateNestedManyWithoutAccountInput = {
@@ -6977,18 +11271,46 @@ export namespace Prisma {
     connect?: T_AccountWhereUniqueInput
   }
 
-  export type T_PostCreateNestedManyWithoutPerfilInput = {
-    create?: XOR<T_PostCreateWithoutPerfilInput, T_PostUncheckedCreateWithoutPerfilInput> | T_PostCreateWithoutPerfilInput[] | T_PostUncheckedCreateWithoutPerfilInput[]
-    connectOrCreate?: T_PostCreateOrConnectWithoutPerfilInput | T_PostCreateOrConnectWithoutPerfilInput[]
-    createMany?: T_PostCreateManyPerfilInputEnvelope
+  export type T_PostCreateNestedManyWithoutT_PerfilInput = {
+    create?: XOR<T_PostCreateWithoutT_PerfilInput, T_PostUncheckedCreateWithoutT_PerfilInput> | T_PostCreateWithoutT_PerfilInput[] | T_PostUncheckedCreateWithoutT_PerfilInput[]
+    connectOrCreate?: T_PostCreateOrConnectWithoutT_PerfilInput | T_PostCreateOrConnectWithoutT_PerfilInput[]
+    createMany?: T_PostCreateManyT_PerfilInputEnvelope
     connect?: T_PostWhereUniqueInput | T_PostWhereUniqueInput[]
   }
 
-  export type T_PostUncheckedCreateNestedManyWithoutPerfilInput = {
-    create?: XOR<T_PostCreateWithoutPerfilInput, T_PostUncheckedCreateWithoutPerfilInput> | T_PostCreateWithoutPerfilInput[] | T_PostUncheckedCreateWithoutPerfilInput[]
-    connectOrCreate?: T_PostCreateOrConnectWithoutPerfilInput | T_PostCreateOrConnectWithoutPerfilInput[]
-    createMany?: T_PostCreateManyPerfilInputEnvelope
+  export type T_PIC_CurtidasCreateNestedManyWithoutT_PerfilInput = {
+    create?: XOR<T_PIC_CurtidasCreateWithoutT_PerfilInput, T_PIC_CurtidasUncheckedCreateWithoutT_PerfilInput> | T_PIC_CurtidasCreateWithoutT_PerfilInput[] | T_PIC_CurtidasUncheckedCreateWithoutT_PerfilInput[]
+    connectOrCreate?: T_PIC_CurtidasCreateOrConnectWithoutT_PerfilInput | T_PIC_CurtidasCreateOrConnectWithoutT_PerfilInput[]
+    createMany?: T_PIC_CurtidasCreateManyT_PerfilInputEnvelope
+    connect?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+  }
+
+  export type T_PIC_ComentariosCreateNestedManyWithoutT_PerfilInput = {
+    create?: XOR<T_PIC_ComentariosCreateWithoutT_PerfilInput, T_PIC_ComentariosUncheckedCreateWithoutT_PerfilInput> | T_PIC_ComentariosCreateWithoutT_PerfilInput[] | T_PIC_ComentariosUncheckedCreateWithoutT_PerfilInput[]
+    connectOrCreate?: T_PIC_ComentariosCreateOrConnectWithoutT_PerfilInput | T_PIC_ComentariosCreateOrConnectWithoutT_PerfilInput[]
+    createMany?: T_PIC_ComentariosCreateManyT_PerfilInputEnvelope
+    connect?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+  }
+
+  export type T_PostUncheckedCreateNestedManyWithoutT_PerfilInput = {
+    create?: XOR<T_PostCreateWithoutT_PerfilInput, T_PostUncheckedCreateWithoutT_PerfilInput> | T_PostCreateWithoutT_PerfilInput[] | T_PostUncheckedCreateWithoutT_PerfilInput[]
+    connectOrCreate?: T_PostCreateOrConnectWithoutT_PerfilInput | T_PostCreateOrConnectWithoutT_PerfilInput[]
+    createMany?: T_PostCreateManyT_PerfilInputEnvelope
     connect?: T_PostWhereUniqueInput | T_PostWhereUniqueInput[]
+  }
+
+  export type T_PIC_CurtidasUncheckedCreateNestedManyWithoutT_PerfilInput = {
+    create?: XOR<T_PIC_CurtidasCreateWithoutT_PerfilInput, T_PIC_CurtidasUncheckedCreateWithoutT_PerfilInput> | T_PIC_CurtidasCreateWithoutT_PerfilInput[] | T_PIC_CurtidasUncheckedCreateWithoutT_PerfilInput[]
+    connectOrCreate?: T_PIC_CurtidasCreateOrConnectWithoutT_PerfilInput | T_PIC_CurtidasCreateOrConnectWithoutT_PerfilInput[]
+    createMany?: T_PIC_CurtidasCreateManyT_PerfilInputEnvelope
+    connect?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+  }
+
+  export type T_PIC_ComentariosUncheckedCreateNestedManyWithoutT_PerfilInput = {
+    create?: XOR<T_PIC_ComentariosCreateWithoutT_PerfilInput, T_PIC_ComentariosUncheckedCreateWithoutT_PerfilInput> | T_PIC_ComentariosCreateWithoutT_PerfilInput[] | T_PIC_ComentariosUncheckedCreateWithoutT_PerfilInput[]
+    connectOrCreate?: T_PIC_ComentariosCreateOrConnectWithoutT_PerfilInput | T_PIC_ComentariosCreateOrConnectWithoutT_PerfilInput[]
+    createMany?: T_PIC_ComentariosCreateManyT_PerfilInputEnvelope
+    connect?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -7025,46 +11347,88 @@ export namespace Prisma {
     update?: XOR<XOR<T_AccountUpdateToOneWithWhereWithoutId_Perfil_AccountInput, T_AccountUpdateWithoutId_Perfil_AccountInput>, T_AccountUncheckedUpdateWithoutId_Perfil_AccountInput>
   }
 
-  export type T_PostUpdateManyWithoutPerfilNestedInput = {
-    create?: XOR<T_PostCreateWithoutPerfilInput, T_PostUncheckedCreateWithoutPerfilInput> | T_PostCreateWithoutPerfilInput[] | T_PostUncheckedCreateWithoutPerfilInput[]
-    connectOrCreate?: T_PostCreateOrConnectWithoutPerfilInput | T_PostCreateOrConnectWithoutPerfilInput[]
-    upsert?: T_PostUpsertWithWhereUniqueWithoutPerfilInput | T_PostUpsertWithWhereUniqueWithoutPerfilInput[]
-    createMany?: T_PostCreateManyPerfilInputEnvelope
+  export type T_PostUpdateManyWithoutT_PerfilNestedInput = {
+    create?: XOR<T_PostCreateWithoutT_PerfilInput, T_PostUncheckedCreateWithoutT_PerfilInput> | T_PostCreateWithoutT_PerfilInput[] | T_PostUncheckedCreateWithoutT_PerfilInput[]
+    connectOrCreate?: T_PostCreateOrConnectWithoutT_PerfilInput | T_PostCreateOrConnectWithoutT_PerfilInput[]
+    upsert?: T_PostUpsertWithWhereUniqueWithoutT_PerfilInput | T_PostUpsertWithWhereUniqueWithoutT_PerfilInput[]
+    createMany?: T_PostCreateManyT_PerfilInputEnvelope
     set?: T_PostWhereUniqueInput | T_PostWhereUniqueInput[]
     disconnect?: T_PostWhereUniqueInput | T_PostWhereUniqueInput[]
     delete?: T_PostWhereUniqueInput | T_PostWhereUniqueInput[]
     connect?: T_PostWhereUniqueInput | T_PostWhereUniqueInput[]
-    update?: T_PostUpdateWithWhereUniqueWithoutPerfilInput | T_PostUpdateWithWhereUniqueWithoutPerfilInput[]
-    updateMany?: T_PostUpdateManyWithWhereWithoutPerfilInput | T_PostUpdateManyWithWhereWithoutPerfilInput[]
+    update?: T_PostUpdateWithWhereUniqueWithoutT_PerfilInput | T_PostUpdateWithWhereUniqueWithoutT_PerfilInput[]
+    updateMany?: T_PostUpdateManyWithWhereWithoutT_PerfilInput | T_PostUpdateManyWithWhereWithoutT_PerfilInput[]
     deleteMany?: T_PostScalarWhereInput | T_PostScalarWhereInput[]
   }
 
-  export type T_PostUncheckedUpdateManyWithoutPerfilNestedInput = {
-    create?: XOR<T_PostCreateWithoutPerfilInput, T_PostUncheckedCreateWithoutPerfilInput> | T_PostCreateWithoutPerfilInput[] | T_PostUncheckedCreateWithoutPerfilInput[]
-    connectOrCreate?: T_PostCreateOrConnectWithoutPerfilInput | T_PostCreateOrConnectWithoutPerfilInput[]
-    upsert?: T_PostUpsertWithWhereUniqueWithoutPerfilInput | T_PostUpsertWithWhereUniqueWithoutPerfilInput[]
-    createMany?: T_PostCreateManyPerfilInputEnvelope
+  export type T_PIC_CurtidasUpdateManyWithoutT_PerfilNestedInput = {
+    create?: XOR<T_PIC_CurtidasCreateWithoutT_PerfilInput, T_PIC_CurtidasUncheckedCreateWithoutT_PerfilInput> | T_PIC_CurtidasCreateWithoutT_PerfilInput[] | T_PIC_CurtidasUncheckedCreateWithoutT_PerfilInput[]
+    connectOrCreate?: T_PIC_CurtidasCreateOrConnectWithoutT_PerfilInput | T_PIC_CurtidasCreateOrConnectWithoutT_PerfilInput[]
+    upsert?: T_PIC_CurtidasUpsertWithWhereUniqueWithoutT_PerfilInput | T_PIC_CurtidasUpsertWithWhereUniqueWithoutT_PerfilInput[]
+    createMany?: T_PIC_CurtidasCreateManyT_PerfilInputEnvelope
+    set?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    disconnect?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    delete?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    connect?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    update?: T_PIC_CurtidasUpdateWithWhereUniqueWithoutT_PerfilInput | T_PIC_CurtidasUpdateWithWhereUniqueWithoutT_PerfilInput[]
+    updateMany?: T_PIC_CurtidasUpdateManyWithWhereWithoutT_PerfilInput | T_PIC_CurtidasUpdateManyWithWhereWithoutT_PerfilInput[]
+    deleteMany?: T_PIC_CurtidasScalarWhereInput | T_PIC_CurtidasScalarWhereInput[]
+  }
+
+  export type T_PIC_ComentariosUpdateManyWithoutT_PerfilNestedInput = {
+    create?: XOR<T_PIC_ComentariosCreateWithoutT_PerfilInput, T_PIC_ComentariosUncheckedCreateWithoutT_PerfilInput> | T_PIC_ComentariosCreateWithoutT_PerfilInput[] | T_PIC_ComentariosUncheckedCreateWithoutT_PerfilInput[]
+    connectOrCreate?: T_PIC_ComentariosCreateOrConnectWithoutT_PerfilInput | T_PIC_ComentariosCreateOrConnectWithoutT_PerfilInput[]
+    upsert?: T_PIC_ComentariosUpsertWithWhereUniqueWithoutT_PerfilInput | T_PIC_ComentariosUpsertWithWhereUniqueWithoutT_PerfilInput[]
+    createMany?: T_PIC_ComentariosCreateManyT_PerfilInputEnvelope
+    set?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    disconnect?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    delete?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    connect?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    update?: T_PIC_ComentariosUpdateWithWhereUniqueWithoutT_PerfilInput | T_PIC_ComentariosUpdateWithWhereUniqueWithoutT_PerfilInput[]
+    updateMany?: T_PIC_ComentariosUpdateManyWithWhereWithoutT_PerfilInput | T_PIC_ComentariosUpdateManyWithWhereWithoutT_PerfilInput[]
+    deleteMany?: T_PIC_ComentariosScalarWhereInput | T_PIC_ComentariosScalarWhereInput[]
+  }
+
+  export type T_PostUncheckedUpdateManyWithoutT_PerfilNestedInput = {
+    create?: XOR<T_PostCreateWithoutT_PerfilInput, T_PostUncheckedCreateWithoutT_PerfilInput> | T_PostCreateWithoutT_PerfilInput[] | T_PostUncheckedCreateWithoutT_PerfilInput[]
+    connectOrCreate?: T_PostCreateOrConnectWithoutT_PerfilInput | T_PostCreateOrConnectWithoutT_PerfilInput[]
+    upsert?: T_PostUpsertWithWhereUniqueWithoutT_PerfilInput | T_PostUpsertWithWhereUniqueWithoutT_PerfilInput[]
+    createMany?: T_PostCreateManyT_PerfilInputEnvelope
     set?: T_PostWhereUniqueInput | T_PostWhereUniqueInput[]
     disconnect?: T_PostWhereUniqueInput | T_PostWhereUniqueInput[]
     delete?: T_PostWhereUniqueInput | T_PostWhereUniqueInput[]
     connect?: T_PostWhereUniqueInput | T_PostWhereUniqueInput[]
-    update?: T_PostUpdateWithWhereUniqueWithoutPerfilInput | T_PostUpdateWithWhereUniqueWithoutPerfilInput[]
-    updateMany?: T_PostUpdateManyWithWhereWithoutPerfilInput | T_PostUpdateManyWithWhereWithoutPerfilInput[]
+    update?: T_PostUpdateWithWhereUniqueWithoutT_PerfilInput | T_PostUpdateWithWhereUniqueWithoutT_PerfilInput[]
+    updateMany?: T_PostUpdateManyWithWhereWithoutT_PerfilInput | T_PostUpdateManyWithWhereWithoutT_PerfilInput[]
     deleteMany?: T_PostScalarWhereInput | T_PostScalarWhereInput[]
   }
 
-  export type T_PerfilCreateNestedOneWithoutId_Post_PerfilInput = {
-    create?: XOR<T_PerfilCreateWithoutId_Post_PerfilInput, T_PerfilUncheckedCreateWithoutId_Post_PerfilInput>
-    connectOrCreate?: T_PerfilCreateOrConnectWithoutId_Post_PerfilInput
-    connect?: T_PerfilWhereUniqueInput
+  export type T_PIC_CurtidasUncheckedUpdateManyWithoutT_PerfilNestedInput = {
+    create?: XOR<T_PIC_CurtidasCreateWithoutT_PerfilInput, T_PIC_CurtidasUncheckedCreateWithoutT_PerfilInput> | T_PIC_CurtidasCreateWithoutT_PerfilInput[] | T_PIC_CurtidasUncheckedCreateWithoutT_PerfilInput[]
+    connectOrCreate?: T_PIC_CurtidasCreateOrConnectWithoutT_PerfilInput | T_PIC_CurtidasCreateOrConnectWithoutT_PerfilInput[]
+    upsert?: T_PIC_CurtidasUpsertWithWhereUniqueWithoutT_PerfilInput | T_PIC_CurtidasUpsertWithWhereUniqueWithoutT_PerfilInput[]
+    createMany?: T_PIC_CurtidasCreateManyT_PerfilInputEnvelope
+    set?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    disconnect?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    delete?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    connect?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    update?: T_PIC_CurtidasUpdateWithWhereUniqueWithoutT_PerfilInput | T_PIC_CurtidasUpdateWithWhereUniqueWithoutT_PerfilInput[]
+    updateMany?: T_PIC_CurtidasUpdateManyWithWhereWithoutT_PerfilInput | T_PIC_CurtidasUpdateManyWithWhereWithoutT_PerfilInput[]
+    deleteMany?: T_PIC_CurtidasScalarWhereInput | T_PIC_CurtidasScalarWhereInput[]
   }
 
-  export type T_PerfilUpdateOneRequiredWithoutId_Post_PerfilNestedInput = {
-    create?: XOR<T_PerfilCreateWithoutId_Post_PerfilInput, T_PerfilUncheckedCreateWithoutId_Post_PerfilInput>
-    connectOrCreate?: T_PerfilCreateOrConnectWithoutId_Post_PerfilInput
-    upsert?: T_PerfilUpsertWithoutId_Post_PerfilInput
-    connect?: T_PerfilWhereUniqueInput
-    update?: XOR<XOR<T_PerfilUpdateToOneWithWhereWithoutId_Post_PerfilInput, T_PerfilUpdateWithoutId_Post_PerfilInput>, T_PerfilUncheckedUpdateWithoutId_Post_PerfilInput>
+  export type T_PIC_ComentariosUncheckedUpdateManyWithoutT_PerfilNestedInput = {
+    create?: XOR<T_PIC_ComentariosCreateWithoutT_PerfilInput, T_PIC_ComentariosUncheckedCreateWithoutT_PerfilInput> | T_PIC_ComentariosCreateWithoutT_PerfilInput[] | T_PIC_ComentariosUncheckedCreateWithoutT_PerfilInput[]
+    connectOrCreate?: T_PIC_ComentariosCreateOrConnectWithoutT_PerfilInput | T_PIC_ComentariosCreateOrConnectWithoutT_PerfilInput[]
+    upsert?: T_PIC_ComentariosUpsertWithWhereUniqueWithoutT_PerfilInput | T_PIC_ComentariosUpsertWithWhereUniqueWithoutT_PerfilInput[]
+    createMany?: T_PIC_ComentariosCreateManyT_PerfilInputEnvelope
+    set?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    disconnect?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    delete?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    connect?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    update?: T_PIC_ComentariosUpdateWithWhereUniqueWithoutT_PerfilInput | T_PIC_ComentariosUpdateWithWhereUniqueWithoutT_PerfilInput[]
+    updateMany?: T_PIC_ComentariosUpdateManyWithWhereWithoutT_PerfilInput | T_PIC_ComentariosUpdateManyWithWhereWithoutT_PerfilInput[]
+    deleteMany?: T_PIC_ComentariosScalarWhereInput | T_PIC_ComentariosScalarWhereInput[]
   }
 
   export type T_PerfilCreateNestedManyWithoutCursoInput = {
@@ -7107,6 +11471,229 @@ export namespace Prisma {
     update?: T_PerfilUpdateWithWhereUniqueWithoutCursoInput | T_PerfilUpdateWithWhereUniqueWithoutCursoInput[]
     updateMany?: T_PerfilUpdateManyWithWhereWithoutCursoInput | T_PerfilUpdateManyWithWhereWithoutCursoInput[]
     deleteMany?: T_PerfilScalarWhereInput | T_PerfilScalarWhereInput[]
+  }
+
+  export type T_PerfilCreateNestedOneWithoutId_Post_PerfilInput = {
+    create?: XOR<T_PerfilCreateWithoutId_Post_PerfilInput, T_PerfilUncheckedCreateWithoutId_Post_PerfilInput>
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutId_Post_PerfilInput
+    connect?: T_PerfilWhereUniqueInput
+  }
+
+  export type T_PostInteracaoCapaCreateNestedManyWithoutT_PostInput = {
+    create?: XOR<T_PostInteracaoCapaCreateWithoutT_PostInput, T_PostInteracaoCapaUncheckedCreateWithoutT_PostInput> | T_PostInteracaoCapaCreateWithoutT_PostInput[] | T_PostInteracaoCapaUncheckedCreateWithoutT_PostInput[]
+    connectOrCreate?: T_PostInteracaoCapaCreateOrConnectWithoutT_PostInput | T_PostInteracaoCapaCreateOrConnectWithoutT_PostInput[]
+    createMany?: T_PostInteracaoCapaCreateManyT_PostInputEnvelope
+    connect?: T_PostInteracaoCapaWhereUniqueInput | T_PostInteracaoCapaWhereUniqueInput[]
+  }
+
+  export type T_PostInteracaoCapaUncheckedCreateNestedManyWithoutT_PostInput = {
+    create?: XOR<T_PostInteracaoCapaCreateWithoutT_PostInput, T_PostInteracaoCapaUncheckedCreateWithoutT_PostInput> | T_PostInteracaoCapaCreateWithoutT_PostInput[] | T_PostInteracaoCapaUncheckedCreateWithoutT_PostInput[]
+    connectOrCreate?: T_PostInteracaoCapaCreateOrConnectWithoutT_PostInput | T_PostInteracaoCapaCreateOrConnectWithoutT_PostInput[]
+    createMany?: T_PostInteracaoCapaCreateManyT_PostInputEnvelope
+    connect?: T_PostInteracaoCapaWhereUniqueInput | T_PostInteracaoCapaWhereUniqueInput[]
+  }
+
+  export type T_PerfilUpdateOneRequiredWithoutId_Post_PerfilNestedInput = {
+    create?: XOR<T_PerfilCreateWithoutId_Post_PerfilInput, T_PerfilUncheckedCreateWithoutId_Post_PerfilInput>
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutId_Post_PerfilInput
+    upsert?: T_PerfilUpsertWithoutId_Post_PerfilInput
+    connect?: T_PerfilWhereUniqueInput
+    update?: XOR<XOR<T_PerfilUpdateToOneWithWhereWithoutId_Post_PerfilInput, T_PerfilUpdateWithoutId_Post_PerfilInput>, T_PerfilUncheckedUpdateWithoutId_Post_PerfilInput>
+  }
+
+  export type T_PostInteracaoCapaUpdateManyWithoutT_PostNestedInput = {
+    create?: XOR<T_PostInteracaoCapaCreateWithoutT_PostInput, T_PostInteracaoCapaUncheckedCreateWithoutT_PostInput> | T_PostInteracaoCapaCreateWithoutT_PostInput[] | T_PostInteracaoCapaUncheckedCreateWithoutT_PostInput[]
+    connectOrCreate?: T_PostInteracaoCapaCreateOrConnectWithoutT_PostInput | T_PostInteracaoCapaCreateOrConnectWithoutT_PostInput[]
+    upsert?: T_PostInteracaoCapaUpsertWithWhereUniqueWithoutT_PostInput | T_PostInteracaoCapaUpsertWithWhereUniqueWithoutT_PostInput[]
+    createMany?: T_PostInteracaoCapaCreateManyT_PostInputEnvelope
+    set?: T_PostInteracaoCapaWhereUniqueInput | T_PostInteracaoCapaWhereUniqueInput[]
+    disconnect?: T_PostInteracaoCapaWhereUniqueInput | T_PostInteracaoCapaWhereUniqueInput[]
+    delete?: T_PostInteracaoCapaWhereUniqueInput | T_PostInteracaoCapaWhereUniqueInput[]
+    connect?: T_PostInteracaoCapaWhereUniqueInput | T_PostInteracaoCapaWhereUniqueInput[]
+    update?: T_PostInteracaoCapaUpdateWithWhereUniqueWithoutT_PostInput | T_PostInteracaoCapaUpdateWithWhereUniqueWithoutT_PostInput[]
+    updateMany?: T_PostInteracaoCapaUpdateManyWithWhereWithoutT_PostInput | T_PostInteracaoCapaUpdateManyWithWhereWithoutT_PostInput[]
+    deleteMany?: T_PostInteracaoCapaScalarWhereInput | T_PostInteracaoCapaScalarWhereInput[]
+  }
+
+  export type T_PostInteracaoCapaUncheckedUpdateManyWithoutT_PostNestedInput = {
+    create?: XOR<T_PostInteracaoCapaCreateWithoutT_PostInput, T_PostInteracaoCapaUncheckedCreateWithoutT_PostInput> | T_PostInteracaoCapaCreateWithoutT_PostInput[] | T_PostInteracaoCapaUncheckedCreateWithoutT_PostInput[]
+    connectOrCreate?: T_PostInteracaoCapaCreateOrConnectWithoutT_PostInput | T_PostInteracaoCapaCreateOrConnectWithoutT_PostInput[]
+    upsert?: T_PostInteracaoCapaUpsertWithWhereUniqueWithoutT_PostInput | T_PostInteracaoCapaUpsertWithWhereUniqueWithoutT_PostInput[]
+    createMany?: T_PostInteracaoCapaCreateManyT_PostInputEnvelope
+    set?: T_PostInteracaoCapaWhereUniqueInput | T_PostInteracaoCapaWhereUniqueInput[]
+    disconnect?: T_PostInteracaoCapaWhereUniqueInput | T_PostInteracaoCapaWhereUniqueInput[]
+    delete?: T_PostInteracaoCapaWhereUniqueInput | T_PostInteracaoCapaWhereUniqueInput[]
+    connect?: T_PostInteracaoCapaWhereUniqueInput | T_PostInteracaoCapaWhereUniqueInput[]
+    update?: T_PostInteracaoCapaUpdateWithWhereUniqueWithoutT_PostInput | T_PostInteracaoCapaUpdateWithWhereUniqueWithoutT_PostInput[]
+    updateMany?: T_PostInteracaoCapaUpdateManyWithWhereWithoutT_PostInput | T_PostInteracaoCapaUpdateManyWithWhereWithoutT_PostInput[]
+    deleteMany?: T_PostInteracaoCapaScalarWhereInput | T_PostInteracaoCapaScalarWhereInput[]
+  }
+
+  export type T_PostInteracaoCapaCreatevisualizacao_PICInput = {
+    set: number[]
+  }
+
+  export type T_PIC_CurtidasCreateNestedManyWithoutT_PostInteracaoCapaInput = {
+    create?: XOR<T_PIC_CurtidasCreateWithoutT_PostInteracaoCapaInput, T_PIC_CurtidasUncheckedCreateWithoutT_PostInteracaoCapaInput> | T_PIC_CurtidasCreateWithoutT_PostInteracaoCapaInput[] | T_PIC_CurtidasUncheckedCreateWithoutT_PostInteracaoCapaInput[]
+    connectOrCreate?: T_PIC_CurtidasCreateOrConnectWithoutT_PostInteracaoCapaInput | T_PIC_CurtidasCreateOrConnectWithoutT_PostInteracaoCapaInput[]
+    createMany?: T_PIC_CurtidasCreateManyT_PostInteracaoCapaInputEnvelope
+    connect?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+  }
+
+  export type T_PIC_ComentariosCreateNestedManyWithoutT_PostInteracaoCapaInput = {
+    create?: XOR<T_PIC_ComentariosCreateWithoutT_PostInteracaoCapaInput, T_PIC_ComentariosUncheckedCreateWithoutT_PostInteracaoCapaInput> | T_PIC_ComentariosCreateWithoutT_PostInteracaoCapaInput[] | T_PIC_ComentariosUncheckedCreateWithoutT_PostInteracaoCapaInput[]
+    connectOrCreate?: T_PIC_ComentariosCreateOrConnectWithoutT_PostInteracaoCapaInput | T_PIC_ComentariosCreateOrConnectWithoutT_PostInteracaoCapaInput[]
+    createMany?: T_PIC_ComentariosCreateManyT_PostInteracaoCapaInputEnvelope
+    connect?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+  }
+
+  export type T_PostCreateNestedOneWithoutT_PostInteracaoCapaInput = {
+    create?: XOR<T_PostCreateWithoutT_PostInteracaoCapaInput, T_PostUncheckedCreateWithoutT_PostInteracaoCapaInput>
+    connectOrCreate?: T_PostCreateOrConnectWithoutT_PostInteracaoCapaInput
+    connect?: T_PostWhereUniqueInput
+  }
+
+  export type T_PIC_CurtidasUncheckedCreateNestedManyWithoutT_PostInteracaoCapaInput = {
+    create?: XOR<T_PIC_CurtidasCreateWithoutT_PostInteracaoCapaInput, T_PIC_CurtidasUncheckedCreateWithoutT_PostInteracaoCapaInput> | T_PIC_CurtidasCreateWithoutT_PostInteracaoCapaInput[] | T_PIC_CurtidasUncheckedCreateWithoutT_PostInteracaoCapaInput[]
+    connectOrCreate?: T_PIC_CurtidasCreateOrConnectWithoutT_PostInteracaoCapaInput | T_PIC_CurtidasCreateOrConnectWithoutT_PostInteracaoCapaInput[]
+    createMany?: T_PIC_CurtidasCreateManyT_PostInteracaoCapaInputEnvelope
+    connect?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+  }
+
+  export type T_PIC_ComentariosUncheckedCreateNestedManyWithoutT_PostInteracaoCapaInput = {
+    create?: XOR<T_PIC_ComentariosCreateWithoutT_PostInteracaoCapaInput, T_PIC_ComentariosUncheckedCreateWithoutT_PostInteracaoCapaInput> | T_PIC_ComentariosCreateWithoutT_PostInteracaoCapaInput[] | T_PIC_ComentariosUncheckedCreateWithoutT_PostInteracaoCapaInput[]
+    connectOrCreate?: T_PIC_ComentariosCreateOrConnectWithoutT_PostInteracaoCapaInput | T_PIC_ComentariosCreateOrConnectWithoutT_PostInteracaoCapaInput[]
+    createMany?: T_PIC_ComentariosCreateManyT_PostInteracaoCapaInputEnvelope
+    connect?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+  }
+
+  export type T_PostInteracaoCapaUpdatevisualizacao_PICInput = {
+    set?: number[]
+    push?: number | number[]
+  }
+
+  export type T_PIC_CurtidasUpdateManyWithoutT_PostInteracaoCapaNestedInput = {
+    create?: XOR<T_PIC_CurtidasCreateWithoutT_PostInteracaoCapaInput, T_PIC_CurtidasUncheckedCreateWithoutT_PostInteracaoCapaInput> | T_PIC_CurtidasCreateWithoutT_PostInteracaoCapaInput[] | T_PIC_CurtidasUncheckedCreateWithoutT_PostInteracaoCapaInput[]
+    connectOrCreate?: T_PIC_CurtidasCreateOrConnectWithoutT_PostInteracaoCapaInput | T_PIC_CurtidasCreateOrConnectWithoutT_PostInteracaoCapaInput[]
+    upsert?: T_PIC_CurtidasUpsertWithWhereUniqueWithoutT_PostInteracaoCapaInput | T_PIC_CurtidasUpsertWithWhereUniqueWithoutT_PostInteracaoCapaInput[]
+    createMany?: T_PIC_CurtidasCreateManyT_PostInteracaoCapaInputEnvelope
+    set?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    disconnect?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    delete?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    connect?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    update?: T_PIC_CurtidasUpdateWithWhereUniqueWithoutT_PostInteracaoCapaInput | T_PIC_CurtidasUpdateWithWhereUniqueWithoutT_PostInteracaoCapaInput[]
+    updateMany?: T_PIC_CurtidasUpdateManyWithWhereWithoutT_PostInteracaoCapaInput | T_PIC_CurtidasUpdateManyWithWhereWithoutT_PostInteracaoCapaInput[]
+    deleteMany?: T_PIC_CurtidasScalarWhereInput | T_PIC_CurtidasScalarWhereInput[]
+  }
+
+  export type T_PIC_ComentariosUpdateManyWithoutT_PostInteracaoCapaNestedInput = {
+    create?: XOR<T_PIC_ComentariosCreateWithoutT_PostInteracaoCapaInput, T_PIC_ComentariosUncheckedCreateWithoutT_PostInteracaoCapaInput> | T_PIC_ComentariosCreateWithoutT_PostInteracaoCapaInput[] | T_PIC_ComentariosUncheckedCreateWithoutT_PostInteracaoCapaInput[]
+    connectOrCreate?: T_PIC_ComentariosCreateOrConnectWithoutT_PostInteracaoCapaInput | T_PIC_ComentariosCreateOrConnectWithoutT_PostInteracaoCapaInput[]
+    upsert?: T_PIC_ComentariosUpsertWithWhereUniqueWithoutT_PostInteracaoCapaInput | T_PIC_ComentariosUpsertWithWhereUniqueWithoutT_PostInteracaoCapaInput[]
+    createMany?: T_PIC_ComentariosCreateManyT_PostInteracaoCapaInputEnvelope
+    set?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    disconnect?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    delete?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    connect?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    update?: T_PIC_ComentariosUpdateWithWhereUniqueWithoutT_PostInteracaoCapaInput | T_PIC_ComentariosUpdateWithWhereUniqueWithoutT_PostInteracaoCapaInput[]
+    updateMany?: T_PIC_ComentariosUpdateManyWithWhereWithoutT_PostInteracaoCapaInput | T_PIC_ComentariosUpdateManyWithWhereWithoutT_PostInteracaoCapaInput[]
+    deleteMany?: T_PIC_ComentariosScalarWhereInput | T_PIC_ComentariosScalarWhereInput[]
+  }
+
+  export type T_PostUpdateOneRequiredWithoutT_PostInteracaoCapaNestedInput = {
+    create?: XOR<T_PostCreateWithoutT_PostInteracaoCapaInput, T_PostUncheckedCreateWithoutT_PostInteracaoCapaInput>
+    connectOrCreate?: T_PostCreateOrConnectWithoutT_PostInteracaoCapaInput
+    upsert?: T_PostUpsertWithoutT_PostInteracaoCapaInput
+    connect?: T_PostWhereUniqueInput
+    update?: XOR<XOR<T_PostUpdateToOneWithWhereWithoutT_PostInteracaoCapaInput, T_PostUpdateWithoutT_PostInteracaoCapaInput>, T_PostUncheckedUpdateWithoutT_PostInteracaoCapaInput>
+  }
+
+  export type T_PIC_CurtidasUncheckedUpdateManyWithoutT_PostInteracaoCapaNestedInput = {
+    create?: XOR<T_PIC_CurtidasCreateWithoutT_PostInteracaoCapaInput, T_PIC_CurtidasUncheckedCreateWithoutT_PostInteracaoCapaInput> | T_PIC_CurtidasCreateWithoutT_PostInteracaoCapaInput[] | T_PIC_CurtidasUncheckedCreateWithoutT_PostInteracaoCapaInput[]
+    connectOrCreate?: T_PIC_CurtidasCreateOrConnectWithoutT_PostInteracaoCapaInput | T_PIC_CurtidasCreateOrConnectWithoutT_PostInteracaoCapaInput[]
+    upsert?: T_PIC_CurtidasUpsertWithWhereUniqueWithoutT_PostInteracaoCapaInput | T_PIC_CurtidasUpsertWithWhereUniqueWithoutT_PostInteracaoCapaInput[]
+    createMany?: T_PIC_CurtidasCreateManyT_PostInteracaoCapaInputEnvelope
+    set?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    disconnect?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    delete?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    connect?: T_PIC_CurtidasWhereUniqueInput | T_PIC_CurtidasWhereUniqueInput[]
+    update?: T_PIC_CurtidasUpdateWithWhereUniqueWithoutT_PostInteracaoCapaInput | T_PIC_CurtidasUpdateWithWhereUniqueWithoutT_PostInteracaoCapaInput[]
+    updateMany?: T_PIC_CurtidasUpdateManyWithWhereWithoutT_PostInteracaoCapaInput | T_PIC_CurtidasUpdateManyWithWhereWithoutT_PostInteracaoCapaInput[]
+    deleteMany?: T_PIC_CurtidasScalarWhereInput | T_PIC_CurtidasScalarWhereInput[]
+  }
+
+  export type T_PIC_ComentariosUncheckedUpdateManyWithoutT_PostInteracaoCapaNestedInput = {
+    create?: XOR<T_PIC_ComentariosCreateWithoutT_PostInteracaoCapaInput, T_PIC_ComentariosUncheckedCreateWithoutT_PostInteracaoCapaInput> | T_PIC_ComentariosCreateWithoutT_PostInteracaoCapaInput[] | T_PIC_ComentariosUncheckedCreateWithoutT_PostInteracaoCapaInput[]
+    connectOrCreate?: T_PIC_ComentariosCreateOrConnectWithoutT_PostInteracaoCapaInput | T_PIC_ComentariosCreateOrConnectWithoutT_PostInteracaoCapaInput[]
+    upsert?: T_PIC_ComentariosUpsertWithWhereUniqueWithoutT_PostInteracaoCapaInput | T_PIC_ComentariosUpsertWithWhereUniqueWithoutT_PostInteracaoCapaInput[]
+    createMany?: T_PIC_ComentariosCreateManyT_PostInteracaoCapaInputEnvelope
+    set?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    disconnect?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    delete?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    connect?: T_PIC_ComentariosWhereUniqueInput | T_PIC_ComentariosWhereUniqueInput[]
+    update?: T_PIC_ComentariosUpdateWithWhereUniqueWithoutT_PostInteracaoCapaInput | T_PIC_ComentariosUpdateWithWhereUniqueWithoutT_PostInteracaoCapaInput[]
+    updateMany?: T_PIC_ComentariosUpdateManyWithWhereWithoutT_PostInteracaoCapaInput | T_PIC_ComentariosUpdateManyWithWhereWithoutT_PostInteracaoCapaInput[]
+    deleteMany?: T_PIC_ComentariosScalarWhereInput | T_PIC_ComentariosScalarWhereInput[]
+  }
+
+  export type T_PostInteracaoCapaCreateNestedOneWithoutCurtidas_PICInput = {
+    create?: XOR<T_PostInteracaoCapaCreateWithoutCurtidas_PICInput, T_PostInteracaoCapaUncheckedCreateWithoutCurtidas_PICInput>
+    connectOrCreate?: T_PostInteracaoCapaCreateOrConnectWithoutCurtidas_PICInput
+    connect?: T_PostInteracaoCapaWhereUniqueInput
+  }
+
+  export type T_PerfilCreateNestedOneWithoutPostInteracaoCurtidasInput = {
+    create?: XOR<T_PerfilCreateWithoutPostInteracaoCurtidasInput, T_PerfilUncheckedCreateWithoutPostInteracaoCurtidasInput>
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutPostInteracaoCurtidasInput
+    connect?: T_PerfilWhereUniqueInput
+  }
+
+  export type T_PostInteracaoCapaUpdateOneWithoutCurtidas_PICNestedInput = {
+    create?: XOR<T_PostInteracaoCapaCreateWithoutCurtidas_PICInput, T_PostInteracaoCapaUncheckedCreateWithoutCurtidas_PICInput>
+    connectOrCreate?: T_PostInteracaoCapaCreateOrConnectWithoutCurtidas_PICInput
+    upsert?: T_PostInteracaoCapaUpsertWithoutCurtidas_PICInput
+    disconnect?: T_PostInteracaoCapaWhereInput | boolean
+    delete?: T_PostInteracaoCapaWhereInput | boolean
+    connect?: T_PostInteracaoCapaWhereUniqueInput
+    update?: XOR<XOR<T_PostInteracaoCapaUpdateToOneWithWhereWithoutCurtidas_PICInput, T_PostInteracaoCapaUpdateWithoutCurtidas_PICInput>, T_PostInteracaoCapaUncheckedUpdateWithoutCurtidas_PICInput>
+  }
+
+  export type T_PerfilUpdateOneRequiredWithoutPostInteracaoCurtidasNestedInput = {
+    create?: XOR<T_PerfilCreateWithoutPostInteracaoCurtidasInput, T_PerfilUncheckedCreateWithoutPostInteracaoCurtidasInput>
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutPostInteracaoCurtidasInput
+    upsert?: T_PerfilUpsertWithoutPostInteracaoCurtidasInput
+    connect?: T_PerfilWhereUniqueInput
+    update?: XOR<XOR<T_PerfilUpdateToOneWithWhereWithoutPostInteracaoCurtidasInput, T_PerfilUpdateWithoutPostInteracaoCurtidasInput>, T_PerfilUncheckedUpdateWithoutPostInteracaoCurtidasInput>
+  }
+
+  export type T_PostInteracaoCapaCreateNestedOneWithoutComentarios_PICInput = {
+    create?: XOR<T_PostInteracaoCapaCreateWithoutComentarios_PICInput, T_PostInteracaoCapaUncheckedCreateWithoutComentarios_PICInput>
+    connectOrCreate?: T_PostInteracaoCapaCreateOrConnectWithoutComentarios_PICInput
+    connect?: T_PostInteracaoCapaWhereUniqueInput
+  }
+
+  export type T_PerfilCreateNestedOneWithoutPostInteracaoComentariosInput = {
+    create?: XOR<T_PerfilCreateWithoutPostInteracaoComentariosInput, T_PerfilUncheckedCreateWithoutPostInteracaoComentariosInput>
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutPostInteracaoComentariosInput
+    connect?: T_PerfilWhereUniqueInput
+  }
+
+  export type T_PostInteracaoCapaUpdateOneWithoutComentarios_PICNestedInput = {
+    create?: XOR<T_PostInteracaoCapaCreateWithoutComentarios_PICInput, T_PostInteracaoCapaUncheckedCreateWithoutComentarios_PICInput>
+    connectOrCreate?: T_PostInteracaoCapaCreateOrConnectWithoutComentarios_PICInput
+    upsert?: T_PostInteracaoCapaUpsertWithoutComentarios_PICInput
+    disconnect?: T_PostInteracaoCapaWhereInput | boolean
+    delete?: T_PostInteracaoCapaWhereInput | boolean
+    connect?: T_PostInteracaoCapaWhereUniqueInput
+    update?: XOR<XOR<T_PostInteracaoCapaUpdateToOneWithWhereWithoutComentarios_PICInput, T_PostInteracaoCapaUpdateWithoutComentarios_PICInput>, T_PostInteracaoCapaUncheckedUpdateWithoutComentarios_PICInput>
+  }
+
+  export type T_PerfilUpdateOneRequiredWithoutPostInteracaoComentariosNestedInput = {
+    create?: XOR<T_PerfilCreateWithoutPostInteracaoComentariosInput, T_PerfilUncheckedCreateWithoutPostInteracaoComentariosInput>
+    connectOrCreate?: T_PerfilCreateOrConnectWithoutPostInteracaoComentariosInput
+    upsert?: T_PerfilUpsertWithoutPostInteracaoComentariosInput
+    connect?: T_PerfilWhereUniqueInput
+    update?: XOR<XOR<T_PerfilUpdateToOneWithWhereWithoutPostInteracaoComentariosInput, T_PerfilUpdateWithoutPostInteracaoComentariosInput>, T_PerfilUncheckedUpdateWithoutPostInteracaoComentariosInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -7299,7 +11886,9 @@ export namespace Prisma {
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
     curso?: T_CursoCreateNestedOneWithoutPerfisInput
-    id_Post_Perfil?: T_PostCreateNestedManyWithoutPerfilInput
+    id_Post_Perfil?: T_PostCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoComentarios?: T_PIC_ComentariosCreateNestedManyWithoutT_PerfilInput
   }
 
   export type T_PerfilUncheckedCreateWithoutAccountInput = {
@@ -7313,7 +11902,9 @@ export namespace Prisma {
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
     id_Curso_Perfil?: number | null
-    id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutPerfilInput
+    id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasUncheckedCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUncheckedCreateNestedManyWithoutT_PerfilInput
   }
 
   export type T_PerfilCreateOrConnectWithoutAccountInput = {
@@ -7399,30 +11990,74 @@ export namespace Prisma {
     create: XOR<T_AccountCreateWithoutId_Perfil_AccountInput, T_AccountUncheckedCreateWithoutId_Perfil_AccountInput>
   }
 
-  export type T_PostCreateWithoutPerfilInput = {
+  export type T_PostCreateWithoutT_PerfilInput = {
     title_Post?: string | null
     content_Post?: string | null
     image_Post?: string | null
+    TAG_Post?: string | null
     createdAt_Post?: Date | string
     updatedAt_Post?: Date | string
+    T_PostInteracaoCapa?: T_PostInteracaoCapaCreateNestedManyWithoutT_PostInput
   }
 
-  export type T_PostUncheckedCreateWithoutPerfilInput = {
+  export type T_PostUncheckedCreateWithoutT_PerfilInput = {
     id_Post?: number
     title_Post?: string | null
     content_Post?: string | null
     image_Post?: string | null
+    TAG_Post?: string | null
     createdAt_Post?: Date | string
     updatedAt_Post?: Date | string
+    T_PostInteracaoCapa?: T_PostInteracaoCapaUncheckedCreateNestedManyWithoutT_PostInput
   }
 
-  export type T_PostCreateOrConnectWithoutPerfilInput = {
+  export type T_PostCreateOrConnectWithoutT_PerfilInput = {
     where: T_PostWhereUniqueInput
-    create: XOR<T_PostCreateWithoutPerfilInput, T_PostUncheckedCreateWithoutPerfilInput>
+    create: XOR<T_PostCreateWithoutT_PerfilInput, T_PostUncheckedCreateWithoutT_PerfilInput>
   }
 
-  export type T_PostCreateManyPerfilInputEnvelope = {
-    data: T_PostCreateManyPerfilInput | T_PostCreateManyPerfilInput[]
+  export type T_PostCreateManyT_PerfilInputEnvelope = {
+    data: T_PostCreateManyT_PerfilInput | T_PostCreateManyT_PerfilInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type T_PIC_CurtidasCreateWithoutT_PerfilInput = {
+    T_PostInteracaoCapa?: T_PostInteracaoCapaCreateNestedOneWithoutCurtidas_PICInput
+  }
+
+  export type T_PIC_CurtidasUncheckedCreateWithoutT_PerfilInput = {
+    id_Curtida?: number
+    id_PIC_Curtida?: number | null
+  }
+
+  export type T_PIC_CurtidasCreateOrConnectWithoutT_PerfilInput = {
+    where: T_PIC_CurtidasWhereUniqueInput
+    create: XOR<T_PIC_CurtidasCreateWithoutT_PerfilInput, T_PIC_CurtidasUncheckedCreateWithoutT_PerfilInput>
+  }
+
+  export type T_PIC_CurtidasCreateManyT_PerfilInputEnvelope = {
+    data: T_PIC_CurtidasCreateManyT_PerfilInput | T_PIC_CurtidasCreateManyT_PerfilInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type T_PIC_ComentariosCreateWithoutT_PerfilInput = {
+    conteudo_Comentario: string
+    T_PostInteracaoCapa?: T_PostInteracaoCapaCreateNestedOneWithoutComentarios_PICInput
+  }
+
+  export type T_PIC_ComentariosUncheckedCreateWithoutT_PerfilInput = {
+    id_Comentario?: number
+    conteudo_Comentario: string
+    id_PIC_Comentario?: number | null
+  }
+
+  export type T_PIC_ComentariosCreateOrConnectWithoutT_PerfilInput = {
+    where: T_PIC_ComentariosWhereUniqueInput
+    create: XOR<T_PIC_ComentariosCreateWithoutT_PerfilInput, T_PIC_ComentariosUncheckedCreateWithoutT_PerfilInput>
+  }
+
+  export type T_PIC_ComentariosCreateManyT_PerfilInputEnvelope = {
+    data: T_PIC_ComentariosCreateManyT_PerfilInput | T_PIC_ComentariosCreateManyT_PerfilInput[]
     skipDuplicates?: boolean
   }
 
@@ -7478,20 +12113,20 @@ export namespace Prisma {
     updatedAt_Account?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type T_PostUpsertWithWhereUniqueWithoutPerfilInput = {
+  export type T_PostUpsertWithWhereUniqueWithoutT_PerfilInput = {
     where: T_PostWhereUniqueInput
-    update: XOR<T_PostUpdateWithoutPerfilInput, T_PostUncheckedUpdateWithoutPerfilInput>
-    create: XOR<T_PostCreateWithoutPerfilInput, T_PostUncheckedCreateWithoutPerfilInput>
+    update: XOR<T_PostUpdateWithoutT_PerfilInput, T_PostUncheckedUpdateWithoutT_PerfilInput>
+    create: XOR<T_PostCreateWithoutT_PerfilInput, T_PostUncheckedCreateWithoutT_PerfilInput>
   }
 
-  export type T_PostUpdateWithWhereUniqueWithoutPerfilInput = {
+  export type T_PostUpdateWithWhereUniqueWithoutT_PerfilInput = {
     where: T_PostWhereUniqueInput
-    data: XOR<T_PostUpdateWithoutPerfilInput, T_PostUncheckedUpdateWithoutPerfilInput>
+    data: XOR<T_PostUpdateWithoutT_PerfilInput, T_PostUncheckedUpdateWithoutT_PerfilInput>
   }
 
-  export type T_PostUpdateManyWithWhereWithoutPerfilInput = {
+  export type T_PostUpdateManyWithWhereWithoutT_PerfilInput = {
     where: T_PostScalarWhereInput
-    data: XOR<T_PostUpdateManyMutationInput, T_PostUncheckedUpdateManyWithoutPerfilInput>
+    data: XOR<T_PostUpdateManyMutationInput, T_PostUncheckedUpdateManyWithoutT_PerfilInput>
   }
 
   export type T_PostScalarWhereInput = {
@@ -7502,79 +12137,61 @@ export namespace Prisma {
     title_Post?: StringNullableFilter<"T_Post"> | string | null
     content_Post?: StringNullableFilter<"T_Post"> | string | null
     image_Post?: StringNullableFilter<"T_Post"> | string | null
+    TAG_Post?: StringNullableFilter<"T_Post"> | string | null
     createdAt_Post?: DateTimeFilter<"T_Post"> | Date | string
     updatedAt_Post?: DateTimeFilter<"T_Post"> | Date | string
     id_Perfil_Post?: IntFilter<"T_Post"> | number
   }
 
-  export type T_PerfilCreateWithoutId_Post_PerfilInput = {
-    nome_Perfil: string
-    email_Perfil: string
-    foto_Perfil?: string | null
-    descricao_Perfil?: string | null
-    tipo_Perfil?: $Enums.PerfilTipo
-    semestre_Perfil?: number | null
-    createdAt_Perfil?: Date | string
-    updatedAt_Perfil?: Date | string
-    curso?: T_CursoCreateNestedOneWithoutPerfisInput
-    account: T_AccountCreateNestedOneWithoutId_Perfil_AccountInput
+  export type T_PIC_CurtidasUpsertWithWhereUniqueWithoutT_PerfilInput = {
+    where: T_PIC_CurtidasWhereUniqueInput
+    update: XOR<T_PIC_CurtidasUpdateWithoutT_PerfilInput, T_PIC_CurtidasUncheckedUpdateWithoutT_PerfilInput>
+    create: XOR<T_PIC_CurtidasCreateWithoutT_PerfilInput, T_PIC_CurtidasUncheckedCreateWithoutT_PerfilInput>
   }
 
-  export type T_PerfilUncheckedCreateWithoutId_Post_PerfilInput = {
-    id_Perfil?: number
-    nome_Perfil: string
-    email_Perfil: string
-    foto_Perfil?: string | null
-    descricao_Perfil?: string | null
-    tipo_Perfil?: $Enums.PerfilTipo
-    semestre_Perfil?: number | null
-    createdAt_Perfil?: Date | string
-    updatedAt_Perfil?: Date | string
-    id_Curso_Perfil?: number | null
-    id_Account_Perfil: number
+  export type T_PIC_CurtidasUpdateWithWhereUniqueWithoutT_PerfilInput = {
+    where: T_PIC_CurtidasWhereUniqueInput
+    data: XOR<T_PIC_CurtidasUpdateWithoutT_PerfilInput, T_PIC_CurtidasUncheckedUpdateWithoutT_PerfilInput>
   }
 
-  export type T_PerfilCreateOrConnectWithoutId_Post_PerfilInput = {
-    where: T_PerfilWhereUniqueInput
-    create: XOR<T_PerfilCreateWithoutId_Post_PerfilInput, T_PerfilUncheckedCreateWithoutId_Post_PerfilInput>
+  export type T_PIC_CurtidasUpdateManyWithWhereWithoutT_PerfilInput = {
+    where: T_PIC_CurtidasScalarWhereInput
+    data: XOR<T_PIC_CurtidasUpdateManyMutationInput, T_PIC_CurtidasUncheckedUpdateManyWithoutT_PerfilInput>
   }
 
-  export type T_PerfilUpsertWithoutId_Post_PerfilInput = {
-    update: XOR<T_PerfilUpdateWithoutId_Post_PerfilInput, T_PerfilUncheckedUpdateWithoutId_Post_PerfilInput>
-    create: XOR<T_PerfilCreateWithoutId_Post_PerfilInput, T_PerfilUncheckedCreateWithoutId_Post_PerfilInput>
-    where?: T_PerfilWhereInput
+  export type T_PIC_CurtidasScalarWhereInput = {
+    AND?: T_PIC_CurtidasScalarWhereInput | T_PIC_CurtidasScalarWhereInput[]
+    OR?: T_PIC_CurtidasScalarWhereInput[]
+    NOT?: T_PIC_CurtidasScalarWhereInput | T_PIC_CurtidasScalarWhereInput[]
+    id_Curtida?: IntFilter<"T_PIC_Curtidas"> | number
+    id_Perfil_Curtida?: IntFilter<"T_PIC_Curtidas"> | number
+    id_PIC_Curtida?: IntNullableFilter<"T_PIC_Curtidas"> | number | null
   }
 
-  export type T_PerfilUpdateToOneWithWhereWithoutId_Post_PerfilInput = {
-    where?: T_PerfilWhereInput
-    data: XOR<T_PerfilUpdateWithoutId_Post_PerfilInput, T_PerfilUncheckedUpdateWithoutId_Post_PerfilInput>
+  export type T_PIC_ComentariosUpsertWithWhereUniqueWithoutT_PerfilInput = {
+    where: T_PIC_ComentariosWhereUniqueInput
+    update: XOR<T_PIC_ComentariosUpdateWithoutT_PerfilInput, T_PIC_ComentariosUncheckedUpdateWithoutT_PerfilInput>
+    create: XOR<T_PIC_ComentariosCreateWithoutT_PerfilInput, T_PIC_ComentariosUncheckedCreateWithoutT_PerfilInput>
   }
 
-  export type T_PerfilUpdateWithoutId_Post_PerfilInput = {
-    nome_Perfil?: StringFieldUpdateOperationsInput | string
-    email_Perfil?: StringFieldUpdateOperationsInput | string
-    foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
-    descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
-    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
-    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    curso?: T_CursoUpdateOneWithoutPerfisNestedInput
-    account?: T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput
+  export type T_PIC_ComentariosUpdateWithWhereUniqueWithoutT_PerfilInput = {
+    where: T_PIC_ComentariosWhereUniqueInput
+    data: XOR<T_PIC_ComentariosUpdateWithoutT_PerfilInput, T_PIC_ComentariosUncheckedUpdateWithoutT_PerfilInput>
   }
 
-  export type T_PerfilUncheckedUpdateWithoutId_Post_PerfilInput = {
-    id_Perfil?: IntFieldUpdateOperationsInput | number
-    nome_Perfil?: StringFieldUpdateOperationsInput | string
-    email_Perfil?: StringFieldUpdateOperationsInput | string
-    foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
-    descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
-    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
-    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_Curso_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
-    id_Account_Perfil?: IntFieldUpdateOperationsInput | number
+  export type T_PIC_ComentariosUpdateManyWithWhereWithoutT_PerfilInput = {
+    where: T_PIC_ComentariosScalarWhereInput
+    data: XOR<T_PIC_ComentariosUpdateManyMutationInput, T_PIC_ComentariosUncheckedUpdateManyWithoutT_PerfilInput>
+  }
+
+  export type T_PIC_ComentariosScalarWhereInput = {
+    AND?: T_PIC_ComentariosScalarWhereInput | T_PIC_ComentariosScalarWhereInput[]
+    OR?: T_PIC_ComentariosScalarWhereInput[]
+    NOT?: T_PIC_ComentariosScalarWhereInput | T_PIC_ComentariosScalarWhereInput[]
+    id_Comentario?: IntFilter<"T_PIC_Comentarios"> | number
+    id_Perfil_Comentario?: IntFilter<"T_PIC_Comentarios"> | number
+    conteudo_Comentario?: StringFilter<"T_PIC_Comentarios"> | string
+    id_PIC_Comentario?: IntNullableFilter<"T_PIC_Comentarios"> | number | null
   }
 
   export type T_PerfilCreateWithoutCursoInput = {
@@ -7587,7 +12204,9 @@ export namespace Prisma {
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
     account: T_AccountCreateNestedOneWithoutId_Perfil_AccountInput
-    id_Post_Perfil?: T_PostCreateNestedManyWithoutPerfilInput
+    id_Post_Perfil?: T_PostCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoComentarios?: T_PIC_ComentariosCreateNestedManyWithoutT_PerfilInput
   }
 
   export type T_PerfilUncheckedCreateWithoutCursoInput = {
@@ -7601,7 +12220,9 @@ export namespace Prisma {
     createdAt_Perfil?: Date | string
     updatedAt_Perfil?: Date | string
     id_Account_Perfil: number
-    id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutPerfilInput
+    id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasUncheckedCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUncheckedCreateNestedManyWithoutT_PerfilInput
   }
 
   export type T_PerfilCreateOrConnectWithoutCursoInput = {
@@ -7630,6 +12251,502 @@ export namespace Prisma {
     data: XOR<T_PerfilUpdateManyMutationInput, T_PerfilUncheckedUpdateManyWithoutCursoInput>
   }
 
+  export type T_PerfilCreateWithoutId_Post_PerfilInput = {
+    nome_Perfil: string
+    email_Perfil: string
+    foto_Perfil?: string | null
+    descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
+    createdAt_Perfil?: Date | string
+    updatedAt_Perfil?: Date | string
+    curso?: T_CursoCreateNestedOneWithoutPerfisInput
+    account: T_AccountCreateNestedOneWithoutId_Perfil_AccountInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoComentarios?: T_PIC_ComentariosCreateNestedManyWithoutT_PerfilInput
+  }
+
+  export type T_PerfilUncheckedCreateWithoutId_Post_PerfilInput = {
+    id_Perfil?: number
+    nome_Perfil: string
+    email_Perfil: string
+    foto_Perfil?: string | null
+    descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
+    createdAt_Perfil?: Date | string
+    updatedAt_Perfil?: Date | string
+    id_Curso_Perfil?: number | null
+    id_Account_Perfil: number
+    PostInteracaoCurtidas?: T_PIC_CurtidasUncheckedCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUncheckedCreateNestedManyWithoutT_PerfilInput
+  }
+
+  export type T_PerfilCreateOrConnectWithoutId_Post_PerfilInput = {
+    where: T_PerfilWhereUniqueInput
+    create: XOR<T_PerfilCreateWithoutId_Post_PerfilInput, T_PerfilUncheckedCreateWithoutId_Post_PerfilInput>
+  }
+
+  export type T_PostInteracaoCapaCreateWithoutT_PostInput = {
+    visualizacao_PIC?: T_PostInteracaoCapaCreatevisualizacao_PICInput | number[]
+    curtidas_PIC?: T_PIC_CurtidasCreateNestedManyWithoutT_PostInteracaoCapaInput
+    comentarios_PIC?: T_PIC_ComentariosCreateNestedManyWithoutT_PostInteracaoCapaInput
+  }
+
+  export type T_PostInteracaoCapaUncheckedCreateWithoutT_PostInput = {
+    id_PIC?: number
+    visualizacao_PIC?: T_PostInteracaoCapaCreatevisualizacao_PICInput | number[]
+    curtidas_PIC?: T_PIC_CurtidasUncheckedCreateNestedManyWithoutT_PostInteracaoCapaInput
+    comentarios_PIC?: T_PIC_ComentariosUncheckedCreateNestedManyWithoutT_PostInteracaoCapaInput
+  }
+
+  export type T_PostInteracaoCapaCreateOrConnectWithoutT_PostInput = {
+    where: T_PostInteracaoCapaWhereUniqueInput
+    create: XOR<T_PostInteracaoCapaCreateWithoutT_PostInput, T_PostInteracaoCapaUncheckedCreateWithoutT_PostInput>
+  }
+
+  export type T_PostInteracaoCapaCreateManyT_PostInputEnvelope = {
+    data: T_PostInteracaoCapaCreateManyT_PostInput | T_PostInteracaoCapaCreateManyT_PostInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type T_PerfilUpsertWithoutId_Post_PerfilInput = {
+    update: XOR<T_PerfilUpdateWithoutId_Post_PerfilInput, T_PerfilUncheckedUpdateWithoutId_Post_PerfilInput>
+    create: XOR<T_PerfilCreateWithoutId_Post_PerfilInput, T_PerfilUncheckedCreateWithoutId_Post_PerfilInput>
+    where?: T_PerfilWhereInput
+  }
+
+  export type T_PerfilUpdateToOneWithWhereWithoutId_Post_PerfilInput = {
+    where?: T_PerfilWhereInput
+    data: XOR<T_PerfilUpdateWithoutId_Post_PerfilInput, T_PerfilUncheckedUpdateWithoutId_Post_PerfilInput>
+  }
+
+  export type T_PerfilUpdateWithoutId_Post_PerfilInput = {
+    nome_Perfil?: StringFieldUpdateOperationsInput | string
+    email_Perfil?: StringFieldUpdateOperationsInput | string
+    foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    curso?: T_CursoUpdateOneWithoutPerfisNestedInput
+    account?: T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUpdateManyWithoutT_PerfilNestedInput
+  }
+
+  export type T_PerfilUncheckedUpdateWithoutId_Post_PerfilInput = {
+    id_Perfil?: IntFieldUpdateOperationsInput | number
+    nome_Perfil?: StringFieldUpdateOperationsInput | string
+    email_Perfil?: StringFieldUpdateOperationsInput | string
+    foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_Curso_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
+    id_Account_Perfil?: IntFieldUpdateOperationsInput | number
+    PostInteracaoCurtidas?: T_PIC_CurtidasUncheckedUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUncheckedUpdateManyWithoutT_PerfilNestedInput
+  }
+
+  export type T_PostInteracaoCapaUpsertWithWhereUniqueWithoutT_PostInput = {
+    where: T_PostInteracaoCapaWhereUniqueInput
+    update: XOR<T_PostInteracaoCapaUpdateWithoutT_PostInput, T_PostInteracaoCapaUncheckedUpdateWithoutT_PostInput>
+    create: XOR<T_PostInteracaoCapaCreateWithoutT_PostInput, T_PostInteracaoCapaUncheckedCreateWithoutT_PostInput>
+  }
+
+  export type T_PostInteracaoCapaUpdateWithWhereUniqueWithoutT_PostInput = {
+    where: T_PostInteracaoCapaWhereUniqueInput
+    data: XOR<T_PostInteracaoCapaUpdateWithoutT_PostInput, T_PostInteracaoCapaUncheckedUpdateWithoutT_PostInput>
+  }
+
+  export type T_PostInteracaoCapaUpdateManyWithWhereWithoutT_PostInput = {
+    where: T_PostInteracaoCapaScalarWhereInput
+    data: XOR<T_PostInteracaoCapaUpdateManyMutationInput, T_PostInteracaoCapaUncheckedUpdateManyWithoutT_PostInput>
+  }
+
+  export type T_PostInteracaoCapaScalarWhereInput = {
+    AND?: T_PostInteracaoCapaScalarWhereInput | T_PostInteracaoCapaScalarWhereInput[]
+    OR?: T_PostInteracaoCapaScalarWhereInput[]
+    NOT?: T_PostInteracaoCapaScalarWhereInput | T_PostInteracaoCapaScalarWhereInput[]
+    id_PIC?: IntFilter<"T_PostInteracaoCapa"> | number
+    id_Post_PIC?: IntFilter<"T_PostInteracaoCapa"> | number
+    visualizacao_PIC?: IntNullableListFilter<"T_PostInteracaoCapa">
+  }
+
+  export type T_PIC_CurtidasCreateWithoutT_PostInteracaoCapaInput = {
+    T_Perfil: T_PerfilCreateNestedOneWithoutPostInteracaoCurtidasInput
+  }
+
+  export type T_PIC_CurtidasUncheckedCreateWithoutT_PostInteracaoCapaInput = {
+    id_Curtida?: number
+    id_Perfil_Curtida: number
+  }
+
+  export type T_PIC_CurtidasCreateOrConnectWithoutT_PostInteracaoCapaInput = {
+    where: T_PIC_CurtidasWhereUniqueInput
+    create: XOR<T_PIC_CurtidasCreateWithoutT_PostInteracaoCapaInput, T_PIC_CurtidasUncheckedCreateWithoutT_PostInteracaoCapaInput>
+  }
+
+  export type T_PIC_CurtidasCreateManyT_PostInteracaoCapaInputEnvelope = {
+    data: T_PIC_CurtidasCreateManyT_PostInteracaoCapaInput | T_PIC_CurtidasCreateManyT_PostInteracaoCapaInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type T_PIC_ComentariosCreateWithoutT_PostInteracaoCapaInput = {
+    conteudo_Comentario: string
+    T_Perfil: T_PerfilCreateNestedOneWithoutPostInteracaoComentariosInput
+  }
+
+  export type T_PIC_ComentariosUncheckedCreateWithoutT_PostInteracaoCapaInput = {
+    id_Comentario?: number
+    id_Perfil_Comentario: number
+    conteudo_Comentario: string
+  }
+
+  export type T_PIC_ComentariosCreateOrConnectWithoutT_PostInteracaoCapaInput = {
+    where: T_PIC_ComentariosWhereUniqueInput
+    create: XOR<T_PIC_ComentariosCreateWithoutT_PostInteracaoCapaInput, T_PIC_ComentariosUncheckedCreateWithoutT_PostInteracaoCapaInput>
+  }
+
+  export type T_PIC_ComentariosCreateManyT_PostInteracaoCapaInputEnvelope = {
+    data: T_PIC_ComentariosCreateManyT_PostInteracaoCapaInput | T_PIC_ComentariosCreateManyT_PostInteracaoCapaInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type T_PostCreateWithoutT_PostInteracaoCapaInput = {
+    title_Post?: string | null
+    content_Post?: string | null
+    image_Post?: string | null
+    TAG_Post?: string | null
+    createdAt_Post?: Date | string
+    updatedAt_Post?: Date | string
+    T_Perfil: T_PerfilCreateNestedOneWithoutId_Post_PerfilInput
+  }
+
+  export type T_PostUncheckedCreateWithoutT_PostInteracaoCapaInput = {
+    id_Post?: number
+    title_Post?: string | null
+    content_Post?: string | null
+    image_Post?: string | null
+    TAG_Post?: string | null
+    createdAt_Post?: Date | string
+    updatedAt_Post?: Date | string
+    id_Perfil_Post: number
+  }
+
+  export type T_PostCreateOrConnectWithoutT_PostInteracaoCapaInput = {
+    where: T_PostWhereUniqueInput
+    create: XOR<T_PostCreateWithoutT_PostInteracaoCapaInput, T_PostUncheckedCreateWithoutT_PostInteracaoCapaInput>
+  }
+
+  export type T_PIC_CurtidasUpsertWithWhereUniqueWithoutT_PostInteracaoCapaInput = {
+    where: T_PIC_CurtidasWhereUniqueInput
+    update: XOR<T_PIC_CurtidasUpdateWithoutT_PostInteracaoCapaInput, T_PIC_CurtidasUncheckedUpdateWithoutT_PostInteracaoCapaInput>
+    create: XOR<T_PIC_CurtidasCreateWithoutT_PostInteracaoCapaInput, T_PIC_CurtidasUncheckedCreateWithoutT_PostInteracaoCapaInput>
+  }
+
+  export type T_PIC_CurtidasUpdateWithWhereUniqueWithoutT_PostInteracaoCapaInput = {
+    where: T_PIC_CurtidasWhereUniqueInput
+    data: XOR<T_PIC_CurtidasUpdateWithoutT_PostInteracaoCapaInput, T_PIC_CurtidasUncheckedUpdateWithoutT_PostInteracaoCapaInput>
+  }
+
+  export type T_PIC_CurtidasUpdateManyWithWhereWithoutT_PostInteracaoCapaInput = {
+    where: T_PIC_CurtidasScalarWhereInput
+    data: XOR<T_PIC_CurtidasUpdateManyMutationInput, T_PIC_CurtidasUncheckedUpdateManyWithoutT_PostInteracaoCapaInput>
+  }
+
+  export type T_PIC_ComentariosUpsertWithWhereUniqueWithoutT_PostInteracaoCapaInput = {
+    where: T_PIC_ComentariosWhereUniqueInput
+    update: XOR<T_PIC_ComentariosUpdateWithoutT_PostInteracaoCapaInput, T_PIC_ComentariosUncheckedUpdateWithoutT_PostInteracaoCapaInput>
+    create: XOR<T_PIC_ComentariosCreateWithoutT_PostInteracaoCapaInput, T_PIC_ComentariosUncheckedCreateWithoutT_PostInteracaoCapaInput>
+  }
+
+  export type T_PIC_ComentariosUpdateWithWhereUniqueWithoutT_PostInteracaoCapaInput = {
+    where: T_PIC_ComentariosWhereUniqueInput
+    data: XOR<T_PIC_ComentariosUpdateWithoutT_PostInteracaoCapaInput, T_PIC_ComentariosUncheckedUpdateWithoutT_PostInteracaoCapaInput>
+  }
+
+  export type T_PIC_ComentariosUpdateManyWithWhereWithoutT_PostInteracaoCapaInput = {
+    where: T_PIC_ComentariosScalarWhereInput
+    data: XOR<T_PIC_ComentariosUpdateManyMutationInput, T_PIC_ComentariosUncheckedUpdateManyWithoutT_PostInteracaoCapaInput>
+  }
+
+  export type T_PostUpsertWithoutT_PostInteracaoCapaInput = {
+    update: XOR<T_PostUpdateWithoutT_PostInteracaoCapaInput, T_PostUncheckedUpdateWithoutT_PostInteracaoCapaInput>
+    create: XOR<T_PostCreateWithoutT_PostInteracaoCapaInput, T_PostUncheckedCreateWithoutT_PostInteracaoCapaInput>
+    where?: T_PostWhereInput
+  }
+
+  export type T_PostUpdateToOneWithWhereWithoutT_PostInteracaoCapaInput = {
+    where?: T_PostWhereInput
+    data: XOR<T_PostUpdateWithoutT_PostInteracaoCapaInput, T_PostUncheckedUpdateWithoutT_PostInteracaoCapaInput>
+  }
+
+  export type T_PostUpdateWithoutT_PostInteracaoCapaInput = {
+    title_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    content_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+    T_Perfil?: T_PerfilUpdateOneRequiredWithoutId_Post_PerfilNestedInput
+  }
+
+  export type T_PostUncheckedUpdateWithoutT_PostInteracaoCapaInput = {
+    id_Post?: IntFieldUpdateOperationsInput | number
+    title_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    content_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_Perfil_Post?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type T_PostInteracaoCapaCreateWithoutCurtidas_PICInput = {
+    visualizacao_PIC?: T_PostInteracaoCapaCreatevisualizacao_PICInput | number[]
+    comentarios_PIC?: T_PIC_ComentariosCreateNestedManyWithoutT_PostInteracaoCapaInput
+    T_Post: T_PostCreateNestedOneWithoutT_PostInteracaoCapaInput
+  }
+
+  export type T_PostInteracaoCapaUncheckedCreateWithoutCurtidas_PICInput = {
+    id_PIC?: number
+    id_Post_PIC: number
+    visualizacao_PIC?: T_PostInteracaoCapaCreatevisualizacao_PICInput | number[]
+    comentarios_PIC?: T_PIC_ComentariosUncheckedCreateNestedManyWithoutT_PostInteracaoCapaInput
+  }
+
+  export type T_PostInteracaoCapaCreateOrConnectWithoutCurtidas_PICInput = {
+    where: T_PostInteracaoCapaWhereUniqueInput
+    create: XOR<T_PostInteracaoCapaCreateWithoutCurtidas_PICInput, T_PostInteracaoCapaUncheckedCreateWithoutCurtidas_PICInput>
+  }
+
+  export type T_PerfilCreateWithoutPostInteracaoCurtidasInput = {
+    nome_Perfil: string
+    email_Perfil: string
+    foto_Perfil?: string | null
+    descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
+    createdAt_Perfil?: Date | string
+    updatedAt_Perfil?: Date | string
+    curso?: T_CursoCreateNestedOneWithoutPerfisInput
+    account: T_AccountCreateNestedOneWithoutId_Perfil_AccountInput
+    id_Post_Perfil?: T_PostCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoComentarios?: T_PIC_ComentariosCreateNestedManyWithoutT_PerfilInput
+  }
+
+  export type T_PerfilUncheckedCreateWithoutPostInteracaoCurtidasInput = {
+    id_Perfil?: number
+    nome_Perfil: string
+    email_Perfil: string
+    foto_Perfil?: string | null
+    descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
+    createdAt_Perfil?: Date | string
+    updatedAt_Perfil?: Date | string
+    id_Curso_Perfil?: number | null
+    id_Account_Perfil: number
+    id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUncheckedCreateNestedManyWithoutT_PerfilInput
+  }
+
+  export type T_PerfilCreateOrConnectWithoutPostInteracaoCurtidasInput = {
+    where: T_PerfilWhereUniqueInput
+    create: XOR<T_PerfilCreateWithoutPostInteracaoCurtidasInput, T_PerfilUncheckedCreateWithoutPostInteracaoCurtidasInput>
+  }
+
+  export type T_PostInteracaoCapaUpsertWithoutCurtidas_PICInput = {
+    update: XOR<T_PostInteracaoCapaUpdateWithoutCurtidas_PICInput, T_PostInteracaoCapaUncheckedUpdateWithoutCurtidas_PICInput>
+    create: XOR<T_PostInteracaoCapaCreateWithoutCurtidas_PICInput, T_PostInteracaoCapaUncheckedCreateWithoutCurtidas_PICInput>
+    where?: T_PostInteracaoCapaWhereInput
+  }
+
+  export type T_PostInteracaoCapaUpdateToOneWithWhereWithoutCurtidas_PICInput = {
+    where?: T_PostInteracaoCapaWhereInput
+    data: XOR<T_PostInteracaoCapaUpdateWithoutCurtidas_PICInput, T_PostInteracaoCapaUncheckedUpdateWithoutCurtidas_PICInput>
+  }
+
+  export type T_PostInteracaoCapaUpdateWithoutCurtidas_PICInput = {
+    visualizacao_PIC?: T_PostInteracaoCapaUpdatevisualizacao_PICInput | number[]
+    comentarios_PIC?: T_PIC_ComentariosUpdateManyWithoutT_PostInteracaoCapaNestedInput
+    T_Post?: T_PostUpdateOneRequiredWithoutT_PostInteracaoCapaNestedInput
+  }
+
+  export type T_PostInteracaoCapaUncheckedUpdateWithoutCurtidas_PICInput = {
+    id_PIC?: IntFieldUpdateOperationsInput | number
+    id_Post_PIC?: IntFieldUpdateOperationsInput | number
+    visualizacao_PIC?: T_PostInteracaoCapaUpdatevisualizacao_PICInput | number[]
+    comentarios_PIC?: T_PIC_ComentariosUncheckedUpdateManyWithoutT_PostInteracaoCapaNestedInput
+  }
+
+  export type T_PerfilUpsertWithoutPostInteracaoCurtidasInput = {
+    update: XOR<T_PerfilUpdateWithoutPostInteracaoCurtidasInput, T_PerfilUncheckedUpdateWithoutPostInteracaoCurtidasInput>
+    create: XOR<T_PerfilCreateWithoutPostInteracaoCurtidasInput, T_PerfilUncheckedCreateWithoutPostInteracaoCurtidasInput>
+    where?: T_PerfilWhereInput
+  }
+
+  export type T_PerfilUpdateToOneWithWhereWithoutPostInteracaoCurtidasInput = {
+    where?: T_PerfilWhereInput
+    data: XOR<T_PerfilUpdateWithoutPostInteracaoCurtidasInput, T_PerfilUncheckedUpdateWithoutPostInteracaoCurtidasInput>
+  }
+
+  export type T_PerfilUpdateWithoutPostInteracaoCurtidasInput = {
+    nome_Perfil?: StringFieldUpdateOperationsInput | string
+    email_Perfil?: StringFieldUpdateOperationsInput | string
+    foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    curso?: T_CursoUpdateOneWithoutPerfisNestedInput
+    account?: T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput
+    id_Post_Perfil?: T_PostUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUpdateManyWithoutT_PerfilNestedInput
+  }
+
+  export type T_PerfilUncheckedUpdateWithoutPostInteracaoCurtidasInput = {
+    id_Perfil?: IntFieldUpdateOperationsInput | number
+    nome_Perfil?: StringFieldUpdateOperationsInput | string
+    email_Perfil?: StringFieldUpdateOperationsInput | string
+    foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_Curso_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
+    id_Account_Perfil?: IntFieldUpdateOperationsInput | number
+    id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUncheckedUpdateManyWithoutT_PerfilNestedInput
+  }
+
+  export type T_PostInteracaoCapaCreateWithoutComentarios_PICInput = {
+    visualizacao_PIC?: T_PostInteracaoCapaCreatevisualizacao_PICInput | number[]
+    curtidas_PIC?: T_PIC_CurtidasCreateNestedManyWithoutT_PostInteracaoCapaInput
+    T_Post: T_PostCreateNestedOneWithoutT_PostInteracaoCapaInput
+  }
+
+  export type T_PostInteracaoCapaUncheckedCreateWithoutComentarios_PICInput = {
+    id_PIC?: number
+    id_Post_PIC: number
+    visualizacao_PIC?: T_PostInteracaoCapaCreatevisualizacao_PICInput | number[]
+    curtidas_PIC?: T_PIC_CurtidasUncheckedCreateNestedManyWithoutT_PostInteracaoCapaInput
+  }
+
+  export type T_PostInteracaoCapaCreateOrConnectWithoutComentarios_PICInput = {
+    where: T_PostInteracaoCapaWhereUniqueInput
+    create: XOR<T_PostInteracaoCapaCreateWithoutComentarios_PICInput, T_PostInteracaoCapaUncheckedCreateWithoutComentarios_PICInput>
+  }
+
+  export type T_PerfilCreateWithoutPostInteracaoComentariosInput = {
+    nome_Perfil: string
+    email_Perfil: string
+    foto_Perfil?: string | null
+    descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
+    createdAt_Perfil?: Date | string
+    updatedAt_Perfil?: Date | string
+    curso?: T_CursoCreateNestedOneWithoutPerfisInput
+    account: T_AccountCreateNestedOneWithoutId_Perfil_AccountInput
+    id_Post_Perfil?: T_PostCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasCreateNestedManyWithoutT_PerfilInput
+  }
+
+  export type T_PerfilUncheckedCreateWithoutPostInteracaoComentariosInput = {
+    id_Perfil?: number
+    nome_Perfil: string
+    email_Perfil: string
+    foto_Perfil?: string | null
+    descricao_Perfil?: string | null
+    tipo_Perfil?: $Enums.PerfilTipo
+    semestre_Perfil?: number | null
+    createdAt_Perfil?: Date | string
+    updatedAt_Perfil?: Date | string
+    id_Curso_Perfil?: number | null
+    id_Account_Perfil: number
+    id_Post_Perfil?: T_PostUncheckedCreateNestedManyWithoutT_PerfilInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasUncheckedCreateNestedManyWithoutT_PerfilInput
+  }
+
+  export type T_PerfilCreateOrConnectWithoutPostInteracaoComentariosInput = {
+    where: T_PerfilWhereUniqueInput
+    create: XOR<T_PerfilCreateWithoutPostInteracaoComentariosInput, T_PerfilUncheckedCreateWithoutPostInteracaoComentariosInput>
+  }
+
+  export type T_PostInteracaoCapaUpsertWithoutComentarios_PICInput = {
+    update: XOR<T_PostInteracaoCapaUpdateWithoutComentarios_PICInput, T_PostInteracaoCapaUncheckedUpdateWithoutComentarios_PICInput>
+    create: XOR<T_PostInteracaoCapaCreateWithoutComentarios_PICInput, T_PostInteracaoCapaUncheckedCreateWithoutComentarios_PICInput>
+    where?: T_PostInteracaoCapaWhereInput
+  }
+
+  export type T_PostInteracaoCapaUpdateToOneWithWhereWithoutComentarios_PICInput = {
+    where?: T_PostInteracaoCapaWhereInput
+    data: XOR<T_PostInteracaoCapaUpdateWithoutComentarios_PICInput, T_PostInteracaoCapaUncheckedUpdateWithoutComentarios_PICInput>
+  }
+
+  export type T_PostInteracaoCapaUpdateWithoutComentarios_PICInput = {
+    visualizacao_PIC?: T_PostInteracaoCapaUpdatevisualizacao_PICInput | number[]
+    curtidas_PIC?: T_PIC_CurtidasUpdateManyWithoutT_PostInteracaoCapaNestedInput
+    T_Post?: T_PostUpdateOneRequiredWithoutT_PostInteracaoCapaNestedInput
+  }
+
+  export type T_PostInteracaoCapaUncheckedUpdateWithoutComentarios_PICInput = {
+    id_PIC?: IntFieldUpdateOperationsInput | number
+    id_Post_PIC?: IntFieldUpdateOperationsInput | number
+    visualizacao_PIC?: T_PostInteracaoCapaUpdatevisualizacao_PICInput | number[]
+    curtidas_PIC?: T_PIC_CurtidasUncheckedUpdateManyWithoutT_PostInteracaoCapaNestedInput
+  }
+
+  export type T_PerfilUpsertWithoutPostInteracaoComentariosInput = {
+    update: XOR<T_PerfilUpdateWithoutPostInteracaoComentariosInput, T_PerfilUncheckedUpdateWithoutPostInteracaoComentariosInput>
+    create: XOR<T_PerfilCreateWithoutPostInteracaoComentariosInput, T_PerfilUncheckedCreateWithoutPostInteracaoComentariosInput>
+    where?: T_PerfilWhereInput
+  }
+
+  export type T_PerfilUpdateToOneWithWhereWithoutPostInteracaoComentariosInput = {
+    where?: T_PerfilWhereInput
+    data: XOR<T_PerfilUpdateWithoutPostInteracaoComentariosInput, T_PerfilUncheckedUpdateWithoutPostInteracaoComentariosInput>
+  }
+
+  export type T_PerfilUpdateWithoutPostInteracaoComentariosInput = {
+    nome_Perfil?: StringFieldUpdateOperationsInput | string
+    email_Perfil?: StringFieldUpdateOperationsInput | string
+    foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    curso?: T_CursoUpdateOneWithoutPerfisNestedInput
+    account?: T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput
+    id_Post_Perfil?: T_PostUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasUpdateManyWithoutT_PerfilNestedInput
+  }
+
+  export type T_PerfilUncheckedUpdateWithoutPostInteracaoComentariosInput = {
+    id_Perfil?: IntFieldUpdateOperationsInput | number
+    nome_Perfil?: StringFieldUpdateOperationsInput | string
+    email_Perfil?: StringFieldUpdateOperationsInput | string
+    foto_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    descricao_Perfil?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_Perfil?: EnumPerfilTipoFieldUpdateOperationsInput | $Enums.PerfilTipo
+    semestre_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_Curso_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
+    id_Account_Perfil?: IntFieldUpdateOperationsInput | number
+    id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasUncheckedUpdateManyWithoutT_PerfilNestedInput
+  }
+
   export type T_PerfilCreateManyAccountInput = {
     id_Perfil?: number
     nome_Perfil: string
@@ -7653,7 +12770,9 @@ export namespace Prisma {
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     curso?: T_CursoUpdateOneWithoutPerfisNestedInput
-    id_Post_Perfil?: T_PostUpdateManyWithoutPerfilNestedInput
+    id_Post_Perfil?: T_PostUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUpdateManyWithoutT_PerfilNestedInput
   }
 
   export type T_PerfilUncheckedUpdateWithoutAccountInput = {
@@ -7667,7 +12786,9 @@ export namespace Prisma {
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     id_Curso_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
-    id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutPerfilNestedInput
+    id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasUncheckedUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUncheckedUpdateManyWithoutT_PerfilNestedInput
   }
 
   export type T_PerfilUncheckedUpdateManyWithoutAccountInput = {
@@ -7683,39 +12804,87 @@ export namespace Prisma {
     id_Curso_Perfil?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type T_PostCreateManyPerfilInput = {
+  export type T_PostCreateManyT_PerfilInput = {
     id_Post?: number
     title_Post?: string | null
     content_Post?: string | null
     image_Post?: string | null
+    TAG_Post?: string | null
     createdAt_Post?: Date | string
     updatedAt_Post?: Date | string
   }
 
-  export type T_PostUpdateWithoutPerfilInput = {
+  export type T_PIC_CurtidasCreateManyT_PerfilInput = {
+    id_Curtida?: number
+    id_PIC_Curtida?: number | null
+  }
+
+  export type T_PIC_ComentariosCreateManyT_PerfilInput = {
+    id_Comentario?: number
+    conteudo_Comentario: string
+    id_PIC_Comentario?: number | null
+  }
+
+  export type T_PostUpdateWithoutT_PerfilInput = {
     title_Post?: NullableStringFieldUpdateOperationsInput | string | null
     content_Post?: NullableStringFieldUpdateOperationsInput | string | null
     image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+    T_PostInteracaoCapa?: T_PostInteracaoCapaUpdateManyWithoutT_PostNestedInput
   }
 
-  export type T_PostUncheckedUpdateWithoutPerfilInput = {
+  export type T_PostUncheckedUpdateWithoutT_PerfilInput = {
     id_Post?: IntFieldUpdateOperationsInput | number
     title_Post?: NullableStringFieldUpdateOperationsInput | string | null
     content_Post?: NullableStringFieldUpdateOperationsInput | string | null
     image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+    T_PostInteracaoCapa?: T_PostInteracaoCapaUncheckedUpdateManyWithoutT_PostNestedInput
   }
 
-  export type T_PostUncheckedUpdateManyWithoutPerfilInput = {
+  export type T_PostUncheckedUpdateManyWithoutT_PerfilInput = {
     id_Post?: IntFieldUpdateOperationsInput | number
     title_Post?: NullableStringFieldUpdateOperationsInput | string | null
     content_Post?: NullableStringFieldUpdateOperationsInput | string | null
     image_Post?: NullableStringFieldUpdateOperationsInput | string | null
+    TAG_Post?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Post?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type T_PIC_CurtidasUpdateWithoutT_PerfilInput = {
+    T_PostInteracaoCapa?: T_PostInteracaoCapaUpdateOneWithoutCurtidas_PICNestedInput
+  }
+
+  export type T_PIC_CurtidasUncheckedUpdateWithoutT_PerfilInput = {
+    id_Curtida?: IntFieldUpdateOperationsInput | number
+    id_PIC_Curtida?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type T_PIC_CurtidasUncheckedUpdateManyWithoutT_PerfilInput = {
+    id_Curtida?: IntFieldUpdateOperationsInput | number
+    id_PIC_Curtida?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type T_PIC_ComentariosUpdateWithoutT_PerfilInput = {
+    conteudo_Comentario?: StringFieldUpdateOperationsInput | string
+    T_PostInteracaoCapa?: T_PostInteracaoCapaUpdateOneWithoutComentarios_PICNestedInput
+  }
+
+  export type T_PIC_ComentariosUncheckedUpdateWithoutT_PerfilInput = {
+    id_Comentario?: IntFieldUpdateOperationsInput | number
+    conteudo_Comentario?: StringFieldUpdateOperationsInput | string
+    id_PIC_Comentario?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type T_PIC_ComentariosUncheckedUpdateManyWithoutT_PerfilInput = {
+    id_Comentario?: IntFieldUpdateOperationsInput | number
+    conteudo_Comentario?: StringFieldUpdateOperationsInput | string
+    id_PIC_Comentario?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type T_PerfilCreateManyCursoInput = {
@@ -7741,7 +12910,9 @@ export namespace Prisma {
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     account?: T_AccountUpdateOneRequiredWithoutId_Perfil_AccountNestedInput
-    id_Post_Perfil?: T_PostUpdateManyWithoutPerfilNestedInput
+    id_Post_Perfil?: T_PostUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUpdateManyWithoutT_PerfilNestedInput
   }
 
   export type T_PerfilUncheckedUpdateWithoutCursoInput = {
@@ -7755,7 +12926,9 @@ export namespace Prisma {
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     id_Account_Perfil?: IntFieldUpdateOperationsInput | number
-    id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutPerfilNestedInput
+    id_Post_Perfil?: T_PostUncheckedUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoCurtidas?: T_PIC_CurtidasUncheckedUpdateManyWithoutT_PerfilNestedInput
+    PostInteracaoComentarios?: T_PIC_ComentariosUncheckedUpdateManyWithoutT_PerfilNestedInput
   }
 
   export type T_PerfilUncheckedUpdateManyWithoutCursoInput = {
@@ -7769,6 +12942,71 @@ export namespace Prisma {
     createdAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt_Perfil?: DateTimeFieldUpdateOperationsInput | Date | string
     id_Account_Perfil?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type T_PostInteracaoCapaCreateManyT_PostInput = {
+    id_PIC?: number
+    visualizacao_PIC?: T_PostInteracaoCapaCreatevisualizacao_PICInput | number[]
+  }
+
+  export type T_PostInteracaoCapaUpdateWithoutT_PostInput = {
+    visualizacao_PIC?: T_PostInteracaoCapaUpdatevisualizacao_PICInput | number[]
+    curtidas_PIC?: T_PIC_CurtidasUpdateManyWithoutT_PostInteracaoCapaNestedInput
+    comentarios_PIC?: T_PIC_ComentariosUpdateManyWithoutT_PostInteracaoCapaNestedInput
+  }
+
+  export type T_PostInteracaoCapaUncheckedUpdateWithoutT_PostInput = {
+    id_PIC?: IntFieldUpdateOperationsInput | number
+    visualizacao_PIC?: T_PostInteracaoCapaUpdatevisualizacao_PICInput | number[]
+    curtidas_PIC?: T_PIC_CurtidasUncheckedUpdateManyWithoutT_PostInteracaoCapaNestedInput
+    comentarios_PIC?: T_PIC_ComentariosUncheckedUpdateManyWithoutT_PostInteracaoCapaNestedInput
+  }
+
+  export type T_PostInteracaoCapaUncheckedUpdateManyWithoutT_PostInput = {
+    id_PIC?: IntFieldUpdateOperationsInput | number
+    visualizacao_PIC?: T_PostInteracaoCapaUpdatevisualizacao_PICInput | number[]
+  }
+
+  export type T_PIC_CurtidasCreateManyT_PostInteracaoCapaInput = {
+    id_Curtida?: number
+    id_Perfil_Curtida: number
+  }
+
+  export type T_PIC_ComentariosCreateManyT_PostInteracaoCapaInput = {
+    id_Comentario?: number
+    id_Perfil_Comentario: number
+    conteudo_Comentario: string
+  }
+
+  export type T_PIC_CurtidasUpdateWithoutT_PostInteracaoCapaInput = {
+    T_Perfil?: T_PerfilUpdateOneRequiredWithoutPostInteracaoCurtidasNestedInput
+  }
+
+  export type T_PIC_CurtidasUncheckedUpdateWithoutT_PostInteracaoCapaInput = {
+    id_Curtida?: IntFieldUpdateOperationsInput | number
+    id_Perfil_Curtida?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type T_PIC_CurtidasUncheckedUpdateManyWithoutT_PostInteracaoCapaInput = {
+    id_Curtida?: IntFieldUpdateOperationsInput | number
+    id_Perfil_Curtida?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type T_PIC_ComentariosUpdateWithoutT_PostInteracaoCapaInput = {
+    conteudo_Comentario?: StringFieldUpdateOperationsInput | string
+    T_Perfil?: T_PerfilUpdateOneRequiredWithoutPostInteracaoComentariosNestedInput
+  }
+
+  export type T_PIC_ComentariosUncheckedUpdateWithoutT_PostInteracaoCapaInput = {
+    id_Comentario?: IntFieldUpdateOperationsInput | number
+    id_Perfil_Comentario?: IntFieldUpdateOperationsInput | number
+    conteudo_Comentario?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type T_PIC_ComentariosUncheckedUpdateManyWithoutT_PostInteracaoCapaInput = {
+    id_Comentario?: IntFieldUpdateOperationsInput | number
+    id_Perfil_Comentario?: IntFieldUpdateOperationsInput | number
+    conteudo_Comentario?: StringFieldUpdateOperationsInput | string
   }
 
 

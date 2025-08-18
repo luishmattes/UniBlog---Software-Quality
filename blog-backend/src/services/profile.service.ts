@@ -36,7 +36,6 @@ export async function createProfileService(data: CreateProfileDataInterface, acc
       throw new Error('semestre é obrigatório para perfil pessoal.');
     }
 
-    // Busca o curso para validar o semestre
     const curso = await db.t_Curso.findUnique({
       where: { id_Curso: data.id_Curso_Perfil }
     });
@@ -143,6 +142,23 @@ export async function getAllProfilesService() {
 
   if (!profiles) {
     throw new Error('Nenhum perfil encontrado.');
+  }
+
+  return profiles;
+}
+export async function getProfilesByAccountIdService(accountId: number) {
+  const profiles = await db.t_Perfil.findMany({
+    where: { id_Account_Perfil: accountId },
+    select: {
+      id_Perfil: true,
+      nome_Perfil: true,
+      foto_Perfil: true,
+      tipo_Perfil: true,
+    },
+  });
+
+  if (!profiles || profiles.length === 0) {
+    throw new Error('Perfil não encontrado para esta conta.');
   }
 
   return profiles;

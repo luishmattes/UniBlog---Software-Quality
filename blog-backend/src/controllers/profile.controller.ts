@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { createProfileService, updateProfileService, deleteProfileService, getProfileService, getAllProfilesService } from '../services/profile.service';
+import { createProfileService, updateProfileService, deleteProfileService, getProfileService, getAllProfilesService, getProfilesByAccountIdService } from '../services/profile.service';
 import { createProfileSchema, idProfileSchema, updateProfileSchema } from '../schemas/profile.schema';
 import { uploadToMinio } from '../utils/uploadToMinio';
 import { parseMultipart } from '../utils/parseMultipart';
@@ -76,7 +76,7 @@ export async function updateProfileController(request: AuthenticatedRequest, rep
 
 export async function getProfileController(request: AuthenticatedRequest, reply: FastifyReply) {
   try {
-    const { id_Perfil } = idProfileSchema.parse({ id_Perfil: request.headers['id_perfil'] });
+    const { id_Perfil } = idProfileSchema.parse({ id_Perfil: request.headers['id_Perfil'] });
     const profile = await getProfileService({ id_Perfil });
 
     return reply.status(200).send(profile);
@@ -104,6 +104,21 @@ export async function deleteProfileController(request: FastifyRequest, reply: Fa
 export async function getAllProfilesController(request: FastifyRequest, reply: FastifyReply) {
   try {
     const profiles = await getAllProfilesService();
+
+    return reply.status(200).send(profiles);
+  } catch (error) {
+    return reply.status(400).send({
+      error: 'Erro ao buscar perfis',
+      message: error instanceof Error ? error.message : 'Erro desconhecido',
+      stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined,
+    });
+  }
+}
+
+export async function getProfilesByAccountIdController(request: FastifyRequest, reply: FastifyReply) {
+  try {
+    const accountId = request.user.id_Account;
+    const profiles = await getProfilesByAccountIdService(accountId);
 
     return reply.status(200).send(profiles);
   } catch (error) {

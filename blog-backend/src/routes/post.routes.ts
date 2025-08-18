@@ -6,7 +6,7 @@ export async function postRoutes(app: FastifyInstance) {
   app.addHook('onRequest', verifyJWT);
 
   app.post('/new', createPostController);
-  app.get('/get/:id_Post', getPostController);
+  app.get('/get', getPostController);
   app.delete('/delete/:id_Post', deletePostController);
   app.get('/', getAllPostsController);
 }

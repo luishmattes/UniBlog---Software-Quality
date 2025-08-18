@@ -1,8 +1,10 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { createPostService, deletePostService, getPostService, getAllPostsService } from '../services/post.service';
+import { createPostService, deletePostService, getPostByProfileService, getAllPostsService } from '../services/post.service';
 import { createPostSchema, deletePostSchema, getPostSchema } from '../schemas/post.schema'
 import { parseMultipart } from '../utils/parseMultipart';
 import { uploadToMinio } from '../utils/uploadToMinio';
+import { idProfileSchema } from '../schemas/profile.schema';
+import { getInteracoesByPostIdService, } from '../services/interacoes.service';
 
 export async function createPostController(request: FastifyRequest, reply: FastifyReply) {
     try {
@@ -12,7 +14,7 @@ export async function createPostController(request: FastifyRequest, reply: Fasti
             ...fields,
         });
 
-        const perfilId = Number(request.headers['perfil-id']);
+        const perfilId = Number(request.headers['id_Perfil']);
         if (!perfilId) {
             return reply.status(400).send({ error: 'ID do perfil não fornecido no header' });
         }
@@ -23,7 +25,9 @@ export async function createPostController(request: FastifyRequest, reply: Fasti
         }
 
         const post = await createPostService(data, perfilId);
-        return reply.status(201).send(post);
+        const postInteracaoCapa = await (post.id_Post);
+
+        return reply.status(201).send({ post, postInteracaoCapa });
     } catch (error) {
         return reply.status(400).send({
             error: 'Erro de validação',
@@ -35,7 +39,7 @@ export async function createPostController(request: FastifyRequest, reply: Fasti
 
 export async function deletePostController(request: FastifyRequest, reply: FastifyReply) {
     try {
-        const perfilId = Number(request.headers['perfil-id']);
+        const perfilId = Number(request.headers['id_Perfil']);
         const postId = deletePostSchema.parse(request.params);
         const post = await deletePostService(postId, perfilId);
         return reply.status(200).send(post);
@@ -50,14 +54,12 @@ export async function deletePostController(request: FastifyRequest, reply: Fasti
 
 export async function getPostController(request: FastifyRequest, reply: FastifyReply) {
     try {
-        const { id_Post } = getPostSchema.parse(request.params);
-        const perfilId = Number(request.headers['perfil-id']);
+        const { id_Perfil } = idProfileSchema.parse({ id_Perfil: request.headers['id_Perfil'] });
 
-        if (!perfilId) {
-            return reply.status(400).send({ error: 'ID do perfil não fornecido no header' });
+        const post = await getPostByProfileService({ id_Perfil });
+        if (!post || post.length === 0) {
+            return reply.status(404).send({ error: 'Nenhum post encontrado para este perfil.' });
         }
-
-        const post = await getPostService({ id_Post }, perfilId);
 
 
         return reply.status(200).send(post);
@@ -71,8 +73,16 @@ export async function getPostController(request: FastifyRequest, reply: FastifyR
 }
 export async function getAllPostsController(request: FastifyRequest, reply: FastifyReply) {
     try {
-        const posts = await getAllPostsService();
-        return reply.status(200).send(posts);
+        const postsData = await getAllPostsService();
+
+        const postsWithInteractions = await Promise.all(
+            postsData.map(async (post) => {
+                const interacoes = await getInteracoesByPostIdService(post.id_Post);
+                return { ...post, T_PostInteracaoCapa: interacoes };
+            })
+        );
+
+        return reply.status(200).send(postsWithInteractions);
     } catch (error) {
         return reply.status(400).send({
             error: 'Erro de validação',
