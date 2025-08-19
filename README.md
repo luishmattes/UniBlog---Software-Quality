@@ -33,7 +33,9 @@ A proposta é criar uma plataforma intuitiva, moderna e visualmente consistente,
 
 ### Problema
 
-Descrever de forma detalhada qual é o problema que busca-se resolver através deste projeto.
+  - Falta de centralização de informações acadêmicas e extracurriculares em um único ambiente
+  - Dificuldade de encontrar e interagir com outros estudantes de forma focada no contexto universitário
+  - Desorganização ou dispersão dos grupos de estudo, eventos e comunicados importantes em diversos canais não oficiais (como WhatsApp, Instagram, e-mail institucional, etc.)
 
 ### Objetivos
 
