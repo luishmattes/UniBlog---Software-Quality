@@ -10,14 +10,14 @@ O **Plano de Software** (PS) tem como propósito organizar e orientar o desenvol
 
 ## 📋 IDENTIFICAÇÃO DO PROJETO
 
-- **Nome do projeto:** Nome do projeto
+- **Nome do projeto:** UniBlog
 - **Equipe:**
   - Nayan Becker (_Líder_)
-  - Luiz Mattes
+  - Luis Henrique Mattes
   - Sidnei Pires
   - Ellen Silva
 
-* **Repositório Git:** [Link para o repositório](https://www.example.com/)
+* **Repositório Git:** [Link para o repositório](https://github.com/NayanBecker/UniBlog)
 * **Data de início:** 04 de agosto de 2025
 * **Previsão de término:** 08 de dezembro de 2025
 * **Versão do PS:** v2025.08.18
@@ -28,7 +28,8 @@ O **Plano de Software** (PS) tem como propósito organizar e orientar o desenvol
 
 ### Contexto
 
-Descrever de forma detalhada qual é o contexto que fundamenta este projeto.
+O UniBlog será um Blog-Universitário voltado para a comunidade acadêmica, desenvolvido para transformar a forma como os estudantes se conectam, buscam informações, e fazem novas amizades. Nosso objetivo também, é poder eternizar alguns dos melhores momentos de sua passagem pela vida acadêmica, além de facilitar os desafios do dia a dia da vida acadêmica.
+A proposta é criar uma plataforma intuitiva, moderna e visualmente consistente, que permita aos usuários criar, interagir e consumir conteúdo de forma rápida e segura.
 
 ### Problema
 
