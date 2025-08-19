@@ -76,15 +76,49 @@ O UniBlog é uma plataforma digital voltada para a comunidade universitária, qu
 
 ### Principais funcionalidades
 
-Listar de 5 a 10 funcionalidades principais, resumidas em uma frase cada.
+- Cadastro e login de usuários com autenticação segura.
+
+- Publicação de posts com textos, imagens, vídeos e anexos.
+
+- Sistema de comentários e curtidas para interação entre usuários.
+
+- Perfis personalizados com foto, biografia e histórico de postagens.
+
+- Feed de publicações em formato de timeline para fácil visualização.
+
+- Busca e filtros por categorias, autores e palavras-chave.
+
+- Gerenciamento de eventos e grupos acadêmicos (estudos, atléticas, projetos).
+
+- Painel administrativo para moderação de usuários e conteúdos.
 
 ### Restrições / Limitações
 
-Indicar limitações tecnológicas, de prazo ou de escopo.
+- Equipe reduzida: até 4 colaboradores diretos no desenvolvimento.
+
+- Prazo limitado: entrega do MVP em até 90 dias e versão final (v1.0) em até 150 dias.
+
+- Escopo inicial restrito: foco nas funcionalidades essenciais (cadastro/login, feed, perfis e interações).
+
+- Recursos financeiros limitados: orçamento definido para hospedagem, licenças e desenvolvimento.
+
+- Dependência tecnológica: disponibilidade de frameworks web, banco de dados e serviços de hospedagem.
+
+- Possível descontinuidade: risco de abandono após a formatura dos integrantes do time.
 
 ### Fora do escopo
 
-Indicar funcionalidades que não serão desenvolvidas neste projeto.
+- Integração com redes sociais externas (ex.: compartilhamento automático em Instagram, Facebook, LinkedIn).
+
+- Aplicativo mobile nativo (o foco será apenas na versão web responsiva).
+
+- Marketplace ou área de vendas de produtos/serviços.
+
+- Gamificação avançada (sistemas de pontos, ranking ou conquistas).
+
+- Ferramentas de videoconferência ou chat em tempo real.
+
+- Tradução automática para múltiplos idiomas.
 
 ---
 
