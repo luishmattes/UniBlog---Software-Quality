@@ -55,8 +55,10 @@ O UniBlog surge como uma plataforma digital voltada para o ambiente acadêmico, 
 
 
 ### Público-alvo
+- Estudantes universitários (graduação, tecnólogos e pós-graduação).
+- Qualquer instituição de ensino superior (não restrito a uma universidade específica).
+- Potencial faixa etária: entre 18 e 30 anos.
 
-Descrever o público-alvo afetado por este projeto e de que forma esse público será afetado.
 
 ---
 
@@ -68,7 +70,9 @@ Descrever o público-alvo afetado por este projeto e de que forma esse público 
 
 ### Resumo
 
-Descrever em poucas linhas o que o sistema faz, sem entrar em detalhes técnicos. Deve ser independente do DR, mas complementar.
+Sobre o Sistema
+
+O UniBlog é uma plataforma digital voltada para a comunidade universitária, que centraliza informações acadêmicas e extracurriculares em um único ambiente. Ele permite que estudantes, professores e grupos acadêmicos compartilhem notícias, eventos, artigos e oportunidades, além de facilitar a interação entre os usuários por meio de postagens, comentários e comunidades. O objetivo é fortalecer a comunicação no ambiente acadêmico e aproximar os membros da universidade de forma simples, organizada e colaborativa.
 
 ### Principais funcionalidades
 
