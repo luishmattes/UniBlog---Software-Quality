@@ -33,15 +33,17 @@ A proposta é criar uma plataforma intuitiva, moderna e visualmente consistente,
 
 ### Problema
 
-  - Falta de centralização de informações acadêmicas e extracurriculares em um único ambiente
-  - Dificuldade de encontrar e interagir com outros estudantes de forma focada no contexto universitário
-  - Desorganização ou dispersão dos grupos de estudo, eventos e comunicados importantes em diversos canais não oficiais (como WhatsApp, Instagram, e-mail institucional, etc.)
+- Falta de centralização: não existe um único espaço que concentre informações acadêmicas e extracurriculares.
+
+- Dificuldade de interação: a conexão entre estudantes muitas vezes é limitada ou dispersa, sem foco no contexto universitário.
+
+- Desorganização da comunicação: grupos de estudo, eventos e comunicados importantes acabam se espalhando por canais não oficiais (WhatsApp, Instagram, e-mail institucional etc.), o que gera perda de informações e baixa eficiência na comunicação.
 
 ### Objetivos
 
 #### Objetivo geral
 
-Descrever o objetivo geral que guia o desenvolvimento deste projeto.
+O UniBlog surge como uma plataforma digital voltada para o ambiente acadêmico, permitindo que alunos, professores e demais membros da comunidade universitária possam compartilhar informações, notícias, eventos, artigos e opiniões de forma simples, rápida e segura.
 
 #### Objetivos específicos
 
