@@ -47,7 +47,12 @@ O UniBlog surge como uma plataforma digital voltada para o ambiente acadêmico, 
 
 #### Objetivos específicos
 
-Descrever os objetivos específicos traçados para alcançar o objetivo geral definido.
+- Feed de postagens em formato de timeline
+- Perfil de usuário e de comunidades (grupos de estudo, atléticas, eventos)
+- Curtidas e comentários nas publicações
+- Divulgação e gerenciamento de eventos acadêmicos
+- Publicação e acesso a oportunidades de ACCs, estágios, parcerias e trabalhos em grupo
+
 
 ### Público-alvo
 
