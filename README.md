@@ -12,9 +12,10 @@ O **Plano de Software** (PS) tem como propósito organizar e orientar o desenvol
 
 - **Nome do projeto:** Nome do projeto
 - **Equipe:**
-  - Integrante (_Líder_)
-  - Integrante
-  - ...
+  - Nayan Becker (_Líder_)
+  - Luiz Mattes
+  - Sidnei Pires
+  - Ellen Silva
 
 * **Repositório Git:** [Link para o repositório](https://www.example.com/)
 * **Data de início:** 04 de agosto de 2025
